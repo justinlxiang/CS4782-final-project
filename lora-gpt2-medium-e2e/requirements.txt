@@ -1,0 +1,14 @@
+# Starter dependencies for the planned implementation.
+# Install only when ready to implement or run experiments.
+
+torch
+transformers
+datasets
+accelerate
+pyyaml
+tqdm
+numpy
+sacrebleu
+rouge-score
+evaluate
+pytest

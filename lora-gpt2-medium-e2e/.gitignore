@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+
+data/
+outputs/
+checkpoints/
+external/
+
+.DS_Store
+.env
+*.log
