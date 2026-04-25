@@ -143,6 +143,22 @@ class E2ETokenizedDataset(Dataset[dict[str, Any]]):
         return self.examples[index]
 
 
+class ProcessedE2EDataset(Dataset[dict[str, Any]]):
+    """Dataset for pre-tokenized JSONL files created by `prepare_e2e.py`."""
+
+    def __init__(self, path: str | Path, max_examples: int | None = None) -> None:
+        examples = read_jsonl(path)
+        if max_examples is not None:
+            examples = examples[:max_examples]
+        self.examples = examples
+
+    def __len__(self) -> int:
+        return len(self.examples)
+
+    def __getitem__(self, index: int) -> dict[str, Any]:
+        return self.examples[index]
+
+
 class DataCollatorForCompletionOnlyLM:
     """Pad `input_ids`, `attention_mask`, and completion-only `labels`."""
 

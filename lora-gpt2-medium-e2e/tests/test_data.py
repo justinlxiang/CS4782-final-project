@@ -4,6 +4,7 @@ from lora_gpt2.data import (
     DataCollatorForCompletionOnlyLM,
     E2ERecord,
     E2ETokenizedDataset,
+    ProcessedE2EDataset,
     format_prompt,
     parse_e2e_line,
     tokenize_record,
@@ -73,3 +74,17 @@ def test_collator_pads_labels_with_ignore_index() -> None:
 
     assert batch["input_ids"].shape == batch["labels"].shape
     assert (batch["labels"] == -100).any()
+
+
+def test_processed_dataset_loads_prepared_jsonl(tmp_path) -> None:
+    path = tmp_path / "train.jsonl"
+    path.write_text(
+        '{"input_ids": [1, 2], "attention_mask": [1, 1], "labels": [-100, 2]}\n'
+        '{"input_ids": [3], "attention_mask": [1], "labels": [3]}\n',
+        encoding="utf-8",
+    )
+
+    dataset = ProcessedE2EDataset(path, max_examples=1)
+
+    assert len(dataset) == 1
+    assert dataset[0]["input_ids"] == [1, 2]

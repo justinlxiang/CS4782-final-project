@@ -20,9 +20,21 @@ def seed_everything(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
-def get_device() -> torch.device:
-    """Prefer CUDA when available, otherwise fall back to CPU."""
-    return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+def get_device(preferred: str = "auto") -> torch.device:
+    """Choose a compute device, including Apple Silicon MPS when available."""
+    if preferred != "auto":
+        device = torch.device(preferred)
+        if device.type == "cuda" and not torch.cuda.is_available():
+            raise ValueError("CUDA was requested but is not available.")
+        if device.type == "mps" and not torch.backends.mps.is_available():
+            raise ValueError("MPS was requested but is not available.")
+        return device
+
+    if torch.cuda.is_available():
+        return torch.device("cuda")
+    if torch.backends.mps.is_available():
+        return torch.device("mps")
+    return torch.device("cpu")
 
 
 def count_parameters(model: torch.nn.Module, trainable_only: bool = False) -> int:
