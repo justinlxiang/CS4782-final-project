@@ -132,7 +132,7 @@ def save_metric_figure(metrics: dict[str, Any], output_path: Path) -> dict[str, 
     numeric_metrics = {
         key: float(value)
         for key, value in metrics.items()
-        if key != "num_examples" and isinstance(value, (int, float))
+        if not key.startswith("num_") and isinstance(value, (int, float))
     }
     if not numeric_metrics:
         return {}
