@@ -23,6 +23,7 @@ def create_optimizer(model: torch.nn.Module, config: dict[str, Any]) -> torch.op
         lr=float(training["learning_rate"]),
         weight_decay=float(training["weight_decay"]),
         betas=(0.9, float(training.get("adam_beta2", 0.999))),
+        eps=float(training.get("adam_epsilon", 1e-6)),
     )
 
 

@@ -5,7 +5,7 @@
 project:
   name: lora-gpt2-medium-e2e
   output_dir: outputs/runs/e2e_lora_r4_alpha32
-  seed: 0
+  seed: 110
 
 model:
   name_or_path: gpt2-medium
@@ -40,13 +40,14 @@ training:
   optimizer: adamw
   learning_rate: 0.0002
   weight_decay: 0.01
+  adam_epsilon: 0.000001
   batch_size: 8
   gradient_accumulation_steps: 1
   epochs: 5
   warmup_steps: 500
   lr_schedule: linear
   label_smoothing: 0.1
-  max_grad_norm: 1.0
+  max_grad_norm: 0.0
   mixed_precision: fp16
   eval_every_steps: 1000
   save_every_steps: 1000
@@ -54,6 +55,7 @@ training:
 
 generation:
   split: test
+  decoder: official_beam
   batch_size: 4
   max_new_tokens: 64
   num_beams: 10

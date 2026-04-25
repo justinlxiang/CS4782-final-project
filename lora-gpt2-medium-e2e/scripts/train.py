@@ -47,7 +47,11 @@ def build_dataloader(
         config,
         Path(config["data"]["processed_dir"]) / f"{split}.jsonl",
     )
-    dataset = ProcessedE2EDataset(split_path, max_examples=max_examples)
+    dataset = ProcessedE2EDataset(
+        split_path,
+        max_examples=max_examples,
+        pad_to_multiple=batch_size if max_examples is None else None,
+    )
     collator = DataCollatorForCompletionOnlyLM(pad_token_id=tokenizer.pad_token_id)
     generator = None
     if shuffle and seed is not None:

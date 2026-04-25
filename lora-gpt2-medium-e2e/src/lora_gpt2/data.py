@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import random
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
@@ -146,16 +147,28 @@ class E2ETokenizedDataset(Dataset[dict[str, Any]]):
 class ProcessedE2EDataset(Dataset[dict[str, Any]]):
     """Dataset for pre-tokenized JSONL files created by `prepare_e2e.py`."""
 
-    def __init__(self, path: str | Path, max_examples: int | None = None) -> None:
+    def __init__(
+        self,
+        path: str | Path,
+        max_examples: int | None = None,
+        pad_to_multiple: int | None = None,
+        overflow_seed: int = 911,
+    ) -> None:
         examples = read_jsonl(path)
         if max_examples is not None:
             examples = examples[:max_examples]
         self.examples = examples
+        self._rng = random.Random(overflow_seed)
+        self._length = len(examples)
+        if pad_to_multiple and examples:
+            self._length = ((len(examples) + pad_to_multiple - 1) // pad_to_multiple) * pad_to_multiple
 
     def __len__(self) -> int:
-        return len(self.examples)
+        return self._length
 
     def __getitem__(self, index: int) -> dict[str, Any]:
+        if index >= len(self.examples):
+            index = self._rng.randint(0, len(self.examples) - 1)
         return self.examples[index]
 
 
