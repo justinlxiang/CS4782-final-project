@@ -92,6 +92,30 @@ def save_epoch_loss_figure(records: list[dict[str, Any]], output_path: Path) -> 
     return {f"epoch_{epoch}_mean_loss": loss for epoch, loss in zip(epochs, epoch_losses)}
 
 
+def save_validation_loss_figure(records: list[dict[str, Any]], output_path: Path) -> dict[str, float]:
+    import matplotlib.pyplot as plt
+
+    epochs = [int(record["epoch"]) for record in records]
+    losses = [float(record["valid_loss"]) for record in records]
+    ppls = [float(record["valid_ppl"]) for record in records]
+
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+    ax.plot(epochs, losses, marker="o", color="#b7652f", linewidth=2.0, label="valid loss")
+    ax.set_title("Validation Loss by Epoch")
+    ax.set_xlabel("Epoch")
+    ax.set_ylabel("Validation loss")
+    ax.set_xticks(epochs)
+    ax.grid(alpha=0.25)
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=180)
+    plt.close(fig)
+
+    summary = {f"epoch_{epoch}_valid_loss": loss for epoch, loss in zip(epochs, losses)}
+    summary.update({f"epoch_{epoch}_valid_ppl": ppl for epoch, ppl in zip(epochs, ppls)})
+    return summary
+
+
 def save_parameter_figure(parameter_report: dict[str, Any], output_path: Path) -> dict[str, float]:
     import matplotlib.pyplot as plt
 
@@ -175,14 +199,21 @@ def main() -> None:
     training_metrics = run_dir / "metrics.jsonl"
     if training_metrics.exists():
         records = read_jsonl(training_metrics)
-        if records:
+        train_records = [record for record in records if "loss" in record]
+        validation_records = [record for record in records if "valid_loss" in record]
+        if train_records:
             summary["training_loss"] = save_training_loss_figure(
-                records,
+                train_records,
                 figures_dir / "training_loss.png",
             )
             summary["epoch_loss"] = save_epoch_loss_figure(
-                records,
+                train_records,
                 figures_dir / "epoch_loss.png",
+            )
+        if validation_records:
+            summary["validation_loss"] = save_validation_loss_figure(
+                validation_records,
+                figures_dir / "validation_loss.png",
             )
 
     parameter_report = run_dir / "parameter_report.json"

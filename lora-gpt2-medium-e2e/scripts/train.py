@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -18,7 +19,7 @@ from lora_gpt2.checkpointing import load_training_checkpoint, save_training_chec
 from lora_gpt2.config import load_config, resolve_path
 from lora_gpt2.data import DataCollatorForCompletionOnlyLM, ProcessedE2EDataset
 from lora_gpt2.modeling import load_lora_model
-from lora_gpt2.train import create_linear_scheduler, create_optimizer, forward_loss
+from lora_gpt2.train import create_linear_scheduler, create_optimizer, evaluate_loss, forward_loss
 from lora_gpt2.utils import ensure_dir, get_device, parameter_report, seed_everything
 
 
@@ -129,6 +130,7 @@ def main() -> None:
     device = get_device(args.device)
     model, tokenizer, report = load_lora_model(config)
     train_batch_size = int(config["training"]["batch_size"])
+    validation_batch_size = int(config["training"].get("validation_batch_size", 4))
     train_split_path = resolve_path(config, Path(config["data"]["processed_dir"]) / "train.jsonl")
     train_dataset_size = len(ProcessedE2EDataset(train_split_path))
     steps_per_epoch = (train_dataset_size + train_batch_size - 1) // train_batch_size
@@ -231,6 +233,7 @@ def main() -> None:
         print(f"train_dataset={train_split_path}")
         print(f"train_examples={train_dataset_size}")
         print(f"train_batch_size={train_batch_size}")
+        print(f"validation_batch_size={validation_batch_size}")
         print(f"configured_training_steps={configured_steps}")
         print(f"effective_training_steps={total_training_steps}")
         print(f"output_dir={output_dir}")
@@ -258,6 +261,7 @@ def main() -> None:
         ) as progress:
             for epoch in range(start_epoch, int(config["training"]["epochs"]) + 1):
                 current_epoch = epoch
+                completed_epoch = True
                 train_loader, full_train_path, full_train_size = build_dataloader(
                     config=config,
                     tokenizer=tokenizer,
@@ -317,7 +321,41 @@ def main() -> None:
                         tqdm.write(f"saved_checkpoint={checkpoint_path}")
 
                     if args.max_train_steps is not None and global_step >= args.max_train_steps:
+                        completed_epoch = batch_in_epoch == len(train_loader)
                         break
+                if args.max_train_steps is not None and global_step >= args.max_train_steps:
+                    if not completed_epoch:
+                        break
+                valid_loader, valid_path, valid_size = build_dataloader(
+                    config=config,
+                    tokenizer=tokenizer,
+                    split="valid",
+                    batch_size=validation_batch_size,
+                    max_examples=None,
+                    shuffle=False,
+                )
+                valid_loss = evaluate_loss(
+                    model,
+                    valid_loader,
+                    device,
+                    label_smoothing=label_smoothing,
+                )
+                valid_ppl = math.exp(valid_loss)
+                validation_record = {
+                    "type": "validation",
+                    "epoch": epoch,
+                    "step": global_step,
+                    "valid_loss": valid_loss,
+                    "valid_ppl": valid_ppl,
+                    "valid_examples": valid_size,
+                    "valid_dataset": str(valid_path),
+                }
+                append_jsonl(metrics_path, validation_record)
+                tqdm.write(
+                    f"validation epoch={epoch} step={global_step} "
+                    f"valid_loss={valid_loss:.4f} valid_ppl={valid_ppl:.2f}"
+                )
+                model.train()
                 if args.max_train_steps is not None and global_step >= args.max_train_steps:
                     break
 
