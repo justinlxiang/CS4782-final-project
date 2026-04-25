@@ -1,6 +1,15 @@
 from __future__ import annotations
 
-from lora_gpt2.generate import extract_continuation, format_predictions
+from lora_gpt2.generate import encode_generation_prompts, extract_continuation, format_predictions
+
+
+class ToyTokenizer:
+    eos_token_id = 0
+    pad_token_id = 99
+
+    def encode(self, text: str, add_special_tokens: bool = False) -> list[int]:
+        del add_special_tokens
+        return [ord(char) % 89 + 1 for char in text]
 
 
 def test_extract_continuation_removes_prompt_and_stop_markers() -> None:
@@ -17,3 +26,14 @@ def test_format_predictions_uses_stable_ids() -> None:
         {"id": "0", "prompt": "p1", "prediction": "g1"},
         {"id": "1", "prompt": "p2", "prediction": "g2"},
     ]
+
+
+def test_encode_generation_prompts_can_append_bos_separator() -> None:
+    encoded = encode_generation_prompts(
+        ToyTokenizer(),
+        ["name : Blue Spice"],
+        append_bos_to_context=True,
+    )
+
+    assert encoded["input_ids"][0, -1].item() == ToyTokenizer.eos_token_id
+    assert encoded["attention_mask"][0, -1].item() == 1

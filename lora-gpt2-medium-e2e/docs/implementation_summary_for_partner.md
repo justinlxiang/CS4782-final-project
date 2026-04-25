@@ -92,7 +92,7 @@ Generated or external artifacts are ignored by git:
 - `project`: run name, output directory, seed.
 - `model`: base model and tokenizer names, currently `gpt2-medium`, plus GPT-2 pad-token handling.
 - `lora`: target model family, target GPT-2 `attention.c_attn` slices, rank, alpha, dropout, and merge behavior.
-- `data`: raw/processed data paths, max token length, prompt template, EOS handling, and prompt-label masking.
+- `data`: raw/processed data paths, max token length, raw-context prompt template, GPT-2 BOS/EOS handling, and prompt-label masking.
 - `training`: optimizer, learning rate, batch size, epochs, warmup, label smoothing, gradient clipping, mixed precision, and checkpoint cadence.
 - `generation`: decoding settings such as beam count, max new tokens, length penalty, no-repeat n-gram size, and EOS token.
 - `evaluation`: metric names and default prediction/reference file locations.
@@ -191,14 +191,15 @@ Current raw input formats:
 
 Tokenization flow for each example:
 
-1. Format the meaning representation with the config prompt template.
-2. Optionally add a leading space to the target, which helps GPT-2 tokenization.
-3. Tokenize prompt and target separately.
-4. Optionally append EOS to the target.
-5. Concatenate prompt tokens and target tokens.
-6. Truncate to `max_length`.
-7. Set labels to `-100` for prompt tokens when `mask_prompt_labels` is true.
-8. Keep target token IDs as labels.
+1. Format the meaning representation with the config prompt template. The current replication default is `{mr}`, so the raw E2E context is used directly.
+2. Tokenize the context and target separately.
+3. Append GPT-2's end-of-text token id `50256` after the context when `append_bos_to_context` is true. This mirrors the official LoRA NLG preprocessing, which uses the same token as BOS/context separator.
+4. Optionally add a leading space to the target before tokenization, which helps GPT-2 tokenization and matches the official preprocessing.
+5. Optionally append EOS token id `50256` to the target.
+6. Concatenate context tokens and target tokens.
+7. Truncate to `max_length`.
+8. Set labels to `-100` for context/separator tokens when `mask_prompt_labels` is true.
+9. Keep target token IDs as labels.
 
 `DataCollatorForCompletionOnlyLM` dynamically pads `input_ids`, `attention_mask`, and `labels`. Label padding uses `-100`, so the loss ignores padding.
 
@@ -241,7 +242,8 @@ The checkpoint does not save the full frozen GPT-2 base model.
 
 Generation helpers:
 
-- `generate_continuations`: tokenizes prompt-only inputs, calls `model.generate`, slices off the prompt tokens, and returns decoded continuations.
+- `generate_continuations`: tokenizes prompt-only inputs, appends the same GPT-2 context separator when configured, calls `model.generate`, slices off the prompt tokens, and returns decoded continuations.
+- `encode_generation_prompts`: builds the padded prompt tensors used by generation.
 - `extract_continuation`: removes prompt text and common stop markers from already-decoded text.
 - `format_predictions`: writes stable prediction records with `id`, `prompt`, and `prediction`.
 

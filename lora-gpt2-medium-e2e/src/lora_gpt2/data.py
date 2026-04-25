@@ -69,6 +69,7 @@ def tokenize_record(
     tokenizer: Any,
     prompt_template: str,
     max_length: int,
+    append_bos_to_context: bool = False,
     append_eos_to_target: bool = True,
     mask_prompt_labels: bool = True,
     add_leading_space_to_target: bool = True,
@@ -80,8 +81,12 @@ def tokenize_record(
         target = " " + target
 
     prompt_ids = _tokenize(tokenizer, prompt)
-    target_ids = _tokenize(tokenizer, target)
     eos_token_id = getattr(tokenizer, "eos_token_id", None)
+    if append_bos_to_context and eos_token_id is not None:
+        # The official LoRA NLG preprocessing uses GPT-2's end-of-text token
+        # id 50256 as both BOS/context separator and EOS.
+        prompt_ids = prompt_ids + [int(eos_token_id)]
+    target_ids = _tokenize(tokenizer, target)
     if append_eos_to_target and eos_token_id is not None:
         target_ids = target_ids + [int(eos_token_id)]
 
@@ -112,6 +117,7 @@ class E2ETokenizedDataset(Dataset[dict[str, Any]]):
         tokenizer: Any,
         prompt_template: str,
         max_length: int,
+        append_bos_to_context: bool = False,
         append_eos_to_target: bool = True,
         mask_prompt_labels: bool = True,
         add_leading_space_to_target: bool = True,
@@ -122,6 +128,7 @@ class E2ETokenizedDataset(Dataset[dict[str, Any]]):
                 tokenizer=tokenizer,
                 prompt_template=prompt_template,
                 max_length=max_length,
+                append_bos_to_context=append_bos_to_context,
                 append_eos_to_target=append_eos_to_target,
                 mask_prompt_labels=mask_prompt_labels,
                 add_leading_space_to_target=add_leading_space_to_target,

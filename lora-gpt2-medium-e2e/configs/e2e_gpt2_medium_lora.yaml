@@ -30,7 +30,8 @@ data:
   raw_dir: data/raw/e2e
   processed_dir: data/processed/e2e_gpt2
   max_length: 512
-  prompt_template: "Generate a restaurant description from these attributes: {mr}\nDescription:"
+  prompt_template: "{mr}"
+  append_bos_to_context: true
   append_eos_to_target: true
   mask_prompt_labels: true
   add_leading_space_to_target: true

@@ -34,6 +34,7 @@ def main() -> None:
             tokenizer=tokenizer,
             prompt_template=data_config["prompt_template"],
             max_length=int(data_config["max_length"]),
+            append_bos_to_context=bool(data_config.get("append_bos_to_context", False)),
             append_eos_to_target=bool(data_config.get("append_eos_to_target", True)),
             mask_prompt_labels=bool(data_config.get("mask_prompt_labels", True)),
             add_leading_space_to_target=bool(data_config.get("add_leading_space_to_target", True)),

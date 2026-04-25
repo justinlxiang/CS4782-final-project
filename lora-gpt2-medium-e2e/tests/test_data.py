@@ -4,6 +4,7 @@ from lora_gpt2.data import (
     DataCollatorForCompletionOnlyLM,
     E2ERecord,
     E2ETokenizedDataset,
+    format_prompt,
     parse_e2e_line,
     tokenize_record,
 )
@@ -39,6 +40,23 @@ def test_tokenize_masks_prompt_labels() -> None:
     assert len(example["input_ids"]) == len(example["labels"])
 
 
+def test_raw_context_prompt_and_bos_separator_match_reference_style() -> None:
+    tokenizer = ToyTokenizer()
+    context = "name : Blue Spice | Type : coffee shop"
+    example = tokenize_record(
+        E2ERecord(context, "Blue Spice is a coffee shop."),
+        tokenizer=tokenizer,
+        prompt_template="{mr}",
+        max_length=128,
+        append_bos_to_context=True,
+    )
+
+    assert format_prompt(context, "{mr}") == context
+    assert example["prompt"] == context
+    assert example["input_ids"][example["prompt_length"] - 1] == tokenizer.eos_token_id
+    assert example["labels"][example["prompt_length"] - 1] == -100
+
+
 def test_collator_pads_labels_with_ignore_index() -> None:
     tokenizer = ToyTokenizer()
     dataset = E2ETokenizedDataset(
@@ -47,8 +65,9 @@ def test_collator_pads_labels_with_ignore_index() -> None:
             E2ERecord("name[Longer Place]", "Longer Place is good."),
         ],
         tokenizer=tokenizer,
-        prompt_template="MR: {mr}\nText:",
+        prompt_template="{mr}",
         max_length=128,
+        append_bos_to_context=True,
     )
     batch = DataCollatorForCompletionOnlyLM(pad_token_id=0)([dataset[0], dataset[1]])
 

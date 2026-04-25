@@ -10,6 +10,7 @@ Implemented now:
 
 - LoRA GPT-2 Medium scaffold, source code, and tests are present in the repository.
 - Generation config now uses `max_new_tokens=64`, `length_penalty=0.8`, and `eos_token_id=628`.
+- Preprocessing now uses the raw E2E context directly (`prompt_template="{mr}"`) and appends GPT-2's `50256` end-of-text token after the context, matching the official LoRA NLG pipeline more closely than the earlier instruction-style prompt.
 - `scripts/train.py` is guarded and currently only supports `--dry-run`.
 
 ### Known Deviations / Not Yet Run
@@ -172,8 +173,8 @@ Keep raw data out of git. Store it under `data/raw/` or a configurable path igno
 Convert meaning representations into deterministic textual prompts. Example:
 
 ```text
-Meaning representation: name[The Eagle], food[French], priceRange[moderate], area[riverside]
-Prompt: "Generate a restaurant description from these attributes: name = The Eagle; food = French; priceRange = moderate; area = riverside.\nDescription:"
+Meaning representation: name : The Eagle | food : French | priceRange : moderate | area : riverside
+Prompt/context: "name : The Eagle | food : French | priceRange : moderate | area : riverside" + GPT-2 end-of-text token `50256`
 Target: "The Eagle is a moderately priced French restaurant by the riverside."
 ```
 

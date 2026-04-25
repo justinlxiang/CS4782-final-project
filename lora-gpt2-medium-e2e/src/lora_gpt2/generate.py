@@ -16,6 +16,34 @@ def extract_continuation(full_text: str, prompt: str) -> str:
     return continuation.strip()
 
 
+def encode_generation_prompts(
+    tokenizer: Any,
+    prompts: Sequence[str],
+    append_bos_to_context: bool = False,
+) -> dict[str, torch.Tensor]:
+    """Tokenize generation prompts, optionally appending GPT-2's BOS separator."""
+    pad_token_id = tokenizer.pad_token_id
+    if pad_token_id is None:
+        pad_token_id = tokenizer.eos_token_id
+
+    rows = [list(tokenizer.encode(prompt, add_special_tokens=False)) for prompt in prompts]
+    if append_bos_to_context and tokenizer.eos_token_id is not None:
+        rows = [row + [int(tokenizer.eos_token_id)] for row in rows]
+
+    max_len = max(len(row) for row in rows)
+    input_ids = []
+    attention_mask = []
+    for row in rows:
+        pad_len = max_len - len(row)
+        input_ids.append(row + [int(pad_token_id)] * pad_len)
+        attention_mask.append([1] * len(row) + [0] * pad_len)
+
+    return {
+        "input_ids": torch.tensor(input_ids, dtype=torch.long),
+        "attention_mask": torch.tensor(attention_mask, dtype=torch.long),
+    }
+
+
 @torch.no_grad()
 def generate_continuations(
     model: torch.nn.Module,
@@ -26,11 +54,10 @@ def generate_continuations(
 ) -> list[str]:
     """Generate continuations for prompt-only E2E inputs."""
     generation = config["generation"]
-    encoded = tokenizer(
-        list(prompts),
-        return_tensors="pt",
-        padding=True,
-        add_special_tokens=False,
+    encoded = encode_generation_prompts(
+        tokenizer,
+        prompts,
+        append_bos_to_context=bool(config["data"].get("append_bos_to_context", False)),
     )
     encoded = {key: value.to(device) for key, value in encoded.items()}
     model.eval()
