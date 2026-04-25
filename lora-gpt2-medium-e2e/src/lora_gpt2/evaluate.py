@@ -17,6 +17,20 @@ def corpus_bleu(predictions: Sequence[str], references: Sequence[str]) -> float:
     return float(score.score)
 
 
+def corpus_rouge_l(predictions: Sequence[str], references: Sequence[str]) -> float:
+    """Compute average ROUGE-L F1 as a percentage."""
+    from rouge_score import rouge_scorer
+
+    scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
+    scores = [
+        scorer.score(reference, prediction)["rougeL"].fmeasure
+        for prediction, reference in zip(predictions, references)
+    ]
+    if not scores:
+        return 0.0
+    return float(sum(scores) / len(scores) * 100.0)
+
+
 def read_lines(path: str | Path) -> list[str]:
     """Read a text file as stripped lines."""
     with Path(path).open("r", encoding="utf-8") as handle:
@@ -31,6 +45,15 @@ def read_prediction_texts(path: str | Path, field: str = "prediction") -> list[s
     if lines[0].lstrip().startswith("{"):
         return [str(json.loads(line).get(field, "")) for line in lines if line.strip()]
     return lines
+
+
+def write_text_lines(path: str | Path, lines: Sequence[str]) -> None:
+    """Write one text record per line."""
+    output_path = Path(path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8") as handle:
+        for line in lines:
+            handle.write(str(line).replace("\n", " ").strip() + "\n")
 
 
 def write_metric_summary(path: str | Path, metrics: dict[str, Any]) -> None:

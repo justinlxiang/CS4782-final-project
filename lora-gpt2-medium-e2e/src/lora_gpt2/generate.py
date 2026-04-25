@@ -20,8 +20,11 @@ def encode_generation_prompts(
     tokenizer: Any,
     prompts: Sequence[str],
     append_bos_to_context: bool = False,
+    padding_side: str = "left",
 ) -> dict[str, torch.Tensor]:
     """Tokenize generation prompts, optionally appending GPT-2's BOS separator."""
+    if padding_side not in {"left", "right"}:
+        raise ValueError("padding_side must be either 'left' or 'right'.")
     pad_token_id = tokenizer.pad_token_id
     if pad_token_id is None:
         pad_token_id = tokenizer.eos_token_id
@@ -35,8 +38,12 @@ def encode_generation_prompts(
     attention_mask = []
     for row in rows:
         pad_len = max_len - len(row)
-        input_ids.append(row + [int(pad_token_id)] * pad_len)
-        attention_mask.append([1] * len(row) + [0] * pad_len)
+        if padding_side == "left":
+            input_ids.append([int(pad_token_id)] * pad_len + row)
+            attention_mask.append([0] * pad_len + [1] * len(row))
+        else:
+            input_ids.append(row + [int(pad_token_id)] * pad_len)
+            attention_mask.append([1] * len(row) + [0] * pad_len)
 
     return {
         "input_ids": torch.tensor(input_ids, dtype=torch.long),
@@ -74,9 +81,9 @@ def generate_continuations(
     )
 
     continuations = []
-    prompt_lengths = encoded["attention_mask"].sum(dim=1).tolist()
-    for row, prompt_len in zip(generated, prompt_lengths):
-        continuation_ids = row[int(prompt_len) :]
+    input_length = encoded["input_ids"].shape[1]
+    for row in generated:
+        continuation_ids = row[input_length:]
         continuations.append(tokenizer.decode(continuation_ids, skip_special_tokens=True).strip())
     return continuations
 

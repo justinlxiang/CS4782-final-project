@@ -8,6 +8,7 @@ accelerate
 pyyaml
 tqdm
 numpy
+matplotlib
 sacrebleu
 rouge-score
 evaluate

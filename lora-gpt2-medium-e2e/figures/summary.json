@@ -1,0 +1,22 @@
+{
+  "epoch_loss": {
+    "epoch_1_mean_loss": 2.8623015162789716,
+    "epoch_2_mean_loss": 2.646173942220578,
+    "epoch_3_mean_loss": 2.605156097724076,
+    "epoch_4_mean_loss": 2.582705746770767,
+    "epoch_5_mean_loss": 2.570376970143135
+  },
+  "figures_dir": "/Users/juxiang/Cornell/spring26/4782/CS4782-final-project/lora-gpt2-medium-e2e/figures",
+  "parameters": {
+    "full_finetune_trainable_params": 355216384.0,
+    "lora_trainable_params": 393216.0,
+    "trainable_fraction": 0.001106975966513977
+  },
+  "run_dir": "/Users/juxiang/Cornell/spring26/4782/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/e2e_lora_r4_alpha32",
+  "training_loss": {
+    "final_loss": 2.449901819229126,
+    "first_loss": 5.963373184204102,
+    "min_loss": 2.0266757011413574,
+    "num_steps": 26290.0
+  }
+}
