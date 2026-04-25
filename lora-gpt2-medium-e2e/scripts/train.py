@@ -10,6 +10,7 @@ from pathlib import Path
 
 import torch
 from torch.utils.data import DataLoader
+from tqdm.auto import tqdm
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
@@ -242,67 +243,79 @@ def main() -> None:
         skip_batches = int(resume_state.get("batch_in_epoch", 0))
         current_epoch = start_epoch
         current_batch_in_epoch = skip_batches
+        remaining_steps = max(total_training_steps - global_step, 0)
 
-        for epoch in range(start_epoch, int(config["training"]["epochs"]) + 1):
-            current_epoch = epoch
-            train_loader, full_train_path, full_train_size = build_dataloader(
-                config=config,
-                tokenizer=tokenizer,
-                split="train",
-                batch_size=train_batch_size,
-                max_examples=None,
-                shuffle=True,
-                seed=int(config["project"]["seed"]) + epoch,
-            )
-            for batch_in_epoch, batch in enumerate(train_loader, start=1):
-                if epoch == start_epoch and batch_in_epoch <= skip_batches:
-                    continue
-                current_batch_in_epoch = batch_in_epoch
-                global_step += 1
-                batch = {key: value.to(device) for key, value in batch.items()}
-                optimizer.zero_grad(set_to_none=True)
-                loss = forward_loss(model, batch, label_smoothing=label_smoothing)
-                loss.backward()
-                if max_grad_norm > 0:
-                    torch.nn.utils.clip_grad_norm_(
-                        [param for param in model.parameters() if param.requires_grad],
-                        max_grad_norm,
+        with tqdm(
+            total=remaining_steps,
+            initial=0,
+            desc="training",
+            unit="step",
+            dynamic_ncols=True,
+        ) as progress:
+            for epoch in range(start_epoch, int(config["training"]["epochs"]) + 1):
+                current_epoch = epoch
+                train_loader, full_train_path, full_train_size = build_dataloader(
+                    config=config,
+                    tokenizer=tokenizer,
+                    split="train",
+                    batch_size=train_batch_size,
+                    max_examples=None,
+                    shuffle=True,
+                    seed=int(config["project"]["seed"]) + epoch,
+                )
+                for batch_in_epoch, batch in enumerate(train_loader, start=1):
+                    if epoch == start_epoch and batch_in_epoch <= skip_batches:
+                        continue
+                    current_batch_in_epoch = batch_in_epoch
+                    global_step += 1
+                    batch = {key: value.to(device) for key, value in batch.items()}
+                    optimizer.zero_grad(set_to_none=True)
+                    loss = forward_loss(model, batch, label_smoothing=label_smoothing)
+                    loss.backward()
+                    if max_grad_norm > 0:
+                        torch.nn.utils.clip_grad_norm_(
+                            [param for param in model.parameters() if param.requires_grad],
+                            max_grad_norm,
+                        )
+                    optimizer.step()
+                    scheduler.step()
+
+                    loss_value = float(loss.detach().cpu())
+                    record = {
+                        "epoch": epoch,
+                        "batch_in_epoch": batch_in_epoch,
+                        "step": global_step,
+                        "loss": loss_value,
+                    }
+                    append_jsonl(metrics_path, record)
+                    progress.set_postfix(
+                        epoch=epoch,
+                        loss=f"{loss_value:.4f}",
+                        step=global_step,
                     )
-                optimizer.step()
-                scheduler.step()
+                    progress.update(1)
 
-                loss_value = float(loss.detach().cpu())
-                record = {
-                    "epoch": epoch,
-                    "batch_in_epoch": batch_in_epoch,
-                    "step": global_step,
-                    "loss": loss_value,
-                }
-                append_jsonl(metrics_path, record)
-                if global_step == 1 or global_step % 50 == 0:
-                    print(f"train_step={global_step} epoch={epoch} loss={loss_value:.4f}")
+                    if save_every > 0 and global_step % save_every == 0:
+                        checkpoint_path = checkpoints_dir / f"adapter_step_{global_step}.pt"
+                        save_training_checkpoint(
+                            checkpoint_path,
+                            model,
+                            optimizer,
+                            scheduler,
+                            config=config,
+                            training_state={
+                                "epoch": epoch,
+                                "batch_in_epoch": batch_in_epoch,
+                                "global_step": global_step,
+                                "loss": loss_value,
+                            },
+                        )
+                        tqdm.write(f"saved_checkpoint={checkpoint_path}")
 
-                if save_every > 0 and global_step % save_every == 0:
-                    checkpoint_path = checkpoints_dir / f"adapter_step_{global_step}.pt"
-                    save_training_checkpoint(
-                        checkpoint_path,
-                        model,
-                        optimizer,
-                        scheduler,
-                        config=config,
-                        training_state={
-                            "epoch": epoch,
-                            "batch_in_epoch": batch_in_epoch,
-                            "global_step": global_step,
-                            "loss": loss_value,
-                        },
-                    )
-                    print(f"saved_checkpoint={checkpoint_path}")
-
+                    if args.max_train_steps is not None and global_step >= args.max_train_steps:
+                        break
                 if args.max_train_steps is not None and global_step >= args.max_train_steps:
                     break
-            if args.max_train_steps is not None and global_step >= args.max_train_steps:
-                break
 
         final_checkpoint = checkpoints_dir / "adapter_final.pt"
         save_training_checkpoint(
