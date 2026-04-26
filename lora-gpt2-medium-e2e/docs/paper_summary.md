@@ -217,10 +217,12 @@ The paper reports standard E2E NLG metrics:
 
 Reported GPT-2 Medium E2E results from the paper:
 
-| Method | Trainable params | BLEU | NIST | METEOR | ROUGE-L | CIDEr |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Full fine-tuning | 354M | 68.2 | 8.62 | 46.2 | 71.0 | 2.47 |
-| LoRA | 0.35M | 68.9 | 8.69 | 46.4 | 71.3 | 2.51 |
+
+| Method           | Trainable params | BLEU | NIST | METEOR | ROUGE-L | CIDEr |
+| ---------------- | ---------------- | ---- | ---- | ------ | ------- | ----- |
+| Full fine-tuning | 354M             | 68.2 | 8.62 | 46.2   | 71.0    | 2.47  |
+| LoRA             | 0.35M            | 68.9 | 8.69 | 46.4   | 71.3    | 2.51  |
+
 
 These numbers should be treated as reproduction targets, not guaranteed outcomes, because library versions, dataset preprocessing, decoding details, and random seeds can change results.
 
@@ -228,14 +230,16 @@ These numbers should be treated as reproduction targets, not guaranteed outcomes
 
 The appendix reports a rank sweep on GPT-2 Medium/E2E after 26,000 steps:
 
-| Rank | Val loss | BLEU | NIST | METEOR | ROUGE-L | CIDEr |
-| ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 1.23 | 68.72 | 8.7215 | 0.4565 | 0.7052 | 2.4329 |
-| 2 | 1.21 | 69.17 | 8.7413 | 0.4590 | 0.7052 | 2.4639 |
-| 4 | 1.18 | 70.38 | 8.8439 | 0.4689 | 0.7186 | 2.5349 |
-| 8 | 1.17 | 69.57 | 8.7457 | 0.4636 | 0.7196 | 2.5196 |
-| 16 | 1.16 | 69.61 | 8.7483 | 0.4629 | 0.7177 | 2.4985 |
-| 32 | 1.16 | 69.33 | 8.7736 | 0.4642 | 0.7105 | 2.5255 |
+
+| Rank | Val loss | BLEU  | NIST   | METEOR | ROUGE-L | CIDEr  |
+| ---- | -------- | ----- | ------ | ------ | ------- | ------ |
+| 1    | 1.23     | 68.72 | 8.7215 | 0.4565 | 0.7052  | 2.4329 |
+| 2    | 1.21     | 69.17 | 8.7413 | 0.4590 | 0.7052  | 2.4639 |
+| 4    | 1.18     | 70.38 | 8.8439 | 0.4689 | 0.7186  | 2.5349 |
+| 8    | 1.17     | 69.57 | 8.7457 | 0.4636 | 0.7196  | 2.5196 |
+| 16   | 1.16     | 69.61 | 8.7483 | 0.4629 | 0.7177  | 2.4985 |
+| 32   | 1.16     | 69.33 | 8.7736 | 0.4642 | 0.7105  | 2.5255 |
+
 
 For the course project, a smaller ablation over `r in {1, 2, 4, 8, 16}` is enough if compute is limited.
 
@@ -246,3 +250,4 @@ For the course project, a smaller ablation over `r in {1, 2, 4, 8, 16}` is enoug
 - A strong report can compare parameter counts, GPU memory, training time, validation loss, and generation metrics.
 - The most meaningful ablations are rank, target projections, alpha scaling, and possibly LoRA dropout.
 - The expected story is that a sub-million-parameter adapter can match or slightly exceed full fine-tuning on E2E-style generation metrics.
+
