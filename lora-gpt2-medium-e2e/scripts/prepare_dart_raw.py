@@ -8,9 +8,13 @@ context and emit one (context, completion) JSONL row per (example, annotation)
 pair, matching the multi-reference shape that the existing E2E pipeline already
 groups during evaluation.
 
-We also write a multi-reference text file for the test split, formatted as
-blank-line-separated reference groups, which is what the official E2E/DART
-Perl evaluators expect.
+We intentionally do not pre-write `references_test.txt` here. `scripts/
+evaluate.py` already auto-generates a flat per-row references file at that
+path on its first run (line-per-record matching the test JSONL row order),
+and writes a separate grouped multi-reference file with the `.e2e_refs.txt`
+suffix next to the predictions for downstream Perl evaluators. Pre-writing a
+grouped file at the configured `references_file` path would shadow the flat
+one and break evaluate.py's prediction/reference count check.
 """
 
 from __future__ import annotations
@@ -73,31 +77,6 @@ def convert_split(json_path: Path) -> list[dict[str, str]]:
     return rows
 
 
-def write_multi_reference_file(path: Path, rows: list[dict[str, str]]) -> None:
-    """Write blank-line-separated reference groups (one block per unique context).
-
-    The official E2E and DART Perl evaluators both consume this layout: every
-    line is a reference, an empty line ends a group, and prediction line N
-    corresponds to group N. Grouping here matches what the generation pipeline
-    does at decode time (one prediction per unique meaning representation).
-    """
-    grouped: dict[str, list[str]] = {}
-    order: list[str] = []
-    for row in rows:
-        context = row["context"]
-        if context not in grouped:
-            grouped[context] = []
-            order.append(context)
-        grouped[context].append(row["completion"])
-
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as handle:
-        for context in order:
-            for ref in grouped[context]:
-                handle.write(ref.replace("\n", " ").strip() + "\n")
-            handle.write("\n")
-
-
 def resolve_input(raw_dir: Path, split: str, override: str | None) -> Path:
     if override is not None:
         return Path(override)
@@ -138,7 +117,6 @@ def main() -> None:
     config = load_config(args.config)
     data_config = config["data"]
     raw_dir = ensure_dir(resolve_path(config, data_config["raw_dir"]))
-    processed_dir = ensure_dir(resolve_path(config, data_config["processed_dir"]))
 
     overrides = {
         "train": args.train_json,
@@ -156,18 +134,6 @@ def main() -> None:
         out_path = raw_dir / f"{split}.jsonl"
         write_jsonl(out_path, rows)
         print(f"wrote {len(rows)} rows to {out_path} (from {json_path.name})")
-
-        if split == "test":
-            ref_path = Path(resolve_path(
-                config,
-                config.get("evaluation", {}).get(
-                    "references_file",
-                    str(processed_dir / "references_test.txt"),
-                ),
-            ))
-            write_multi_reference_file(ref_path, rows)
-            unique_groups = len({row["context"] for row in rows})
-            print(f"wrote {unique_groups} reference groups to {ref_path}")
 
 
 if __name__ == "__main__":
