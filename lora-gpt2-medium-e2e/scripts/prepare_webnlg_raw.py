@@ -15,9 +15,12 @@ convention), and emit one (context, completion) JSONL row per
 (record, lexicalisation) pair, filtering to lexicalisations marked
 `comment: "good"` per the WebNLG challenge convention.
 
-For the test split we also write a multi-reference text file in the
-blank-line-separated format the official WebNLG / DART / E2E Perl evaluators
-all consume.
+We intentionally do not pre-write `references_test.txt` here. `scripts/
+evaluate.py` already auto-generates a flat per-row references file at that
+path (line-per-record matching the test JSONL row order) and writes a grouped
+multi-reference file (with the `.e2e_refs.txt` suffix) next to the predictions
+for downstream Perl evaluators. Pre-writing a grouped file at the configured
+references path would shadow the flat one and break evaluate.py's count check.
 """
 
 from __future__ import annotations
@@ -51,17 +54,20 @@ def linearize_tripleset(tripleset: list[dict]) -> str:
 
 
 def good_lexicalisations(record: dict) -> list[str]:
-    """Return the human-written verbalizations marked `comment: "good"`.
+    """Return the human-written verbalizations explicitly marked `comment: "good"`.
 
     Some WebNLG entries also contain `comment: "bad"` lexicalisations that
     were rejected during data collection; the original challenge convention
-    excludes them from training and evaluation.
+    excludes them from training and evaluation. We require the field to be
+    present and equal to "good" — entries missing the field were typically
+    pre-release / partially annotated and silently including them would skew
+    metrics on enriched dumps.
     """
     texts: list[str] = []
     for entry in record.get("lexicalisations") or []:
         if not isinstance(entry, dict):
             continue
-        if entry.get("comment", "good") != "good":
+        if entry.get("comment") != "good":
             continue
         text = entry.get("lex")
         if text:
@@ -91,25 +97,6 @@ def convert_split(json_path: Path) -> list[dict[str, str]]:
         for ref in refs:
             rows.append({"context": context, "completion": ref})
     return rows
-
-
-def write_multi_reference_file(path: Path, rows: list[dict[str, str]]) -> None:
-    """Write blank-line-separated reference groups (one block per unique context)."""
-    grouped: dict[str, list[str]] = {}
-    order: list[str] = []
-    for row in rows:
-        context = row["context"]
-        if context not in grouped:
-            grouped[context] = []
-            order.append(context)
-        grouped[context].append(row["completion"])
-
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as handle:
-        for context in order:
-            for ref in grouped[context]:
-                handle.write(ref.replace("\n", " ").strip() + "\n")
-            handle.write("\n")
 
 
 def resolve_input(raw_dir: Path, webnlg_split: str, override: str | None) -> Path:
@@ -145,7 +132,6 @@ def main() -> None:
     config = load_config(args.config)
     data_config = config["data"]
     raw_dir = ensure_dir(resolve_path(config, data_config["raw_dir"]))
-    processed_dir = ensure_dir(resolve_path(config, data_config["processed_dir"]))
 
     overrides = {
         "train": args.train_json,
@@ -163,18 +149,6 @@ def main() -> None:
         out_path = raw_dir / f"{split}.jsonl"
         write_jsonl(out_path, rows)
         print(f"wrote {len(rows)} rows to {out_path} (from {json_path.name})")
-
-        if split == "test":
-            ref_path = Path(resolve_path(
-                config,
-                config.get("evaluation", {}).get(
-                    "references_file",
-                    str(processed_dir / "references_test.txt"),
-                ),
-            ))
-            write_multi_reference_file(ref_path, rows)
-            unique_groups = len({row["context"] for row in rows})
-            print(f"wrote {unique_groups} reference groups to {ref_path}")
 
 
 if __name__ == "__main__":
