@@ -56,7 +56,7 @@ training:
 
 generation:
   split: test
-  decoder: official_beam
+  decoder: hf_generate
   batch_size: 4
   max_new_tokens: 64
   num_beams: 10

@@ -126,8 +126,14 @@ def _postprocess_next_token_scores(
 
 def _reorder_past_key_values(past_key_values: Any, beam_idx: torch.Tensor) -> Any:
     """Reorder Hugging Face GPT-2 KV cache after beam selection."""
+    if hasattr(past_key_values, "reorder_cache"):
+        past_key_values.reorder_cache(beam_idx)
+        return past_key_values
     return tuple(
-        tuple(past_state.index_select(0, beam_idx) for past_state in layer_past)
+        tuple(
+            None if past_state is None else past_state.index_select(0, beam_idx)
+            for past_state in layer_past
+        )
         for layer_past in past_key_values
     )
 
@@ -258,13 +264,6 @@ def official_style_beam_search_continuations(
                     best_sequences[batch_idx] = generated[flat_idx].tolist()
                 flat_scores[flat_idx] = -float("inf")
 
-        for flat_idx in range(generated.size(0)):
-            batch_idx = flat_idx // num_beams
-            candidate_score = flat_scores[flat_idx] / (current_length**length_penalty)
-            if candidate_score > best_scores[batch_idx]:
-                best_scores[batch_idx] = candidate_score
-                best_sequences[batch_idx] = generated[flat_idx].tolist()
-
         if step == max_new_tokens - 1:
             break
 
@@ -291,10 +290,17 @@ def official_style_beam_search_continuations(
         logits = outputs.logits[:, -1, :]
         past_key_values = outputs.past_key_values
 
-    return [
-        _decode_generated_ids(tokenizer, sequence or [], eos_token_ids)
-        for sequence in best_sequences
-    ]
+    if generated is not None:
+        final_scores = beam_scores.view(-1)
+        current_length = generated.size(1)
+        for flat_idx in range(generated.size(0)):
+            batch_idx = flat_idx // num_beams
+            candidate_score = final_scores[flat_idx] / (current_length**length_penalty)
+            if best_sequences[batch_idx] is None or candidate_score > best_scores[batch_idx]:
+                best_scores[batch_idx] = candidate_score
+                best_sequences[batch_idx] = generated[flat_idx].tolist()
+
+    return [_decode_generated_ids(tokenizer, sequence or [], eos_token_ids) for sequence in best_sequences]
 
 
 @torch.no_grad()

@@ -6,6 +6,7 @@ import torch
 
 from lora_gpt2.generate import (
     _eos_token_ids,
+    _reorder_past_key_values,
     encode_generation_prompts,
     extract_continuation,
     format_predictions,
@@ -55,6 +56,14 @@ class TinyBeamModel(torch.nn.Module):
         return SimpleNamespace(logits=logits, past_key_values=((key, value),))
 
 
+class ToyCache:
+    def __init__(self) -> None:
+        self.beam_idx = None
+
+    def reorder_cache(self, beam_idx: torch.Tensor) -> None:
+        self.beam_idx = beam_idx
+
+
 def test_extract_continuation_removes_prompt_and_stop_markers() -> None:
     prompt = "Generate:\n"
     full_text = "Generate:\nThe Eagle is a pub.<|endoftext|> extra"
@@ -85,6 +94,27 @@ def test_encode_generation_prompts_can_append_bos_separator() -> None:
 def test_eos_token_ids_accepts_single_or_multiple_ids() -> None:
     assert _eos_token_ids(628) == [628]
     assert _eos_token_ids([50256, 628]) == [50256, 628]
+
+
+def test_reorder_past_key_values_allows_none_entries() -> None:
+    key = torch.arange(6).view(3, 1, 2, 1)
+    cache = ((key, None),)
+
+    reordered = _reorder_past_key_values(cache, torch.tensor([2, 0]))
+
+    assert reordered[0][0].shape == (2, 1, 2, 1)
+    assert reordered[0][0][0, 0, 0, 0].item() == key[2, 0, 0, 0].item()
+    assert reordered[0][1] is None
+
+
+def test_reorder_past_key_values_preserves_cache_objects() -> None:
+    cache = ToyCache()
+    beam_idx = torch.tensor([2, 0])
+
+    reordered = _reorder_past_key_values(cache, beam_idx)
+
+    assert reordered is cache
+    assert torch.equal(cache.beam_idx, beam_idx)
 
 
 def test_official_style_beam_search_stops_at_eos() -> None:
