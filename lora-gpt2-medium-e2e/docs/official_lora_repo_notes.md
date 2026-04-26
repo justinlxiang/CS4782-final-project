@@ -78,7 +78,7 @@ The root README reports GPT-2 Medium LoRA on E2E at about `70.4` BLEU with rough
 ## Likely Unnecessary For The Course Project
 
 - `examples/NLU/` RoBERTa/DeBERTa GLUE code.
-- WebNLG and DART preprocessing/evaluation unless used as extensions.
+- WebNLG preprocessing/evaluation unless used as an extension. (DART is now supported via `prepare_dart_raw.py` + `dart_gpt2_medium_lora.yaml`.)
 - `Embedding` and convolution LoRA variants, unless doing ablations beyond the main GPT-2 setup.
 - Azure, Kubernetes, Horovod, and distributed infrastructure in the official example.
 - R-Drop and cutoff augmentation utilities in the NLU example.
