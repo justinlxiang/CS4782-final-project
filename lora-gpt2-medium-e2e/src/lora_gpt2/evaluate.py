@@ -181,14 +181,36 @@ def run_official_e2e_evaluator(
     script_dir: str | Path,
     references_file: str | Path,
     predictions_file: str | Path,
+    script_name: str = "measure_scores.py",
 ) -> subprocess.CompletedProcess[str]:
-    """Run the external E2E evaluator if it is installed locally."""
-    script = Path(script_dir) / "measure_scores.py"
+    """Run the external E2E-style evaluator if it is installed locally.
+
+    The DART evaluator ships the same `measure_scores.py` interface (refs file
+    with blank-line-separated groups, predictions file with one line per group)
+    so the same runner works for either dataset by pointing `script_dir` at the
+    matching vendored evaluator. Override `script_name` only if a fork renames
+    the entry point.
+    """
+    script = Path(script_dir) / script_name
     if not script.exists():
-        raise FileNotFoundError(f"Official E2E evaluator not found at {script}.")
+        raise FileNotFoundError(f"Official evaluator script not found at {script}.")
     return subprocess.run(
         [sys.executable, str(script), str(references_file), str(predictions_file), "-p"],
         check=True,
         capture_output=True,
         text=True,
     )
+
+
+def run_official_dart_evaluator(
+    script_dir: str | Path,
+    references_file: str | Path,
+    predictions_file: str | Path,
+) -> subprocess.CompletedProcess[str]:
+    """Run the external DART evaluator (BLEU / METEOR / TER).
+
+    Thin wrapper around `run_official_e2e_evaluator` that documents intent at
+    the call site; the underlying invocation is identical because the DART
+    evaluator reuses the E2E `measure_scores.py` interface.
+    """
+    return run_official_e2e_evaluator(script_dir, references_file, predictions_file)

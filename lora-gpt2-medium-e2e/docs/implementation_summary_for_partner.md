@@ -22,8 +22,10 @@ lora-gpt2-medium-e2e/
   README.md
   requirements.txt
   pyproject.toml
+  colab_train_lora_dart.ipynb
   configs/
     e2e_gpt2_medium_lora.yaml
+    dart_gpt2_medium_lora.yaml
   docs/
     implementation_plan.md
     implementation_summary_for_partner.md
@@ -46,6 +48,7 @@ lora-gpt2-medium-e2e/
     evaluate.py
   scripts/
     prepare_e2e.py
+    prepare_dart_raw.py
     train.py
     generate.py
     evaluate.py
@@ -490,6 +493,34 @@ Evaluation reads those predictions:
 5. If `--official` is passed, it calls the external official E2E evaluator.
 
 One practical detail to check before real evaluation: `scripts/evaluate.py` currently reads references with field name `completion`, while the config points to `data/processed/e2e_gpt2/references_test.txt`. Before final evaluation, make sure the reference file format matches what `read_prediction_texts` expects, or adjust the script/reference export path.
+
+## DART Variant
+
+The repo also supports the DART data-to-text task from the same LoRA paper. DART uses the identical model setup as E2E (GPT-2 Medium, LoRA on `c_attn` query/value, rank `4`, alpha `32`, AdamW LR `2e-4`, batch `8`, 5 epochs, beam `10`). Only three hyperparameters change, per Hu et al. 2021 Table 11:
+
+- LoRA dropout: `0.0` (E2E uses `0.1`).
+- Weight decay: `0.0` (E2E uses `0.01`).
+- Label smoothing: `0.0` (E2E uses `0.1`).
+
+DART-specific files:
+
+- `configs/dart_gpt2_medium_lora.yaml`: DART config. Paths point at `data/raw/dart/`, `data/processed/dart_gpt2/`, and `outputs/runs/dart_lora_r4_alpha32/`. Metrics list is `bleu`, `meteor`, `ter`.
+- `scripts/prepare_dart_raw.py`: Converts Yale-LILY DART JSON splits (`dart-v1.1.1-full-{train,dev,test}.json`) into the `{context, completion}` JSONL format the existing tokenizer already consumes. Triples are linearized as `<H> subject <R> relation <T> object`, matching the official LoRA NLG preprocessing convention. The script also writes a blank-line-separated `references_test.txt` for the official Perl evaluator.
+- `colab_train_lora_dart.ipynb`: Colab notebook that mirrors `colab_train_lora.ipynb` end-to-end (clone, install, download DART JSON, prep, train, generate, evaluate, back up to Drive). Backup folder is `/content/drive/MyDrive/dart_lora_r4_alpha32/`.
+
+Everything else reuses unchanged code: `lora_layers.py`, `inject.py`, `modeling.py`, `train.py`, `generate.py`, `checkpointing.py`, and `scripts/prepare_e2e.py` (which is dataset-agnostic — it tokenizes whatever the parser returns).
+
+Run sequence after compute/data approval and lifting the no-training guard:
+
+```bash
+python scripts/prepare_dart_raw.py --config configs/dart_gpt2_medium_lora.yaml
+python scripts/prepare_e2e.py      --config configs/dart_gpt2_medium_lora.yaml
+python scripts/train.py            --config configs/dart_gpt2_medium_lora.yaml --train --device cuda
+python scripts/generate.py         --config configs/dart_gpt2_medium_lora.yaml --split test --adapter <adapter.pt>
+python scripts/evaluate.py         --config configs/dart_gpt2_medium_lora.yaml [--official]
+```
+
+For paper-comparable BLEU/MET/TER, vendor the DART evaluator under `external/dart-metrics/` (the Yale-LILY repo bundles `evaluation/e2e-metrics/measure_scores.py`). The `run_official_dart_evaluator` helper in `src/lora_gpt2/evaluate.py` wraps the same `measure_scores.py` interface used for E2E.
 
 ## Safe Verification Commands
 
