@@ -10,7 +10,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from lora_gpt2.config import load_config
-from lora_gpt2.inject import expected_qv_lora_parameters, inject_lora_into_gpt2
+from lora_gpt2.inject import (
+    expected_gpt2_lora_parameters,
+    expected_qv_lora_parameters,
+    inject_lora_into_gpt2,
+)
 from lora_gpt2.modeling import load_base_model
 
 
@@ -24,8 +28,13 @@ def main() -> None:
     rank = int(config["lora"]["rank"])
     hidden_size = 1024
     num_layers = 24
-    expected = expected_qv_lora_parameters(hidden_size, num_layers, rank)
-    print(f"expected_qv_lora_parameters={expected}")
+    if "rank_pattern" not in config.get("lora", {}):
+        expected = expected_qv_lora_parameters(hidden_size, num_layers, rank)
+        print(f"expected_qv_lora_parameters={expected}")
+        print(f"rank={rank}")
+    else:
+        expected = expected_gpt2_lora_parameters(config, hidden_size, num_layers)
+        print(f"expected_gpt2_lora_parameters={expected}")
 
     if args.load_model:
         model = load_base_model(config)

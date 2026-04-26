@@ -3,7 +3,11 @@ from __future__ import annotations
 import torch
 from torch import nn
 
-from lora_gpt2.inject import expected_qv_lora_parameters, inject_lora_into_gpt2
+from lora_gpt2.inject import (
+    expected_gpt2_lora_parameters,
+    expected_qv_lora_parameters,
+    inject_lora_into_gpt2,
+)
 from lora_gpt2.lora_layers import LoRAQKVConv1D
 
 
@@ -52,3 +56,57 @@ def test_inject_replaces_all_c_attn_modules_and_freezes_base() -> None:
     assert report.trainable_parameters < report.total_parameters
     assert report.trainable_names
     assert all("lora_" in name for name in report.trainable_names)
+
+
+def test_inject_rank_pattern_matches_expected_parameter_budget() -> None:
+    config = {
+        "lora": {
+            "rank": 4,
+            "alpha": 32,
+            "dropout": 0.0,
+            "target_modules": {
+                "attention_c_attn": {
+                    "query": True,
+                    "key": False,
+                    "value": True,
+                }
+            },
+            "rank_pattern": [
+                {"query": 1, "value": 3},
+                {"query": 3, "value": 1},
+            ],
+        }
+    }
+    model = TinyGPT2(layers=2)
+    report = inject_lora_into_gpt2(model, config=config)
+
+    assert report.trainable_parameters == expected_gpt2_lora_parameters(
+        config,
+        hidden_size=8,
+        num_layers=2,
+    )
+    assert report.trainable_parameters == expected_qv_lora_parameters(8, 2, 2)
+    assert model.transformer.h[0].attn.c_attn.scaling_by_slice["query"] == 8
+    assert model.transformer.h[0].attn.c_attn.scaling_by_slice["value"] == 8
+    assert model.transformer.h[1].attn.c_attn.scaling_by_slice["query"] == 8
+    assert model.transformer.h[1].attn.c_attn.scaling_by_slice["value"] == 8
+
+
+def test_rank_pattern_can_skip_zero_rank_slice() -> None:
+    config = {
+        "lora": {
+            "rank": 4,
+            "alpha": 32,
+            "dropout": 0.0,
+            "rank_pattern": [
+                {"query": 0, "value": 4},
+            ],
+        }
+    }
+    model = TinyGPT2(layers=1)
+    report = inject_lora_into_gpt2(model, config=config)
+    wrapper = model.transformer.h[0].attn.c_attn
+
+    assert report.trainable_parameters == 64
+    assert "query" not in wrapper.lora_A
+    assert "value" in wrapper.lora_A

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+from collections.abc import Mapping
 from typing import Iterable
 
 import torch
@@ -107,6 +108,8 @@ class LoRAQKVConv1D(nn.Module):
         dropout: float = 0.0,
         enable_lora: Iterable[bool] = (True, False, True),
         merge_weights: bool = False,
+        rank_pattern: Mapping[str, int] | None = None,
+        alpha_pattern: Mapping[str, float] | None = None,
     ) -> None:
         super().__init__()
         if not hasattr(base_layer, "weight"):
@@ -117,6 +120,25 @@ class LoRAQKVConv1D(nn.Module):
         self.base_layer = base_layer
         self.rank = int(rank)
         self.alpha = float(alpha)
+        self.rank_by_slice = {
+            name: int(rank_pattern[name]) if rank_pattern and name in rank_pattern else self.rank
+            for name in self.slice_names
+        }
+        for name, slice_rank in self.rank_by_slice.items():
+            if slice_rank < 0:
+                raise ValueError(f"LoRA rank for {name!r} must be non-negative.")
+        self.alpha_by_slice = {
+            name: (
+                float(alpha_pattern[name])
+                if alpha_pattern and name in alpha_pattern
+                else self.alpha
+            )
+            for name in self.slice_names
+        }
+        self.scaling_by_slice = {
+            name: self.alpha_by_slice[name] / slice_rank if slice_rank > 0 else 0.0
+            for name, slice_rank in self.rank_by_slice.items()
+        }
         self.scaling = self.alpha / self.rank if self.rank > 0 else 0.0
         self.lora_dropout = nn.Dropout(dropout) if dropout > 0 else nn.Identity()
         self.merge_weights = merge_weights
@@ -136,7 +158,7 @@ class LoRAQKVConv1D(nn.Module):
         self.enabled_slices = [
             (idx, name)
             for idx, (name, enabled) in enumerate(zip(self.slice_names, self.enable_lora))
-            if enabled
+            if enabled and self.rank_by_slice[name] > 0
         ]
 
         for param in self.base_layer.parameters():
@@ -144,11 +166,11 @@ class LoRAQKVConv1D(nn.Module):
 
         self.lora_A = nn.ParameterDict()
         self.lora_B = nn.ParameterDict()
-        if self.rank > 0:
-            for _, name in self.enabled_slices:
-                self.lora_A[name] = nn.Parameter(torch.empty(self.rank, self.in_features))
-                self.lora_B[name] = nn.Parameter(torch.empty(self.slice_size, self.rank))
-            self.reset_lora_parameters()
+        for _, name in self.enabled_slices:
+            slice_rank = self.rank_by_slice[name]
+            self.lora_A[name] = nn.Parameter(torch.empty(slice_rank, self.in_features))
+            self.lora_B[name] = nn.Parameter(torch.empty(self.slice_size, slice_rank))
+        self.reset_lora_parameters()
 
     def reset_lora_parameters(self) -> None:
         """Initialize enabled low-rank matrices."""
@@ -158,24 +180,24 @@ class LoRAQKVConv1D(nn.Module):
 
     def _slice_delta(self, x: torch.Tensor, name: str) -> torch.Tensor:
         update = F.linear(x, self.lora_A[name])
-        update = F.linear(update, self.lora_B[name]) * self.scaling
+        update = F.linear(update, self.lora_B[name]) * self.scaling_by_slice[name]
         return update
 
     def lora_delta_weight(self) -> torch.Tensor:
         """Return the dense LoRA delta in GPT-2 Conv1D weight layout."""
         delta = torch.zeros_like(self.base_layer.weight)
-        if self.rank == 0:
+        if not self.enabled_slices:
             return delta
         for idx, name in self.enabled_slices:
             start = idx * self.slice_size
             end = start + self.slice_size
-            slice_delta = (self.lora_B[name] @ self.lora_A[name]).T * self.scaling
+            slice_delta = (self.lora_B[name] @ self.lora_A[name]).T * self.scaling_by_slice[name]
             delta[:, start:end] = slice_delta
         return delta
 
     def merge(self) -> None:
         """Fold LoRA deltas into the base Conv1D weight."""
-        if self.rank == 0 or self.merged:
+        if not self.enabled_slices or self.merged:
             return
         with torch.no_grad():
             self.base_layer.weight += self.lora_delta_weight()
@@ -183,7 +205,7 @@ class LoRAQKVConv1D(nn.Module):
 
     def unmerge(self) -> None:
         """Remove previously merged LoRA deltas."""
-        if self.rank == 0 or not self.merged:
+        if not self.enabled_slices or not self.merged:
             return
         with torch.no_grad():
             self.base_layer.weight -= self.lora_delta_weight()
@@ -200,7 +222,7 @@ class LoRAQKVConv1D(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         base_out = self.base_layer(x)
-        if self.rank == 0 or self.merged or not self.enabled_slices:
+        if self.merged or not self.enabled_slices:
             return base_out
 
         lora_input = self.lora_dropout(x)

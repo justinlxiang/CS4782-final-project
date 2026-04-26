@@ -44,6 +44,95 @@ def test_qkv_lora_leaves_disabled_key_slice_unchanged() -> None:
     assert not torch.allclose(v, base_v)
 
 
+def test_qkv_lora_supports_per_slice_rank_and_alpha() -> None:
+    torch.manual_seed(0)
+    base = TinyConv1D(8, 24)
+    wrapper = LoRAQKVConv1D(
+        base,
+        rank=4,
+        alpha=32,
+        dropout=0.0,
+        rank_pattern={"query": 2, "value": 6},
+        alpha_pattern={"query": 16, "value": 48},
+    )
+
+    assert wrapper.lora_A["query"].shape == (2, 8)
+    assert wrapper.lora_B["query"].shape == (8, 2)
+    assert wrapper.lora_A["value"].shape == (6, 8)
+    assert wrapper.lora_B["value"].shape == (8, 6)
+    assert wrapper.scaling_by_slice["query"] == 8
+    assert wrapper.scaling_by_slice["value"] == 8
+
+
+def test_qkv_lora_rank_pattern_can_skip_enabled_slice() -> None:
+    torch.manual_seed(0)
+    base = TinyConv1D(8, 24)
+    wrapper = LoRAQKVConv1D(
+        base,
+        rank=4,
+        alpha=32,
+        dropout=0.0,
+        rank_pattern={"query": 0, "value": 3},
+        alpha_pattern={"query": 0, "value": 24},
+    )
+    with torch.no_grad():
+        wrapper.lora_B["value"].fill_(0.1)
+    x = torch.randn(2, 3, 8)
+
+    base_q, base_k, base_v = base(x).split(8, dim=-1)
+    q, k, v = wrapper(x).split(8, dim=-1)
+
+    assert "query" not in wrapper.lora_A
+    assert torch.allclose(q, base_q, atol=1e-6)
+    assert torch.allclose(k, base_k, atol=1e-6)
+    assert not torch.allclose(v, base_v)
+
+
+def test_qkv_lora_supports_unequal_slice_ranks_and_scaling() -> None:
+    base = TinyConv1D(8, 24)
+    wrapper = LoRAQKVConv1D(
+        base,
+        rank=4,
+        alpha=32,
+        dropout=0.0,
+        rank_pattern={"query": 1, "key": 0, "value": 3},
+        alpha_pattern={"query": 8, "key": 0, "value": 24},
+    )
+
+    assert wrapper.lora_A["query"].shape == (1, 8)
+    assert wrapper.lora_B["query"].shape == (8, 1)
+    assert "key" not in wrapper.lora_A
+    assert wrapper.lora_A["value"].shape == (3, 8)
+    assert wrapper.lora_B["value"].shape == (8, 3)
+    assert wrapper.scaling_by_slice["query"] == 8
+    assert wrapper.scaling_by_slice["value"] == 8
+
+
+def test_qkv_lora_merge_matches_unmerged_eval_with_rank_pattern() -> None:
+    torch.manual_seed(0)
+    base = TinyConv1D(8, 24)
+    wrapper = LoRAQKVConv1D(
+        base,
+        rank=4,
+        alpha=32,
+        dropout=0.0,
+        merge_weights=True,
+        rank_pattern={"query": 1, "key": 0, "value": 3},
+        alpha_pattern={"query": 8, "key": 0, "value": 24},
+    )
+    with torch.no_grad():
+        wrapper.lora_B["query"].normal_(mean=0.0, std=0.1)
+        wrapper.lora_B["value"].normal_(mean=0.0, std=0.1)
+    x = torch.randn(2, 3, 8)
+
+    unmerged = wrapper(x)
+    wrapper.eval()
+    merged = wrapper(x)
+
+    assert wrapper.merged
+    assert torch.allclose(unmerged, merged, atol=1e-6)
+
+
 def test_lora_linear_merge_matches_unmerged_eval() -> None:
     torch.manual_seed(0)
     base = nn.Linear(5, 7)

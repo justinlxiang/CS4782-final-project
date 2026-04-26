@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from typing import Any
 
@@ -68,6 +69,94 @@ def _target_booleans(config: dict[str, Any] | None) -> tuple[bool, bool, bool]:
     )
 
 
+_SLICE_ALIASES = {
+    "query": "query",
+    "q": "query",
+    "key": "key",
+    "k": "key",
+    "value": "value",
+    "v": "value",
+}
+
+
+def _layer_pattern(pattern: Any, layer_index: int) -> Mapping[str, Any] | None:
+    """Return the configured slice pattern for one layer, if present."""
+    missing = object()
+    if pattern is None:
+        return None
+    if isinstance(pattern, Sequence) and not isinstance(pattern, (str, bytes, bytearray)):
+        if layer_index >= len(pattern):
+            return None
+        layer_pattern = pattern[layer_index]
+    elif isinstance(pattern, Mapping):
+        layer_pattern = pattern.get(layer_index, missing)
+        if layer_pattern is missing:
+            layer_pattern = pattern.get(str(layer_index), missing)
+        if layer_pattern is missing:
+            layer_pattern = pattern.get(f"layer_{layer_index}", missing)
+        if layer_pattern is missing:
+            return None
+    else:
+        raise TypeError("LoRA rank/alpha patterns must be mappings or sequences.")
+
+    if layer_pattern is None:
+        return None
+    if not isinstance(layer_pattern, Mapping):
+        raise TypeError("Each LoRA layer pattern must be a mapping of slice names to values.")
+    if "attention_c_attn" in layer_pattern:
+        layer_pattern = layer_pattern["attention_c_attn"]
+    if not isinstance(layer_pattern, Mapping):
+        raise TypeError("The attention_c_attn LoRA layer pattern must be a mapping.")
+    return layer_pattern
+
+
+def _normalize_slice_pattern(pattern: Mapping[str, Any], value_type: type) -> dict[str, Any]:
+    """Normalize q/k/v aliases to query/key/value keys."""
+    normalized: dict[str, Any] = {}
+    for raw_name, raw_value in pattern.items():
+        name = _SLICE_ALIASES.get(str(raw_name).lower())
+        if name is None:
+            raise ValueError(f"Unknown LoRA slice name in rank pattern: {raw_name!r}.")
+        normalized[name] = value_type(raw_value)
+    return normalized
+
+
+def _layer_rank_and_alpha_patterns(
+    lora_config: dict[str, Any],
+    layer_index: int,
+) -> tuple[dict[str, int] | None, dict[str, float] | None]:
+    """Return per-slice ranks and alphas for a layer, deriving alpha/r when needed."""
+    rank_pattern = _layer_pattern(lora_config.get("rank_pattern"), layer_index)
+    if rank_pattern is None:
+        return None, None
+
+    scalar_rank = int(lora_config.get("rank", 4))
+    scalar_alpha = float(lora_config.get("alpha", 32))
+    if scalar_rank <= 0:
+        raise ValueError("Scalar lora.rank must be positive when deriving rank-pattern alpha.")
+
+    normalized_ranks = _normalize_slice_pattern(rank_pattern, int)
+    ranks = {
+        name: int(normalized_ranks.get(name, 0))
+        for name in LoRAQKVConv1D.slice_names
+    }
+
+    explicit_alpha_pattern = _layer_pattern(lora_config.get("alpha_pattern"), layer_index)
+    explicit_alphas = (
+        _normalize_slice_pattern(explicit_alpha_pattern, float)
+        if explicit_alpha_pattern is not None
+        else {}
+    )
+    base_scale = scalar_alpha / scalar_rank
+    alphas = {
+        name: float(
+            explicit_alphas.get(name, base_scale * rank_value if rank_value > 0 else 0.0)
+        )
+        for name, rank_value in ranks.items()
+    }
+    return ranks, alphas
+
+
 def inject_lora_into_gpt2(
     model: torch.nn.Module,
     rank: int | None = None,
@@ -95,10 +184,11 @@ def inject_lora_into_gpt2(
         raise TypeError("Expected a Hugging Face GPT-2 style model with `transformer.h`.") from exc
 
     replaced = 0
-    for block in blocks:
+    for layer_index, block in enumerate(blocks):
         attention = block.attn
         if isinstance(attention.c_attn, LoRAQKVConv1D):
             continue
+        rank_pattern, alpha_pattern = _layer_rank_and_alpha_patterns(lora_config, layer_index)
         attention.c_attn = LoRAQKVConv1D(
             base_layer=attention.c_attn,
             rank=rank,
@@ -106,6 +196,8 @@ def inject_lora_into_gpt2(
             dropout=dropout,
             enable_lora=enable_lora,
             merge_weights=merge_weights,
+            rank_pattern=rank_pattern,
+            alpha_pattern=alpha_pattern,
         )
         replaced += 1
 
@@ -128,3 +220,28 @@ def expected_qv_lora_parameters(
     """Compute expected LoRA params for GPT-2 fused QKV slices."""
     enabled_count = sum(1 for enabled in enable_lora if enabled)
     return int(num_layers * enabled_count * (rank * hidden_size + hidden_size * rank))
+
+
+def expected_gpt2_lora_parameters(
+    config: dict[str, Any],
+    hidden_size: int,
+    num_layers: int,
+) -> int:
+    """Compute expected trainable LoRA params from scalar or rank-pattern config."""
+    lora_config = config.get("lora", {})
+    scalar_rank = int(lora_config.get("rank", 4))
+    enable_lora = _target_booleans(config)
+    if lora_config.get("rank_pattern") is None:
+        return expected_qv_lora_parameters(hidden_size, num_layers, scalar_rank, enable_lora)
+
+    total_rank_units = 0
+    for layer_index in range(num_layers):
+        rank_pattern, _alpha_pattern = _layer_rank_and_alpha_patterns(lora_config, layer_index)
+        if rank_pattern is None:
+            ranks = {name: scalar_rank for name in LoRAQKVConv1D.slice_names}
+        else:
+            ranks = rank_pattern
+        for name, enabled in zip(LoRAQKVConv1D.slice_names, enable_lora):
+            if enabled:
+                total_rank_units += int(ranks.get(name, 0))
+    return int(total_rank_units * (hidden_size + hidden_size))
