@@ -8,13 +8,22 @@ from typing import Any
 import yaml
 
 
+def _infer_project_root(config_path: Path) -> Path:
+    """Find the repository-local project root for configs at any depth."""
+    resolved = config_path.resolve()
+    for candidate in (resolved.parent, *resolved.parent.parents):
+        if (candidate / "src" / "lora_gpt2").is_dir() and (candidate / "scripts").is_dir():
+            return candidate
+    return resolved.parents[1]
+
+
 def load_config(path: str | Path) -> dict[str, Any]:
     """Load a YAML config file."""
     config_path = Path(path)
     with config_path.open("r", encoding="utf-8") as handle:
         config = yaml.safe_load(handle) or {}
     config["_config_path"] = str(config_path)
-    config["_project_root"] = str(config_path.resolve().parents[1])
+    config["_project_root"] = str(_infer_project_root(config_path))
     return config
 
 
