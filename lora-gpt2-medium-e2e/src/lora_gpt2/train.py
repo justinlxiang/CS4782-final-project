@@ -10,6 +10,7 @@ from typing import Any
 
 import torch
 from torch.nn import functional as F
+from tqdm.auto import tqdm
 
 
 def create_optimizer(model: torch.nn.Module, config: dict[str, Any]) -> torch.optim.Optimizer:
@@ -93,8 +94,16 @@ def train_one_epoch(
     scheduler,
     device: torch.device,
     config: dict[str, Any],
+    progress: bool = True,
+    progress_desc: str = "train",
 ) -> float:
-    """Run one training epoch. Do not call this until training is approved."""
+    """Run one training epoch. Do not call this until training is approved.
+
+    With ``progress=True`` (default) we wrap the dataloader in a tqdm bar
+    that displays a running mean loss. The single-task `scripts/train.py`
+    drives its own loop so this tqdm is for callers that use this helper
+    directly (currently `scripts/train_mole.py` and any future scripts).
+    """
     model.train()
     total_loss = 0.0
     steps = 0
@@ -103,7 +112,15 @@ def train_one_epoch(
     max_grad_norm = float(config["training"].get("max_grad_norm", 0.0))
 
     optimizer.zero_grad(set_to_none=True)
-    for step, batch in enumerate(dataloader, start=1):
+    if progress:
+        try:
+            total_steps = len(dataloader)
+        except TypeError:
+            total_steps = None
+        iterator = tqdm(dataloader, total=total_steps, desc=progress_desc, unit="step")
+    else:
+        iterator = dataloader
+    for step, batch in enumerate(iterator, start=1):
         batch = {key: value.to(device) for key, value in batch.items()}
         loss = forward_loss(model, batch, label_smoothing=label_smoothing)
         (loss / grad_accum).backward()
@@ -120,6 +137,8 @@ def train_one_epoch(
 
         total_loss += float(loss.detach().cpu())
         steps += 1
+        if progress and isinstance(iterator, tqdm):
+            iterator.set_postfix(loss=f"{total_loss / steps:.4f}")
 
     return total_loss / max(steps, 1)
 
@@ -130,14 +149,26 @@ def evaluate_loss(
     dataloader,
     device: torch.device,
     label_smoothing: float = 0.0,
+    progress: bool = True,
+    progress_desc: str = "eval",
 ) -> float:
     """Evaluate average validation loss without updating parameters."""
     model.eval()
     total_loss = 0.0
     steps = 0
-    for batch in dataloader:
+    if progress:
+        try:
+            total_steps = len(dataloader)
+        except TypeError:
+            total_steps = None
+        iterator = tqdm(dataloader, total=total_steps, desc=progress_desc, unit="step", leave=False)
+    else:
+        iterator = dataloader
+    for batch in iterator:
         batch = {key: value.to(device) for key, value in batch.items()}
         loss = forward_loss(model, batch, label_smoothing=label_smoothing)
         total_loss += float(loss.detach().cpu())
         steps += 1
+        if progress and isinstance(iterator, tqdm):
+            iterator.set_postfix(loss=f"{total_loss / steps:.4f}")
     return total_loss / max(steps, 1)

@@ -212,10 +212,12 @@ def main() -> None:
     for epoch in range(1, epochs + 1):
         print(f"epoch {epoch}/{epochs} - training router...")
         train_loss = train_one_epoch(
-            model, train_loader, optimizer, scheduler, device, config
+            model, train_loader, optimizer, scheduler, device, config,
+            progress_desc=f"train e{epoch}",
         )
         val_loss = evaluate_loss(
             model, valid_loader, device, label_smoothing=label_smoothing,
+            progress_desc=f"valid e{epoch}",
         )
         _log({
             "type": "validation",
@@ -227,7 +229,10 @@ def main() -> None:
         # Per-task validation loss — first signal that the gate is
         # under-serving one task while the mixed mean still looks fine.
         for task_name, loader in per_task_valid_loaders:
-            task_loss = evaluate_loss(model, loader, device, label_smoothing=label_smoothing)
+            task_loss = evaluate_loss(
+                model, loader, device, label_smoothing=label_smoothing,
+                progress_desc=f"valid e{epoch}/{task_name}",
+            )
             _log({
                 "type": "validation_per_task",
                 "epoch": epoch,
