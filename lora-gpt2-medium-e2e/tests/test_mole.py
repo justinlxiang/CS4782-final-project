@@ -382,6 +382,66 @@ def test_top1_default_gate_init_is_random() -> None:
     )
 
 
+def test_routing_stats_from_logits_uniform_and_collapsed() -> None:
+    """Verify the analyzer math on hand-built logit tensors.
+
+    Two layers, two batches per layer. Layer 0 is uniform (entropy =
+    log(N)); layer 1 is fully collapsed onto expert 0 (entropy ~ 0,
+    argmax fraction = 1.0 on expert 0). The aggregate should average
+    across the two layers token-weighted.
+    """
+    import math
+
+    from lora_gpt2.mole_diagnostics import routing_stats_from_logits
+
+    B, L, N = 2, 4, 3
+    uniform_logits = torch.zeros(B, L, N)                # layer 0: equal logits
+    collapsed_logits = torch.zeros(B, L, N)
+    collapsed_logits[..., 0] = 50.0                      # layer 1: argmax always 0
+
+    stats = routing_stats_from_logits(
+        {0: uniform_logits, 1: collapsed_logits},
+        attention_mask=None,
+    )
+
+    layer0 = stats["per_layer"][0]
+    layer1 = stats["per_layer"][1]
+
+    # Uniform layer: every expert at 1/N, entropy = log(N).
+    for prob in layer0["mean_softmax"]:
+        assert abs(prob - 1.0 / N) < 1e-5
+    assert abs(layer0["mean_entropy"] - math.log(N)) < 1e-5
+
+    # Collapsed layer: expert 0 wins every token.
+    assert layer1["argmax_fraction"][0] == pytest.approx(1.0)
+    assert sum(layer1["argmax_fraction"][1:]) == pytest.approx(0.0)
+    assert layer1["mean_entropy"] < 1e-5
+
+    # Aggregate should be the token-weighted blend (equal tokens here).
+    agg = stats["aggregate"]
+    for i in range(N):
+        expected = 0.5 * (layer0["mean_softmax"][i] + layer1["mean_softmax"][i])
+        assert abs(agg["mean_softmax"][i] - expected) < 1e-5
+
+
+def test_routing_stats_respects_attention_mask() -> None:
+    """Padding tokens (mask=0) must not contribute to routing stats."""
+    from lora_gpt2.mole_diagnostics import routing_stats_from_logits
+
+    logits = torch.zeros(1, 4, 2)
+    logits[0, 0, 0] = 50.0       # valid: argmax 0
+    logits[0, 1, 1] = 50.0       # valid: argmax 1
+    logits[0, 2, 0] = 50.0       # padding: should be ignored
+    logits[0, 3, 0] = 50.0       # padding: should be ignored
+    mask = torch.tensor([[1, 1, 0, 0]], dtype=torch.long)
+
+    stats = routing_stats_from_logits({0: logits}, attention_mask=mask)
+    layer0 = stats["per_layer"][0]
+    assert layer0["tokens"] == 2
+    assert layer0["argmax_fraction"][0] == pytest.approx(0.5)
+    assert layer0["argmax_fraction"][1] == pytest.approx(0.5)
+
+
 def test_load_expert_shape_mismatch_raises() -> None:
     model = _FakeGPT2(in_features=32, num_layers=1)
     inject_mole_into_gpt2(
