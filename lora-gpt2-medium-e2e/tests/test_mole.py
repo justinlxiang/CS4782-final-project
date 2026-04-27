@@ -236,6 +236,152 @@ def test_only_gate_is_trainable() -> None:
         assert "mole_gate_" in name, f"Unexpected trainable parameter: {name}"
 
 
+def test_top1_forced_expert_matches_single_adapter(tmp_path: Path) -> None:
+    """Forcing the gate to expert k under top-1 should reproduce expert k.
+
+    With force_expert_weights, the chosen expert's softmax prob saturates
+    near 1.0, so top1's `prob[k] * expert_k(x)` collapses to expert_k(x) —
+    matching the soft-routing forced case to within the same tolerance.
+    """
+    in_features = 32
+    num_layers = 1
+    num_experts = 3
+
+    shared = _build_shared_base(in_features, num_layers)
+    expert_paths: list[Path] = []
+    expert_models = []
+    for idx in range(num_experts):
+        m = _make_lora_clone(in_features, num_layers, seed=300 + idx, shared_base=shared)
+        path = tmp_path / f"expert_{idx}.pt"
+        _save_adapter(m, path)
+        expert_paths.append(path)
+        expert_models.append(m)
+
+    mole_model = _FakeGPT2(in_features=in_features, num_layers=num_layers)
+    with torch.no_grad():
+        for src_block, dst_block in zip(shared.transformer.h, mole_model.transformer.h):
+            dst_block.attn.c_attn.weight.copy_(src_block.transformer_block_weight)
+            dst_block.attn.c_attn.bias.copy_(src_block.transformer_block_bias)
+
+    inject_mole_into_gpt2(
+        mole_model,
+        num_experts=num_experts,
+        rank=4,
+        alpha=8,
+        dropout=0.0,
+        enable_lora=(True, False, True),
+        routing_mode="top1",
+    )
+    load_lora_experts_into_mole(mole_model, expert_paths)
+
+    torch.manual_seed(2)
+    x = torch.randn(2, 4, in_features)
+
+    for k in range(num_experts):
+        force_expert_weights(mole_model, expert_idx=k)
+        mole_out = mole_model.transformer.h[0].attn.c_attn(x)
+        single_out = expert_models[k].transformer.h[0].attn.c_attn(x)
+        assert torch.allclose(mole_out, single_out, atol=1e-4), (
+            f"top1 MoLE forced to expert {k} did not match single adapter {k}"
+        )
+
+
+def test_top1_routes_per_token_to_argmax(tmp_path: Path) -> None:
+    """Different tokens with different gate logits should route to different experts.
+
+    We hand-craft gate weights so token 0 prefers expert 0 and token 1
+    prefers expert 1. The MoLE delta on each token should equal that
+    expert's own delta scaled by the token's top-1 softmax probability.
+    """
+    in_features = 8
+    num_layers = 1
+    num_experts = 2
+
+    shared = _build_shared_base(in_features, num_layers)
+    expert_paths: list[Path] = []
+    expert_models = []
+    for idx in range(num_experts):
+        m = _make_lora_clone(in_features, num_layers, seed=400 + idx, shared_base=shared)
+        path = tmp_path / f"expert_{idx}.pt"
+        _save_adapter(m, path)
+        expert_paths.append(path)
+        expert_models.append(m)
+
+    mole_model = _FakeGPT2(in_features=in_features, num_layers=num_layers)
+    with torch.no_grad():
+        for src_block, dst_block in zip(shared.transformer.h, mole_model.transformer.h):
+            dst_block.attn.c_attn.weight.copy_(src_block.transformer_block_weight)
+            dst_block.attn.c_attn.bias.copy_(src_block.transformer_block_bias)
+
+    inject_mole_into_gpt2(
+        mole_model,
+        num_experts=num_experts,
+        rank=4,
+        alpha=8,
+        dropout=0.0,
+        enable_lora=(True, False, True),
+        routing_mode="top1",
+    )
+    load_lora_experts_into_mole(mole_model, expert_paths)
+
+    mole_block = mole_model.transformer.h[0].attn.c_attn
+
+    # Hand-craft a gate that produces logits depending on the sign of
+    # the first input feature — token A has positive feat 0, token B has
+    # negative feat 0, so they argmax to different experts.
+    with torch.no_grad():
+        mole_block.mole_gate_proj.weight.zero_()
+        mole_block.mole_gate_proj.bias.zero_()
+        mole_block.mole_gate_proj.weight[0, 0] = 5.0  # expert 0 wins when feat0 > 0
+        mole_block.mole_gate_proj.weight[1, 0] = -5.0  # expert 1 wins when feat0 < 0
+
+    x = torch.zeros(1, 2, in_features)
+    x[0, 0, 0] = 1.0   # token 0: expert 0 should win
+    x[0, 1, 0] = -1.0  # token 1: expert 1 should win
+    # Add small variation so the LoRA delta is non-zero for both tokens.
+    x[0, 0, 1:] = torch.randn(in_features - 1) * 0.5
+    x[0, 1, 1:] = torch.randn(in_features - 1) * 0.5
+
+    gates = mole_block.gate_weights(x)
+    assert gates[0, 0].argmax().item() == 0
+    assert gates[0, 1].argmax().item() == 1
+
+    mole_out = mole_block(x)
+    base = mole_block.base_layer(x)
+
+    # Compare each token's MoLE delta to the chosen expert's delta scaled
+    # by that expert's softmax probability.
+    for token_idx, expert_idx in enumerate([0, 1]):
+        expert_block = expert_models[expert_idx].transformer.h[0].attn.c_attn
+        expert_out = expert_block(x[:, token_idx : token_idx + 1, :])
+        expert_base = expert_block.base_layer(x[:, token_idx : token_idx + 1, :])
+        expert_delta = expert_out - expert_base
+        expected_delta = gates[0, token_idx, expert_idx] * expert_delta.squeeze(1)
+        actual_delta = (mole_out[0, token_idx] - base[0, token_idx])
+        assert torch.allclose(actual_delta, expected_delta, atol=1e-5), (
+            f"token {token_idx} top1 routing did not match expert {expert_idx}"
+        )
+
+
+def test_top1_default_gate_init_is_random() -> None:
+    """Top-1 mode must not zero-init the gate (would pin argmax to expert 0)."""
+    model = _FakeGPT2(in_features=16, num_layers=1)
+    inject_mole_into_gpt2(
+        model,
+        num_experts=3,
+        rank=4,
+        alpha=8,
+        dropout=0.0,
+        enable_lora=(True, False, True),
+        routing_mode="top1",
+    )
+    gate = model.transformer.h[0].attn.c_attn.mole_gate_proj
+    assert gate.weight.abs().sum() > 0, (
+        "top1 mode must not leave the gate weights at zero — argmax would "
+        "always select expert 0 due to PyTorch tie-breaking."
+    )
+
+
 def test_load_expert_shape_mismatch_raises() -> None:
     model = _FakeGPT2(in_features=32, num_layers=1)
     inject_mole_into_gpt2(

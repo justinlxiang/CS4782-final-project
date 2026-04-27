@@ -119,13 +119,16 @@ def main() -> None:
     num_experts = len(expert_paths)
     expert_names = config["mole"].get("expert_names", [str(i) for i in range(num_experts)])
     print(f"injecting MoLE with {num_experts} experts: {expert_names}")
+    # gate_init / routing_mode are read from config["mole"] inside the
+    # injection helper so the same code path works for both modes.
     report = inject_mole_into_gpt2(
         model,
         num_experts=num_experts,
-        gate_init=config["mole"].get("gate_init", "uniform"),
         config=config,
     )
-    print(f"replaced {report.replaced_modules} c_attn modules; "
+    routing_mode = config["mole"].get("routing_mode", "soft")
+    print(f"replaced {report.replaced_modules} c_attn modules "
+          f"(routing_mode={routing_mode}); "
           f"router params: {report.trainable_parameters:,} / "
           f"total: {report.total_parameters:,}")
 

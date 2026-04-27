@@ -36,6 +36,16 @@ class MoLEQKVConv1D(nn.Module):
 
     slice_names = ("query", "key", "value")
 
+    # Supported `routing_mode` values:
+    #   "soft": dense weighted-sum over all experts (the original MoLE
+    #           formulation in this file). Every token attends to every
+    #           expert with a softmax-derived weight.
+    #   "top1": Switch-Transformer style hard routing — pick the
+    #           argmax expert per token, scale its contribution by its
+    #           own softmax probability so gradient flows to the gate
+    #           through the multiplier. Non-chosen experts contribute 0.
+    SUPPORTED_ROUTING_MODES = ("soft", "top1")
+
     def __init__(
         self,
         base_layer: nn.Module,
@@ -45,6 +55,7 @@ class MoLEQKVConv1D(nn.Module):
         dropout: float = 0.0,
         enable_lora: Iterable[bool] = (True, False, True),
         gate_init: str = "uniform",
+        routing_mode: str = "soft",
     ) -> None:
         super().__init__()
         if not hasattr(base_layer, "weight"):
@@ -53,12 +64,17 @@ class MoLEQKVConv1D(nn.Module):
             raise ValueError("MoLE requires positive LoRA rank.")
         if num_experts < 1:
             raise ValueError("Need at least one expert.")
+        if routing_mode not in self.SUPPORTED_ROUTING_MODES:
+            raise ValueError(
+                f"routing_mode {routing_mode!r} not in {self.SUPPORTED_ROUTING_MODES}"
+            )
 
         self.base_layer = base_layer
         self.rank = int(rank)
         self.alpha = float(alpha)
         self.scaling = self.alpha / self.rank
         self.num_experts = int(num_experts)
+        self.routing_mode = routing_mode
         self.lora_dropout = nn.Dropout(dropout) if dropout > 0 else nn.Identity()
 
         weight = self.base_layer.weight
@@ -182,12 +198,18 @@ class MoLEQKVConv1D(nn.Module):
         return F.softmax(logits, dim=-1)
 
     def _slice_mixture_delta(self, x: torch.Tensor, name: str, gates: torch.Tensor) -> torch.Tensor:
-        """Compute sum_i gate_i * scaling * B_i(A_i(x)) for one slice.
+        """Compute the routed LoRA delta for one q/v slice.
 
-        `gates` has shape (*, num_experts). We compute each expert's delta
-        independently (cheap: rank=4 inner) and combine with the gate
-        weights, which is mathematically equivalent to combining the
-        rank-r low-rank matrices first, with identical FLOPs at rank 4.
+        `gates` has shape (*, num_experts) and is the softmax over experts.
+        Both routing modes still call every expert under the hood — at
+        rank 4 the per-expert cost is negligible — and differ only in how
+        the per-token outputs are combined:
+
+        - soft:  Σ_i  gates_i * B_i(A_i(x))             (weighted sum)
+        - top1:  gates[k] * B_k(A_k(x))   where k = argmax(gates)
+                 Argmax is non-differentiable but we don't backprop
+                 through it; gradient reaches the gate through the
+                 surviving softmax probability multiplier (Switch-T style).
         """
         contributions = []
         for expert_idx in range(self.num_experts):
@@ -195,10 +217,23 @@ class MoLEQKVConv1D(nn.Module):
             inner = F.linear(x, self.lora_A[key])           # (*, rank)
             outer = F.linear(inner, self.lora_B[key])       # (*, slice_size)
             contributions.append(outer)
-        # stack to (*, num_experts, slice_size), weight per expert, sum.
-        stacked = torch.stack(contributions, dim=-2)
-        weights = gates.unsqueeze(-1)                       # (*, num_experts, 1)
-        mixed = (stacked * weights).sum(dim=-2)             # (*, slice_size)
+        stacked = torch.stack(contributions, dim=-2)        # (*, num_experts, slice_size)
+
+        if self.routing_mode == "soft":
+            weights = gates.unsqueeze(-1)                   # (*, num_experts, 1)
+            mixed = (stacked * weights).sum(dim=-2)
+        elif self.routing_mode == "top1":
+            top1_idx = gates.argmax(dim=-1, keepdim=True)   # (*, 1)
+            top1_prob = gates.gather(-1, top1_idx)          # (*, 1) — keeps graph
+            chosen = stacked.gather(
+                dim=-2,
+                index=top1_idx.unsqueeze(-1).expand(*top1_idx.shape, stacked.size(-1)),
+            ).squeeze(-2)                                   # (*, slice_size)
+            mixed = top1_prob * chosen
+        else:
+            # Defensive: should be unreachable given __init__ validation.
+            raise RuntimeError(f"unknown routing_mode {self.routing_mode!r}")
+
         return mixed * self.scaling
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:

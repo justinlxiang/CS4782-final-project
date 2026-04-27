@@ -40,7 +40,14 @@ mole:
     - e2e
     - dart
     - webnlg
-  gate_init: uniform     # zero-init router => softmax 1/N at start
+  # Switch-Transformer style hard routing: per token, pick the argmax
+  # expert and scale its contribution by its own softmax probability.
+  # Non-chosen experts contribute 0 to the output. The probability
+  # multiplier carries gradient back to the gate.
+  routing_mode: top1
+  # gate_init defaults to "random" for top1 (so argmax has variation to
+  # break ties); set explicitly here only if you want to override.
+  # gate_init: random
 
 # The training set is a concatenation of the per-task processed JSONL
 # train splits, each tokenized with the same gpt2-medium tokenizer that

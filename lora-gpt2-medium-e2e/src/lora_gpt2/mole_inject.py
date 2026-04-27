@@ -65,7 +65,8 @@ def inject_mole_into_gpt2(
     alpha: float | None = None,
     dropout: float | None = None,
     enable_lora: tuple[bool, bool, bool] | None = None,
-    gate_init: str = "uniform",
+    gate_init: str | None = None,
+    routing_mode: str | None = None,
     config: dict[str, Any] | None = None,
 ) -> MoLEInjectionReport:
     """Replace each GPT-2 attention `c_attn` with a `MoLEQKVConv1D`.
@@ -75,10 +76,17 @@ def inject_mole_into_gpt2(
     trainable, which matches the MoLE training recipe.
     """
     lora_config = config.get("lora", {}) if config else {}
+    mole_config = config.get("mole", {}) if config else {}
     rank = int(rank if rank is not None else lora_config.get("rank", 4))
     alpha = float(alpha if alpha is not None else lora_config.get("alpha", 32))
     dropout = float(dropout if dropout is not None else lora_config.get("dropout", 0.0))
     enable_lora = enable_lora if enable_lora is not None else _target_booleans(config)
+    routing_mode = routing_mode if routing_mode is not None else mole_config.get("routing_mode", "soft")
+    # Default top-1 to a non-degenerate gate init: zero-init weights make
+    # argmax always pick expert 0 (PyTorch ties → first index), so the
+    # gate has nothing to learn from. Random init breaks ties.
+    if gate_init is None:
+        gate_init = mole_config.get("gate_init") or ("random" if routing_mode == "top1" else "uniform")
 
     freeze_base_model(model)
 
@@ -100,6 +108,7 @@ def inject_mole_into_gpt2(
             dropout=dropout,
             enable_lora=enable_lora,
             gate_init=gate_init,
+            routing_mode=routing_mode,
         )
         replaced += 1
 

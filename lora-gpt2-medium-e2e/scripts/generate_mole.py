@@ -98,10 +98,11 @@ def main() -> None:
         "expert_names", [f"expert{i}" for i in range(len(expert_paths))]
     )
     print(f"injecting MoLE with {len(expert_paths)} experts: {expert_names}")
+    # gate_init / routing_mode are pulled from mole_config["mole"]
+    # inside the injection helper.
     inject_mole_into_gpt2(
         model,
         num_experts=len(expert_paths),
-        gate_init=mole_config["mole"].get("gate_init", "uniform"),
         config=mole_config,
     )
     load_lora_experts_into_mole(model, expert_paths)
