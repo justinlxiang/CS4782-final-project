@@ -340,20 +340,30 @@ def main() -> None:
                     device,
                     label_smoothing=label_smoothing,
                 )
+                valid_nll_loss = evaluate_loss(
+                    model,
+                    valid_loader,
+                    device,
+                    label_smoothing=0.0,
+                )
                 valid_ppl = math.exp(valid_loss)
+                valid_nll_ppl = math.exp(valid_nll_loss)
                 validation_record = {
                     "type": "validation",
                     "epoch": epoch,
                     "step": global_step,
                     "valid_loss": valid_loss,
                     "valid_ppl": valid_ppl,
+                    "valid_nll_loss": valid_nll_loss,
+                    "valid_nll_ppl": valid_nll_ppl,
                     "valid_examples": valid_size,
                     "valid_dataset": str(valid_path),
                 }
                 append_jsonl(metrics_path, validation_record)
                 tqdm.write(
                     f"validation epoch={epoch} step={global_step} "
-                    f"valid_loss={valid_loss:.4f} valid_ppl={valid_ppl:.2f}"
+                    f"valid_loss={valid_loss:.4f} valid_ppl={valid_ppl:.2f} "
+                    f"valid_nll_loss={valid_nll_loss:.4f} valid_nll_ppl={valid_nll_ppl:.2f}"
                 )
                 model.train()
                 if args.max_train_steps is not None and global_step >= args.max_train_steps:
