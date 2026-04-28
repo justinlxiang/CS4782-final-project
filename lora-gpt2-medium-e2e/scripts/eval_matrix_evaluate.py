@@ -1,24 +1,26 @@
 #!/usr/bin/env python
-"""Compute BLEU + METEOR + TER for one (task, predictions) cell of the matrix.
+"""Compute metrics for one (task, predictions) cell of the matrix.
 
-Uses one consistent metric toolchain across all three tasks:
+Two metric stacks are emitted side by side:
 
-  BLEU    sacrebleu corpus BLEU (multi-reference, force=True)
-  METEOR  NLTK meteor_score (handles multi-reference natively, takes max)
-  TER     pyter3 (sentence-level; multi-reference => take min over refs)
+1. *Uniform stack* (always run): sacrebleu corpus BLEU + NLTK
+   meteor_score + pyter3 TER. Identical math across all 15 cells —
+   apples-to-apples within each column for method comparison.
 
-We deliberately do NOT use each task's bespoke official scorer (multi-bleu.perl
-for DART, GenerationEval for WebNLG, e2e-metrics for E2E). The user goal is
-*method comparison within a benchmark*, not paper-replication; identical
-scorers across all 15 cells gives apples-to-apples within each column. The
-trade-off is that absolute numbers will differ slightly from paper-published
-values (BLEU implementations disagree by ~0.5 absolute), but the relative
-ranking of the 5 model variants on each task is what we care about.
+2. *Official stack* (when --official is passed): runs
+   `tuetschek/e2e-metrics measure_scores.py` on the same
+   predictions. Emits BLEU + NIST + METEOR + ROUGE_L + CIDEr.
+   This is the scorer the LoRA paper used for E2E (Hu et al. 2021
+   Table 6) and the same one Justin's `paper_aligned_official_beam`
+   runs use. Yale-LILY/dart bundles a copy at
+   `evaluation/e2e-metrics/measure_scores.py`, so the same binary
+   produces "paper-style NLG eval" numbers for DART/WebNLG too.
 
-References are reconstructed from the task config's raw split, grouped by
-context in first-occurrence order — the same canonical order
-`eval_matrix_generate.py` uses, so predictions and references align row-for-
-row without a separate references-file artifact on disk.
+Both reference sets are reconstructed from the raw split in
+first-occurrence dedup order — exactly the order
+`eval_matrix_generate.py` writes predictions in — so predictions
+and references align row-for-row without an explicit
+references-file artifact on disk.
 """
 
 from __future__ import annotations
@@ -32,7 +34,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from lora_gpt2.config import load_config
 from lora_gpt2.data import load_e2e_records, raw_split_path
-from lora_gpt2.evaluate import corpus_multi_reference_bleu, read_prediction_records
+from lora_gpt2.evaluate import (
+    corpus_multi_reference_bleu,
+    read_prediction_records,
+    run_official_e2e_evaluator,
+    write_official_e2e_files,
+)
 from lora_gpt2.utils import ensure_dir
 
 
@@ -118,6 +125,61 @@ def corpus_ter(predictions: list[str], references_grouped: list[list[str]]) -> f
     return sum(scores) / len(scores)
 
 
+def _parse_e2e_metrics_stdout(stdout: str) -> dict[str, float]:
+    """Pick BLEU/NIST/METEOR/ROUGE_L/CIDEr out of measure_scores.py stdout.
+
+    The script prints a `SCORES:` block followed by `KEY: value` lines;
+    we just regex-grep each metric and ignore everything else. Returns
+    BLEU as a 0-100 percentage to match the rest of the codebase
+    (sacrebleu/uniform stack also outputs 0-100); the script itself
+    prints BLEU as a 0-1 fraction, so we multiply.
+    """
+    keys = ("BLEU", "NIST", "METEOR", "ROUGE_L", "CIDEr")
+    scale_to_percent = {"BLEU", "METEOR", "ROUGE_L"}
+    parsed: dict[str, float] = {}
+    for line in stdout.splitlines():
+        line = line.strip()
+        for key in keys:
+            prefix = f"{key}:"
+            if line.startswith(prefix):
+                try:
+                    value = float(line.split(":", 1)[1].strip())
+                except ValueError:
+                    continue
+                if key in scale_to_percent:
+                    value *= 100.0
+                parsed[key.lower()] = value
+                break
+    return parsed
+
+
+def run_official_metrics(
+    predictions: list[str],
+    references_grouped: list[list[str]],
+    e2e_metrics_dir: Path,
+    work_dir: Path,
+) -> dict[str, float]:
+    """Score with tuetschek/e2e-metrics; return its parsed metrics dict.
+
+    `e2e_metrics_dir` is the local clone of the evaluator (the notebook
+    clones it once into `external/e2e-metrics`). `work_dir` is where we
+    write the blank-line-separated refs file and the per-line preds
+    file the script consumes — kept alongside the matrix's per-cell
+    output so the inputs are inspectable post-hoc.
+    """
+    refs_file = work_dir / "official_refs.txt"
+    preds_file = work_dir / "official_preds.txt"
+    write_official_e2e_files(refs_file, preds_file, predictions, references_grouped)
+    completed = run_official_e2e_evaluator(e2e_metrics_dir, refs_file, preds_file)
+    metrics = _parse_e2e_metrics_stdout(completed.stdout)
+    if not metrics:
+        # Surface the raw output so a user can debug a parse failure.
+        raise RuntimeError(
+            f"Failed to parse any metrics from measure_scores.py stdout:\n{completed.stdout}"
+        )
+    return metrics
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--task-config", required=True,
@@ -133,6 +195,11 @@ def main() -> None:
     parser.add_argument("--max-examples", type=int, default=None,
                         help="If set, truncate the reference set to the first N unique "
                              "MRs to align with a generator run that used --max-examples.")
+    parser.add_argument("--official", action="store_true",
+                        help="Also run tuetschek/e2e-metrics on the predictions for "
+                             "paper-comparable BLEU/NIST/METEOR/ROUGE_L/CIDEr.")
+    parser.add_argument("--official-script-dir", default="external/e2e-metrics",
+                        help="Path to the cloned tuetschek/e2e-metrics repo.")
     args = parser.parse_args()
 
     task_config = load_config(args.task_config)
@@ -176,10 +243,31 @@ def main() -> None:
         },
     }
 
+    if args.official:
+        # The e2e-metrics scorer needs to be present on disk; we don't
+        # auto-clone it from this script (the notebook handles install
+        # in one place so all 15 cells share it).
+        e2e_metrics_dir = Path(args.official_script_dir)
+        if not (e2e_metrics_dir / "measure_scores.py").exists():
+            raise SystemExit(
+                f"--official requested but {e2e_metrics_dir}/measure_scores.py not found. "
+                f"Install with `git clone https://github.com/tuetschek/e2e-metrics "
+                f"{e2e_metrics_dir}`."
+            )
+        print("computing official e2e-metrics (BLEU/NIST/METEOR/ROUGE_L/CIDEr)...")
+        official = run_official_metrics(
+            predictions,
+            references_grouped,
+            e2e_metrics_dir=e2e_metrics_dir,
+            work_dir=Path(args.predictions_file).parent,
+        )
+        summary["official_metrics"] = official
+
     output_path = Path(args.output_file)
     ensure_dir(output_path.parent)
     output_path.write_text(json.dumps(summary, indent=2, sort_keys=True), encoding="utf-8")
-    print(json.dumps(summary["metrics"], indent=2))
+    print(json.dumps({k: summary[k] for k in ("metrics", "official_metrics") if k in summary},
+                     indent=2))
     print(f"wrote {output_path}")
 
 
