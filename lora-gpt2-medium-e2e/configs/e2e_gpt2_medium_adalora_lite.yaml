@@ -2,7 +2,7 @@
 
 project:
   name: adalora-lite-gpt2-medium-e2e
-  output_dir: outputs/runs/adalora_lite_rmax8_target192_late_prune
+  output_dir: outputs/runs/adalora_lite_rmax6_target192_tinit10000_tfinal5000
   seed: 110
 
 model:
@@ -19,14 +19,14 @@ lora:
       query: true
       key: false
       value: true
-  rank: 8
+  rank: 6
   alpha: 32
   dropout: 0.1
   merge_for_eval: false
   adalora_lite:
     target_rank_units: 192
     mask_interval: 500
-    init_warmup_steps: 15000
+    init_warmup_steps: 10000
     final_warmup_steps: 5000
     beta: 0.85
     min_rank_per_slice: 1
@@ -82,5 +82,5 @@ evaluation:
     - rouge_l
     - cider
   official_e2e_script_dir: external/e2e-metrics
-  predictions_file: outputs/runs/adalora_lite_rmax8_target192_late_prune/generations_test.txt
+  predictions_file: outputs/runs/adalora_lite_rmax6_target192_tinit10000_tfinal5000/generations_test.txt
   references_file: data/processed/e2e_gpt2/references_test.txt
