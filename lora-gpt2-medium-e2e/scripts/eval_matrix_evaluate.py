@@ -130,18 +130,28 @@ def main() -> None:
                         help="Where to write the metric JSON summary.")
     parser.add_argument("--variant", default=None,
                         help="Optional label echoed into the output JSON.")
+    parser.add_argument("--max-examples", type=int, default=None,
+                        help="If set, truncate the reference set to the first N unique "
+                             "MRs to align with a generator run that used --max-examples.")
     args = parser.parse_args()
 
     task_config = load_config(args.task_config)
     contexts, references_grouped = _grouped_references(task_config, args.split)
+
+    if args.max_examples is not None:
+        # Generator emits predictions in the same first-occurrence dedup
+        # order, truncated to the same count, so slicing the reference
+        # set to len = max_examples keeps row-for-row alignment.
+        contexts = contexts[: args.max_examples]
+        references_grouped = references_grouped[: args.max_examples]
 
     prediction_records = read_prediction_records(args.predictions_file)
     if len(prediction_records) != len(contexts):
         raise SystemExit(
             f"Prediction/reference count mismatch: "
             f"{len(prediction_records)} predictions vs {len(contexts)} unique contexts. "
-            f"Likely cause: predictions file was generated with a different split or "
-            f"with --max-examples. Re-run eval_matrix_generate.py to align."
+            f"Likely cause: predictions file was generated with --max-examples N but the "
+            f"evaluator wasn't told that — pass --max-examples N here too."
         )
 
     predictions = [record["prediction"] for record in prediction_records]
