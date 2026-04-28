@@ -8,7 +8,7 @@ from typing import Any
 
 import torch
 
-from lora_gpt2.lora_layers import LoRAQKVConv1D
+from lora_gpt2.lora_layers import AdaLoRAQKVConv1D, LoRAQKVConv1D
 from lora_gpt2.utils import count_parameters
 
 
@@ -42,7 +42,7 @@ def mark_only_lora_as_trainable(model: torch.nn.Module, bias: str = "none") -> N
                 param.requires_grad = True
     elif bias == "lora_only":
         for module in model.modules():
-            if isinstance(module, LoRAQKVConv1D) and hasattr(module.base_layer, "bias"):
+            if isinstance(module, (AdaLoRAQKVConv1D, LoRAQKVConv1D)) and hasattr(module.base_layer, "bias"):
                 bias_param = module.base_layer.bias
                 if bias_param is not None:
                     bias_param.requires_grad = True
@@ -171,9 +171,12 @@ def inject_lora_into_gpt2(
     rank = int(rank if rank is not None else lora_config.get("rank", 4))
     alpha = float(alpha if alpha is not None else lora_config.get("alpha", 32))
     dropout = float(dropout if dropout is not None else lora_config.get("dropout", 0.1))
+    method = str(lora_config.get("method", "lora")).lower()
     merge_weights = bool(
         merge_weights if merge_weights is not None else lora_config.get("merge_for_eval", False)
     )
+    if method == "adalora_lite" and merge_weights:
+        raise ValueError("AdaLoRA-Lite requires lora.merge_for_eval=false.")
     enable_lora = enable_lora if enable_lora is not None else _target_booleans(config)
 
     freeze_base_model(model)
@@ -186,19 +189,32 @@ def inject_lora_into_gpt2(
     replaced = 0
     for layer_index, block in enumerate(blocks):
         attention = block.attn
-        if isinstance(attention.c_attn, LoRAQKVConv1D):
+        if isinstance(attention.c_attn, (AdaLoRAQKVConv1D, LoRAQKVConv1D)):
             continue
-        rank_pattern, alpha_pattern = _layer_rank_and_alpha_patterns(lora_config, layer_index)
-        attention.c_attn = LoRAQKVConv1D(
-            base_layer=attention.c_attn,
-            rank=rank,
-            alpha=alpha,
-            dropout=dropout,
-            enable_lora=enable_lora,
-            merge_weights=merge_weights,
-            rank_pattern=rank_pattern,
-            alpha_pattern=alpha_pattern,
-        )
+        if method == "adalora_lite":
+            attention.c_attn = AdaLoRAQKVConv1D(
+                base_layer=attention.c_attn,
+                rank=rank,
+                alpha=alpha,
+                dropout=dropout,
+                enable_lora=enable_lora,
+                merge_weights=merge_weights,
+                layer_index=layer_index,
+            )
+        elif method == "lora":
+            rank_pattern, alpha_pattern = _layer_rank_and_alpha_patterns(lora_config, layer_index)
+            attention.c_attn = LoRAQKVConv1D(
+                base_layer=attention.c_attn,
+                rank=rank,
+                alpha=alpha,
+                dropout=dropout,
+                enable_lora=enable_lora,
+                merge_weights=merge_weights,
+                rank_pattern=rank_pattern,
+                alpha_pattern=alpha_pattern,
+            )
+        else:
+            raise ValueError(f"Unknown LoRA method: {method!r}.")
         replaced += 1
 
     mark_only_lora_as_trainable(model, bias="none")
@@ -222,6 +238,18 @@ def expected_qv_lora_parameters(
     return int(num_layers * enabled_count * (rank * hidden_size + hidden_size * rank))
 
 
+def expected_qv_adalora_lite_parameters(
+    hidden_size: int,
+    num_layers: int,
+    rank: int,
+    enable_lora: tuple[bool, bool, bool] = (True, False, True),
+) -> int:
+    """Compute expected AdaLoRA-Lite trainable params for GPT-2 fused QKV slices."""
+    enabled_count = sum(1 for enabled in enable_lora if enabled)
+    per_slice = rank * hidden_size + hidden_size * rank + rank
+    return int(num_layers * enabled_count * per_slice)
+
+
 def expected_gpt2_lora_parameters(
     config: dict[str, Any],
     hidden_size: int,
@@ -231,6 +259,8 @@ def expected_gpt2_lora_parameters(
     lora_config = config.get("lora", {})
     scalar_rank = int(lora_config.get("rank", 4))
     enable_lora = _target_booleans(config)
+    if str(lora_config.get("method", "lora")).lower() == "adalora_lite":
+        return expected_qv_adalora_lite_parameters(hidden_size, num_layers, scalar_rank, enable_lora)
     if lora_config.get("rank_pattern") is None:
         return expected_qv_lora_parameters(hidden_size, num_layers, scalar_rank, enable_lora)
 

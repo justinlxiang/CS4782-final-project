@@ -4,6 +4,7 @@ from lora_gpt2.config import load_config
 
 __all__ = [
     "LoRALinear",
+    "AdaLoRAQKVConv1D",
     "LoRAQKVConv1D",
     "inject_lora_into_gpt2",
     "load_config",
@@ -13,10 +14,14 @@ __all__ = [
 
 def __getattr__(name: str):
     """Load torch-dependent helpers only when they are requested."""
-    if name in {"LoRALinear", "LoRAQKVConv1D"}:
-        from lora_gpt2.lora_layers import LoRALinear, LoRAQKVConv1D
+    if name in {"LoRALinear", "AdaLoRAQKVConv1D", "LoRAQKVConv1D"}:
+        from lora_gpt2.lora_layers import AdaLoRAQKVConv1D, LoRALinear, LoRAQKVConv1D
 
-        return {"LoRALinear": LoRALinear, "LoRAQKVConv1D": LoRAQKVConv1D}[name]
+        return {
+            "LoRALinear": LoRALinear,
+            "AdaLoRAQKVConv1D": AdaLoRAQKVConv1D,
+            "LoRAQKVConv1D": LoRAQKVConv1D,
+        }[name]
     if name in {"inject_lora_into_gpt2", "mark_only_lora_as_trainable"}:
         from lora_gpt2.inject import inject_lora_into_gpt2, mark_only_lora_as_trainable
 

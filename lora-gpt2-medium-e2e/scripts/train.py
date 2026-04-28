@@ -16,6 +16,7 @@ from tqdm.auto import tqdm
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from lora_gpt2.checkpointing import load_training_checkpoint, save_training_checkpoint
+from lora_gpt2.adalora_lite import AdaLoRALiteRankAllocator
 from lora_gpt2.config import load_config, resolve_path
 from lora_gpt2.data import DataCollatorForCompletionOnlyLM, ProcessedE2EDataset
 from lora_gpt2.modeling import load_lora_model
@@ -33,6 +34,11 @@ def append_jsonl(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(payload, sort_keys=True) + "\n")
+
+
+def allocator_state(rank_allocator: AdaLoRALiteRankAllocator | None) -> dict:
+    """Return serializable AdaLoRA-Lite allocator state when enabled."""
+    return rank_allocator.state_dict() if rank_allocator is not None else {}
 
 
 def build_dataloader(
@@ -146,6 +152,7 @@ def main() -> None:
         num_training_steps=max(1, args.smoke_max_steps if args.smoke_train else total_training_steps),
         warmup_steps=0 if args.smoke_train or args.dry_run else int(config["training"]["warmup_steps"]),
     )
+    rank_allocator = AdaLoRALiteRankAllocator.from_config(config)
     params = parameter_report(model)
 
     max_examples = max(args.dry_run_max_examples, args.smoke_max_steps) if args.smoke_train else args.dry_run_max_examples
@@ -197,6 +204,8 @@ def main() -> None:
             optimizer.zero_grad(set_to_none=True)
             loss = forward_loss(model, batch, label_smoothing=label_smoothing)
             loss.backward()
+            if rank_allocator is not None:
+                rank_allocator.update_scores(model)
             if max_grad_norm > 0:
                 torch.nn.utils.clip_grad_norm_(
                     [param for param in model.parameters() if param.requires_grad],
@@ -214,8 +223,11 @@ def main() -> None:
         output_dir = ensure_dir(resolve_path(config, config["project"]["output_dir"]))
         checkpoints_dir = ensure_dir(output_dir / "checkpoints")
         metrics_path = output_dir / "metrics.jsonl"
+        allocation_path = output_dir / "adalora_lite_allocation.jsonl"
         if metrics_path.exists() and not args.resume_checkpoint:
             metrics_path.unlink()
+        if allocation_path.exists() and not args.resume_checkpoint:
+            allocation_path.unlink()
         write_json(output_dir / "config.json", config)
         write_json(output_dir / "parameter_report.json", params)
         resume_state: dict = {}
@@ -229,6 +241,8 @@ def main() -> None:
                 strict=False,
             )
             print(f"resumed_checkpoint={resume_path}")
+            if rank_allocator is not None and "adalora_lite_allocator" in resume_state:
+                rank_allocator.load_state_dict(resume_state["adalora_lite_allocator"])
 
         print(f"train_dataset={train_split_path}")
         print(f"train_examples={train_dataset_size}")
@@ -280,6 +294,9 @@ def main() -> None:
                     optimizer.zero_grad(set_to_none=True)
                     loss = forward_loss(model, batch, label_smoothing=label_smoothing)
                     loss.backward()
+                    score_record = None
+                    if rank_allocator is not None:
+                        score_record = rank_allocator.update_scores(model)
                     if max_grad_norm > 0:
                         torch.nn.utils.clip_grad_norm_(
                             [param for param in model.parameters() if param.requires_grad],
@@ -287,6 +304,11 @@ def main() -> None:
                         )
                     optimizer.step()
                     scheduler.step()
+                    allocation_record = (
+                        rank_allocator.update_masks(model, global_step)
+                        if rank_allocator is not None
+                        else None
+                    )
 
                     loss_value = float(loss.detach().cpu())
                     record = {
@@ -295,13 +317,26 @@ def main() -> None:
                         "step": global_step,
                         "loss": loss_value,
                     }
+                    if rank_allocator is not None:
+                        record["adalora_lite_active_rank_units"] = rank_allocator.active_rank_units(model)
+                        record["adalora_lite_tracked_components"] = (
+                            score_record or {}
+                        ).get("tracked_components", 0)
                     append_jsonl(metrics_path, record)
+                    if allocation_record is not None:
+                        append_jsonl(allocation_path, allocation_record)
                     progress.set_postfix(
                         epoch=epoch,
                         loss=f"{loss_value:.4f}",
                         step=global_step,
                     )
                     progress.update(1)
+                    if allocation_record is not None:
+                        tqdm.write(
+                            "adalora_lite_allocation "
+                            f"step={global_step} "
+                            f"active_rank_units={allocation_record['active_rank_units']}"
+                        )
 
                     if save_every > 0 and global_step % save_every == 0:
                         checkpoint_path = checkpoints_dir / f"adapter_step_{global_step}.pt"
@@ -316,6 +351,7 @@ def main() -> None:
                                 "batch_in_epoch": batch_in_epoch,
                                 "global_step": global_step,
                                 "loss": loss_value,
+                                "adalora_lite_allocator": allocator_state(rank_allocator),
                             },
                         )
                         tqdm.write(f"saved_checkpoint={checkpoint_path}")
@@ -370,6 +406,11 @@ def main() -> None:
                     break
 
         final_checkpoint = checkpoints_dir / "adapter_final.pt"
+        if rank_allocator is not None:
+            append_jsonl(
+                allocation_path,
+                rank_allocator.allocation_summary(model, global_step=global_step),
+            )
         save_training_checkpoint(
             final_checkpoint,
             model,
@@ -382,6 +423,7 @@ def main() -> None:
                 "type": "final",
                 "epoch": current_epoch,
                 "batch_in_epoch": current_batch_in_epoch,
+                "adalora_lite_allocator": allocator_state(rank_allocator),
             },
         )
         print(f"saved_final_checkpoint={final_checkpoint}")

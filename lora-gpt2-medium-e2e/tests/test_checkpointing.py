@@ -10,7 +10,7 @@ from lora_gpt2.checkpointing import (
     save_training_checkpoint,
 )
 from lora_gpt2.inject import lora_state_dict
-from lora_gpt2.lora_layers import LoRAQKVConv1D
+from lora_gpt2.lora_layers import AdaLoRAQKVConv1D, LoRAQKVConv1D
 
 
 class TinyConv1D(nn.Module):
@@ -77,3 +77,19 @@ def test_training_checkpoint_restores_adapter_and_step(tmp_path) -> None:
 
     assert state["global_step"] == 3
     assert torch.allclose(target.lora_B["value"], source.lora_B["value"])
+
+
+def test_adalora_lite_checkpoint_restores_scales_and_masks(tmp_path) -> None:
+    source = AdaLoRAQKVConv1D(TinyConv1D(8, 24), rank=3, alpha=6, dropout=0.0)
+    target = AdaLoRAQKVConv1D(TinyConv1D(8, 24), rank=3, alpha=6, dropout=0.0)
+    with torch.no_grad():
+        source.lora_s["query"].copy_(torch.tensor([1.0, 2.0, 3.0]))
+        source.set_lora_mask("query", torch.tensor([1.0, 0.0, 1.0]))
+
+    checkpoint = tmp_path / "adalora_lite_adapter.pt"
+    save_adapter_checkpoint(checkpoint, source, config={"test": True})
+    _missing, unexpected = load_adapter_checkpoint(checkpoint, target, strict=False)
+
+    assert not unexpected
+    assert torch.allclose(target.lora_s["query"], source.lora_s["query"])
+    assert torch.allclose(target.lora_mask("query"), source.lora_mask("query"))

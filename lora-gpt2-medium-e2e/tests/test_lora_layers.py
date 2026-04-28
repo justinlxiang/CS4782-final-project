@@ -3,7 +3,7 @@ from __future__ import annotations
 import torch
 from torch import nn
 
-from lora_gpt2.lora_layers import LoRALinear, LoRAQKVConv1D
+from lora_gpt2.lora_layers import AdaLoRAQKVConv1D, LoRALinear, LoRAQKVConv1D
 
 
 class TinyConv1D(nn.Module):
@@ -147,3 +147,34 @@ def test_lora_linear_merge_matches_unmerged_eval() -> None:
 
     assert wrapper.merged
     assert torch.allclose(unmerged, merged, atol=1e-6)
+
+
+def test_adalora_lite_qkv_initial_delta_is_zero() -> None:
+    torch.manual_seed(0)
+    base = TinyConv1D(8, 24)
+    wrapper = AdaLoRAQKVConv1D(base, rank=4, alpha=32, dropout=0.0)
+    x = torch.randn(2, 3, 8)
+
+    assert torch.allclose(wrapper(x), base(x), atol=1e-6)
+
+
+def test_adalora_lite_mask_removes_rank_components() -> None:
+    torch.manual_seed(0)
+    base = TinyConv1D(8, 24)
+    wrapper = AdaLoRAQKVConv1D(base, rank=2, alpha=4, dropout=0.0)
+    x = torch.randn(2, 3, 8)
+    with torch.no_grad():
+        wrapper.lora_B["query"][:, 0].fill_(0.25)
+        wrapper.lora_B["query"][:, 1].fill_(0.50)
+        wrapper.lora_s["query"].copy_(torch.tensor([1.0, 2.0]))
+
+    full_q = wrapper(x).split(8, dim=-1)[0]
+    wrapper.set_lora_mask("query", torch.tensor([1.0, 0.0]))
+    one_component_q = wrapper(x).split(8, dim=-1)[0]
+    wrapper.set_lora_mask("query", torch.tensor([0.0, 0.0]))
+    zero_component_q = wrapper(x).split(8, dim=-1)[0]
+    base_q = base(x).split(8, dim=-1)[0]
+
+    assert not torch.allclose(full_q, one_component_q)
+    assert not torch.allclose(one_component_q, zero_component_q)
+    assert torch.allclose(zero_component_q, base_q, atol=1e-6)

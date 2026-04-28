@@ -4,11 +4,12 @@ import torch
 from torch import nn
 
 from lora_gpt2.inject import (
+    expected_qv_adalora_lite_parameters,
     expected_gpt2_lora_parameters,
     expected_qv_lora_parameters,
     inject_lora_into_gpt2,
 )
-from lora_gpt2.lora_layers import LoRAQKVConv1D
+from lora_gpt2.lora_layers import AdaLoRAQKVConv1D, LoRAQKVConv1D
 
 
 class TinyConv1D(nn.Module):
@@ -110,3 +111,31 @@ def test_rank_pattern_can_skip_zero_rank_slice() -> None:
     assert report.trainable_parameters == 64
     assert "query" not in wrapper.lora_A
     assert "value" in wrapper.lora_A
+
+
+def test_inject_adalora_lite_uses_adaptive_qkv_wrapper() -> None:
+    config = {
+        "lora": {
+            "method": "adalora_lite",
+            "rank": 4,
+            "alpha": 32,
+            "dropout": 0.0,
+            "merge_for_eval": False,
+            "target_modules": {
+                "attention_c_attn": {
+                    "query": True,
+                    "key": False,
+                    "value": True,
+                }
+            },
+        }
+    }
+    model = TinyGPT2(layers=2)
+    report = inject_lora_into_gpt2(model, config=config)
+
+    assert report.replaced_modules == 2
+    assert all(isinstance(block.attn.c_attn, AdaLoRAQKVConv1D) for block in model.transformer.h)
+    assert report.trainable_parameters == expected_qv_adalora_lite_parameters(8, 2, 4)
+    assert all("lora_" in name for name in report.trainable_names)
+    assert any("lora_s" in name for name in report.trainable_names)
+    assert model.transformer.h[0].attn.c_attn.active_rank("query") == 4

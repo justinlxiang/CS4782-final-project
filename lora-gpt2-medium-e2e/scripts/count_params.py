@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from lora_gpt2.config import load_config
 from lora_gpt2.inject import (
     expected_gpt2_lora_parameters,
+    expected_qv_adalora_lite_parameters,
     expected_qv_lora_parameters,
     inject_lora_into_gpt2,
 )
@@ -26,9 +27,14 @@ def main() -> None:
 
     config = load_config(args.config)
     rank = int(config["lora"]["rank"])
+    method = str(config.get("lora", {}).get("method", "lora")).lower()
     hidden_size = 1024
     num_layers = 24
-    if "rank_pattern" not in config.get("lora", {}):
+    if method == "adalora_lite":
+        expected = expected_qv_adalora_lite_parameters(hidden_size, num_layers, rank)
+        print(f"expected_qv_adalora_lite_parameters={expected}")
+        print(f"rank={rank}")
+    elif "rank_pattern" not in config.get("lora", {}):
         expected = expected_qv_lora_parameters(hidden_size, num_layers, rank)
         print(f"expected_qv_lora_parameters={expected}")
         print(f"rank={rank}")
