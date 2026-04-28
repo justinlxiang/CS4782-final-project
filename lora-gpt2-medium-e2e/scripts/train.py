@@ -152,7 +152,10 @@ def main() -> None:
         num_training_steps=max(1, args.smoke_max_steps if args.smoke_train else total_training_steps),
         warmup_steps=0 if args.smoke_train or args.dry_run else int(config["training"]["warmup_steps"]),
     )
-    rank_allocator = AdaLoRALiteRankAllocator.from_config(config)
+    rank_allocator = AdaLoRALiteRankAllocator.from_config(
+        config,
+        total_training_steps=total_training_steps,
+    )
     params = parameter_report(model)
 
     max_examples = max(args.dry_run_max_examples, args.smoke_max_steps) if args.smoke_train else args.dry_run_max_examples

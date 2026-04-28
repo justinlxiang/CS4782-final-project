@@ -89,6 +89,20 @@ def test_allocator_keeps_global_top_k_components() -> None:
     assert second.active_rank("query") == 0
 
 
+def test_allocator_decays_budget_before_final_target() -> None:
+    allocator = AdaLoRALiteRankAllocator(
+        target_rank_units=192,
+        mask_interval=200,
+        init_warmup_steps=500,
+        final_warmup_steps=500,
+        total_training_steps=30000,
+    )
+
+    assert allocator.budget_at_step(global_step=499, total_components=768) == 768
+    assert allocator.budget_at_step(global_step=600, total_components=768) > 192
+    assert allocator.budget_at_step(global_step=29500, total_components=768) == 192
+
+
 def test_allocator_respects_warmup_before_masking() -> None:
     model = _adalora_model()
     first = model.transformer.h[0].attn.c_attn

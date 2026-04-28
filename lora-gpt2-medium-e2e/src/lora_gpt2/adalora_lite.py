@@ -38,6 +38,8 @@ class AdaLoRALiteRankAllocator:
         target_rank_units: int,
         mask_interval: int = 200,
         init_warmup_steps: int = 500,
+        final_warmup_steps: int = 500,
+        total_training_steps: int | None = None,
         beta: float = 0.85,
         min_rank_per_slice: int = 0,
     ) -> None:
@@ -52,13 +54,21 @@ class AdaLoRALiteRankAllocator:
         self.target_rank_units = int(target_rank_units)
         self.mask_interval = int(mask_interval)
         self.init_warmup_steps = int(init_warmup_steps)
+        self.final_warmup_steps = int(final_warmup_steps)
+        self.total_training_steps = (
+            int(total_training_steps) if total_training_steps is not None else None
+        )
         self.beta = float(beta)
         self.min_rank_per_slice = int(min_rank_per_slice)
         self.ema_scores: dict[RankComponent, float] = {}
         self.last_mask_step: int | None = None
 
     @classmethod
-    def from_config(cls, config: dict[str, Any]) -> "AdaLoRALiteRankAllocator | None":
+    def from_config(
+        cls,
+        config: dict[str, Any],
+        total_training_steps: int | None = None,
+    ) -> "AdaLoRALiteRankAllocator | None":
         """Build an allocator if the config enables AdaLoRA-Lite."""
         lora_config = config.get("lora", {})
         if str(lora_config.get("method", "lora")).lower() != "adalora_lite":
@@ -68,6 +78,8 @@ class AdaLoRALiteRankAllocator:
             target_rank_units=int(adalora_config.get("target_rank_units", 192)),
             mask_interval=int(adalora_config.get("mask_interval", 200)),
             init_warmup_steps=int(adalora_config.get("init_warmup_steps", 500)),
+            final_warmup_steps=int(adalora_config.get("final_warmup_steps", 500)),
+            total_training_steps=total_training_steps,
             beta=float(adalora_config.get("beta", 0.85)),
             min_rank_per_slice=int(adalora_config.get("min_rank_per_slice", 0)),
         )
@@ -122,12 +134,35 @@ class AdaLoRALiteRankAllocator:
             return False
         return global_step % self.mask_interval == 0
 
+    def budget_at_step(self, global_step: int, total_components: int) -> int:
+        """Return the scheduled active-rank budget for a training step.
+
+        We start with every overcomplete component active, then decay toward the
+        final target with the same broad shape as AdaLoRA's cubic scheduler.
+        """
+        if global_step < self.init_warmup_steps:
+            return int(total_components)
+        if self.total_training_steps is None:
+            return self.target_rank_units
+
+        decay_end = max(self.init_warmup_steps, self.total_training_steps - self.final_warmup_steps)
+        if global_step >= decay_end:
+            return self.target_rank_units
+
+        decay_span = max(1, decay_end - self.init_warmup_steps)
+        progress = (global_step - self.init_warmup_steps) / decay_span
+        remaining = (1.0 - progress) ** 3
+        budget = self.target_rank_units + (total_components - self.target_rank_units) * remaining
+        return max(self.target_rank_units, min(total_components, int(round(budget))))
+
     def state_dict(self) -> dict[str, Any]:
         """Return allocator state for training-checkpoint resume."""
         return {
             "target_rank_units": self.target_rank_units,
             "mask_interval": self.mask_interval,
             "init_warmup_steps": self.init_warmup_steps,
+            "final_warmup_steps": self.final_warmup_steps,
+            "total_training_steps": self.total_training_steps,
             "beta": self.beta,
             "min_rank_per_slice": self.min_rank_per_slice,
             "last_mask_step": self.last_mask_step,
@@ -168,8 +203,9 @@ class AdaLoRALiteRankAllocator:
             raise ValueError(
                 f"target_rank_units={self.target_rank_units} exceeds available components={len(components)}."
             )
+        current_budget = self.budget_at_step(global_step, total_components=len(components))
 
-        keep = self._select_components(components)
+        keep = self._select_components(components, target_rank_units=current_budget)
         masks_by_module: dict[tuple[str, str], torch.Tensor] = {}
         modules_by_name = {module_name: module for module_name, module in iter_adalora_lite_modules(model)}
         for component, _module in components:
@@ -193,8 +229,10 @@ class AdaLoRALiteRankAllocator:
     def _select_components(
         self,
         components: list[tuple[RankComponent, AdaLoRAQKVConv1D]],
+        target_rank_units: int | None = None,
     ) -> set[RankComponent]:
         """Select components with deterministic tie-breaking."""
+        target_rank_units = self.target_rank_units if target_rank_units is None else target_rank_units
         sorted_components = sorted(
             (component for component, _module in components),
             key=self._sort_key,
@@ -206,15 +244,15 @@ class AdaLoRALiteRankAllocator:
             for component in sorted_components:
                 by_slice.setdefault((component.module_name, component.slice_name), []).append(component)
             required = self.min_rank_per_slice * len(by_slice)
-            if required > self.target_rank_units:
+            if required > target_rank_units:
                 raise ValueError(
-                    "min_rank_per_slice requires more components than target_rank_units."
+                    "min_rank_per_slice requires more components than the scheduled rank budget."
                 )
             for slice_components in by_slice.values():
                 keep.update(slice_components[: self.min_rank_per_slice])
 
         for component in sorted_components:
-            if len(keep) >= self.target_rank_units:
+            if len(keep) >= target_rank_units:
                 break
             keep.add(component)
         return keep
