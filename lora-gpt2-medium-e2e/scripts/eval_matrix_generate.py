@@ -196,11 +196,16 @@ def main() -> None:
         raise SystemExit("--batch-size must be positive.")
 
     predictions: list[dict[str, str]] = []
+    # mininterval=2.0 keeps the progress bar useful when stdout/stderr are
+    # piped (subprocess from a notebook) instead of attached to a TTY: tqdm
+    # prints a fresh line on each update in non-TTY mode, so without
+    # throttling we'd flood the cell with hundreds of lines per run.
     for batch_start in tqdm(
         range(0, len(prompts), batch_size),
         total=(len(prompts) + batch_size - 1) // batch_size,
         desc=f"{args.variant} on {Path(args.task_config).stem}/{args.split}",
         unit="batch",
+        mininterval=2.0,
     ):
         batch_prompts = prompts[batch_start : batch_start + batch_size]
         batch_contexts = contexts[batch_start : batch_start + batch_size]
