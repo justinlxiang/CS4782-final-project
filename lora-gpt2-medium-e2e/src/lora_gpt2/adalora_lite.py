@@ -105,15 +105,27 @@ class AdaLoRALiteRankAllocator:
         return components
 
     def update_scores(self, model: torch.nn.Module) -> dict[str, Any]:
-        """Update EMA importance scores from current `s.grad` values."""
+        """Update EMA importance scores from current gradient-weight products."""
         observed = 0
         for module_name, module in iter_adalora_lite_modules(model):
             layer_index = int(module.layer_index if module.layer_index is not None else -1)
             for _slice_idx, slice_name in module.enabled_slices:
                 scales = module.lora_s[slice_name]
-                if scales.grad is None:
+                lora_a = module.lora_A[slice_name]
+                lora_b = module.lora_B[slice_name]
+                if scales.grad is None and lora_a.grad is None and lora_b.grad is None:
                     continue
-                raw_scores = (scales.detach() * scales.grad.detach()).abs().float().cpu()
+
+                raw_scores = torch.zeros(module.rank, dtype=torch.float32)
+                if scales.grad is not None:
+                    raw_scores += (scales.detach() * scales.grad.detach()).abs().float().cpu()
+                if lora_a.grad is not None:
+                    a_scores = (lora_a.detach() * lora_a.grad.detach()).abs().mean(dim=1)
+                    raw_scores += a_scores.float().cpu()
+                if lora_b.grad is not None:
+                    b_scores = (lora_b.detach() * lora_b.grad.detach()).abs().mean(dim=0)
+                    raw_scores += b_scores.float().cpu()
+
                 for component_index, raw_score in enumerate(raw_scores.tolist()):
                     component = RankComponent(
                         module_name=module_name,

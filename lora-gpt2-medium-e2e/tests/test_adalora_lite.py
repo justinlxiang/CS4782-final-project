@@ -89,6 +89,34 @@ def test_allocator_keeps_global_top_k_components() -> None:
     assert second.active_rank("query") == 0
 
 
+def test_allocator_scores_a_b_and_scale_sensitivity() -> None:
+    model = _adalora_model()
+    first = model.transformer.h[0].attn.c_attn
+    with torch.no_grad():
+        first.lora_s["query"].copy_(torch.tensor([1.0, 1.0]))
+        first.lora_A["query"].fill_(1.0)
+        first.lora_B["query"].fill_(1.0)
+    first.lora_s["query"].grad = torch.tensor([1.0, 2.0])
+    first.lora_A["query"].grad = torch.stack(
+        [torch.ones_like(first.lora_A["query"][0]), torch.ones_like(first.lora_A["query"][1]) * 3]
+    )
+    first.lora_B["query"].grad = torch.stack(
+        [torch.ones_like(first.lora_B["query"][:, 0]), torch.ones_like(first.lora_B["query"][:, 1]) * 5],
+        dim=1,
+    )
+    allocator = AdaLoRALiteRankAllocator(
+        target_rank_units=1,
+        mask_interval=1,
+        init_warmup_steps=0,
+        beta=0.0,
+    )
+
+    allocator.update_scores(model)
+    allocator.update_masks(model, global_step=1)
+
+    assert torch.allclose(first.lora_mask("query"), torch.tensor([0.0, 1.0]))
+
+
 def test_allocator_decays_budget_before_final_target() -> None:
     allocator = AdaLoRALiteRankAllocator(
         target_rank_units=192,
