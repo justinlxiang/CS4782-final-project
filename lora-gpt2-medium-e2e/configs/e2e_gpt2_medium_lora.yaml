@@ -56,11 +56,11 @@ training:
 
 generation:
   split: test
-  decoder: hf_generate
+  decoder: official_beam
   batch_size: 4
   max_new_tokens: 64
   num_beams: 10
-  length_penalty: 0.8
+  length_penalty: 0.9
   no_repeat_ngram_size: 4
   repetition_penalty: 1.0
   early_stopping: true
