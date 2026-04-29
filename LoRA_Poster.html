@@ -529,7 +529,8 @@
         </div>
         <ul class="bullets dense">
           <li>Don't pick the profile by hand — <b>let the model learn it</b>. Each rank direction has a scalar gate <i>s</i><sub>i</sub>.</li>
-          <li>Score by EMA of |<i>s</i><sub>i</sub> · ∂<i>L</i>/∂<i>s</i><sub>i</sub>| (β = 0.85, refresh every 500 steps); low-importance gates pruned during training until the global budget (192 units) is met.</li>
+          <li><b>EMA = smoothed “typical” importance.</b> Each refresh we measure how much the loss <b>cares</b> about gate <i>i</i> (via |<i>s</i><sub>i</sub>·∂<i>L</i>/∂<i>s</i><sub>i</sub>|). That number <b>jumps around</b> across minibatches. The <b>exponential moving average</b> (β = 0.85) keeps a <b>slow-updating memory</b>: mostly the previous score, plus a slice of the new one — like a rolling, denoised track of which gates consistently matter, not a one-off spike.</li>
+          <li>Every <b>500 steps</b>, rank gates by that EMA and <b>prune the least important</b> along the budget schedule until <b>192 active units</b> remain.</li>
         </ul>
         <div class="eq" style="margin-top:4pt;">Δ<i>W</i> = (α / <i>r</i><sub>max</sub>) · <i>B</i> · diag(<i>s</i>) · <i>A</i></div>
         <div class="figbox">
@@ -604,6 +605,12 @@
           </svg>
         </div>
         <div class="figcap"><b>Fig. 3.</b> AdaLoRA-Lite workflow: start with all <i>r</i><sub>max</sub> rank directions live, score them by sensitivity-smoothed gate magnitude during training, and prune to the target budget along a cubic schedule (Fig. 4).</div>
+        <div class="h3" style="margin-top:5pt;">Why this schedule?</div>
+        <ul class="bullets dense">
+          <li><b>Warmup at <i>r</i><sub>max</sub>.</b> Hold the full gate budget until <i>t</i><sub>init</sub> so EMA importance estimates and activations stabilise — pruning too early drops ranks before we know what matters.</li>
+          <li><b>Cubic decay.</b> <i>b</i>(<i>t</i>) leaves capacity high early, then ramps cuts faster toward <i>t</i><sub>final</sub> — smoother than a hard step or aggressive linear trim, so training does not collapse mid-run.</li>
+          <li><b>Land on budget before eval.</b> Reach the 192 active-unit target while steps remain so the last epochs actually optimise the pruned network, not an over-capacity skeleton.</li>
+        </ul>
         <div class="eq small-eq">
           <i>b</i>(<i>t</i>) = <i>r</i><sub>tgt</sub> + (<i>r</i><sub>max</sub> &minus; <i>r</i><sub>tgt</sub>) · (1 &minus; <i>τ</i>)<sup>3</sup>
           <span style="display:inline-block; padding-left: 18pt; color:#4B5563;">where <i>τ</i> = (<i>t</i> &minus; <i>t</i><sub>init</sub>) / (<i>t</i><sub>final</sub> &minus; <i>t</i><sub>init</sub>)</span>
