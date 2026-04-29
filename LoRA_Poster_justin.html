@@ -41,8 +41,8 @@
     /* ====== HEADER ====== */
     .header {
       display: grid;
-      grid-template-columns: 1.6in 1fr 3.2in;
-      column-gap: 0.35in;
+      grid-template-columns: 1.6in minmax(0, 1fr) 3.72in;
+      column-gap: 0.32in;
       align-items: center;
       border-bottom: 4px solid #B31B1B;
       padding-bottom: 0.18in;
@@ -53,31 +53,32 @@
       height: 1.20in; line-height: 1.05;
     }
     .crest .crest-img { height: 1.10in; width: auto; display: block; }
-    .crest .crest-uni { font: 600 9.5pt/1.1 "Inter", "Helvetica Neue", sans-serif; margin-top: 4pt; text-align: center; opacity: 0.95; letter-spacing: 0.4pt; text-transform: uppercase; color: #1F3A5F;}
+    .crest .crest-uni { font: 600 12pt/1.1 "Inter", "Helvetica Neue", sans-serif; margin-top: 4pt; text-align: center; opacity: 0.95; letter-spacing: 0.4pt; text-transform: uppercase; color: #1F3A5F;}
 
-    .title-block { padding-left: 0.10in; padding-right: 0.10in; }
+    .title-block { padding-left: 0.10in; padding-right: 0.08in; min-width: 0; }
     .title-block .title {
-      font: 800 36pt/1.04 "Inter", "Helvetica Neue", sans-serif;
-      color: #1F3A5F; letter-spacing: -0.85pt; margin: 0;
+      font: 800 42pt/1.06 "Inter", "Helvetica Neue", sans-serif;
+      color: #1F3A5F; letter-spacing: -1.25pt; margin: 0;
       white-space: normal;
       overflow-wrap: break-word;
     }
     .title-block .title em { color: #B1542B; font-style: italic; font-weight: 800; }
     .title-block .title b { color: #1F3A5F; }
     .title-block .subtitle {
-      font: 500 14pt/1.2 "Inter", sans-serif;
+      font: 500 16pt/1.2 "Inter", sans-serif;
       color: #4B5563; margin-top: 6pt;
     }
 
-    .author-block { text-align: right; padding-right: 0.10in; min-width: 0; }
+    .author-block { text-align: right; padding-right: 0.06in; min-width: 0; }
     .author-block .meta {
-      font: 700 11pt/1.2 "Inter", sans-serif; color: #B31B1B; letter-spacing: 0.6pt;
+      font: 700 12.5pt/1.2 "Inter", sans-serif; color: #B31B1B; letter-spacing: 0.55pt;
     }
     .author-block .authors {
-      font: 700 21pt/1.15 "Inter", sans-serif; color: #1F3A5F; margin-top: 2pt;
+      font: 700 20.5pt/1.12 "Inter", sans-serif; color: #1F3A5F; margin-top: 2pt;
+      white-space: nowrap;
     }
     .author-block .affil {
-      font: 500 13pt/1.25 "Inter", sans-serif; color: #4B5563; margin-top: 4pt;
+      font: 500 15pt/1.25 "Inter", sans-serif; color: #4B5563; margin-top: 4pt;
     }
     .author-block .emails-row {
       display: flex;
@@ -88,16 +89,17 @@
       max-width: 100%;
       box-sizing: border-box;
       margin-top: 4pt;
-      font: 500 12pt/1.25 "Inter", "JetBrains Mono", ui-monospace, monospace;
+      font: 500 13.5pt/1.25 "Inter", "JetBrains Mono", ui-monospace, monospace;
       color: #4B5563;
       min-width: 0;
       white-space: nowrap;
     }
 
     /* ====== BODY 4-COLUMN GRID ====== */
+    /* Outer cols narrower (taller text/stack); middle cols wider (charts / Pareto). */
     .body4 {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr) minmax(0, 1.22fr) minmax(0, 0.78fr);
       column-gap: 0.22in;
       row-gap: 0.0in;
       height: 100%;
@@ -119,6 +121,12 @@
       min-width: 0;
     }
     .card.shaded { background: #FAFAF7; }
+    .concl-future {
+      font: 800 13.5pt/1.2 "Inter", sans-serif;
+      color: #374151;
+      margin: 8pt 0 3pt 0;
+      letter-spacing: 0.02em;
+    }
     .card-head {
       display: flex; align-items: baseline; gap: 0.10in;
       border-bottom: 1.5pt solid #1F3A5F;
@@ -126,21 +134,21 @@
       margin-bottom: 6.5pt;
     }
     .card-num {
-      font: 800 14pt/1 "Inter", sans-serif; color: #B31B1B; letter-spacing: 0.5pt;
+      font: 800 16pt/1 "Inter", sans-serif; color: #B31B1B; letter-spacing: 0.5pt;
     }
     .card-title {
-      font: 800 17.5pt/1.1 "Inter", sans-serif; color: #1F3A5F; flex: 1; min-width: 0; letter-spacing: -0.2pt;
+      font: 800 20pt/1.1 "Inter", sans-serif; color: #1F3A5F; flex: 1; min-width: 0; letter-spacing: -0.2pt;
     }
-    .card-title.card-title-sm { font-size: 13pt; }
+    .card-title.card-title-sm { font-size: 15pt; }
     .card-sub {
-      font: 500 11pt/1.15 "Inter", sans-serif; color: #6B7280; margin-left: auto; text-align: right;
+      font: 500 12.5pt/1.15 "Inter", sans-serif; color: #6B7280; margin-left: auto; text-align: right;
     }
 
     /* ====== TYPOGRAPHY UTILS ====== */
     ul.bullets { margin: 0; padding-left: 14pt; list-style: none; }
     ul.bullets li {
       position: relative; padding-left: 12pt;
-      font: 500 12.4pt/1.30 "Inter", sans-serif; color: #1f2937;
+      font: 500 14.5pt/1.30 "Inter", sans-serif; color: #1f2937;
       margin-bottom: 3.5pt;
     }
     ul.bullets li:before {
@@ -150,7 +158,7 @@
     ul.bullets li b { color: #1F3A5F; font-weight: 800; }
     ul.bullets li i { color: #B1542B; font-style: italic; font-weight: 600; }
     ul.bullets li.tight { margin-bottom: 1.5pt; }
-    ul.bullets.dense li { font-size: 11.6pt; line-height: 1.26; margin-bottom: 2.25pt; }
+    ul.bullets.dense li { font-size: 13.5pt; line-height: 1.26; margin-bottom: 2.25pt; }
 
     .hbox {
       background: #FFF6EE;
@@ -160,16 +168,16 @@
       margin-top: 5pt;
     }
     .hbox .h-label {
-      font: 800 10.5pt/1 "Inter", sans-serif; color: #B1542B; letter-spacing: 0.7pt; margin-bottom: 3pt; text-transform: uppercase;
+      font: 800 12pt/1 "Inter", sans-serif; color: #B1542B; letter-spacing: 0.7pt; margin-bottom: 3pt; text-transform: uppercase;
     }
     .hbox .h-text {
-      font: 500 12pt/1.32 "Inter", sans-serif; color: #1f2937;
+      font: 500 14pt/1.32 "Inter", sans-serif; color: #1f2937;
     }
     .hbox .h-text b { color: #1F3A5F; font-weight: 800; }
 
     .meta-tag {
       display: inline-block;
-      font: 700 9.5pt/1 "Inter", sans-serif;
+      font: 700 11pt/1 "Inter", sans-serif;
       color: #1F3A5F; background: #EAF0F7;
       padding: 3pt 7pt; border-radius: 999pt;
       margin-right: 4pt; margin-top: 2pt;
@@ -180,7 +188,7 @@
 
     /* Small in-card heading */
     .h3 {
-      font: 800 11pt/1.1 "Inter", sans-serif; color: #1F3A5F;
+      font: 800 12.5pt/1.1 "Inter", sans-serif; color: #1F3A5F;
       margin: 5pt 0 2.5pt 0; letter-spacing: 0.1pt;
     }
 
@@ -190,16 +198,58 @@
       background: #ffffff; border: 1.2pt solid #D7D9DD; border-radius: 8pt;
       padding: 8pt 6pt 8pt 6pt; text-align: center;
     }
-    .stat .num { font: 800 24pt/1 "Inter", sans-serif; color: #1F3A5F; }
+    .stat .num { font: 800 27.5pt/1 "Inter", sans-serif; color: #1F3A5F; }
     .stat .num.rust { color: #B1542B; }
     .stat .num.gold { color: #8C6B12; }
-    .stat .lbl { font: 600 9pt/1.15 "Inter", sans-serif; color: #4B5563; margin-top: 3pt; }
+    .stat .lbl { font: 600 10.5pt/1.15 "Inter", sans-serif; color: #4B5563; margin-top: 3pt; }
 
     /* Diagram + chart frames */
     .figbox { width: 100%; max-width: 100%; min-width: 0; display: flex; align-items: center; justify-content: center; }
     .figbox svg { width: 100%; max-width: 100%; height: auto; display: block; }
+    /* Narrow outer cols: let diagrams use horizontal padding so SVGs scale taller */
+    .body4 > .col:nth-child(1) .figbox,
+    .body4 > .col:nth-child(4) .figbox {
+      width: calc(100% + 0.28in);
+      max-width: none;
+      margin-left: -0.14in;
+      margin-right: -0.14in;
+    }
+    .body4 > .col:nth-child(1) .figbox svg,
+    .body4 > .col:nth-child(4) .figbox svg {
+      max-width: 100%;
+    }
+    /* Card 11 (col 4): MoLE schematic wider/taller than other col-4 figures */
+    .body4 > .col:nth-child(4) .card:nth-child(2) .figbox {
+      width: calc(100% + 0.46in);
+      margin-left: -0.23in;
+      margin-right: -0.23in;
+    }
+    .body4 > .col:nth-child(4) .card:nth-child(2) .figbox svg {
+      min-height: 3.2in;
+      max-height: 4.6in;
+    }
+    /* Middle columns: charts can grow — extra slack now that layout has freed vertical space */
+    .body4 > .col:nth-child(2) .figbox svg,
+    .body4 > .col:nth-child(3) .figbox svg {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: auto;
+      height: auto;
+      max-width: 97%;
+      max-height: 4.15in;
+    }
+    /* Tight-budget BLEU bar chart: column 2 has slack below AdaLoRA — allow a larger plot */
+    .body4 > .col:nth-child(2) .card.card-tight-budget-chart .figbox svg {
+      max-width: 100%;
+      max-height: 5.55in;
+    }
+    /* AdaLoRA-Lite gate/prune flowchart (first figure in Extension #2 card): extra height */
+    .body4 > .col:nth-child(2) > .qbanner + .card .figbox:first-of-type svg {
+      max-height: 4.95in;
+    }
     .figcap {
-      font: 500 10.5pt/1.27 "Inter", sans-serif; color: #4B5563;
+      font: 500 12pt/1.27 "Inter", sans-serif; color: #4B5563;
       margin-top: 4pt; padding-top: 3.25pt; border-top: 1pt dashed #D7D9DD;
     }
     .figcap b { color: #1F3A5F; font-weight: 800; }
@@ -207,13 +257,13 @@
     /* Table */
     table.metrics {
       border-collapse: collapse; width: 100%;
-      font: 500 10.5pt/1.2 "Inter", sans-serif; color: #1f2937;
+      font: 500 12pt/1.2 "Inter", sans-serif; color: #1f2937;
     }
     table.metrics th, table.metrics td {
       padding: 4.0pt 5pt; text-align: right; border-bottom: 0.6pt solid #E5E7EB;
     }
     table.metrics th {
-      font: 800 10.5pt/1.1 "Inter", sans-serif; color: #ffffff; background: #1F3A5F;
+      font: 800 12pt/1.1 "Inter", sans-serif; color: #ffffff; background: #1F3A5F;
       text-align: right; border-bottom: none;
     }
     table.metrics th:first-child, table.metrics td:first-child { text-align: left; }
@@ -225,8 +275,40 @@
     table.metrics tr.best td:first-child { color: #1F3A5F; }
     table.metrics .star { color: #B1542B; font-weight: 800; }
     table.metrics tfoot td {
-      font: 500 9pt/1.2 "Inter", sans-serif; color: #6B7280; padding-top: 5pt;
+      font: 500 10.5pt/1.2 "Inter", sans-serif; color: #6B7280; padding-top: 5pt;
       text-align: left; border-bottom: none; font-style: italic;
+    }
+    /* Card 7 — E2E: large type, compact footprint (tight padding like before) */
+    .card.card-e2e-table table.metrics {
+      font-size: 14pt;
+      line-height: 1.15;
+    }
+    .card.card-e2e-table table.metrics th,
+    .card.card-e2e-table table.metrics td {
+      padding: 2.5pt 3.5pt;
+    }
+    .card.card-e2e-table table.metrics th {
+      font-size: 14.5pt;
+      padding: 3pt 3.5pt;
+    }
+    .card.card-e2e-table table.metrics tfoot td {
+      font-size: 12.5pt;
+      padding-top: 3pt;
+    }
+    .card.card-e2e-table .figcap {
+      font-size: 13.5pt;
+      margin-top: 3pt;
+      padding-top: 2.5pt;
+    }
+    .card.card-e2e-table .card-head {
+      margin-bottom: 4pt;
+      padding-bottom: 2pt;
+    }
+    .card.card-e2e-table .card-title {
+      font-size: 22pt;
+    }
+    .card.card-e2e-table {
+      padding: 0.12in 0.17in 0.14in 0.17in;
     }
     /* Cross-task MoLE matrix: double header row */
     table.metrics.matrix thead tr:first-child th {
@@ -234,12 +316,67 @@
       border-bottom: 0.6pt solid rgba(255,255,255,0.35);
     }
     table.metrics.matrix thead tr:last-child th {
-      font-size: 9.8pt; padding: 3pt 4pt;
+      font-size: 11.5pt; padding: 3pt 4pt;
     }
     table.metrics.matrix th.row-label { text-align: left; background: #1F3A5F; }
-    table.metrics.matrix td:first-child { font-weight: 700; font-size: 10pt; }
+    table.metrics.matrix td:first-child { font-weight: 700; font-size: 11.5pt; }
     table.metrics.matrix tr.mole td { background: #EAF0F7; }
+    table.metrics.mole-bleu tr.mole td { background: #EAF0F7; }
 
+    /* Card 12 — MoLE BLEU summary (compact 5-col table; room for large type) */
+    .card.card-mole-matrix {
+      min-width: 0;
+      overflow: hidden;
+    }
+    .card.card-mole-matrix table.metrics.mole-bleu {
+      width: 100%;
+      max-width: 100%;
+      table-layout: fixed;
+      font-size: 13.5pt;
+      line-height: 1.35;
+    }
+    .card.card-mole-matrix table.metrics.mole-bleu tbody td:not(:first-child) {
+      font-size: 17pt;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+    .card.card-mole-matrix table.metrics.mole-bleu tbody td:not(:first-child) b {
+      font-weight: 800;
+    }
+    .card.card-mole-matrix table.metrics.mole-bleu th:nth-child(2),
+    .card.card-mole-matrix table.metrics.mole-bleu td:nth-child(2) {
+      white-space: nowrap;
+      overflow-wrap: normal;
+    }
+    .card.card-mole-matrix table.metrics.mole-bleu th,
+    .card.card-mole-matrix table.metrics.mole-bleu td {
+      padding: 8pt 6pt;
+      overflow-wrap: anywhere;
+      vertical-align: middle;
+    }
+    .card.card-mole-matrix table.metrics.mole-bleu th {
+      font-size: 13pt;
+    }
+    .card.card-mole-matrix table.metrics.mole-bleu td:first-child {
+      font-size: 13pt;
+      line-height: 1.25;
+    }
+    .card.card-mole-matrix table.metrics.mole-bleu tfoot td {
+      font-size: 11.75pt;
+      line-height: 1.35;
+      padding: 10pt 6pt 4pt 6pt;
+      color: #6B7280;
+    }
+    .card.card-mole-matrix ul.bullets {
+      font-size: 13pt;
+      line-height: 1.35;
+      margin-top: 10pt;
+    }
+    .card.card-mole-matrix .figcap {
+      font-size: 13.5pt;
+      margin-top: 8pt;
+    }
     /* Footer */
     .footer {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -247,15 +384,15 @@
       border-top: 4px solid #B31B1B; padding-top: 0.10in;
     }
     .refs {
-      font: 500 7.4pt/1.18 "Inter", sans-serif; color: #4B5563;
+      font: 500 8.5pt/1.18 "Inter", sans-serif; color: #4B5563;
     }
     .refs b { color: #1F3A5F; font-weight: 800; }
     .refs .ref-row { margin-bottom: 1.6pt; padding-left: 12pt; text-indent: -12pt; }
     /* Footer-only refs row is a single-line credit, override the indent there */
-    .footer .refs { font-size: 11pt; padding-left: 0; text-indent: 0; }
+    .footer .refs { font-size: 12.5pt; padding-left: 0; text-indent: 0; }
     .footer .refs .ref-row { padding-left: 0; text-indent: 0; }
     .footer .right {
-      text-align: right; font: 600 10pt/1.3 "Inter", sans-serif; color: #6B7280;
+      text-align: right; font: 600 11.5pt/1.3 "Inter", sans-serif; color: #6B7280;
     }
     .footer .right .gh { color: #1F3A5F; font-weight: 800; }
     .footer .right .course { color: #B31B1B; font-weight: 800; letter-spacing: 0.6pt; }
@@ -273,21 +410,21 @@
     .qual-row { padding: 6pt 0; border-bottom: 1pt dashed #E5E7EB; }
     .qual-row:last-of-type { border-bottom: none; }
     .qual-mr {
-      font: 500 11pt/1.32 "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace;
+      font: 500 12.5pt/1.32 "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace;
       color: #111827; background: #F4F1E8; padding: 5pt 8pt; border-radius: 4pt;
       margin-bottom: 5pt; word-break: break-word;
     }
     .qual-mr b { color: #B31B1B; font-weight: 800; font-family: "Inter", sans-serif; letter-spacing: 0.4pt; }
     .qual-mr i { color: #1F3A5F; font-style: italic; font-weight: 700; }
     .qual-line {
-      font: 500 9pt/1.32 "Inter", sans-serif; color: #1f2937;
+      font: 500 10.5pt/1.32 "Inter", sans-serif; color: #1f2937;
       margin-bottom: 3pt; padding-left: 0;
       white-space: normal;
       overflow-wrap: break-word;
     }
     .qual-tag {
       display: inline-block;
-      font: 800 7.5pt/1.1 "Inter", sans-serif; letter-spacing: 0.2pt;
+      font: 800 8.5pt/1.1 "Inter", sans-serif; letter-spacing: 0.2pt;
       padding: 1pt 4pt; border-radius: 3pt;
       margin-right: 4pt; vertical-align: 1pt; text-transform: uppercase;
     }
@@ -303,25 +440,122 @@
       font-weight: 700;
     }
     .qual-note {
-      font: 500 10.5pt/1.3 "Inter", sans-serif; color: #4B5563;
+      font: 500 12pt/1.3 "Inter", sans-serif; color: #4B5563;
       font-style: italic; padding-left: 116pt;
     }
 
     .legend {
       display: flex; flex-wrap: wrap; gap: 10pt 14pt;
-      font: 600 10.5pt/1.1 "Inter", sans-serif; color: #1f2937;
+      font: 600 12pt/1.1 "Inter", sans-serif; color: #1f2937;
       margin-top: 2pt;
     }
 
+    /* Question banners — Q1 navy; Q2/Q3 match graph rust & gold */
+    .qbanner {
+      border-radius: 9pt;
+      padding: 9pt 14pt 10pt 14pt;
+      box-shadow: 0 2pt 6pt rgba(31,58,95,0.14);
+    }
+    .qbanner-q1 {
+      background: #1F3A5F;
+      color: #ffffff;
+      box-shadow: 0 2pt 6pt rgba(31, 58, 95, 0.22);
+    }
+    .qbanner-q2 {
+      background: #B1542B;
+      color: #ffffff;
+      box-shadow: 0 2pt 6pt rgba(177, 84, 43, 0.28);
+    }
+    .qbanner-q3 {
+      background: #C49A3A;
+      color: #ffffff;
+      box-shadow: 0 2pt 6pt rgba(196, 154, 58, 0.28);
+    }
+    .qbanner-q3 .qb-label,
+    .qbanner-q3 .qb-text,
+    .qbanner-q3 .qb-sub {
+      color: #ffffff;
+    }
+    .qbanner-q3 .qb-sub {
+      opacity: 0.92;
+    }
+    .qbanner .qb-label {
+      font: 800 12.5pt/1 "Inter", sans-serif;
+      letter-spacing: 2pt;
+      text-transform: uppercase;
+      opacity: 0.92;
+      margin-bottom: 4pt;
+    }
+    .qbanner .qb-text {
+      font: 700 16.5pt/1.22 "Inter", sans-serif;
+      letter-spacing: -0.2pt;
+    }
+    .qbanner .qb-sub {
+      font: 500 12pt/1.25 "Inter", sans-serif;
+      opacity: 0.88;
+      margin-top: 4pt;
+    }
+
+    /* Column 2: results band above BLEU / budget chart (section 6) */
+    .col-results-header {
+      width: 100%;
+      margin: 12pt 0 14pt 0;
+      padding-top: 4pt;
+    }
+    .col-results-header-title {
+      font: 800 24pt/1.2 "Inter", sans-serif;
+      letter-spacing: -0.03em;
+      text-transform: none;
+      color: #B1542B;
+      margin: 0;
+      padding: 0 0 8pt 0;
+    }
+    .col-results-header-line {
+      display: block;
+      width: 100%;
+      height: 0;
+      border: none;
+      border-bottom: 3.5pt solid #B1542B;
+      opacity: 0.88;
+      margin: 0;
+    }
+
+
+    /* Compact 3-row methodology table (Model / Adapters / Train) */
+    table.method {
+      width: 100%; border-collapse: collapse; margin: 2pt 0 4pt 0;
+      font: 500 13pt/1.25 "Inter", sans-serif; color: #1f2937;
+    }
+    table.method th, table.method td {
+      padding: 5pt 8pt; border-bottom: 0.6pt solid #E5E7EB; vertical-align: top;
+    }
+    table.method tr:last-child th, table.method tr:last-child td { border-bottom: none; }
+    table.method th {
+      width: 24%; text-align: left;
+      font: 800 13pt/1.2 "Inter", sans-serif; color: #1F3A5F;
+      background: #F2F5F9;
+    }
+    table.method td { color: #1f2937; }
+    table.method td b { color: #1F3A5F; font-weight: 800; }
+
+    /* Tight inline lesson callout used in figure-result cards */
+    .lesson {
+      margin-top: 5pt;
+      font: 600 13pt/1.3 "Inter", sans-serif; color: #1F3A5F;
+      background: #FBEFE3; border-left: 3.5pt solid #B1542B;
+      padding: 5pt 9pt; border-radius: 4pt;
+    }
+    .lesson b { color: #B1542B; font-weight: 800; }
+
     /* Equation */
     .eq {
-      font: 500 13pt/1.33 "Latin Modern Math", "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+      font: 500 15pt/1.33 "Latin Modern Math", "Cambria Math", "STIX Two Math", "Times New Roman", serif;
       color: #1F3A5F; text-align: center; padding: 1.5pt 0 4.5pt 0;
       white-space: normal; overflow-wrap: break-word;
     }
-    .eq.small-eq { font-size: 11pt; }
+    .eq.small-eq { font-size: 12.5pt; }
     .eq i { font-style: italic; }
-    .eq small { font-size: 10pt; color: #4B5563; }
+    .eq small { font-size: 11.5pt; color: #4B5563; }
   </style>
 </head>
 <body>
@@ -334,7 +568,7 @@
       <img class="crest-img" src="Cornell_University_seal.svg.png" alt="Cornell University seal">
     </div>
     <div class="title-block">
-      <div class="title">Rank Where It Counts: Reproducing &amp; Extending LoRA on GPT-2 Medium with <em>Depth-Weighted LoRA</em>, <em>AdaLoRA-Lite</em> &amp; <em>MoLE</em></div>
+      <div class="title">Rank Where It Counts: Budgeting LoRA on GPT-2 Medium with <em>Depth-Weighted LoRA</em>, <em>AdaLoRA-Lite</em> &amp; <em>MoLE</em></div>
     </div>
     <div class="author-block">
       <div class="meta">CS 4782 · FINAL PROJECT</div>
@@ -351,24 +585,32 @@
     <!-- ============== COLUMN 1 ============== -->
     <div class="col">
 
-      <!-- CARD 1: MOTIVATION + HYPOTHESIS + TARGETED RESULT -->
+      <!-- CARD 1: WHY CARE? + HEADLINE NUMBERS + OUR QUESTION -->
       <div class="card">
         <div class="card-head">
           <div class="card-num">1</div>
-          <div class="card-title">Motivation, Hypothesis &amp; Targeted Result</div>
+          <div class="card-title">Why Care?</div>
         </div>
-        <ul class="bullets">
-          <li><b>GPT-2 Medium (354M)</b> gives strong zero-shot LM quality, but <b>full fine-tuning</b> updates every weight and stores a fresh 354M checkpoint <b>per task</b> — costly to train, store, and serve.</li>
-          <li><b>Adapters</b> (Houlsby et al. 2019) cut trainable params via bottleneck layers but add inference latency; <b>prefix-tuning</b> (Li &amp; Liang 2021) burns context length and is finicky to optimise.</li>
-          <li><b>LoRA</b> (Hu et al. 2021) freezes <i>W</i>₀ and learns a <b>low-rank update</b> Δ<i>W</i> = <i>BA</i> (rank <i>r</i> ≪ <i>d</i>) on attention <i>Q</i> and <i>V</i>. At inference Δ<i>W</i> folds into <i>W</i>₀ → <b>zero added latency</b>.</li>
-          <li><b>Targeted result (Hu et al. 2021, Table 4):</b> on E2E NLG, GPT-2 Medium + LoRA at <b><i>r</i> = 4</b> on Q,V matches full fine-tuning at <b>≈ 0.39M trainable params</b> (~1000× reduction): <b>BLEU 68.9 / ROUGE-L 71.3</b> vs. 68.2 / 71.0 for full FT.</li>
-          <li><b>Open question.</b> LoRA gives every layer the <i>same</i> rank, yet transformer information specialises with depth. Can we redistribute the <i>same</i> budget for free gains — by hand (<b>Depth-Weighted LoRA</b>) or learned (<b>AdaLoRA-Lite</b>)?</li>
-          <li><b>Concrete goal.</b> Push the Pareto frontier: <b>beat the uniform <i>r</i>=16 baseline</b> (1.57M trainable params, BLEU 68.21) using a strictly <b>smaller</b> budget — ideally <b>0.39M</b> (4× fewer params, the uniform <i>r</i>=4 / paper-LoRA size).</li>
-          <li><b>Bonus question.</b> Single-task LoRA pays a &ldquo;pick the right adapter&rdquo; tax at deployment. Can a per-layer <b>router</b> mix <i>N</i> frozen task-specific LoRAs and serve them all from one base? &mdash; <b>Mixture-of-LoRA-Experts (MoLE)</b> (Wu et al. 2024).</li>
+        <ul class="bullets dense">
+          <li>Fine-tuning a 354M-param transformer used to mean storing a fresh 354M-param checkpoint <b>per task</b>. <b>LoRA</b> (Hu '21) trains tiny rank-<i>r</i> add-ons next to frozen weights instead. On E2E, GPT-2 Medium hits paper-LoRA quality at:</li>
         </ul>
+        <div class="stat-row" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="stat">
+            <div class="num rust">0.39M</div>
+            <div class="lbl">trainable params<br>(~1000&times; less)</div>
+          </div>
+          <div class="stat">
+            <div class="num">68.9</div>
+            <div class="lbl">BLEU on E2E<br>(matches full FT)</div>
+          </div>
+          <div class="stat">
+            <div class="num gold">~0</div>
+            <div class="lbl">extra latency<br>at inference</div>
+          </div>
+        </div>
         <div class="hbox">
-          <div class="h-label">Hypothesis</div>
-          <div class="h-text">If transformer layers specialise with depth, then <b>redistributing the same total rank budget</b> across layers — either with a hand-designed late-layer-heavy schedule (<b>Depth-Weighted LoRA</b>) or an importance-pruned learned allocation (<b>AdaLoRA-Lite</b>) — should <b>match or exceed uniform LoRA at equal (or smaller) trainable-parameter cost</b>, and in particular outperform uniform <i>r</i>=16 with 4× fewer parameters.</div>
+          <div class="h-label">Our Question</div>
+          <div class="h-text">LoRA spends the <b>same rank on every layer</b>. But layers don't all do the same thing &mdash; <b>so should the budget?</b> We try two ways to redistribute it (one by hand, one learned), plus a bonus: one router, three task LoRAs, one served model.</div>
         </div>
       </div>
 
@@ -447,38 +689,35 @@
             <text x="678" y="166" text-anchor="start" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="22" fill="#111827">h</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 1.</b> LoRA injects rank-<i>r</i> adapters in parallel with frozen <i>Q</i> and <i>V</i> projections. <i>A</i> is Kaiming-initialised; <i>B</i> = 0, so Δ<i>W</i> = 0 at start (model recovers exactly to GPT-2 Medium).</div>
+        <div class="figcap"><b>Fig. 1.</b> Rank-<i>r</i> adapters parallel to frozen Q/V; <i>A</i> ~ <i>N</i>(0,σ²), <i>B</i>=0 at init.</div>
       </div>
 
-      <!-- CARD 3: SETUP & METHODOLOGY -->
+      <!-- CARD 3: SETUP & DATA -->
       <div class="card">
         <div class="card-head">
           <div class="card-num">3</div>
-          <div class="card-title">Setup &amp; Methodology</div>
+          <div class="card-title">Three Datasets, Same Idea</div>
         </div>
-        <div class="h3">Implementation</div>
-        <ul class="bullets dense">
-          <li>From-scratch <b>PyTorch LoRA</b> — no <code>peft</code>, no <code>loralib</code>.</li>
-          <li>GPT-2 Medium's fused QKV split into independent Q,K,V slices so adapters target <b>Q and V only</b>, matching the paper's rank-deployment ablation.</li>
+        <div class="qual-mr" style="margin-bottom: 6pt;">name : <i>Blue Spice</i> | type : coffee shop | rating : 5/5 | near : Crowne Plaza Hotel</div>
+        <div style="font: 500 13pt/1.3 'Inter',sans-serif; color:#1f2937; margin-bottom: 6pt; padding-left: 8pt; border-left: 3pt solid #C49A3A;">"Blue Spice is a coffee shop near Crowne Plaza Hotel with a 5-out-of-5 rating."</div>
+        <table class="method">
+          <tr><th>Model</th><td>GPT-2 Medium (354M, frozen)</td></tr>
+          <tr><th>Adapters on</th><td>attention <b>Q, V</b> only</td></tr>
+          <tr><th>Train</th><td>5 epochs, AdamW, fp16, 1&times;A100</td></tr>
+        </table>
+        <ul class="bullets dense" style="margin-top: 4pt;">
+          <li><b>E2E.</b> Restaurant attributes &rarr; description (42K pairs).</li>
+          <li><b>DART.</b> Open-domain triples (Wikipedia, knowledge graphs) &rarr; sentence.</li>
+          <li><b>WebNLG.</b> RDF triples &rarr; multi-sentence paragraph.</li>
+          <li><b>Runs:</b> 5 uniform <i>r</i>&isin;{1,2,4,8,16} &middot; 3 late-ramp &middot; 3 r=4 ablations &middot; 3 AdaLoRA-Lite <i>r</i><sub>max</sub>&isin;{6,8,16} &middot; all hit 192 active rank units.</li>
         </ul>
-        <div class="h3">Data — E2E NLG Challenge</div>
-        <ul class="bullets dense">
-          <li>42K train / 4 693 test pairs; structured restaurant <i>meaning representation</i> → natural-language description.</li>
-        </ul>
-        <div class="h3">Training</div>
-        <ul class="bullets dense">
-          <li>AdamW (β=0.9,0.999), lr 2e-4 linear decay, 500 warmup steps, weight decay 0.01.</li>
-          <li>Batch 8, 5 epochs, fp16, ≈ 26K steps per run on a single A100. LoRA: α=32, dropout 0.1, on Q and V.</li>
-        </ul>
-        <div class="h3">Generation — official beam decoding</div>
-        <ul class="bullets dense">
-          <li>Beam = 10, length penalty 0.9, <code>no_repeat_ngram_size</code> = 4, max-new-tokens 64 — paper's E2E config.</li>
-        </ul>
-        <div class="h3">Metrics &amp; run inventory</div>
-        <ul class="bullets dense">
-          <li>Official <code>e2e-metrics</code>: <b>BLEU-4</b>, <b>NIST</b>, <b>METEOR</b>, <b>ROUGE-L</b>, <b>CIDEr</b> (TF-IDF weighted).</li>
-          <li>5 uniform ranks <i>r</i> ∈ {1, 2, 4, 8, 16} · 3 late-ramp budgets <i>r</i> ∈ {4, 8, 16} · 3 r=4 ablations · 3 AdaLoRA-Lite settings <i>r</i><sub>max</sub> ∈ {6, 8, 16}, all targeting 192 active rank units.</li>
-        </ul>
+      </div>
+
+      <!-- QUESTION 1 BANNER -->
+      <div class="qbanner qbanner-q1">
+        <div class="qb-label">Question 1</div>
+        <div class="qb-text">If transformer layers specialise with depth, should later layers get more rank and early layers less?</div>
+        <div class="qb-sub">Two ways to redistribute the same parameter budget: by hand (Card 4) or learned (Card 5).</div>
       </div>
 
       <!-- CARD 4: BUDGET LORA — late-ramp diagram -->
@@ -488,11 +727,10 @@
           <div class="card-title">Extension #1 — Depth-Weighted LoRA (Late-Ramp)</div>
         </div>
         <ul class="bullets dense">
-          <li>Hand-designed allocation with the <b>same total rank budget</b> as the paper (192 units across 48 Q/V slices).</li>
-          <li>Redistributed by <b>depth</b> — small / early, larger / late. Same trainable-parameter cost as uniform <i>r</i> = 4.</li>
+          <li>Same 192-unit budget as uniform <i>r</i>=4, redistributed by <b>depth</b>: small/early, larger/late.</li>
         </ul>
         <div class="figbox" style="margin-top:4pt;">
-          <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" style="max-width:80%;">
+          <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
             <!-- group titles -->
             <text x="160" y="22" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="20" fill="#1F3A5F">UNIFORM (paper)</text>
             <text x="540" y="22" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="20" fill="#B1542B">LATE-RAMP (ours)</text>
@@ -539,14 +777,20 @@
             <text x="540" y="338" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="14" fill="#4B5563">total = 192 rank units (re-spent)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 2.</b> Same total rank budget, redistributed: small/early, larger/late. Three other allocations also tested (early-ramp, query-heavy, value-heavy) — see Fig. 9.</div>
+        <div class="figcap"><b>Fig. 2.</b> Same total rank, redistributed by depth.</div>
       </div>
 
     </div><!-- /col 1 -->
 
-
     <!-- ============== COLUMN 2 ============== -->
     <div class="col">
+
+      <!-- QUESTION 2 BANNER (AdaLoRA-Lite) -->
+      <div class="qbanner qbanner-q2">
+        <div class="qb-label">Question 2</div>
+        <div class="qb-text">If we allow many rank directions but keep pruning by sensitivity, can we match a hand-designed depth profile at the same active budget?</div>
+        <div class="qb-sub">Complements Q1: same 192-unit cap; here gates and pruning learn the profile instead of prescribing late-ramp.</div>
+      </div>
 
       <!-- CARD 5: ADALORA-LITE — workflow + cubic schedule -->
       <div class="card">
@@ -555,89 +799,77 @@
           <div class="card-title">Extension #2 — AdaLoRA-Lite</div>
         </div>
         <ul class="bullets dense">
-          <li>Don't pick the profile by hand — <b>let the model learn it</b>. Each rank direction has a scalar gate <i>s</i><sub>i</sub>.</li>
-          <li><b>EMA = smoothed “typical” importance.</b> Each refresh we measure how much the loss <b>cares</b> about gate <i>i</i> (via |<i>s</i><sub>i</sub>·∂<i>L</i>/∂<i>s</i><sub>i</sub>|). That number <b>jumps around</b> across minibatches. The <b>exponential moving average</b> (β = 0.85) keeps a <b>slow-updating memory</b>: mostly the previous score, plus a slice of the new one — like a rolling, denoised track of which gates consistently matter, not a one-off spike.</li>
-          <li>Every <b>500 steps</b>, rank gates by that EMA and <b>prune the least important</b> along the budget schedule until <b>192 active units</b> remain.</li>
+          <li>Each rank direction gets a learnable gate <i>s</i><sub>i</sub>; let the model learn the profile.</li>
+          <li>Every <b>500 steps</b>, rank gates by EMA(|<i>s</i><sub>i</sub>·∂<i>L</i>/∂<i>s</i><sub>i</sub>|) (β=0.85) and prune to <b>192 active units</b>.</li>
         </ul>
         <div class="eq" style="margin-top:4pt;">Δ<i>W</i> = (α / <i>r</i><sub>max</sub>) · <i>B</i> · diag(<i>s</i>) · <i>A</i></div>
         <div class="figbox">
-          <svg viewBox="0 0 760 230" xmlns="http://www.w3.org/2000/svg">
-            <!-- titles -->
-            <text x="100" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">1 · START · all gates active</text>
-            <text x="380" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">2 · SCORE · EMA sensitivity</text>
-            <text x="660" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">3 · PRUNE · keep top-K</text>
+          <svg viewBox="0 0 760 278" xmlns="http://www.w3.org/2000/svg">
+            <!-- taller flow: step labels, h=96 boxes, larger gate row, more caption/legend space -->
+            <text x="100" y="26" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1F3A5F">1 · START · all gates active</text>
+            <text x="380" y="26" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1F3A5F">2 · SCORE · EMA sensitivity</text>
+            <text x="660" y="26" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1F3A5F">3 · PRUNE · keep top-K</text>
 
             <!-- box 1 -->
-            <rect x="20" y="40" width="180" height="78" rx="8" fill="#ffffff" stroke="#1F3A5F" stroke-width="2"/>
-            <text x="110" y="83" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="22" fill="#1F3A5F">B · diag(s) · A</text>
-            <text x="110" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#4B5563">all r<tspan font-size="9" dy="2">max</tspan><tspan dy="-2"> directions live</tspan></text>
-            <!-- 6 colored gate squares under box 1 -->
+            <rect x="20" y="44" width="180" height="96" rx="8" fill="#ffffff" stroke="#1F3A5F" stroke-width="2"/>
+            <text x="110" y="94" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#1F3A5F">B · diag(s) · A</text>
+            <text x="110" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">all r<tspan font-size="9" dy="2">max</tspan><tspan dy="-2"> directions live</tspan></text>
             <g>
-              <rect x="30"  y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="55"  y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="80"  y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="105" y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="130" y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="155" y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="180" y="135" width="20" height="20" fill="#B1542B"/>
+              <rect x="26"  y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="50"  y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="74"  y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="98"  y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="122" y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="146" y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="170" y="158" width="22" height="22" fill="#B1542B"/>
             </g>
 
-            <!-- arrow 1 -->
-            <line x1="210" y1="79" x2="278" y2="79" stroke="#4B5563" stroke-width="3"/>
-            <polygon points="274,72 290,79 274,86" fill="#4B5563"/>
+            <line x1="210" y1="92" x2="278" y2="92" stroke="#4B5563" stroke-width="3"/>
+            <polygon points="274,85 292,92 274,99" fill="#4B5563"/>
 
             <!-- box 2 -->
-            <rect x="290" y="40" width="180" height="78" rx="8" fill="#ffffff" stroke="#1F3A5F" stroke-width="2"/>
-            <text x="380" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">EMA( |s<tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> · ∂L/∂s</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2">|</tspan><tspan x="380" dy="15">+ mean row</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> |A · ∂L/∂A|</tspan><tspan x="380" dy="15">+ mean col</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> |B · ∂L/∂B| )</tspan></text>
-            <text x="380" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#4B5563">β = 0.85 · every 500 steps</text>
+            <rect x="290" y="44" width="180" height="96" rx="8" fill="#ffffff" stroke="#1F3A5F" stroke-width="2"/>
+            <text x="380" y="64" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12.5" fill="#1F3A5F">EMA( |s<tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> · ∂L/∂s</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2">|</tspan><tspan x="380" dy="15">+ mean row</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> |A · ∂L/∂A|</tspan><tspan x="380" dy="15">+ mean col</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> |B · ∂L/∂B| )</tspan></text>
+            <text x="380" y="124" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">β = 0.85 · every 500 steps</text>
 
             <g>
-              <rect x="300"  y="135" width="20" height="20" fill="#1F3A5F"/>
-              <rect x="325"  y="135" width="20" height="20" fill="#1F3A5F" opacity="0.30"/>
-              <rect x="350"  y="135" width="20" height="20" fill="#1F3A5F"/>
-              <rect x="375"  y="135" width="20" height="20" fill="#1F3A5F" opacity="0.45"/>
-              <rect x="400"  y="135" width="20" height="20" fill="#1F3A5F"/>
-              <rect x="425"  y="135" width="20" height="20" fill="#1F3A5F" opacity="0.75"/>
-              <rect x="450"  y="135" width="20" height="20" fill="#1F3A5F" opacity="0.30"/>
+              <rect x="292" y="158" width="22" height="22" fill="#1F3A5F"/>
+              <rect x="318" y="158" width="22" height="22" fill="#1F3A5F" opacity="0.30"/>
+              <rect x="344" y="158" width="22" height="22" fill="#1F3A5F"/>
+              <rect x="370" y="158" width="22" height="22" fill="#1F3A5F" opacity="0.45"/>
+              <rect x="396" y="158" width="22" height="22" fill="#1F3A5F"/>
+              <rect x="422" y="158" width="22" height="22" fill="#1F3A5F" opacity="0.75"/>
+              <rect x="448" y="158" width="22" height="22" fill="#1F3A5F" opacity="0.30"/>
             </g>
 
-            <!-- arrow 2 -->
-            <line x1="478" y1="79" x2="548" y2="79" stroke="#4B5563" stroke-width="3"/>
-            <polygon points="544,72 560,79 544,86" fill="#4B5563"/>
+            <line x1="478" y1="92" x2="548" y2="92" stroke="#4B5563" stroke-width="3"/>
+            <polygon points="544,85 562,92 544,99" fill="#4B5563"/>
 
             <!-- box 3 -->
-            <rect x="560" y="40" width="180" height="78" rx="8" fill="#ffffff" stroke="#B1542B" stroke-width="2.5"/>
-            <text x="650" y="83" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="22" fill="#B1542B">B · diag(s′) · A</text>
-            <text x="650" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#4B5563">target = 192 active rank units</text>
+            <rect x="560" y="44" width="180" height="96" rx="8" fill="#ffffff" stroke="#B1542B" stroke-width="2.5"/>
+            <text x="650" y="94" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#B1542B">B · diag(s′) · A</text>
+            <text x="650" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">target = 192 active rank units</text>
 
             <g>
-              <rect x="570" y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="595" y="135" width="20" height="20" fill="#E5E7EB"/>
-              <rect x="620" y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="645" y="135" width="20" height="20" fill="#E5E7EB"/>
-              <rect x="670" y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="695" y="135" width="20" height="20" fill="#B1542B"/>
-              <rect x="720" y="135" width="20" height="20" fill="#E5E7EB"/>
+              <rect x="562" y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="588" y="158" width="22" height="22" fill="#E5E7EB"/>
+              <rect x="614" y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="640" y="158" width="22" height="22" fill="#E5E7EB"/>
+              <rect x="666" y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="692" y="158" width="22" height="22" fill="#B1542B"/>
+              <rect x="718" y="158" width="22" height="22" fill="#E5E7EB"/>
             </g>
 
-            <!-- caption row -->
-            <text x="110" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">all r<tspan font-size="9" dy="2">max</tspan><tspan dy="-2"> = 6 gates active</tspan></text>
-            <text x="380" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">running importance estimate</text>
-            <text x="650" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">low-importance gates dropped</text>
+            <text x="110" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#4B5563">all r<tspan font-size="9" dy="2">max</tspan><tspan dy="-2"> = 6 gates active</tspan></text>
+            <text x="380" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#4B5563">running importance estimate</text>
+            <text x="650" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#4B5563">low-importance gates dropped</text>
 
-            <!-- legend bottom -->
-            <rect x="220" y="200" width="14" height="14" fill="#B1542B"/><text x="240" y="212" font-family="Inter, sans-serif" font-size="11" fill="#1f2937">active gate</text>
-            <rect x="340" y="200" width="14" height="14" fill="#E5E7EB"/><text x="360" y="212" font-family="Inter, sans-serif" font-size="11" fill="#1f2937">pruned gate</text>
-            <rect x="460" y="200" width="14" height="14" fill="#1F3A5F"/><text x="480" y="212" font-family="Inter, sans-serif" font-size="11" fill="#1f2937">importance score (darker = larger)</text>
+            <rect x="212" y="228" width="15" height="15" fill="#B1542B"/><text x="234" y="240" font-family="Inter, sans-serif" font-size="12" fill="#1f2937">active gate</text>
+            <rect x="332" y="228" width="15" height="15" fill="#E5E7EB"/><text x="354" y="240" font-family="Inter, sans-serif" font-size="12" fill="#1f2937">pruned gate</text>
+            <rect x="452" y="228" width="15" height="15" fill="#1F3A5F"/><text x="474" y="240" font-family="Inter, sans-serif" font-size="12" fill="#1f2937">importance score (darker = larger)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 3.</b> AdaLoRA-Lite workflow: start with all <i>r</i><sub>max</sub> rank directions live, score them by sensitivity-smoothed gate magnitude during training, and prune to the target budget along a cubic schedule (Fig. 4).</div>
-        <div class="h3" style="margin-top:5pt;">Why this schedule?</div>
-        <ul class="bullets dense">
-          <li><b>Warmup at <i>r</i><sub>max</sub>.</b> Hold the full gate budget until <i>t</i><sub>init</sub> so EMA importance estimates and activations stabilise — pruning too early drops ranks before we know what matters.</li>
-          <li><b>Cubic decay.</b> <i>b</i>(<i>t</i>) leaves capacity high early, then ramps cuts faster toward <i>t</i><sub>final</sub> — smoother than a hard step or aggressive linear trim, so training does not collapse mid-run.</li>
-          <li><b>Land on budget before eval.</b> Reach the 192 active-unit target while steps remain so the last epochs actually optimise the pruned network, not an over-capacity skeleton.</li>
-        </ul>
+        <div class="figcap"><b>Fig. 3.</b> Score gates, prune to budget along cubic schedule.</div>
         <div class="figbox">
           <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg">
             <!-- axes -->
@@ -680,458 +912,82 @@
             <text x="380" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#B1542B">PRUNE WINDOW · cubic decay</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 4.</b> Start at full <i>r</i><sub>max</sub>, smoothly cool to the target rank via a cubic schedule, prune by sensitivity-smoothed gate magnitude. Best run: t_init = 10K, t_final = 21K of 26K total steps.</div>
+        <div class="figcap"><b>Fig. 4.</b> Cubic decay from <i>r</i><sub>max</sub> to 192. Best: t_init=10K, t_final=21K of 26K.</div>
       </div>
 
-      <!-- CARD 6: MoLE — Mixture-of-LoRA Experts -->
-      <div class="card">
+      <div class="col-results-header">
+        <h2 class="col-results-header-title">Results</h2>
+        <span class="col-results-header-line" aria-hidden="true"></span>
+      </div>
+
+      <!-- CARD 6: WHERE TO SPEND A TIGHT BUDGET? (+ AdaLoRA-Lite BLEU) -->
+      <div class="card card-tight-budget-chart">
         <div class="card-head">
           <div class="card-num">6</div>
-          <div class="card-title">Extension #3 &mdash; Mixture-of-LoRA Experts (MoLE)</div>
+          <div class="card-title">Where to Spend a Tight Budget?</div>
+          <div class="card-sub">r=4 projection ablations · + AdaLoRA-Lite r<sub>max</sub>=6 (0.39M) · BLEU on E2E</div>
         </div>
-        <ul class="bullets dense">
-          <li>Instead of swapping adapters at inference, a tiny <b>per-layer router</b> picks among <i>N</i> frozen single-task LoRAs <b>at every token</b>.</li>
-          <li>Three <b>frozen</b> experts: E2E, DART, and WebNLG rank-4 Q/V LoRAs (same checkpoints as our paper-aligned runs). <b>Only</b> the router trains: one <code>Linear</code>(<i>d</i> &rarr; <i>N</i>) per layer &asymp; <b>0.07M</b> total (24&times;1 024&times;3 + bias).</li>
-          <li><b>Top-1 routing (Switch-style):</b> per token, pick argmax expert <i>k</i> = argmax<sub><i>i</i></sub> <i>g<sub>i</sub></i>(<i>x</i>); contribute only <i>g<sub>k</sub></i> &middot; <i>B<sub>k</sub></i>(<i>A<sub>k</sub>x</i>) so gradients still flow through the gate via the softmax probability. Config <code>mole.routing_mode: top1</code>.</li>
-          <li>Router optimised on the <b>concatenation</b> of three processed train sets (2 epochs, AdamW lr 5e-4).</li>
-        </ul>
-        <div class="eq small-eq">&Delta;<i>h</i>(<i>x</i>) = scaling &middot; gate<sub><i>k</i></sub>(<i>x</i>) &middot; <i>B<sub>k</sub></i>(<i>A<sub>k</sub>x</i>),&nbsp;&nbsp; <i>k</i> = argmax<sub><i>i</i></sub> gate<sub><i>i</i></sub>(<i>x</i>)</div>
         <div class="figbox">
-          <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <marker id="mole-arr-navy" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
-                <path d="M 0 0 L 10 5 L 0 10 L 2 5 Z" fill="#1F3A5F"/>
-              </marker>
-              <marker id="mole-arr-rust" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
-                <path d="M 0 0 L 10 5 L 0 10 L 2 5 Z" fill="#B1542B"/>
-              </marker>
-            </defs>
-
-            <!-- Section labels -->
-            <text x="195" y="16" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="13" fill="#B1542B" letter-spacing="2">STEP 1 &#183; ROUTE</text>
-            <text x="555" y="16" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="13" fill="#1F3A5F" letter-spacing="2">STEP 2 &#183; FROZEN EXPERT MATMULS</text>
-
-            <!-- gate(x) box (rust, trainable) on the LEFT -->
-            <rect x="100" y="32" width="190" height="56" rx="7" fill="#FBEFE3" stroke="#B1542B" stroke-width="2.5"/>
-            <text x="195" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#B1542B">gate(<tspan font-style="italic">x</tspan>) &#8594; softmax</text>
-            <text x="195" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#4B5563">Linear(<tspan font-style="italic">d</tspan> &#8594; <tspan font-style="italic">N</tspan>) &#183; &#8776;0.07M total</text>
-
-            <!-- routing weights label (in the breathing room next to gate) -->
-            <text x="306" y="48" text-anchor="start" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#B1542B">routing weights</text>
-            <text x="306" y="68" text-anchor="start" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#B1542B"><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">1</tspan><tspan dy="-2">, </tspan><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">2</tspan><tspan dy="-2">, </tspan><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">3</tspan></text>
-            <text x="306" y="84" text-anchor="start" font-family="Inter, sans-serif" font-weight="500" font-size="10" fill="#4B5563">(top-1: only argmax non-zero)</text>
-
-            <!-- input x -->
-            <text x="30" y="180" text-anchor="end" font-family="Inter, sans-serif" font-weight="800" font-size="22" fill="#111827">x</text>
-            <line x1="38" y1="174" x2="68" y2="174" stroke="#1F3A5F" stroke-width="2.8" stroke-linecap="round"/>
-            <circle cx="70" cy="174" r="5" fill="#1F3A5F"/>
-
-            <!-- x -> gate (rust, trainable path: x feeds gate first) -->
-            <path d="M 70 171 L 70 60 L 100 60" stroke="#B1542B" stroke-width="2" fill="none" stroke-dasharray="4 3" marker-end="url(#mole-arr-rust)"/>
-
-            <!-- 3 expert rows. Dataset labels are placed ABOVE each row so they don't sit on the input fanout arrows. -->
-            <!-- Row 1: E2E (y center 130) -->
-            <g>
-              <text x="385" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">E2E</text>
-              <circle cx="385" cy="130" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
-              <text x="385" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">1</tspan></text>
-              <line x1="399" y1="130" x2="414" y2="130" stroke="#1F3A5F" stroke-width="1.5"/>
-              <polygon points="414,120 476,128 476,140 414,148" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <text x="445" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">1</tspan></text>
-              <line x1="476" y1="134" x2="494" y2="134" stroke="#1F3A5F" stroke-width="1.5"/>
-              <polygon points="494,128 556,120 556,148 494,140" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <text x="525" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">1</tspan></text>
+          <svg viewBox="0 0 760 285" xmlns="http://www.w3.org/2000/svg">
+            <!-- baseline y=212; y_top = 212 - (BLEU-66)*60 — taller plot than prior 248px-tall viewBox -->
+            <line x1="70"  y1="26"  x2="70"  y2="212" stroke="#9CA3AF"/>
+            <line x1="70"  y1="212" x2="720" y2="212" stroke="#9CA3AF"/>
+            <g font-family="Inter, sans-serif" font-size="13" fill="#4B5563">
+              <text x="62" y="216" text-anchor="end">66</text>
+              <text x="62" y="156" text-anchor="end">67</text>
+              <text x="62" y="96"  text-anchor="end">68</text>
+              <text x="62" y="36"  text-anchor="end">69</text>
             </g>
-            <!-- Row 2: DART (y center 175) -->
-            <g>
-              <text x="385" y="153" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">DART</text>
-              <circle cx="385" cy="175" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
-              <text x="385" y="179" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">2</tspan></text>
-              <line x1="399" y1="175" x2="414" y2="175" stroke="#1F3A5F" stroke-width="1.5"/>
-              <polygon points="414,165 476,173 476,185 414,193" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <text x="445" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">2</tspan></text>
-              <line x1="476" y1="179" x2="494" y2="179" stroke="#1F3A5F" stroke-width="1.5"/>
-              <polygon points="494,173 556,165 556,193 494,185" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <text x="525" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">2</tspan></text>
-            </g>
-            <!-- Row 3: WebNLG (y center 220) -->
-            <g>
-              <text x="385" y="198" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">WebNLG</text>
-              <circle cx="385" cy="220" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
-              <text x="385" y="224" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">3</tspan></text>
-              <line x1="399" y1="220" x2="414" y2="220" stroke="#1F3A5F" stroke-width="1.5"/>
-              <polygon points="414,210 476,218 476,230 414,238" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <text x="445" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">3</tspan></text>
-              <line x1="476" y1="224" x2="494" y2="224" stroke="#1F3A5F" stroke-width="1.5"/>
-              <polygon points="494,218 556,210 556,238 494,230" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <text x="525" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">3</tspan></text>
+            <text x="22" y="119" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="14" fill="#1F3A5F" transform="rotate(-90 22 119)">BLEU-4</text>
+
+            <g stroke="#E5E7EB">
+              <line x1="70" y1="152" x2="720" y2="152"/>
+              <line x1="70" y1="92"  x2="720" y2="92"/>
+              <line x1="70" y1="32"  x2="720" y2="32"/>
             </g>
 
-            <!-- input fanout: x junction → ×g_i circles -->
-            <path d="M 70 172 L 369 130" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy)"/>
-            <line x1="70" y1="174" x2="369" y2="175" stroke="#1F3A5F" stroke-width="2" marker-end="url(#mole-arr-navy)"/>
-            <path d="M 70 176 L 369 220" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy)"/>
+            <g font-family="Inter, sans-serif" font-weight="800" font-size="13" fill="#ffffff">
+              <!-- 6 bars: w=87, gap=22, plot 88→720 -->
+              <rect x="88"  y="146.6" width="87" height="65.4" fill="#8B96A6"/>
+              <text x="131.5" y="138" text-anchor="middle" fill="#1F3A5F" font-size="13">67.09</text>
+              <text x="131.5" y="228" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="12">query-heavy</text>
 
-            <!-- gate output: rust dashed from gate-area down to each ×g_i circle -->
-            <path d="M 280 88 L 376 119" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust)"/>
-            <path d="M 290 88 L 376 167" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust)"/>
-            <path d="M 300 88 L 376 211" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust)"/>
+              <rect x="197" y="134" width="87" height="78" fill="#1F3A5F"/>
+              <text x="240.5" y="125" text-anchor="middle" fill="#1F3A5F" font-size="13">67.30</text>
+              <text x="240.5" y="228" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="12">uniform</text>
 
-            <!-- + combiner -->
-            <circle cx="615" cy="175" r="22" fill="#ffffff" stroke="#1F3A5F" stroke-width="3"/>
-            <text x="615" y="184" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="26" fill="#1F3A5F">+</text>
+              <rect x="306" y="126.8" width="87" height="85.2" fill="#8B96A6"/>
+              <text x="349.5" y="118" text-anchor="middle" fill="#1F3A5F" font-size="13">67.42</text>
+              <text x="349.5" y="228" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="12">value-heavy</text>
 
-            <!-- arrows from each B_i → + -->
-            <path d="M 556 134 L 593 169" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy)"/>
-            <line x1="556" y1="179" x2="593" y2="175" stroke="#1F3A5F" stroke-width="2" marker-end="url(#mole-arr-navy)"/>
-            <path d="M 556 224 L 593 181" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy)"/>
+              <rect x="415" y="98.6" width="87" height="113.4" fill="#C49A3A"/>
+              <text x="458.5" y="89" text-anchor="middle" fill="#1F3A5F" font-size="13">67.89</text>
+              <text x="458.5" y="228" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="12">early-ramp</text>
 
-            <!-- + → output Δh -->
-            <line x1="637" y1="175" x2="688" y2="175" stroke="#1F3A5F" stroke-width="2.8" stroke-linecap="round" marker-end="url(#mole-arr-navy)"/>
-            <text x="698" y="173" text-anchor="start" font-family="Inter, sans-serif" font-weight="800" font-size="18" fill="#111827">&#916;<tspan font-style="italic">h</tspan></text>
-            <text x="698" y="191" text-anchor="start" font-family="Inter, sans-serif" font-weight="500" font-size="11" fill="#4B5563">added to <tspan font-style="italic">W</tspan><tspan font-size="9" dy="3">0</tspan><tspan font-style="italic" dy="-3">x</tspan></text>
+              <rect x="524" y="68.6" width="87" height="143.4" fill="#B1542B"/>
+              <text x="567.5" y="59" text-anchor="middle" fill="#B1542B" font-size="13">68.39</text>
+              <text x="567.5" y="228" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="12">LATE-RAMP</text>
 
-            <!-- legend strip at bottom -->
-            <g font-family="Inter, sans-serif" font-size="10.5" fill="#1f2937">
-              <rect x="180" y="252" width="14" height="10" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.4" stroke-dasharray="3 3"/>
-              <text x="200" y="261">frozen LoRA expert (<tspan font-style="italic">A</tspan>, <tspan font-style="italic">B</tspan>)</text>
-              <rect x="430" y="252" width="14" height="10" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.4"/>
-              <text x="450" y="261">trainable router &#183; routing scalar <tspan font-style="italic">g</tspan><tspan font-size="9" dy="2">i</tspan></text>
+              <rect x="633" y="41" width="87" height="171" fill="#0D9488"/>
+              <text x="676.5" y="32" text-anchor="middle" fill="#0f766e" font-size="13">68.85</text>
+              <text x="676.5" y="228" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="12">AdaLoRA-Lite</text>
             </g>
+            <text x="395" y="252" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#6B7280">first five: same total r=4 · rightmost: learned gates, 192 active units (E2E)</text>
+            <text x="395" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#6B7280">— uniform = paper repro baseline —</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 5.</b> Router emits <i>g</i><sub>1..3</sub> from <i>x</i>; frozen experts contribute <i>g<sub>i</sub></i>&middot;<i>B<sub>i</sub></i>(<i>A<sub>i</sub>x</i>), summed to &Delta;<i>h</i>. Top-1 keeps only the argmax expert.</div>
-      </div>
-
-      <!-- CARD 7: Cross-task MoLE results matrix -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-num">7</div>
-          <div class="card-title">MoLE Results: Cross-Task Generalization</div>
-        </div>
-        <table class="metrics matrix">
-          <thead>
-            <tr>
-              <th rowspan="2" class="row-label">Method</th>
-              <th rowspan="2">Adapter<br>params</th>
-              <th colspan="3">E2E NLG</th>
-              <th colspan="3">DART</th>
-              <th colspan="3">WebNLG</th>
-            </tr>
-            <tr>
-              <th>BLEU</th><th>NIST</th><th>MET</th>
-              <th>BLEU</th><th>MET</th><th>TER&darr;</th>
-              <th>BLEU</th><th>MET</th><th>TER&darr;</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>E2E LoRA (<i>r</i>=4)</td>
-              <td>0.39M</td>
-              <td>67.30</td><td>8.51</td><td><b>46.05</b></td>
-              <td>28.53</td><td>27.69</td><td>0.812</td>
-              <td>10.58</td><td>17.88</td><td>0.921</td>
-            </tr>
-            <tr>
-              <td>DART LoRA (<i>r</i>=4)</td>
-              <td>0.39M</td>
-              <td>60.54</td><td>6.08</td><td>37.94</td>
-              <td><b>47.15</b></td><td><b>39.48</b></td><td><b>0.554</b></td>
-              <td>50.44</td><td>38.95</td><td>0.489</td>
-            </tr>
-            <tr>
-              <td>WebNLG LoRA (<i>r</i>=4)</td>
-              <td>0.39M</td>
-              <td>39.75</td><td>3.79</td><td>28.09</td>
-              <td>33.41</td><td>32.95</td><td>0.748</td>
-              <td><b>55.23</b></td><td><b>41.87</b></td><td><b>0.453</b></td>
-            </tr>
-            <tr class="mole">
-              <td>MoLE (3 experts + router)</td>
-              <td>≈1.24M</td>
-              <td><b>67.76</b></td><td><b>8.65</b></td><td>45.22</td>
-              <td>45.35</td><td>38.68</td><td>0.568</td>
-              <td>51.75</td><td>40.10</td><td>0.472</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr><td colspan="11">MoLE total &asymp;1.24M = 3&times;0.39M (frozen) + 0.07M (trainable router). Other rows: &asymp;0.39M trainable LoRA per task.</td></tr>
-          </tfoot>
-        </table>
-        <ul class="bullets dense" style="margin-top:8pt;">
-          <li>Specialists <b>collapse off-domain</b> (e.g. E2E &rarr; DART loses ~39 BLEU); MoLE stays strong everywhere with <b>one</b> checkpoint.</li>
-          <li>MoLE matches or beats the E2E specialist on official <b>BLEU</b> and <b>NIST</b>; task-trained adapters still win their native columns on some metrics.</li>
-          <li><b>Deployment:</b> frozen base + routed experts &mdash; no per-task adapter swap.</li>
-        </ul>
-        <div class="figcap"><b>Fig. 6.</b> Each column evaluates on that task&rsquo;s held-out test split with task-native decoding. Rows compare three rank-4 single-task LoRAs with MoLE (frozen experts + trained router). Bold = best in column.</div>
+        <div class="figcap"><b>Fig. 5.</b> Depth (late-ramp) beats projection ablations on the same r=4 budget; AdaLoRA-Lite r<sub>max</sub>=6 lands near paper LoRA BLEU at 0.39M.</div>
       </div>
 
     </div><!-- /col 2 -->
 
-
     <!-- ============== COLUMN 3 ============== -->
     <div class="col">
 
-      <!-- CARD 8: key metrics vs. LoRA paper — bar chart -->
-      <div class="card">
+      <!-- CARD 7: E2E TEST SET TABLE -->
+      <div class="card card-e2e-table">
         <div class="card-head">
-          <div class="card-num">8</div>
-          <div class="card-title">Key Metrics vs. the LoRA Paper</div>
-          <div class="card-sub">same active budget · LoRA-level quality</div>
-        </div>
-        <div class="legend">
-          <span><span class="chip navy"></span>BLEU</span>
-          <span><span class="chip rust"></span>ROUGE-L</span>
-        </div>
-        <div class="figbox">
-          <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg">
-            <!-- axes (BLEU left, ROUGE right) -->
-            <line x1="70"  y1="40"  x2="70"  y2="290" stroke="#9CA3AF"/>
-            <line x1="70"  y1="290" x2="730" y2="290" stroke="#9CA3AF"/>
-
-            <!-- y axis labels (BLEU 64..72) -->
-            <g font-family="Inter, sans-serif" font-size="13" fill="#4B5563">
-              <text x="62" y="294" text-anchor="end">64</text>
-              <text x="62" y="232" text-anchor="end">66</text>
-              <text x="62" y="170" text-anchor="end">68</text>
-              <text x="62" y="108" text-anchor="end">70</text>
-              <text x="62" y="46"  text-anchor="end">72</text>
-            </g>
-            <text x="20" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F" transform="rotate(-90 20 160)">official score (%)</text>
-
-            <!-- gridlines -->
-            <g stroke="#E5E7EB">
-              <line x1="70" y1="232" x2="730" y2="232"/>
-              <line x1="70" y1="170" x2="730" y2="170"/>
-              <line x1="70" y1="108" x2="730" y2="108"/>
-              <line x1="70" y1="46"  x2="730" y2="46"/>
-            </g>
-
-            <!-- 4 groups: x position (group center) -->
-            <!-- BLEU heights: paper 68.90→y(290-(68.9-64)*31)=290-151.9=138.1
-                              uniform 67.30→290-101.9=188.1
-                              late 68.39→290-135.9=154.1
-                              ada 68.85→290-150.4=139.6
-                ROUGE heights: 71.30→290-226.3=63.7
-                               70.96→290-215.7=74.3
-                               71.29→290-225.9=64.1
-                               71.42→290-230.0=60.0
-            -->
-            <!-- group 1: paper -->
-            <g>
-              <rect x="100" y="138" width="56" height="152" fill="#1F3A5F"/>
-              <rect x="160" y="64"  width="56" height="226" fill="#B1542B"/>
-              <text x="128" y="131" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1F3A5F">68.90</text>
-              <text x="188" y="57"  text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#B1542B">71.30</text>
-              <text x="158" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">Paper LoRA</text>
-              <text x="158" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">target · 0.39M</text>
-            </g>
-            <!-- group 2: uniform r4 -->
-            <g>
-              <rect x="260" y="188" width="56" height="102" fill="#1F3A5F"/>
-              <rect x="320" y="74"  width="56" height="216" fill="#B1542B"/>
-              <text x="288" y="181" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1F3A5F">67.30</text>
-              <text x="348" y="67"  text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#B1542B">70.96</text>
-              <text x="318" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">Uniform r=4</text>
-              <text x="318" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">repro · 0.39M</text>
-            </g>
-            <!-- group 3: late ramp r4 -->
-            <g>
-              <rect x="420" y="154" width="56" height="136" fill="#1F3A5F"/>
-              <rect x="480" y="64"  width="56" height="226" fill="#B1542B"/>
-              <text x="448" y="147" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1F3A5F">68.39</text>
-              <text x="508" y="57"  text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#B1542B">71.29</text>
-              <text x="478" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">Late-ramp r=4</text>
-              <text x="478" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">extension · 0.39M</text>
-            </g>
-            <!-- group 4: ada-lite rmax6 -->
-            <g>
-              <rect x="580" y="140" width="56" height="150" fill="#1F3A5F"/>
-              <rect x="640" y="60"  width="56" height="230" fill="#B1542B"/>
-              <text x="608" y="133" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1F3A5F">68.85</text>
-              <text x="668" y="53"  text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#B1542B">71.42</text>
-              <text x="638" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">AdaLoRA-Lite</text>
-              <text x="638" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">r<tspan font-size="9" dy="2">max</tspan><tspan dy="-2"> = 6 · 0.39M active</tspan></text>
-            </g>
-          </svg>
-        </div>
-        <div class="figcap"><b>Fig. 7.</b> Both extensions match or exceed the paper's reported BLEU/ROUGE-L on E2E NLG at the <b>same</b> active 0.39M-parameter budget as uniform <i>r</i> = 4. AdaLoRA-Lite is closest to the paper, late-ramp is the strongest hand-designed schedule.</div>
-      </div>
-
-      <!-- CARD 9: PARETO FRONTIER -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-num">9</div>
-          <div class="card-title">Pareto Frontier — Params vs. BLEU</div>
-        </div>
-        <div class="legend">
-          <span><span class="chip navy"></span>Uniform LoRA</span>
-          <span><span class="chip rust"></span>Late-ramp (Depth-Weighted LoRA)</span>
-          <span><span class="chip gold"></span>AdaLoRA-Lite (active)</span>
-        </div>
-        <div class="figbox">
-          <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg">
-            <!-- axes -->
-            <line x1="70" y1="30"  x2="70"  y2="270" stroke="#9CA3AF"/>
-            <line x1="70" y1="270" x2="740" y2="270" stroke="#9CA3AF"/>
-
-            <!-- y BLEU 66..70 mapping: y = 270 - (BLEU-66)*60 -->
-            <g font-family="Inter, sans-serif" font-size="13" fill="#4B5563">
-              <text x="62" y="274" text-anchor="end">66</text>
-              <text x="62" y="214" text-anchor="end">67</text>
-              <text x="62" y="154" text-anchor="end">68</text>
-              <text x="62" y="94"  text-anchor="end">69</text>
-              <text x="62" y="34"  text-anchor="end">70</text>
-            </g>
-            <text x="22" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F" transform="rotate(-90 22 150)">official BLEU-4 (%)</text>
-
-            <!-- x log10 params, range 0.08M..3M (1.574 decades), scale = 670/1.574 = 425 px/decade
-                 mapping: x = 70 + (log10(p) - log10(0.08)) * 425
-                        = 70 + (log10(p) + 1.097) * 425  -->
-            <g font-family="Inter, sans-serif" font-size="13" fill="#4B5563">
-              <text x="111" y="290" text-anchor="middle">0.1M</text>
-              <text x="308" y="290" text-anchor="middle">0.3M</text>
-              <text x="524" y="290" text-anchor="middle">1M</text>
-              <text x="721" y="290" text-anchor="middle">3M</text>
-            </g>
-            <text x="405" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F">trainable parameters (M, log scale)</text>
-
-            <!-- vertical gridlines at tick positions -->
-            <g stroke="#E5E7EB">
-              <line x1="111" y1="30" x2="111" y2="270"/>
-              <line x1="308" y1="30" x2="308" y2="270"/>
-              <line x1="524" y1="30" x2="524" y2="270"/>
-              <line x1="721" y1="30" x2="721" y2="270"/>
-            </g>
-
-            <!-- Uniform LoRA points
-                 (0.098, 66.78) → x=106, y=270-46.8=223.2
-                 (0.197, 67.11) → x=232, y=270-66.6=203.4
-                 (0.393, 67.30) → x=355, y=270-78  =192.0
-                 (0.787, 67.97) → x=480, y=270-118.2=151.8
-                 (1.574, 68.21) → x=604, y=270-132.6=137.4 -->
-            <polyline points="106,223.2 232,203.4 355,192 480,151.8 604,137.4"
-                      fill="none" stroke="#1F3A5F" stroke-width="2.4" stroke-dasharray="4 3"/>
-            <g fill="#1F3A5F">
-              <circle cx="106" cy="223.2" r="7"/>
-              <circle cx="232" cy="203.4" r="7"/>
-              <circle cx="355" cy="192"   r="7"/>
-              <circle cx="480" cy="151.8" r="7"/>
-              <circle cx="604" cy="137.4" r="7"/>
-            </g>
-            <g font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1F3A5F">
-              <text x="106" y="245" text-anchor="middle">r=1</text>
-              <text x="232" y="226" text-anchor="middle">r=2</text>
-              <text x="345" y="212" text-anchor="end">r=4</text>
-              <text x="490" y="148" text-anchor="start">r=8</text>
-              <text x="612" y="134" text-anchor="start">r=16</text>
-            </g>
-
-            <!-- Late-ramp points: (0.393,68.39)→(355,126.6); (0.787,67.77)→(480,163.8); (1.574,68.15)→(604,141) -->
-            <polyline points="355,126.6 480,163.8 604,141"
-                      fill="none" stroke="#B1542B" stroke-width="2.4" stroke-dasharray="4 3"/>
-            <g fill="#B1542B">
-              <polygon points="355,117.6 365,126.6 355,135.6 345,126.6"/>
-              <polygon points="480,154.8 490,163.8 480,172.8 470,163.8"/>
-              <polygon points="604,132 614,141 604,150 594,141"/>
-            </g>
-            <g font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#B1542B">
-              <text x="345" y="118" text-anchor="end">late r=4</text>
-              <text x="490" y="180" text-anchor="start">late r=8</text>
-              <text x="614" y="155" text-anchor="start">late r=16</text>
-            </g>
-
-            <!-- AdaLoRA-Lite (plot by ACTIVE 0.39M = x=355). Three stars stacked at different BLEU.
-                 rmax6:  68.85 → y=270-171  = 99
-                 rmax8:  68.34 → y=270-140.4= 129.6
-                 rmax16: 67.67 → y=270-100.2= 169.8
-                 Slight x-jitter so they don't overlap the uniform/late markers at x=355 -->
-            <g fill="#C49A3A" stroke="#8C6B12" stroke-width="1">
-              <!-- 5-pointed star centered at given (cx,cy) with outer radius r=11 and inner r=4.5 -->
-              <!-- rmax6 best at (358, 99) -->
-              <polygon points="358,88 360.6,95.7 368.5,95.7 362.1,100.5 364.6,108.1 358,103.4 351.4,108.1 353.9,100.5 347.5,95.7 355.4,95.7"/>
-              <!-- rmax8 at (332, 129.6) -->
-              <polygon points="332,118.6 334.6,126.3 342.5,126.3 336.1,131.1 338.6,138.7 332,134 325.4,138.7 327.9,131.1 321.5,126.3 329.4,126.3"/>
-              <!-- rmax16 at (382, 169.8) -->
-              <polygon points="382,158.8 384.6,166.5 392.5,166.5 386.1,171.3 388.6,178.9 382,174.2 375.4,178.9 377.9,171.3 371.5,166.5 379.4,166.5"/>
-            </g>
-            <g font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#8C6B12">
-              <text x="372" y="92"  text-anchor="start">AdaLoRA-Lite r<tspan font-size="11" dy="2">max</tspan><tspan dy="-2">=6 (best)</tspan></text>
-              <text x="318" y="124" text-anchor="end">r<tspan font-size="11" dy="2">max</tspan><tspan dy="-2">=8</tspan></text>
-              <text x="396" y="172" text-anchor="start">r<tspan font-size="11" dy="2">max</tspan><tspan dy="-2">=16</tspan></text>
-            </g>
-
-          </svg>
-        </div>
-        <div class="figcap"><b>Fig. 8.</b> Same active 0.39M budget; both extensions sit above the uniform LoRA frontier. <b>AdaLoRA-Lite r<sub>max</sub>=6</b> reaches BLEU 68.85 — beating uniform <i>r</i>=16 with 4× fewer trainable parameters.</div>
-        <div class="h3" style="margin-top:6pt;">Why the three AdaLoRA-Lite runs separate</div>
-        <ul class="bullets dense">
-          <li><b>r<sub>max</sub>=6 wins (68.85).</b> 1.5× over-rank, 33% prune; long warmup stabilises EMA before cuts.</li>
-          <li><b>r<sub>max</sub>=8 (68.34).</b> 2× over-rank but t<sub>init</sub>=15K leaves too few post-prune steps.</li>
-          <li><b>r<sub>max</sub>=16 (67.67).</b> 4× over-rank, prune starts at step 500, min/slice=0, kills slices before convergence.</li>
-          <li><b>Takeaway.</b> Late + gentle prune from small over-rank &gt; early + aggressive prune from large over-rank.</li>
-        </ul>
-      </div>
-
-      <!-- CARD 10: WHERE TO SPEND A TIGHT BUDGET? -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-num">10</div>
-          <div class="card-title">Where to Spend a Tight Budget?</div>
-          <div class="card-sub">same r=4 budget · BLEU</div>
-        </div>
-        <div class="figbox">
-          <svg viewBox="0 0 760 230" xmlns="http://www.w3.org/2000/svg">
-            <!-- axes; y from 66 to 69 -->
-            <line x1="70"  y1="20"  x2="70"  y2="180" stroke="#9CA3AF"/>
-            <line x1="70"  y1="180" x2="740" y2="180" stroke="#9CA3AF"/>
-            <g font-family="Inter, sans-serif" font-size="12" fill="#4B5563">
-              <text x="62" y="184" text-anchor="end">66</text>
-              <text x="62" y="130" text-anchor="end">67</text>
-              <text x="62" y="76"  text-anchor="end">68</text>
-              <text x="62" y="22"  text-anchor="end">69</text>
-            </g>
-            <text x="22" y="100" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F" transform="rotate(-90 22 100)">BLEU-4</text>
-
-            <!-- gridlines -->
-            <g stroke="#E5E7EB">
-              <line x1="70" y1="130" x2="740" y2="130"/>
-              <line x1="70" y1="76"  x2="740" y2="76"/>
-              <line x1="70" y1="22"  x2="740" y2="22"/>
-            </g>
-
-            <!-- mapping y = 180 - (BLEU-66)*54 -->
-            <g font-family="Inter, sans-serif" font-weight="800" font-size="13" fill="#ffffff">
-              <rect x="100" y="120.1" width="100" height="59.9" fill="#8B96A6"/>
-              <text x="150" y="113" text-anchor="middle" fill="#1F3A5F">67.09</text>
-              <text x="150" y="200" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="13">query-heavy</text>
-
-              <rect x="220" y="108.8" width="100" height="71.2" fill="#1F3A5F"/>
-              <text x="270" y="101" text-anchor="middle" fill="#1F3A5F">67.30</text>
-              <text x="270" y="200" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="13">uniform</text>
-
-              <rect x="340" y="102.3" width="100" height="77.7" fill="#8B96A6"/>
-              <text x="390" y="94"  text-anchor="middle" fill="#1F3A5F">67.42</text>
-              <text x="390" y="200" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="13">value-heavy</text>
-
-              <rect x="460" y="77.9"  width="100" height="102.1" fill="#C49A3A"/>
-              <text x="510" y="70"  text-anchor="middle" fill="#1F3A5F">67.89</text>
-              <text x="510" y="200" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="13">early-ramp</text>
-
-              <rect x="580" y="51.0"  width="100" height="129"   fill="#B1542B"/>
-              <text x="630" y="43"  text-anchor="middle" fill="#B1542B">68.39</text>
-              <text x="630" y="200" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="13">LATE-RAMP</text>
-            </g>
-            <text x="270" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#6B7280">— uniform = paper repro baseline —</text>
-          </svg>
-        </div>
-        <div class="figcap"><b>Fig. 9.</b> All five schedules use the same rank-4 Q/V budget (~0.39M params); only the <i>where</i> changes. Late-ramp wins, query-heavy is worst — <b>depth dominates projection identity</b>.</div>
-      </div>
-
-      <!-- CARD 11: E2E TEST SET TABLE -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-num">11</div>
+          <div class="card-num">7</div>
           <div class="card-title">E2E Test Set — Official Metrics</div>
         </div>
         <table class="metrics">
@@ -1156,43 +1012,13 @@
           <tfoot>
           </tfoot>
         </table>
-        <div class="figcap"><b>Fig. 10.</b> Official E2E NLG test metrics from <code>e2e-metrics</code>: paper LoRA / full-FT baselines (★), uniform rank sweep, late-ramp depth schedules, and AdaLoRA-Lite variants at a fixed <b>192</b> active rank-unit budget. Bold row = our best extension. * = active budget at eval; training tensors are larger (see footnote).</div>
+        <div class="figcap"><b>Fig. 6.</b> Official E2E metrics. Bold = our best extension.</div>
       </div>
 
-    </div><!-- /col 3 -->
-
-
-    <!-- ============== COLUMN 4 ============== -->
-    <div class="col">
-
-      <!-- CARD 12: QUALITATIVE SAMPLES -->
+      <!-- CARD 8: WHAT ADALORA-LITE LEARNED -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">12</div>
-          <div class="card-title">Qualitative Samples</div>
-        </div>
-
-        <div class="qual-row">
-          <div class="qual-mr"><b>MR&nbsp;1:</b> name : <i>Blue Spice</i> | Type : coffee shop | rating : 5 of 5 | near : Crowne Plaza Hotel</div>
-          <div class="qual-line"><span class="qual-tag navy">Uniform r=4</span>"Blue Spice is a coffee shop near the <span class="err">Crown Plaza Hotel</span>. It has a customer rating of <span class="err">5 out 5</span>."</div>
-          <div class="qual-line"><span class="qual-tag rust">Late-ramp r=4</span>"Blue Spice is a coffee shop near <span class="fix">Crowne Plaza Hotel</span> with a customer rating of <span class="fix">5 out of 5</span>."</div>
-          <div class="qual-line"><span class="qual-tag gold">AdaLoRA-Lite r<sub>max</sub>=6</span>(identical fix to Late-ramp)</div>
-        </div>
-
-        <div class="qual-row">
-          <div class="qual-mr"><b>MR&nbsp;2:</b> name : <i>Blue Spice</i> | Type : restaurant | food : English | area : city centre | family-friendly : no | near : Rainbow Vegetarian Café</div>
-          <div class="qual-line"><span class="qual-tag navy">Uniform r=4</span>"Blue Spice is a restaurant providing English food. It is located in the city centre. It is near <span class="err">Rainbow vegetable Café</span>."</div>
-          <div class="qual-line"><span class="qual-tag rust">Late-ramp r=4</span>"Blue Spice is <span class="fix">an English restaurant</span> located in the city centre near <span class="fix">Rainbow Vegetarian Café</span>."</div>
-          <div class="qual-line"><span class="qual-tag gold">AdaLoRA-Lite r<sub>max</sub>=6</span>(identical fix to Late-ramp)</div>
-        </div>
-
-        <div class="figcap"><b>Examples 1 &amp; 2.</b> Same budget as uniform <i>r</i>=4; extensions fix <b>name errors</b>, dropped words, and weak structure &mdash; bulk scores (Fig. 7) underplay these fixes.</div>
-      </div>
-
-      <!-- CARD 13: WHAT ADALORA-LITE LEARNED -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-num">13</div>
+          <div class="card-num">8</div>
           <div class="card-title">What AdaLoRA-Lite Learned</div>
           <div class="card-sub">final active rank · per layer · r<sub>max</sub>=6</div>
         </div>
@@ -1289,13 +1115,13 @@
             <text x="400" y="220" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F">layer index (early → late)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 11.</b> Active rank per layer (V stacked on Q) after training. Independent of the hand-designed late-ramp, the gates settle on a strikingly similar <b>late-layer-heavy profile</b> — capacity flows from layers 0–8 (where it's mostly redundant) to layers 11–23.</div>
+        <div class="figcap"><b>Fig. 7.</b> Active rank settles into a late-layer-heavy profile.</div>
       </div>
 
-      <!-- CARD 14: ADALORA-LITE RANK EVOLUTION HEATMAP -->
+      <!-- CARD 9: ADALORA-LITE RANK EVOLUTION HEATMAP -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">14</div>
+          <div class="card-num">9</div>
           <div class="card-title">AdaLoRA-Lite Rank Evolution</div>
           <div class="card-sub">total active rank (Q + V) per layer · every 500 steps · r<sub>max</sub>=6</div>
         </div>
@@ -1305,7 +1131,7 @@
           <span><span class="chip" style="background:#8B3C1A"></span>high rank (12)</span>
         </div>
         <div class="figbox">
-          <svg viewBox="0 0 760 290" style="max-width: 92%;" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 760 290" xmlns="http://www.w3.org/2000/svg">
             <!-- heatmap cells (rows = layers L0..L23, cols = optimiser step) -->
             <g shape-rendering="crispEdges">
               <rect x="78.00" y="36.00" width="19.95" height="9.43" fill="#8B3C1A"/>
@@ -2158,46 +1984,342 @@
             <text x="22" y="142" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F" transform="rotate(-90 22 142)">layer index (early ↑ → late ↓)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 12.</b> Allocation timeline: early layers drain to rank 3&ndash;5, late layers hold at 11&ndash;12, late-heavy profile <i>emerges</i> over training.</div>
+        <div class="figcap"><b>Fig. 8.</b> Late-heavy profile emerges; early layers drained, late layers retained.</div>
       </div>
 
-      <!-- CARD 15: CONCLUSIONS + FUTURE WORK -->
-      <div class="card shaded">
-        <div class="card-head">
-          <div class="card-num">15</div>
-          <div class="card-title">Conclusion &amp; Future Work</div>
-        </div>
-        <div class="h3">Conclusions &amp; insight</div>
-        <ul class="bullets dense">
-          <li><b>LoRA reproduces.</b> AdaLoRA-Lite r<sub>max</sub>=6 lands within 0.05 BLEU of the paper at the same 0.39M active budget — confirming Hu et al. (2021) at &lt;1% of full-FT cost.</li>
-          <li><b>Allocation &gt; raw rank.</b> Late-ramp <i>r</i>=4 beats <i>uniform r=8</i> (+0.42 BLEU) with half the params: depth &gt; projection identity &gt; total budget.</li>
-          <li><b>Learned ≈ hand-designed.</b> AdaLoRA-Lite recovers a late-layer-heavy rank profile automatically (Fig. 11), validating the Depth-Weighted LoRA hypothesis without hand tuning.</li>
-          <li><b>MoLE (Extension #3).</b> 3 frozen task LoRAs + learned router: <b>one</b> served model for E2E, DART, WebNLG (Fig. 6) &mdash; multi-task routing that complements the depth-budget results (Figs. 7&ndash;12).</li>
-        </ul>
-        <div class="h3">Practical benefits</div>
-        <ul class="bullets dense">
-          <li><b>Train cheap.</b> Only ~0.39M adapter params train vs 354M full FT — less memory, smaller checkpoints.</li>
-          <li><b>No latency tax (merged).</b> Δ<i>W</i> = <i>BA</i> folds into <i>W</i>₀ → same matmul path as dense FT.</li>
-          <li><b>Swap in prod.</b> One frozen base + tiny per-task adapters; load without redeploying the whole model.</li>
-        </ul>
-        <div class="h3">Limitations</div>
-        <ul class="bullets dense">
-          <li><b>Q/V only.</b> Adapters touch ~5% of params; MLP / <i>W</i><sub>fc</sub> budget unstudied — depth allocation may not transfer there.</li>
-          <li><b>One backbone, templated NLG.</b> Validated only on GPT-2 Medium and E2E/DART/WebNLG; scale to 7B+ and harder generation untested.</li>
-          <li><b>No orthogonality regularizer.</b> Unlike full AdaLoRA, our Lite variant skips the SVD-style <i>P</i>/<i>Q</i> orthogonality penalty (‖<i>P</i><sup>⊤</sup><i>P</i>−<i>I</i>‖<sub>F</sub><sup>2</sup>+‖<i>Q</i><i>Q</i><sup>⊤</sup>−<i>I</i>‖<sub>F</sub><sup>2</sup>); singular-value magnitudes can drift, so importance scores are an approximation rather than a calibrated SVD.</li>
-        </ul>
-        <div class="h3">Future work</div>
-        <ul class="bullets dense">
-          <li><b>Scale to larger backbones.</b> Carry our late-ramp + AdaLoRA-Lite recipe from GPT-2 Medium to <b>GPT-2 Large</b> and <b>Llama-2/3 7B</b>; depth-allocation should hold, but the rank floor and r<sub>max</sub> sweet spot likely shift.</li>
-          <li><b>Reach FFN projections.</b> Our extensions only target Q/V (~5% of params); extend AdaLoRA-Lite gates to <b><i>W</i><sub>fc</sub> / <i>W</i><sub>proj</sub></b> in the MLP block and re-derive the late-heavy profile there, where most of the parameter budget actually lives.</li>
-          <li><b>MoLE + adaptive rank:</b> combine mixture-of-LoRA routing with <b>AdaLoRA-Lite&ndash;style</b> rank budgets (per-expert or shared); scale to <b>more experts/tasks</b>.</li>
-        </ul>
-      </div>
-
-      <!-- CARD 16: REFERENCES -->
+      <!-- CARD 10: PARETO FRONTIER -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">16</div>
+          <div class="card-num">10</div>
+          <div class="card-title">Pareto Frontier — Params vs. BLEU</div>
+        </div>
+        <div class="legend">
+          <span><span class="chip navy"></span>Uniform LoRA</span>
+          <span><span class="chip rust"></span>Late-ramp (Depth-Weighted LoRA)</span>
+          <span><span class="chip gold"></span>AdaLoRA-Lite (active)</span>
+        </div>
+        <div class="figbox">
+          <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg">
+            <!-- axes -->
+            <line x1="70" y1="30"  x2="70"  y2="270" stroke="#9CA3AF"/>
+            <line x1="70" y1="270" x2="740" y2="270" stroke="#9CA3AF"/>
+
+            <!-- y BLEU 66..70 mapping: y = 270 - (BLEU-66)*60 -->
+            <g font-family="Inter, sans-serif" font-size="13" fill="#4B5563">
+              <text x="62" y="274" text-anchor="end">66</text>
+              <text x="62" y="214" text-anchor="end">67</text>
+              <text x="62" y="154" text-anchor="end">68</text>
+              <text x="62" y="94"  text-anchor="end">69</text>
+              <text x="62" y="34"  text-anchor="end">70</text>
+            </g>
+            <text x="22" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F" transform="rotate(-90 22 150)">official BLEU-4 (%)</text>
+
+            <!-- x log10 params, range 0.08M..3M (1.574 decades), scale = 670/1.574 = 425 px/decade
+                 mapping: x = 70 + (log10(p) - log10(0.08)) * 425
+                        = 70 + (log10(p) + 1.097) * 425  -->
+            <g font-family="Inter, sans-serif" font-size="13" fill="#4B5563">
+              <text x="111" y="290" text-anchor="middle">0.1M</text>
+              <text x="308" y="290" text-anchor="middle">0.3M</text>
+              <text x="524" y="290" text-anchor="middle">1M</text>
+              <text x="721" y="290" text-anchor="middle">3M</text>
+            </g>
+            <text x="405" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F">trainable parameters (M, log scale)</text>
+
+            <!-- vertical gridlines at tick positions -->
+            <g stroke="#E5E7EB">
+              <line x1="111" y1="30" x2="111" y2="270"/>
+              <line x1="308" y1="30" x2="308" y2="270"/>
+              <line x1="524" y1="30" x2="524" y2="270"/>
+              <line x1="721" y1="30" x2="721" y2="270"/>
+            </g>
+
+            <!-- Uniform LoRA points
+                 (0.098, 66.78) → x=106, y=270-46.8=223.2
+                 (0.197, 67.11) → x=232, y=270-66.6=203.4
+                 (0.393, 67.30) → x=355, y=270-78  =192.0
+                 (0.787, 67.97) → x=480, y=270-118.2=151.8
+                 (1.574, 68.21) → x=604, y=270-132.6=137.4 -->
+            <polyline points="106,223.2 232,203.4 355,192 480,151.8 604,137.4"
+                      fill="none" stroke="#1F3A5F" stroke-width="2.4" stroke-dasharray="4 3"/>
+            <g fill="#1F3A5F">
+              <circle cx="106" cy="223.2" r="7"/>
+              <circle cx="232" cy="203.4" r="7"/>
+              <circle cx="355" cy="192"   r="7"/>
+              <circle cx="480" cy="151.8" r="7"/>
+              <circle cx="604" cy="137.4" r="7"/>
+            </g>
+            <g font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1F3A5F">
+              <text x="106" y="245" text-anchor="middle">r=1</text>
+              <text x="232" y="226" text-anchor="middle">r=2</text>
+              <text x="345" y="212" text-anchor="end">r=4</text>
+              <text x="490" y="148" text-anchor="start">r=8</text>
+              <text x="612" y="134" text-anchor="start">r=16</text>
+            </g>
+
+            <!-- Late-ramp points: (0.393,68.39)→(355,126.6); (0.787,67.77)→(480,163.8); (1.574,68.15)→(604,141) -->
+            <polyline points="355,126.6 480,163.8 604,141"
+                      fill="none" stroke="#B1542B" stroke-width="2.4" stroke-dasharray="4 3"/>
+            <g fill="#B1542B">
+              <polygon points="355,117.6 365,126.6 355,135.6 345,126.6"/>
+              <polygon points="480,154.8 490,163.8 480,172.8 470,163.8"/>
+              <polygon points="604,132 614,141 604,150 594,141"/>
+            </g>
+            <g font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#B1542B">
+              <text x="345" y="118" text-anchor="end">late r=4</text>
+              <text x="490" y="180" text-anchor="start">late r=8</text>
+              <text x="614" y="155" text-anchor="start">late r=16</text>
+            </g>
+
+            <!-- AdaLoRA-Lite (plot by ACTIVE 0.39M = x=355). Three stars stacked at different BLEU.
+                 rmax6:  68.85 → y=270-171  = 99
+                 rmax8:  68.34 → y=270-140.4= 129.6
+                 rmax16: 67.67 → y=270-100.2= 169.8
+                 Slight x-jitter so they don't overlap the uniform/late markers at x=355 -->
+            <g fill="#C49A3A" stroke="#8C6B12" stroke-width="1">
+              <!-- 5-pointed star centered at given (cx,cy) with outer radius r=11 and inner r=4.5 -->
+              <!-- rmax6 best at (358, 99) -->
+              <polygon points="358,88 360.6,95.7 368.5,95.7 362.1,100.5 364.6,108.1 358,103.4 351.4,108.1 353.9,100.5 347.5,95.7 355.4,95.7"/>
+              <!-- rmax8 at (332, 129.6) -->
+              <polygon points="332,118.6 334.6,126.3 342.5,126.3 336.1,131.1 338.6,138.7 332,134 325.4,138.7 327.9,131.1 321.5,126.3 329.4,126.3"/>
+              <!-- rmax16 at (382, 169.8) -->
+              <polygon points="382,158.8 384.6,166.5 392.5,166.5 386.1,171.3 388.6,178.9 382,174.2 375.4,178.9 377.9,171.3 371.5,166.5 379.4,166.5"/>
+            </g>
+            <g font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#8C6B12">
+              <text x="372" y="92"  text-anchor="start">AdaLoRA-Lite r<tspan font-size="11" dy="2">max</tspan><tspan dy="-2">=6 (best)</tspan></text>
+              <text x="318" y="124" text-anchor="end">r<tspan font-size="11" dy="2">max</tspan><tspan dy="-2">=8</tspan></text>
+              <text x="396" y="172" text-anchor="start">r<tspan font-size="11" dy="2">max</tspan><tspan dy="-2">=16</tspan></text>
+            </g>
+
+          </svg>
+        </div>
+        <div class="figcap"><b>Fig. 9.</b> AdaLoRA-Lite r<sub>max</sub>=6 beats uniform <i>r</i>=16 with 4&times; fewer params.</div>
+        <div class="lesson"><b>Lesson:</b> a small over-rank pruned gently &gt; a large over-rank pruned aggressively.</div>
+      </div>
+
+    </div><!-- /col 3 -->
+
+    <!-- ============== COLUMN 4 ============== -->
+    <div class="col">
+
+      <!-- QUESTION 3 BANNER (MoLE) -->
+      <div class="qbanner qbanner-q3">
+        <div class="qb-label">Question 3</div>
+        <div class="qb-text">Can one served model handle multiple tasks via routed LoRAs?</div>
+        <div class="qb-sub">Independent of Q1 and Q2. Experts here are stock uniform <i>r</i>=4 LoRAs.</div>
+      </div>
+
+      <!-- CARD 11: MoLE — Mixture-of-LoRA Experts -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">11</div>
+          <div class="card-title">Extension #3 &mdash; Mixture-of-LoRA Experts (MoLE)</div>
+        </div>
+        <ul class="bullets dense">
+          <li>Per-layer router picks <b>top-1</b> of <i>N</i>=3 frozen task LoRAs (E2E, DART, WebNLG) per token.</li>
+          <li>Only the router trains: one <code>Linear</code>(<i>d</i>&rarr;<i>N</i>) per layer &asymp; <b>0.07M</b> params.</li>
+          <li><b>Note:</b> experts are stock uniform <i>r</i>=4 LoRAs &mdash; <i>not</i> the specialised adapters from Q1&ndash;Q2 above. MoLE is a separate routing experiment.</li>
+        </ul>
+        <div class="eq small-eq">&Delta;<i>h</i>(<i>x</i>) = scaling &middot; gate<sub><i>k</i></sub>(<i>x</i>) &middot; <i>B<sub>k</sub></i>(<i>A<sub>k</sub>x</i>),&nbsp;&nbsp; <i>k</i> = argmax<sub><i>i</i></sub> gate<sub><i>i</i></sub>(<i>x</i>)</div>
+        <div class="figbox">
+          <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="mole-arr-navy-2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
+                <path d="M 0 0 L 10 5 L 0 10 L 2 5 Z" fill="#1F3A5F"/>
+              </marker>
+              <marker id="mole-arr-rust-2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
+                <path d="M 0 0 L 10 5 L 0 10 L 2 5 Z" fill="#B1542B"/>
+              </marker>
+            </defs>
+
+            <!-- Section labels -->
+            <text x="195" y="16" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="13" fill="#B1542B" letter-spacing="2">STEP 1 &#183; ROUTE</text>
+            <text x="555" y="16" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="13" fill="#1F3A5F" letter-spacing="2">STEP 2 &#183; FROZEN EXPERT MATMULS</text>
+
+            <!-- gate(x) box (rust, trainable) on the LEFT -->
+            <rect x="100" y="32" width="190" height="56" rx="7" fill="#FBEFE3" stroke="#B1542B" stroke-width="2.5"/>
+            <text x="195" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#B1542B">gate(<tspan font-style="italic">x</tspan>) &#8594; softmax</text>
+            <text x="195" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#4B5563">Linear(<tspan font-style="italic">d</tspan> &#8594; <tspan font-style="italic">N</tspan>) &#183; &#8776;0.07M total</text>
+
+            <!-- routing weights label (in the breathing room next to gate) -->
+            <text x="306" y="40" text-anchor="start" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#B1542B">routing weights</text>
+
+            <!-- Top-1 callout — sits above rust fanout (y≥88) so it does not cover E2E / ×g rows -->
+            <rect x="298" y="48" width="458" height="26" rx="8" fill="#FBEFE3" stroke="#B1542B" stroke-width="2.8"/>
+            <text x="527" y="66" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="13.5" fill="#7E3818">
+              <tspan fill="#B1542B" font-size="16" font-weight="800">Top-1</tspan><tspan fill="#7E3818" font-weight="800"> — argmax </tspan><tspan font-style="italic" fill="#7E3818">g</tspan><tspan font-size="11" dy="3" fill="#7E3818">i</tspan><tspan dy="-3" fill="#7E3818" font-weight="800"> = 1</tspan><tspan fill="#7E3818" font-weight="800">; others = 0</tspan><tspan fill="#7E3818" font-weight="700"> · one expert / token</tspan>
+            </text>
+
+            <text x="306" y="98" text-anchor="start" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#B1542B"><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">1</tspan><tspan dy="-2">, </tspan><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">2</tspan><tspan dy="-2">, </tspan><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">3</tspan></text>
+
+            <!-- input x -->
+            <text x="30" y="180" text-anchor="end" font-family="Inter, sans-serif" font-weight="800" font-size="22" fill="#111827">x</text>
+            <line x1="38" y1="174" x2="68" y2="174" stroke="#1F3A5F" stroke-width="2.8" stroke-linecap="round"/>
+            <circle cx="70" cy="174" r="5" fill="#1F3A5F"/>
+
+            <!-- x -> gate (rust, trainable path: x feeds gate first) -->
+            <path d="M 70 171 L 70 60 L 100 60" stroke="#B1542B" stroke-width="2" fill="none" stroke-dasharray="4 3" marker-end="url(#mole-arr-rust-2)"/>
+
+            <!-- 3 expert rows. Dataset labels are placed ABOVE each row so they don't sit on the input fanout arrows. -->
+            <!-- Row 1: E2E (y center 130) -->
+            <g>
+              <text x="385" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">E2E</text>
+              <circle cx="385" cy="130" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
+              <text x="385" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">1</tspan></text>
+              <line x1="399" y1="130" x2="414" y2="130" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="414,120 476,128 476,140 414,148" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="445" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">1</tspan></text>
+              <line x1="476" y1="134" x2="494" y2="134" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="494,128 556,120 556,148 494,140" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="525" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">1</tspan></text>
+            </g>
+            <!-- Row 2: DART (y center 175) -->
+            <g>
+              <text x="385" y="153" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">DART</text>
+              <circle cx="385" cy="175" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
+              <text x="385" y="179" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">2</tspan></text>
+              <line x1="399" y1="175" x2="414" y2="175" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="414,165 476,173 476,185 414,193" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="445" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">2</tspan></text>
+              <line x1="476" y1="179" x2="494" y2="179" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="494,173 556,165 556,193 494,185" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="525" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">2</tspan></text>
+            </g>
+            <!-- Row 3: WebNLG (y center 220) -->
+            <g>
+              <text x="385" y="198" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">WebNLG</text>
+              <circle cx="385" cy="220" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
+              <text x="385" y="224" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">3</tspan></text>
+              <line x1="399" y1="220" x2="414" y2="220" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="414,210 476,218 476,230 414,238" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="445" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">3</tspan></text>
+              <line x1="476" y1="224" x2="494" y2="224" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="494,218 556,210 556,238 494,230" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="525" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">3</tspan></text>
+            </g>
+
+            <!-- input fanout: x junction → ×g_i circles -->
+            <path d="M 70 172 L 369 130" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy-2)"/>
+            <line x1="70" y1="174" x2="369" y2="175" stroke="#1F3A5F" stroke-width="2" marker-end="url(#mole-arr-navy-2)"/>
+            <path d="M 70 176 L 369 220" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy-2)"/>
+
+            <!-- gate output: rust dashed from gate-area down to each ×g_i circle -->
+            <path d="M 280 88 L 376 119" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust-2)"/>
+            <path d="M 290 88 L 376 167" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust-2)"/>
+            <path d="M 300 88 L 376 211" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust-2)"/>
+
+            <!-- + combiner -->
+            <circle cx="615" cy="175" r="22" fill="#ffffff" stroke="#1F3A5F" stroke-width="3"/>
+            <text x="615" y="184" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="26" fill="#1F3A5F">+</text>
+
+            <!-- arrows from each B_i → + -->
+            <path d="M 556 134 L 593 169" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy-2)"/>
+            <line x1="556" y1="179" x2="593" y2="175" stroke="#1F3A5F" stroke-width="2" marker-end="url(#mole-arr-navy-2)"/>
+            <path d="M 556 224 L 593 181" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy-2)"/>
+
+            <!-- + → output Δh -->
+            <line x1="637" y1="175" x2="688" y2="175" stroke="#1F3A5F" stroke-width="2.8" stroke-linecap="round" marker-end="url(#mole-arr-navy-2)"/>
+            <text x="698" y="173" text-anchor="start" font-family="Inter, sans-serif" font-weight="800" font-size="18" fill="#111827">&#916;<tspan font-style="italic">h</tspan></text>
+            <text x="698" y="191" text-anchor="start" font-family="Inter, sans-serif" font-weight="500" font-size="11" fill="#4B5563">added to <tspan font-style="italic">W</tspan><tspan font-size="9" dy="3">0</tspan><tspan font-style="italic" dy="-3">x</tspan></text>
+
+            <!-- legend strip at bottom -->
+            <g font-family="Inter, sans-serif" font-size="10.5" fill="#1f2937">
+              <rect x="180" y="252" width="14" height="10" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.4" stroke-dasharray="3 3"/>
+              <text x="200" y="261">frozen LoRA expert (<tspan font-style="italic">A</tspan>, <tspan font-style="italic">B</tspan>)</text>
+              <rect x="430" y="252" width="14" height="10" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.4"/>
+              <text x="450" y="261">trainable router &#183; routing scalar <tspan font-style="italic">g</tspan><tspan font-size="9" dy="2">i</tspan></text>
+            </g>
+          </svg>
+        </div>
+        <div class="figcap"><b>Fig. 10.</b> Top-1 router picks one expert per token.</div>
+      </div>
+
+      <!-- CARD 12: Cross-task MoLE results matrix -->
+      <div class="card card-mole-matrix">
+        <div class="card-head">
+          <div class="card-num">12</div>
+          <div class="card-title">MoLE Results: Cross-Task Generalization</div>
+        </div>
+        <table class="metrics mole-bleu">
+          <colgroup>
+            <col style="width: 24%">
+            <col style="width: 22%">
+            <col style="width: 18%">
+            <col style="width: 18%">
+            <col style="width: 18%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Params</th>
+              <th>E2E<br>BLEU</th>
+              <th>DART<br>BLEU</th>
+              <th>WebNLG<br>BLEU</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>E2E LoRA</b></td>
+              <td>0.39M</td>
+              <td>67.30</td>
+              <td>28.53</td>
+              <td>10.58</td>
+            </tr>
+            <tr>
+              <td><b>DART LoRA</b></td>
+              <td>0.39M</td>
+              <td>60.54</td>
+              <td><b>47.15</b></td>
+              <td>50.44</td>
+            </tr>
+            <tr>
+              <td><b>WebNLG LoRA</b></td>
+              <td>0.39M</td>
+              <td>39.75</td>
+              <td>33.41</td>
+              <td><b>55.23</b></td>
+            </tr>
+            <tr class="mole">
+              <td><b>MoLE (3 + router)</b></td>
+              <td>&asymp;1.24M</td>
+              <td><b>67.76</b></td>
+              <td>45.35</td>
+              <td>51.75</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="5">MoLE total &asymp;1.24M = 3&times;0.39M frozen experts + 0.07M trainable router.</td></tr>
+          </tfoot>
+        </table>
+        <ul class="bullets dense">
+          <li>Single-task LoRAs <b>fall apart off-domain</b> (E2E&rarr;DART drops ~39 BLEU). MoLE stays strong everywhere &mdash; <b>one</b> checkpoint.</li>
+          <li>Matches/beats the E2E specialist on its home turf; trades a little on others.</li>
+        </ul>
+        <div class="figcap"><b>Fig. 11.</b> Bold = best in column. Each column tests on that task&apos;s own held-out split.</div>
+      </div>
+
+      <!-- CARD 13: CONCLUSIONS + FUTURE WORK -->
+      <div class="card shaded">
+        <div class="card-head">
+          <div class="card-num">13</div>
+          <div class="card-title">Conclusion &amp; Future Work</div>
+        </div>
+        <ul class="bullets dense">
+          <li><b>LoRA reproduces.</b> AdaLoRA-Lite r<sub>max</sub>=6 within 0.05 BLEU of paper at 0.39M.</li>
+          <li><b>Allocation &gt; raw rank.</b> Late-ramp <i>r</i>=4 beats uniform <i>r</i>=8 with half the params.</li>
+          <li><b>Learned &asymp; hand-designed.</b> AdaLoRA-Lite recovers a late-heavy profile automatically.</li>
+          <li><b>MoLE.</b> One served model for E2E, DART, WebNLG via a tiny router.</li>
+        </ul>
+        <div class="concl-future">Future work</div>
+        <ul class="bullets dense">
+          <li><b>Scale to larger backbones.</b> Move beyond GPT-2 Medium to GPT-2 Large and Llama-2/3 7B-class models.</li>
+          <li><b>MoLE + adaptive rank.</b> Combine mixture-of-LoRA routing with AdaLoRA-Lite&ndash;style learned rank budgets.</li>
+          <li><b>Orthogonality regularizer.</b> Add AdaLoRA-style SVD orthogonality penalties on projection factors (<i>P</i>, <i>Q</i>) to AdaLoRA-Lite and measure interference vs. pruning dynamics.</li>
+      </div>
+
+      <!-- CARD 14: REFERENCES -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">14</div>
           <div class="card-title card-title-sm">References</div>
         </div>
         <div class="refs">
