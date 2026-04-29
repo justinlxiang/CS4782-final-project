@@ -548,9 +548,9 @@
         <div class="figbox">
           <svg viewBox="0 0 760 230" xmlns="http://www.w3.org/2000/svg">
             <!-- titles -->
-            <text x="100" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">① START · all gates active</text>
-            <text x="380" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">② SCORE · EMA sensitivity</text>
-            <text x="660" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">③ PRUNE · keep top-K</text>
+            <text x="100" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">1 · START · all gates active</text>
+            <text x="380" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">2 · SCORE · EMA sensitivity</text>
+            <text x="660" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">3 · PRUNE · keep top-K</text>
 
             <!-- box 1 -->
             <rect x="20" y="40" width="180" height="78" rx="8" fill="#ffffff" stroke="#1F3A5F" stroke-width="2"/>
@@ -1049,6 +1049,13 @@
           </svg>
         </div>
         <div class="figcap"><b>Fig. 7.</b> Same active 0.39M budget; both extensions sit above the uniform LoRA frontier. <b>AdaLoRA-Lite r<sub>max</sub>=6</b> reaches BLEU 68.85 — beating uniform <i>r</i>=16 with 4× fewer trainable parameters.</div>
+        <div class="h3" style="margin-top:6pt;">Why the three AdaLoRA-Lite runs separate</div>
+        <ul class="bullets dense">
+          <li><b>r<sub>max</sub>=6 wins (68.85).</b> 1.5× over-rank, 33% prune; long warmup stabilises EMA before cuts.</li>
+          <li><b>r<sub>max</sub>=8 (68.34).</b> 2× over-rank but t<sub>init</sub>=15K leaves too few post-prune steps.</li>
+          <li><b>r<sub>max</sub>=16 (67.67).</b> 4× over-rank, prune starts at step 500, min/slice=0 — kills slices before importances converge.</li>
+          <li><b>Takeaway.</b> Late + gentle prune from small over-rank &gt; early + aggressive prune from large over-rank.</li>
+        </ul>
       </div>
 
       <!-- CARD 10: WHERE TO SPEND A TIGHT BUDGET? -->
