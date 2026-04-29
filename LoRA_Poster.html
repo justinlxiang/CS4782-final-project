@@ -69,7 +69,7 @@
       color: #4B5563; margin-top: 6pt;
     }
 
-    .author-block { text-align: right; padding-right: 0.10in; }
+    .author-block { text-align: right; padding-right: 0.10in; min-width: 0; }
     .author-block .meta {
       font: 700 11pt/1.2 "Inter", sans-serif; color: #B31B1B; letter-spacing: 0.6pt;
     }
@@ -79,8 +79,19 @@
     .author-block .affil {
       font: 500 13pt/1.25 "Inter", sans-serif; color: #4B5563; margin-top: 4pt;
     }
-    .author-block .emails {
-      font: 500 12pt/1.25 "Inter", "JetBrains Mono", monospace; color: #4B5563; margin-top: 4pt;
+    .author-block .emails-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      flex-wrap: nowrap;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-top: 4pt;
+      font: 500 12pt/1.25 "Inter", "JetBrains Mono", ui-monospace, monospace;
+      color: #4B5563;
+      min-width: 0;
+      white-space: nowrap;
     }
 
     /* ====== BODY 4-COLUMN GRID ====== */
@@ -327,6 +338,9 @@
     <div class="author-block">
       <div class="meta">CS 4782 · FINAL PROJECT</div>
       <div class="authors">Justin Xiang · Eric Qiu</div>
+      <div class="emails-row">
+        <span>jx372@cornell.edu · sq225@cornell.edu</span>
+      </div>
     </div>
   </div>
 
@@ -524,7 +538,7 @@
             <text x="540" y="338" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="14" fill="#4B5563">total = 192 rank units (re-spent)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 2.</b> Same total rank budget, redistributed: small/early, larger/late. Three other allocations also tested (early-ramp, query-heavy, value-heavy) — see Card 10.</div>
+        <div class="figcap"><b>Fig. 2.</b> Same total rank budget, redistributed: small/early, larger/late. Three other allocations also tested (early-ramp, query-heavy, value-heavy) — see Fig. 9.</div>
       </div>
 
     </div><!-- /col 1 -->
@@ -785,7 +799,7 @@
             </g>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 11.</b> Router emits <i>g</i><sub>1..3</sub> from <i>x</i>; frozen experts contribute <i>g<sub>i</sub></i>&middot;<i>B<sub>i</sub></i>(<i>A<sub>i</sub>x</i>), summed to &Delta;<i>h</i>. Top-1 keeps only the argmax expert.</div>
+        <div class="figcap"><b>Fig. 5.</b> Router emits <i>g</i><sub>1..3</sub> from <i>x</i>; frozen experts contribute <i>g<sub>i</sub></i>&middot;<i>B<sub>i</sub></i>(<i>A<sub>i</sub>x</i>), summed to &Delta;<i>h</i>. Top-1 keeps only the argmax expert.</div>
       </div>
 
       <!-- CARD 7: Cross-task MoLE results matrix -->
@@ -848,7 +862,7 @@
           <li>MoLE matches or beats the E2E specialist on official <b>BLEU</b> and <b>NIST</b>; task-trained adapters still win their native columns on some metrics.</li>
           <li><b>Deployment:</b> frozen base + routed experts &mdash; no per-task adapter swap.</li>
         </ul>
-        <div class="figcap"><b>Fig. 12.</b> Each column evaluates on that task&rsquo;s held-out test split with task-native decoding. Rows compare three rank-4 single-task LoRAs with MoLE (frozen experts + trained router). Bold = best in column.</div>
+        <div class="figcap"><b>Fig. 6.</b> Each column evaluates on that task&rsquo;s held-out test split with task-native decoding. Rows compare three rank-4 single-task LoRAs with MoLE (frozen experts + trained router). Bold = best in column.</div>
       </div>
 
     </div><!-- /col 2 -->
@@ -940,7 +954,7 @@
             </g>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 5.</b> Both extensions match or exceed the paper's reported BLEU/ROUGE-L on E2E NLG at the <b>same</b> active 0.39M-parameter budget as uniform <i>r</i> = 4. AdaLoRA-Lite is closest to the paper, late-ramp is the strongest hand-designed schedule.</div>
+        <div class="figcap"><b>Fig. 7.</b> Both extensions match or exceed the paper's reported BLEU/ROUGE-L on E2E NLG at the <b>same</b> active 0.39M-parameter budget as uniform <i>r</i> = 4. AdaLoRA-Lite is closest to the paper, late-ramp is the strongest hand-designed schedule.</div>
       </div>
 
       <!-- CARD 9: PARETO FRONTIER -->
@@ -1048,12 +1062,12 @@
 
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 7.</b> Same active 0.39M budget; both extensions sit above the uniform LoRA frontier. <b>AdaLoRA-Lite r<sub>max</sub>=6</b> reaches BLEU 68.85 — beating uniform <i>r</i>=16 with 4× fewer trainable parameters.</div>
+        <div class="figcap"><b>Fig. 8.</b> Same active 0.39M budget; both extensions sit above the uniform LoRA frontier. <b>AdaLoRA-Lite r<sub>max</sub>=6</b> reaches BLEU 68.85 — beating uniform <i>r</i>=16 with 4× fewer trainable parameters.</div>
         <div class="h3" style="margin-top:6pt;">Why the three AdaLoRA-Lite runs separate</div>
         <ul class="bullets dense">
           <li><b>r<sub>max</sub>=6 wins (68.85).</b> 1.5× over-rank, 33% prune; long warmup stabilises EMA before cuts.</li>
           <li><b>r<sub>max</sub>=8 (68.34).</b> 2× over-rank but t<sub>init</sub>=15K leaves too few post-prune steps.</li>
-          <li><b>r<sub>max</sub>=16 (67.67).</b> 4× over-rank, prune starts at step 500, min/slice=0 — kills slices before importances converge.</li>
+          <li><b>r<sub>max</sub>=16 (67.67).</b> 4× over-rank, prune starts at step 500, min/slice=0, kills slices before convergence.</li>
           <li><b>Takeaway.</b> Late + gentle prune from small over-rank &gt; early + aggressive prune from large over-rank.</li>
         </ul>
       </div>
@@ -1110,7 +1124,7 @@
             <text x="270" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#6B7280">— uniform = paper repro baseline —</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 8.</b> All five schedules use the same rank-4 Q/V budget (~0.39M params); only the <i>where</i> changes. Late-ramp wins, query-heavy is worst — <b>depth dominates projection identity</b>.</div>
+        <div class="figcap"><b>Fig. 9.</b> All five schedules use the same rank-4 Q/V budget (~0.39M params); only the <i>where</i> changes. Late-ramp wins, query-heavy is worst — <b>depth dominates projection identity</b>.</div>
       </div>
 
       <!-- CARD 11: E2E TEST SET TABLE -->
@@ -1139,9 +1153,9 @@
             <tr class="best"><td>AdaLoRA-Lite r<sub>max</sub>=6 ★ best</td><td>0.39M*</td><td>68.85</td><td>8.69</td><td>46.40</td><td>71.42</td><td>2.51</td></tr>
           </tbody>
           <tfoot>
-            <tr><td colspan="7">★ = paper baseline. Bold row = our best result. * AdaLoRA-Lite is reported at active rank budget; allocated tensors are larger (rmax6: 0.59M, rmax8: 0.79M, rmax16: 1.57M) but pruned to 192 active rank units before evaluation.</td></tr>
           </tfoot>
         </table>
+        <div class="figcap"><b>Fig. 10.</b> Official E2E NLG test metrics from <code>e2e-metrics</code>: paper LoRA / full-FT baselines (★), uniform rank sweep, late-ramp depth schedules, and AdaLoRA-Lite variants at a fixed <b>192</b> active rank-unit budget. Bold row = our best extension. * = active budget at eval; training tensors are larger (see footnote).</div>
       </div>
 
     </div><!-- /col 3 -->
@@ -1171,7 +1185,7 @@
           <div class="qual-line"><span class="qual-tag gold">AdaLoRA-Lite r<sub>max</sub>=6</span>(identical fix to Late-ramp)</div>
         </div>
 
-        <div class="figcap"><b>Examples 1 &amp; 2.</b> Same budget as uniform <i>r</i>=4; extensions fix <b>name errors</b>, dropped words, and weak structure &mdash; bulk scores (Card 8) underplay these fixes.</div>
+        <div class="figcap"><b>Examples 1 &amp; 2.</b> Same budget as uniform <i>r</i>=4; extensions fix <b>name errors</b>, dropped words, and weak structure &mdash; bulk scores (Fig. 7) underplay these fixes.</div>
       </div>
 
       <!-- CARD 13: WHAT ADALORA-LITE LEARNED -->
@@ -1274,7 +1288,7 @@
             <text x="400" y="220" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F">layer index (early → late)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 9.</b> Active rank per layer (V stacked on Q) after training. Independent of the hand-designed late-ramp, the gates settle on a strikingly similar <b>late-layer-heavy profile</b> — capacity flows from layers 0–8 (where it's mostly redundant) to layers 11–23.</div>
+        <div class="figcap"><b>Fig. 11.</b> Active rank per layer (V stacked on Q) after training. Independent of the hand-designed late-ramp, the gates settle on a strikingly similar <b>late-layer-heavy profile</b> — capacity flows from layers 0–8 (where it's mostly redundant) to layers 11–23.</div>
       </div>
 
       <!-- CARD 14: ADALORA-LITE RANK EVOLUTION HEATMAP -->
@@ -2143,7 +2157,7 @@
             <text x="22" y="142" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F" transform="rotate(-90 22 142)">layer index (early ↑ → late ↓)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 10.</b> Allocation timeline: early layers drain to rank 3&ndash;5, late layers hold at 11&ndash;12 &mdash; late-heavy profile <i>emerges</i> over training.</div>
+        <div class="figcap"><b>Fig. 12.</b> Allocation timeline: early layers drain to rank 3&ndash;5, late layers hold at 11&ndash;12 &mdash; late-heavy profile <i>emerges</i> over training.</div>
       </div>
 
       <!-- CARD 15: CONCLUSIONS + FUTURE WORK -->
@@ -2156,8 +2170,8 @@
         <ul class="bullets dense">
           <li><b>LoRA reproduces.</b> AdaLoRA-Lite r<sub>max</sub>=6 lands within 0.05 BLEU of the paper at the same 0.39M active budget — confirming Hu et al. (2021) at &lt;1% of full-FT cost.</li>
           <li><b>Allocation &gt; raw rank.</b> Late-ramp <i>r</i>=4 beats <i>uniform r=8</i> (+0.42 BLEU) with half the params: depth &gt; projection identity &gt; total budget.</li>
-          <li><b>Learned ≈ hand-designed.</b> AdaLoRA-Lite recovers a late-layer-heavy rank profile automatically (Fig. 9), validating the Depth-Weighted LoRA hypothesis without hand tuning.</li>
-          <li><b>MoLE (Extension #3).</b> 3 frozen task LoRAs + learned router: <b>one</b> served model for E2E, DART, WebNLG (Card 7) &mdash; multi-task routing that complements the depth-budget results (Cards 8&ndash;14).</li>
+          <li><b>Learned ≈ hand-designed.</b> AdaLoRA-Lite recovers a late-layer-heavy rank profile automatically (Fig. 11), validating the Depth-Weighted LoRA hypothesis without hand tuning.</li>
+          <li><b>MoLE (Extension #3).</b> 3 frozen task LoRAs + learned router: <b>one</b> served model for E2E, DART, WebNLG (Fig. 6) &mdash; multi-task routing that complements the depth-budget results (Figs. 7&ndash;12).</li>
         </ul>
         <div class="h3">Practical benefits</div>
         <ul class="bullets dense">
