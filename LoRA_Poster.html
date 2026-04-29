@@ -235,10 +235,10 @@
       border-top: 4px solid #B31B1B; padding-top: 0.10in;
     }
     .refs {
-      font: 500 8.4pt/1.25 "Inter", sans-serif; color: #4B5563;
+      font: 500 7.4pt/1.18 "Inter", sans-serif; color: #4B5563;
     }
     .refs b { color: #1F3A5F; font-weight: 800; }
-    .refs .ref-row { margin-bottom: 2.5pt; padding-left: 14pt; text-indent: -14pt; }
+    .refs .ref-row { margin-bottom: 1.6pt; padding-left: 12pt; text-indent: -12pt; }
     /* Footer-only refs row is a single-line credit, override the indent there */
     .footer .refs { font-size: 11pt; padding-left: 0; text-indent: 0; }
     .footer .refs .ref-row { padding-left: 0; text-indent: 0; }
@@ -1166,8 +1166,8 @@
 
         <div class="qual-row">
           <div class="qual-mr"><b>MR&nbsp;2:</b> name : <i>Blue Spice</i> | Type : restaurant | food : English | area : city centre | family-friendly : no | near : Rainbow Vegetarian Café</div>
-          <div class="qual-line"><span class="qual-tag navy">Uniform r=4</span>"Blue Spice is a restaurant providing English food. It is located in the city centre. It is near <span class="err">Rainbow vegetable Café</span>. It is not family-friendly."</div>
-          <div class="qual-line"><span class="qual-tag rust">Late-ramp r=4</span>"Blue Spice is <span class="fix">an English restaurant</span> located in the city centre near <span class="fix">Rainbow Vegetarian Café</span>. It is not family-friendly."</div>
+          <div class="qual-line"><span class="qual-tag navy">Uniform r=4</span>"Blue Spice is a restaurant providing English food. It is located in the city centre. It is near <span class="err">Rainbow vegetable Café</span>."</div>
+          <div class="qual-line"><span class="qual-tag rust">Late-ramp r=4</span>"Blue Spice is <span class="fix">an English restaurant</span> located in the city centre near <span class="fix">Rainbow Vegetarian Café</span>."</div>
           <div class="qual-line"><span class="qual-tag gold">AdaLoRA-Lite r<sub>max</sub>=6</span>(identical fix to Late-ramp)</div>
         </div>
 
@@ -1290,7 +1290,7 @@
           <span><span class="chip" style="background:#8B3C1A"></span>high rank (12)</span>
         </div>
         <div class="figbox">
-          <svg viewBox="0 0 760 290" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 760 290" style="max-width: 92%;" xmlns="http://www.w3.org/2000/svg">
             <!-- heatmap cells (rows = layers L0..L23, cols = optimiser step) -->
             <g shape-rendering="crispEdges">
               <rect x="78.00" y="36.00" width="19.95" height="9.43" fill="#8B3C1A"/>
@@ -2157,8 +2157,13 @@
           <li><b>LoRA reproduces.</b> AdaLoRA-Lite r<sub>max</sub>=6 lands within 0.05 BLEU of the paper at the same 0.39M active budget — confirming Hu et al. (2021) at &lt;1% of full-FT cost.</li>
           <li><b>Allocation &gt; raw rank.</b> Late-ramp <i>r</i>=4 beats <i>uniform r=8</i> (+0.42 BLEU) with half the params: depth &gt; projection identity &gt; total budget.</li>
           <li><b>Learned ≈ hand-designed.</b> AdaLoRA-Lite recovers a late-layer-heavy rank profile automatically (Fig. 9), validating the Depth-Weighted LoRA hypothesis without hand tuning.</li>
-          <li><b>Limitations &amp; honest read.</b> Mostly single-seed; small differences (≈ 0.2 BLEU) sit near generation-metric noise. AdaLoRA-Lite needs an over-rank backbone at training time even though only 0.39M is active.</li>
           <li><b>MoLE (Extension #3).</b> 3 frozen task LoRAs + learned router: <b>one</b> served model for E2E, DART, WebNLG (Card 7) &mdash; multi-task routing that complements the depth-budget results (Cards 8&ndash;14).</li>
+        </ul>
+        <div class="h3">Limitations</div>
+        <ul class="bullets dense">
+          <li><b>Q/V only.</b> Adapters touch ~5% of params; MLP / <i>W</i><sub>fc</sub> budget unstudied — depth allocation may not transfer there.</li>
+          <li><b>One backbone, templated NLG.</b> Validated only on GPT-2 Medium and E2E/DART/WebNLG; scale to 7B+ and harder generation untested.</li>
+          <li><b>Over-rank training cost.</b> AdaLoRA-Lite r<sub>max</sub>=6 trains 0.59M tensor params even though only 0.39M is active at eval — training memory &gt; final budget.</li>
         </ul>
         <div class="h3">Practical upside</div>
         <ul class="bullets dense">
