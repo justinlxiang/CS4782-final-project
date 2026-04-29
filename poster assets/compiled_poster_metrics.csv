@@ -1,0 +1,17 @@
+group,run,rank,trainable_m,official_bleu,nist,meteor,rouge_l,cider,active_effective_m,allocated_trainable_m,param_note
+paper target,LoRA paper GPT-2/E2E,4,0.35,68.90,8.69,46.40,71.30,2.51,,,
+paper target,Full fine-tuning paper,all,354,68.20,8.62,46.20,71.00,2.47,,,
+rank sweep,uniform_r1,1,,66.78,8.5060,45.02,68.94,2.3622,,,
+rank sweep,uniform_r2,2,,67.11,8.5219,45.78,70.30,2.4465,,,
+uniform_vs_late_ramp_r4,uniform_r4,4,,67.30,8.5139,46.05,70.96,2.4719,0.393,0.393,fixed rank-4 q/v budget
+uniform_vs_late_ramp_r4,late_ramp_r4,4,,68.39,8.6286,46.51,71.29,2.4929,0.393,0.393,fixed rank-4 q/v budget
+uniform_vs_late_ramp_r8,uniform_r8,8,,67.97,8.5941,46.23,70.94,2.5017,,,
+uniform_vs_late_ramp_r8,late_ramp_r8,8,,67.77,8.5683,46.28,70.90,2.4762,,,
+uniform_vs_late_ramp_r16,uniform_r16,16,,68.21,8.6238,46.22,71.12,2.4922,,,
+uniform_vs_late_ramp_r16,late_ramp_r16,16,,68.15,8.6182,46.38,71.24,2.4905,,,
+depth_allocation,early_ramp_r4,4,,67.89,8.5763,46.15,70.98,2.4772,,,
+projection_allocation,value_heavy_r4,4,,67.42,8.5266,46.24,71.04,2.4727,,,
+projection_allocation,query_heavy_r4,4,,67.09,8.5009,45.89,70.63,2.4651,,,
+adalora-lite,AdaLoRA-Lite rmax16,adaptive,1.574,67.67,8.5853,46.10,70.50,2.4452,0.393,1.574,target 192 active rank units; allocated tensors depend on rmax
+adalora-lite,AdaLoRA-Lite rmax8,adaptive,0.787,68.34,8.6379,46.30,71.00,2.4877,0.393,0.787,target 192 active rank units; allocated tensors depend on rmax
+adalora-lite,AdaLoRA-Lite rmax6,adaptive,0.590,68.85,8.6880,46.40,71.40,2.5061,0.393,0.590,target 192 active rank units; allocated rmax6 tensors are larger

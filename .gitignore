@@ -1,0 +1,8 @@
+# Experiment runs at repo root (checkpoints, generations, metrics, configs copies)
+lora_adalora_lite_*/
+lora_paper_aligned_official_beam_eval*/
+
+# Local / tooling
+.DS_Store
+.cursor/
+.pytest_cache/
