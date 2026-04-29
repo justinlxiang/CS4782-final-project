@@ -2159,17 +2159,17 @@
           <li><b>Learned ≈ hand-designed.</b> AdaLoRA-Lite recovers a late-layer-heavy rank profile automatically (Fig. 9), validating the Depth-Weighted LoRA hypothesis without hand tuning.</li>
           <li><b>MoLE (Extension #3).</b> 3 frozen task LoRAs + learned router: <b>one</b> served model for E2E, DART, WebNLG (Card 7) &mdash; multi-task routing that complements the depth-budget results (Cards 8&ndash;14).</li>
         </ul>
+        <div class="h3">Practical benefits</div>
+        <ul class="bullets dense">
+          <li><b>Train cheap.</b> Only ~0.39M adapter params train vs 354M full FT — less memory, smaller checkpoints.</li>
+          <li><b>No latency tax (merged).</b> Δ<i>W</i> = <i>BA</i> folds into <i>W</i>₀ → same matmul path as dense FT.</li>
+          <li><b>Swap in prod.</b> One frozen base + tiny per-task adapters; load without redeploying the whole model.</li>
+        </ul>
         <div class="h3">Limitations</div>
         <ul class="bullets dense">
           <li><b>Q/V only.</b> Adapters touch ~5% of params; MLP / <i>W</i><sub>fc</sub> budget unstudied — depth allocation may not transfer there.</li>
           <li><b>One backbone, templated NLG.</b> Validated only on GPT-2 Medium and E2E/DART/WebNLG; scale to 7B+ and harder generation untested.</li>
           <li><b>Over-rank training cost.</b> AdaLoRA-Lite r<sub>max</sub>=6 trains 0.59M tensor params even though only 0.39M is active at eval — training memory &gt; final budget.</li>
-        </ul>
-        <div class="h3">Practical upside</div>
-        <ul class="bullets dense">
-          <li><b>Train cheap.</b> Only ~0.39M adapter params train vs 354M full FT — less memory, smaller checkpoints.</li>
-          <li><b>No latency tax (merged).</b> Δ<i>W</i> = <i>BA</i> folds into <i>W</i>₀ → same matmul path as dense FT.</li>
-          <li><b>Swap in prod.</b> One frozen base + tiny per-task adapters; load without redeploying the whole model.</li>
         </ul>
         <div class="h3">Future work</div>
         <ul class="bullets dense">
