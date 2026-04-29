@@ -216,6 +216,17 @@
       font: 500 9pt/1.2 "Inter", sans-serif; color: #6B7280; padding-top: 5pt;
       text-align: left; border-bottom: none; font-style: italic;
     }
+    /* Cross-task MoLE matrix: double header row */
+    table.metrics.matrix thead tr:first-child th {
+      text-align: center; vertical-align: middle;
+      border-bottom: 0.6pt solid rgba(255,255,255,0.35);
+    }
+    table.metrics.matrix thead tr:last-child th {
+      font-size: 9.8pt; padding: 3pt 4pt;
+    }
+    table.metrics.matrix th.row-label { text-align: left; background: #1F3A5F; }
+    table.metrics.matrix td:first-child { font-weight: 700; font-size: 10pt; }
+    table.metrics.matrix tr.mole td { background: #EAF0F7; }
 
     /* Footer */
     .footer {
@@ -335,9 +346,10 @@
           <li><b>GPT-2 Medium (354M)</b> gives strong zero-shot LM quality, but <b>full fine-tuning</b> updates every weight and stores a fresh 354M checkpoint <b>per task</b> — costly to train, store, and serve.</li>
           <li><b>Adapters</b> (Houlsby et al. 2019) cut trainable params via bottleneck layers but add inference latency; <b>prefix-tuning</b> (Li &amp; Liang 2021) burns context length and is finicky to optimise.</li>
           <li><b>LoRA</b> (Hu et al. 2021) freezes <i>W</i>₀ and learns a <b>low-rank update</b> Δ<i>W</i> = <i>BA</i> (rank <i>r</i> ≪ <i>d</i>) on attention <i>Q</i> and <i>V</i>. At inference Δ<i>W</i> folds into <i>W</i>₀ → <b>zero added latency</b>.</li>
-          <li><b>Targeted result (Hu et al. 2021, Table 4):</b> on E2E NLG, GPT-2 Medium + LoRA at <b><i>r</i> = 4</b> on Q,V matches full fine-tuning at <b>≈ 0.35M trainable params</b> (~1000× reduction): <b>BLEU 68.9 / ROUGE-L 71.3</b> vs. 68.2 / 71.0 for full FT.</li>
+          <li><b>Targeted result (Hu et al. 2021, Table 4):</b> on E2E NLG, GPT-2 Medium + LoRA at <b><i>r</i> = 4</b> on Q,V matches full fine-tuning at <b>≈ 0.39M trainable params</b> (~1000× reduction): <b>BLEU 68.9 / ROUGE-L 71.3</b> vs. 68.2 / 71.0 for full FT.</li>
           <li><b>Open question.</b> LoRA gives every layer the <i>same</i> rank, yet transformer information specialises with depth. Can we redistribute the <i>same</i> budget for free gains — by hand (<b>Depth-Weighted LoRA</b>) or learned (<b>AdaLoRA-Lite</b>)?</li>
           <li><b>Concrete goal.</b> Push the Pareto frontier: <b>beat the uniform <i>r</i>=16 baseline</b> (1.57M trainable params, BLEU 68.21) using a strictly <b>smaller</b> budget — ideally <b>0.39M</b> (4× fewer params, the uniform <i>r</i>=4 / paper-LoRA size).</li>
+          <li><b>Bonus question.</b> Single-task LoRA pays a &ldquo;pick the right adapter&rdquo; tax at deployment. Can a per-layer <b>router</b> mix <i>N</i> frozen task-specific LoRAs and serve them all from one base? &mdash; <b>Mixture-of-LoRA-Experts (MoLE)</b> (Wu et al. 2024).</li>
         </ul>
         <div class="hbox">
           <div class="h-label">Hypothesis</div>
@@ -512,7 +524,7 @@
             <text x="540" y="338" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="14" fill="#4B5563">total = 192 rank units (re-spent)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 2.</b> Same total rank budget, redistributed: small/early, larger/late. Three other allocations also tested (early-ramp, query-heavy, value-heavy) — see §11.</div>
+        <div class="figcap"><b>Fig. 2.</b> Same total rank budget, redistributed: small/early, larger/late. Three other allocations also tested (early-ramp, query-heavy, value-heavy) — see Card 10.</div>
       </div>
 
     </div><!-- /col 1 -->
@@ -611,10 +623,6 @@
           <li><b>Cubic decay.</b> <i>b</i>(<i>t</i>) leaves capacity high early, then ramps cuts faster toward <i>t</i><sub>final</sub> — smoother than a hard step or aggressive linear trim, so training does not collapse mid-run.</li>
           <li><b>Land on budget before eval.</b> Reach the 192 active-unit target while steps remain so the last epochs actually optimise the pruned network, not an over-capacity skeleton.</li>
         </ul>
-        <div class="eq small-eq">
-          <i>b</i>(<i>t</i>) = <i>r</i><sub>tgt</sub> + (<i>r</i><sub>max</sub> &minus; <i>r</i><sub>tgt</sub>) · (1 &minus; <i>τ</i>)<sup>3</sup>
-          <span style="display:inline-block; padding-left: 18pt; color:#4B5563;">where <i>τ</i> = (<i>t</i> &minus; <i>t</i><sub>init</sub>) / (<i>t</i><sub>final</sub> &minus; <i>t</i><sub>init</sub>)</span>
-        </div>
         <div class="figbox">
           <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg">
             <!-- axes -->
@@ -660,16 +668,199 @@
         <div class="figcap"><b>Fig. 4.</b> Start at full <i>r</i><sub>max</sub>, smoothly cool to the target rank via a cubic schedule, prune by sensitivity-smoothed gate magnitude. Best run: t_init = 10K, t_final = 21K of 26K total steps.</div>
       </div>
 
+      <!-- CARD 6: MoLE — Mixture-of-LoRA Experts -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">6</div>
+          <div class="card-title">Extension #3 &mdash; Mixture-of-LoRA Experts (MoLE)</div>
+        </div>
+        <ul class="bullets dense">
+          <li>Instead of swapping adapters at inference, a tiny <b>per-layer router</b> picks among <i>N</i> frozen single-task LoRAs <b>at every token</b>.</li>
+          <li>Three <b>frozen</b> experts: E2E, DART, and WebNLG rank-4 Q/V LoRAs (same checkpoints as our paper-aligned runs). <b>Only</b> the router trains: one <code>Linear</code>(<i>d</i> &rarr; <i>N</i>) per layer &asymp; <b>0.07M</b> total (24&times;1 024&times;3 + bias).</li>
+          <li><b>Top-1 routing (Switch-style):</b> per token, pick argmax expert <i>k</i> = argmax<sub><i>i</i></sub> <i>g<sub>i</sub></i>(<i>x</i>); contribute only <i>g<sub>k</sub></i> &middot; <i>B<sub>k</sub></i>(<i>A<sub>k</sub>x</i>) so gradients still flow through the gate via the softmax probability. Config <code>mole.routing_mode: top1</code>.</li>
+          <li>Router optimised on the <b>concatenation</b> of three processed train sets (2 epochs, AdamW lr 5e-4).</li>
+        </ul>
+        <div class="eq small-eq">&Delta;<i>h</i>(<i>x</i>) = scaling &middot; gate<sub><i>k</i></sub>(<i>x</i>) &middot; <i>B<sub>k</sub></i>(<i>A<sub>k</sub>x</i>),&nbsp;&nbsp; <i>k</i> = argmax<sub><i>i</i></sub> gate<sub><i>i</i></sub>(<i>x</i>)</div>
+        <div class="figbox">
+          <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="mole-arr-navy" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
+                <path d="M 0 0 L 10 5 L 0 10 L 2 5 Z" fill="#1F3A5F"/>
+              </marker>
+              <marker id="mole-arr-rust" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
+                <path d="M 0 0 L 10 5 L 0 10 L 2 5 Z" fill="#B1542B"/>
+              </marker>
+            </defs>
+
+            <!-- Section labels -->
+            <text x="195" y="16" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="13" fill="#B1542B" letter-spacing="2">STEP 1 &#183; ROUTE</text>
+            <text x="555" y="16" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="13" fill="#1F3A5F" letter-spacing="2">STEP 2 &#183; FROZEN EXPERT MATMULS</text>
+
+            <!-- gate(x) box (rust, trainable) on the LEFT -->
+            <rect x="100" y="32" width="190" height="56" rx="7" fill="#FBEFE3" stroke="#B1542B" stroke-width="2.5"/>
+            <text x="195" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#B1542B">gate(<tspan font-style="italic">x</tspan>) &#8594; softmax</text>
+            <text x="195" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#4B5563">Linear(<tspan font-style="italic">d</tspan> &#8594; <tspan font-style="italic">N</tspan>) &#183; &#8776;0.07M total</text>
+
+            <!-- routing weights label (in the breathing room next to gate) -->
+            <text x="306" y="48" text-anchor="start" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#B1542B">routing weights</text>
+            <text x="306" y="68" text-anchor="start" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#B1542B"><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">1</tspan><tspan dy="-2">, </tspan><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">2</tspan><tspan dy="-2">, </tspan><tspan font-style="italic">g</tspan><tspan font-size="10" dy="2">3</tspan></text>
+            <text x="306" y="84" text-anchor="start" font-family="Inter, sans-serif" font-weight="500" font-size="10" fill="#4B5563">(top-1: only argmax non-zero)</text>
+
+            <!-- input x -->
+            <text x="30" y="180" text-anchor="end" font-family="Inter, sans-serif" font-weight="800" font-size="22" fill="#111827">x</text>
+            <line x1="38" y1="174" x2="68" y2="174" stroke="#1F3A5F" stroke-width="2.8" stroke-linecap="round"/>
+            <circle cx="70" cy="174" r="5" fill="#1F3A5F"/>
+
+            <!-- x -> gate (rust, trainable path: x feeds gate first) -->
+            <path d="M 70 171 L 70 60 L 100 60" stroke="#B1542B" stroke-width="2" fill="none" stroke-dasharray="4 3" marker-end="url(#mole-arr-rust)"/>
+
+            <!-- 3 expert rows. Dataset labels are placed ABOVE each row so they don't sit on the input fanout arrows. -->
+            <!-- Row 1: E2E (y center 130) -->
+            <g>
+              <text x="385" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">E2E</text>
+              <circle cx="385" cy="130" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
+              <text x="385" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">1</tspan></text>
+              <line x1="399" y1="130" x2="414" y2="130" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="414,120 476,128 476,140 414,148" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="445" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">1</tspan></text>
+              <line x1="476" y1="134" x2="494" y2="134" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="494,128 556,120 556,148 494,140" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="525" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">1</tspan></text>
+            </g>
+            <!-- Row 2: DART (y center 175) -->
+            <g>
+              <text x="385" y="153" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">DART</text>
+              <circle cx="385" cy="175" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
+              <text x="385" y="179" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">2</tspan></text>
+              <line x1="399" y1="175" x2="414" y2="175" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="414,165 476,173 476,185 414,193" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="445" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">2</tspan></text>
+              <line x1="476" y1="179" x2="494" y2="179" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="494,173 556,165 556,193 494,185" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="525" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">2</tspan></text>
+            </g>
+            <!-- Row 3: WebNLG (y center 220) -->
+            <g>
+              <text x="385" y="198" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">WebNLG</text>
+              <circle cx="385" cy="220" r="14" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.6"/>
+              <text x="385" y="224" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="10" fill="#B1542B">&#215;<tspan font-style="italic">g</tspan><tspan font-size="8" dy="2">3</tspan></text>
+              <line x1="399" y1="220" x2="414" y2="220" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="414,210 476,218 476,230 414,238" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="445" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">A</tspan><tspan font-size="9" dy="2">3</tspan></text>
+              <line x1="476" y1="224" x2="494" y2="224" stroke="#1F3A5F" stroke-width="1.5"/>
+              <polygon points="494,218 556,210 556,238 494,230" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <text x="525" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="11" fill="#1F3A5F"><tspan font-style="italic">B</tspan><tspan font-size="9" dy="2">3</tspan></text>
+            </g>
+
+            <!-- input fanout: x junction → ×g_i circles -->
+            <path d="M 70 172 L 369 130" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy)"/>
+            <line x1="70" y1="174" x2="369" y2="175" stroke="#1F3A5F" stroke-width="2" marker-end="url(#mole-arr-navy)"/>
+            <path d="M 70 176 L 369 220" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy)"/>
+
+            <!-- gate output: rust dashed from gate-area down to each ×g_i circle -->
+            <path d="M 280 88 L 376 119" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust)"/>
+            <path d="M 290 88 L 376 167" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust)"/>
+            <path d="M 300 88 L 376 211" stroke="#B1542B" stroke-width="1.6" fill="none" stroke-dasharray="3 3" marker-end="url(#mole-arr-rust)"/>
+
+            <!-- + combiner -->
+            <circle cx="615" cy="175" r="22" fill="#ffffff" stroke="#1F3A5F" stroke-width="3"/>
+            <text x="615" y="184" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="26" fill="#1F3A5F">+</text>
+
+            <!-- arrows from each B_i → + -->
+            <path d="M 556 134 L 593 169" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy)"/>
+            <line x1="556" y1="179" x2="593" y2="175" stroke="#1F3A5F" stroke-width="2" marker-end="url(#mole-arr-navy)"/>
+            <path d="M 556 224 L 593 181" stroke="#1F3A5F" stroke-width="2" fill="none" marker-end="url(#mole-arr-navy)"/>
+
+            <!-- + → output Δh -->
+            <line x1="637" y1="175" x2="688" y2="175" stroke="#1F3A5F" stroke-width="2.8" stroke-linecap="round" marker-end="url(#mole-arr-navy)"/>
+            <text x="698" y="173" text-anchor="start" font-family="Inter, sans-serif" font-weight="800" font-size="18" fill="#111827">&#916;<tspan font-style="italic">h</tspan></text>
+            <text x="698" y="191" text-anchor="start" font-family="Inter, sans-serif" font-weight="500" font-size="11" fill="#4B5563">added to <tspan font-style="italic">W</tspan><tspan font-size="9" dy="3">0</tspan><tspan font-style="italic" dy="-3">x</tspan></text>
+
+            <!-- legend strip at bottom -->
+            <g font-family="Inter, sans-serif" font-size="10.5" fill="#1f2937">
+              <rect x="180" y="252" width="14" height="10" fill="#ffffff" stroke="#1F3A5F" stroke-width="1.4" stroke-dasharray="3 3"/>
+              <text x="200" y="261">frozen LoRA expert (<tspan font-style="italic">A</tspan>, <tspan font-style="italic">B</tspan>)</text>
+              <rect x="430" y="252" width="14" height="10" fill="#FBEFE3" stroke="#B1542B" stroke-width="1.4"/>
+              <text x="450" y="261">trainable router &#183; routing scalar <tspan font-style="italic">g</tspan><tspan font-size="9" dy="2">i</tspan></text>
+            </g>
+          </svg>
+        </div>
+        <div class="figcap"><b>Fig. 11.</b> Router emits <i>g</i><sub>1..3</sub> from <i>x</i>; frozen experts contribute <i>g<sub>i</sub></i>&middot;<i>B<sub>i</sub></i>(<i>A<sub>i</sub>x</i>), summed to &Delta;<i>h</i>. Top-1 keeps only the argmax expert.</div>
+      </div>
+
+      <!-- CARD 7: Cross-task MoLE results matrix -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">7</div>
+          <div class="card-title">MoLE Results: Cross-Task Generalization</div>
+        </div>
+        <table class="metrics matrix">
+          <thead>
+            <tr>
+              <th rowspan="2" class="row-label">Method</th>
+              <th rowspan="2">Adapter<br>params</th>
+              <th colspan="3">E2E NLG</th>
+              <th colspan="3">DART</th>
+              <th colspan="3">WebNLG</th>
+            </tr>
+            <tr>
+              <th>BLEU</th><th>NIST</th><th>MET</th>
+              <th>BLEU</th><th>MET</th><th>TER&darr;</th>
+              <th>BLEU</th><th>MET</th><th>TER&darr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>E2E LoRA (<i>r</i>=4)</td>
+              <td>0.39M</td>
+              <td>67.30</td><td>8.51</td><td><b>46.05</b></td>
+              <td>28.53</td><td>27.69</td><td>0.812</td>
+              <td>10.58</td><td>17.88</td><td>0.921</td>
+            </tr>
+            <tr>
+              <td>DART LoRA (<i>r</i>=4)</td>
+              <td>0.39M</td>
+              <td>60.54</td><td>6.08</td><td>37.94</td>
+              <td><b>47.15</b></td><td><b>39.48</b></td><td><b>0.554</b></td>
+              <td>50.44</td><td>38.95</td><td>0.489</td>
+            </tr>
+            <tr>
+              <td>WebNLG LoRA (<i>r</i>=4)</td>
+              <td>0.39M</td>
+              <td>39.75</td><td>3.79</td><td>28.09</td>
+              <td>33.41</td><td>32.95</td><td>0.748</td>
+              <td><b>55.23</b></td><td><b>41.87</b></td><td><b>0.453</b></td>
+            </tr>
+            <tr class="mole">
+              <td>MoLE (3 experts + router)</td>
+              <td>≈1.24M</td>
+              <td><b>67.76</b></td><td><b>8.65</b></td><td>45.22</td>
+              <td>45.35</td><td>38.68</td><td>0.568</td>
+              <td>51.75</td><td>40.10</td><td>0.472</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="11">MoLE total &asymp;1.24M = 3&times;0.39M (frozen) + 0.07M (trainable router). Other rows: &asymp;0.39M trainable LoRA per task.</td></tr>
+          </tfoot>
+        </table>
+        <ul class="bullets dense" style="margin-top:8pt;">
+          <li>Specialists <b>collapse off-domain</b> (e.g. E2E &rarr; DART loses ~39 BLEU); MoLE stays strong everywhere with <b>one</b> checkpoint.</li>
+          <li>MoLE matches or beats the E2E specialist on official <b>BLEU</b> and <b>NIST</b>; task-trained adapters still win their native columns on some metrics.</li>
+          <li><b>Deployment:</b> frozen base + routed experts &mdash; no per-task adapter swap.</li>
+        </ul>
+        <div class="figcap"><b>Fig. 12.</b> Each column evaluates on that task&rsquo;s held-out test split with task-native decoding. Rows compare three rank-4 single-task LoRAs with MoLE (frozen experts + trained router). Bold = best in column.</div>
+      </div>
+
     </div><!-- /col 2 -->
 
 
     <!-- ============== COLUMN 3 ============== -->
     <div class="col">
 
-      <!-- CARD 6: key metrics vs. LoRA paper — bar chart -->
+      <!-- CARD 8: key metrics vs. LoRA paper — bar chart -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">6</div>
+          <div class="card-num">8</div>
           <div class="card-title">Key Metrics vs. the LoRA Paper</div>
           <div class="card-sub">same active budget · LoRA-level quality</div>
         </div>
@@ -718,7 +909,7 @@
               <text x="128" y="131" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#1F3A5F">68.90</text>
               <text x="188" y="57"  text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15" fill="#B1542B">71.30</text>
               <text x="158" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="#1F3A5F">Paper LoRA</text>
-              <text x="158" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">target · 0.35M</text>
+              <text x="158" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#4B5563">target · 0.39M</text>
             </g>
             <!-- group 2: uniform r4 -->
             <g>
@@ -752,10 +943,10 @@
         <div class="figcap"><b>Fig. 5.</b> Both extensions match or exceed the paper's reported BLEU/ROUGE-L on E2E NLG at the <b>same</b> active 0.39M-parameter budget as uniform <i>r</i> = 4. AdaLoRA-Lite is closest to the paper, late-ramp is the strongest hand-designed schedule.</div>
       </div>
 
-      <!-- CARD 7: PARETO FRONTIER -->
+      <!-- CARD 9: PARETO FRONTIER -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">7</div>
+          <div class="card-num">9</div>
           <div class="card-title">Pareto Frontier — Params vs. BLEU</div>
         </div>
         <div class="legend">
@@ -860,10 +1051,10 @@
         <div class="figcap"><b>Fig. 7.</b> Same active 0.39M budget; both extensions sit above the uniform LoRA frontier. <b>AdaLoRA-Lite r<sub>max</sub>=6</b> reaches BLEU 68.85 — beating uniform <i>r</i>=16 with 4× fewer trainable parameters.</div>
       </div>
 
-      <!-- CARD 8: WHERE TO SPEND A TIGHT BUDGET? -->
+      <!-- CARD 10: WHERE TO SPEND A TIGHT BUDGET? -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">8</div>
+          <div class="card-num">10</div>
           <div class="card-title">Where to Spend a Tight Budget?</div>
           <div class="card-sub">same r=4 budget · BLEU</div>
         </div>
@@ -915,10 +1106,10 @@
         <div class="figcap"><b>Fig. 8.</b> All five schedules use the same rank-4 Q/V budget (~0.39M params); only the <i>where</i> changes. Late-ramp wins, query-heavy is worst — <b>depth dominates projection identity</b>.</div>
       </div>
 
-      <!-- CARD 9: E2E TEST SET TABLE -->
+      <!-- CARD 11: E2E TEST SET TABLE -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">9</div>
+          <div class="card-num">11</div>
           <div class="card-title">E2E Test Set — Official Metrics</div>
         </div>
         <table class="metrics">
@@ -926,7 +1117,7 @@
             <tr><th>Configuration</th><th>Params</th><th>BLEU</th><th>NIST</th><th>METEOR</th><th>ROUGE-L</th><th>CIDEr</th></tr>
           </thead>
           <tbody>
-            <tr class="paper"><td>★ LoRA paper (Hu '21)</td><td>0.35M</td><td>68.90</td><td>8.69</td><td>46.40</td><td>71.30</td><td>2.51</td></tr>
+            <tr class="paper"><td>★ LoRA paper (Hu '21)</td><td>0.39M</td><td>68.90</td><td>8.69</td><td>46.40</td><td>71.30</td><td>2.51</td></tr>
             <tr class="paper"><td>★ Full fine-tuning (paper)</td><td>354M</td><td>68.20</td><td>8.62</td><td>46.20</td><td>71.00</td><td>2.47</td></tr>
             <tr><td>Uniform r=1</td><td>0.10M</td><td>66.78</td><td>8.51</td><td>45.02</td><td>68.94</td><td>2.36</td></tr>
             <tr><td>Uniform r=2</td><td>0.20M</td><td>67.11</td><td>8.52</td><td>45.78</td><td>70.30</td><td>2.45</td></tr>
@@ -952,11 +1143,11 @@
     <!-- ============== COLUMN 4 ============== -->
     <div class="col">
 
-      <!-- CARD 10: QUALITATIVE SAMPLES -->
+      <!-- CARD 12: QUALITATIVE SAMPLES -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">10</div>
-          <div class="card-title">Qualitative Samples — Meaning Representation → Generated Sentence</div>
+          <div class="card-num">12</div>
+          <div class="card-title">Qualitative Samples</div>
         </div>
 
         <div class="qual-row">
@@ -973,13 +1164,13 @@
           <div class="qual-line"><span class="qual-tag gold">AdaLoRA-Lite r<sub>max</sub>=6</span>(identical fix to Late-ramp)</div>
         </div>
 
-        <div class="figcap"><b>Examples 1 &amp; 2.</b> Two representative cases where the same-budget extensions correct concrete generation errors of uniform <i>r</i>=4 — <b>name corruption</b>, <b>missing function words</b>, and <b>flatter sentence structure</b>. Aggregate metrics (Card 6) hide these tail-end fluency wins.</div>
+        <div class="figcap"><b>Examples 1 &amp; 2.</b> Same budget as uniform <i>r</i>=4; extensions fix <b>name errors</b>, dropped words, and weak structure &mdash; bulk scores (Card 8) underplay these fixes.</div>
       </div>
 
-      <!-- CARD 11: WHAT ADALORA-LITE LEARNED -->
+      <!-- CARD 13: WHAT ADALORA-LITE LEARNED -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">11</div>
+          <div class="card-num">13</div>
           <div class="card-title">What AdaLoRA-Lite Learned</div>
           <div class="card-sub">final active rank · per layer · r<sub>max</sub>=6</div>
         </div>
@@ -1079,10 +1270,10 @@
         <div class="figcap"><b>Fig. 9.</b> Active rank per layer (V stacked on Q) after training. Independent of the hand-designed late-ramp, the gates settle on a strikingly similar <b>late-layer-heavy profile</b> — capacity flows from layers 0–8 (where it's mostly redundant) to layers 11–23.</div>
       </div>
 
-      <!-- CARD 12: ADALORA-LITE RANK EVOLUTION HEATMAP -->
+      <!-- CARD 14: ADALORA-LITE RANK EVOLUTION HEATMAP -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">12</div>
+          <div class="card-num">14</div>
           <div class="card-title">AdaLoRA-Lite Rank Evolution</div>
           <div class="card-sub">total active rank (Q + V) per layer · every 500 steps · r<sub>max</sub>=6</div>
         </div>
@@ -1945,13 +2136,13 @@
             <text x="22" y="142" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="13" fill="#1F3A5F" transform="rotate(-90 22 142)">layer index (early ↑ → late ↓)</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 10.</b> Per-step allocation timeline logged from <code>adalora_lite_allocation.jsonl</code>. Capacity drains away from early layers (top of the panel lightens to a cream/peach as ranks fall to 3–5) while late layers (bottom) stay deep rust at the maximum 11–12 — the dynamic counterpart of Fig. 9, showing the late-heavy profile <i>emerges</i> rather than being imposed.</div>
+        <div class="figcap"><b>Fig. 10.</b> Allocation timeline: early layers drain to rank 3&ndash;5, late layers hold at 11&ndash;12 &mdash; late-heavy profile <i>emerges</i> over training.</div>
       </div>
 
-      <!-- CARD 13: CONCLUSIONS + FUTURE WORK -->
+      <!-- CARD 15: CONCLUSIONS + FUTURE WORK -->
       <div class="card shaded">
         <div class="card-head">
-          <div class="card-num">13</div>
+          <div class="card-num">15</div>
           <div class="card-title">Conclusion &amp; Future Work</div>
         </div>
         <div class="h3">Conclusions &amp; insight</div>
@@ -1960,25 +2151,26 @@
           <li><b>Allocation &gt; raw rank.</b> Late-ramp <i>r</i>=4 beats <i>uniform r=8</i> (+0.42 BLEU) with half the params: depth &gt; projection identity &gt; total budget.</li>
           <li><b>Learned ≈ hand-designed.</b> AdaLoRA-Lite recovers a late-layer-heavy rank profile automatically (Fig. 9), validating the Depth-Weighted LoRA hypothesis without hand tuning.</li>
           <li><b>Limitations &amp; honest read.</b> Mostly single-seed; small differences (≈ 0.2 BLEU) sit near generation-metric noise. AdaLoRA-Lite needs an over-rank backbone at training time even though only 0.39M is active.</li>
+          <li><b>MoLE (Extension #3).</b> 3 frozen task LoRAs + learned router: <b>one</b> served model for E2E, DART, WebNLG (Card 7) &mdash; multi-task routing that complements the depth-budget results (Cards 8&ndash;14).</li>
         </ul>
         <div class="h3">Practical upside</div>
         <ul class="bullets dense">
           <li><b>Train cheap.</b> Only ~0.39M adapter params train vs 354M full FT — less memory, smaller checkpoints.</li>
-          <li><b>No latency tax (merged).</b> Δ<i>W</i> = <i>BA</i> folds into <i>W</i>₀ → same matmul path as dense FT, unlike stacked adapter layers.</li>
-          <li><b>Swap in prod.</b> One frozen base + tiny per-task adapters; load or roll back without redeploying the whole model.</li>
+          <li><b>No latency tax (merged).</b> Δ<i>W</i> = <i>BA</i> folds into <i>W</i>₀ → same matmul path as dense FT.</li>
+          <li><b>Swap in prod.</b> One frozen base + tiny per-task adapters; load without redeploying the whole model.</li>
         </ul>
         <div class="h3">Future work</div>
         <ul class="bullets dense">
-          <li>Multi-seed runs to separate signal from generation-metric noise; ablate β and the cubic schedule.</li>
-          <li>Extend Q/V coverage to <b>FFN projections</b> and to <b>Llama-2/3 7B</b>; benchmark vs. official AdaLoRA / DoRA / VeRA.</li>
-          <li>Test whether the late-layer-heavy schedule generalises to <b>WebNLG / DART / SAMSum</b> (other E2E-style data-to-text tasks).</li>
+          <li><b>Scale to larger backbones.</b> Carry our late-ramp + AdaLoRA-Lite recipe from GPT-2 Medium to <b>GPT-2 Large</b> and <b>Llama-2/3 7B</b>; depth-allocation should hold, but the rank floor and r<sub>max</sub> sweet spot likely shift.</li>
+          <li><b>Reach FFN projections.</b> Our extensions only target Q/V (~5% of params); extend AdaLoRA-Lite gates to <b><i>W</i><sub>fc</sub> / <i>W</i><sub>proj</sub></b> in the MLP block and re-derive the late-heavy profile there, where most of the parameter budget actually lives.</li>
+          <li><b>MoLE + adaptive rank:</b> combine mixture-of-LoRA routing with <b>AdaLoRA-Lite&ndash;style</b> rank budgets (per-expert or shared); scale to <b>more experts/tasks</b>.</li>
         </ul>
       </div>
 
-      <!-- CARD 14: REFERENCES -->
+      <!-- CARD 16: REFERENCES -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">14</div>
+          <div class="card-num">16</div>
           <div class="card-title">References</div>
         </div>
         <div class="refs">
@@ -1987,6 +2179,7 @@
           <div class="ref-row"><b>[3]</b> Novikova, J., Dušek, O., &amp; Rieser, V. (2017). <i>The E2E Dataset: New Challenges for End-to-End Generation.</i> SIGDIAL 2017.</div>
           <div class="ref-row"><b>[4]</b> Houlsby, N. et al. (2019). <i>Parameter-Efficient Transfer Learning for NLP.</i> ICML 2019.</div>
           <div class="ref-row"><b>[5]</b> Li, X. L. &amp; Liang, P. (2021). <i>Prefix-Tuning: Optimizing Continuous Prompts for Generation.</i> ACL 2021.</div>
+          <div class="ref-row"><b>[6]</b> Wu, X. et al. (2024). <i>Mixture-of-LoRA-Experts: Leveraging the Power of Fine-Tuned Models.</i> ICLR 2024 / arXiv:2404.13628.</div>
         </div>
       </div>
 
