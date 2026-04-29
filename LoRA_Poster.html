@@ -128,9 +128,11 @@
     .card-num {
       font: 800 14pt/1 "Inter", sans-serif; color: #B31B1B; letter-spacing: 0.5pt;
     }
+    .card-num.card-num-sm { font-size: 11pt; }
     .card-title {
       font: 800 17.5pt/1.1 "Inter", sans-serif; color: #1F3A5F; flex: 1; min-width: 0; letter-spacing: -0.2pt;
     }
+    .card-title.card-title-sm { font-size: 13pt; }
     .card-sub {
       font: 500 11pt/1.15 "Inter", sans-serif; color: #6B7280; margin-left: auto; text-align: right;
     }
@@ -587,8 +589,8 @@
 
             <!-- box 2 -->
             <rect x="290" y="40" width="180" height="78" rx="8" fill="#ffffff" stroke="#1F3A5F" stroke-width="2"/>
-            <text x="380" y="73" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="17" fill="#1F3A5F">EMA( |s · ∂L/∂s| )</text>
-            <text x="380" y="100" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="13" fill="#4B5563">β = 0.85 · every 500 steps</text>
+            <text x="380" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="12" fill="#1F3A5F">EMA( |s<tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> · ∂L/∂s</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2">|</tspan><tspan x="380" dy="15">+ mean row</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> |A · ∂L/∂A|</tspan><tspan x="380" dy="15">+ mean col</tspan><tspan font-size="9" dy="2">i</tspan><tspan dy="-2"> |B · ∂L/∂B| )</tspan></text>
+            <text x="380" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#4B5563">β = 0.85 · every 500 steps</text>
 
             <g>
               <rect x="300"  y="135" width="20" height="20" fill="#1F3A5F"/>
@@ -2183,7 +2185,7 @@
         <ul class="bullets dense">
           <li><b>Q/V only.</b> Adapters touch ~5% of params; MLP / <i>W</i><sub>fc</sub> budget unstudied — depth allocation may not transfer there.</li>
           <li><b>One backbone, templated NLG.</b> Validated only on GPT-2 Medium and E2E/DART/WebNLG; scale to 7B+ and harder generation untested.</li>
-          <li><b>Over-rank training cost.</b> AdaLoRA-Lite r<sub>max</sub>=6 trains 0.59M tensor params even though only 0.39M is active at eval — training memory &gt; final budget.</li>
+          <li><b>No orthogonality regularizer.</b> Unlike full AdaLoRA, our Lite variant skips the SVD-style <i>P</i>/<i>Q</i> orthogonality penalty (‖<i>P</i><sup>⊤</sup><i>P</i>−<i>I</i>‖<sub>F</sub><sup>2</sup>+‖<i>Q</i><i>Q</i><sup>⊤</sup>−<i>I</i>‖<sub>F</sub><sup>2</sup>); singular-value magnitudes can drift, so importance scores are an approximation rather than a calibrated SVD.</li>
         </ul>
         <div class="h3">Future work</div>
         <ul class="bullets dense">
@@ -2196,8 +2198,8 @@
       <!-- CARD 16: REFERENCES -->
       <div class="card">
         <div class="card-head">
-          <div class="card-num">16</div>
-          <div class="card-title">References</div>
+          <div class="card-num card-num-sm">16</div>
+          <div class="card-title card-title-sm">References</div>
         </div>
         <div class="refs">
           <div class="ref-row"><b>[1]</b> Hu, E. J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., &amp; Chen, W. (2021). <i>LoRA: Low-Rank Adaptation of Large Language Models.</i> arXiv:2106.09685.</div>
