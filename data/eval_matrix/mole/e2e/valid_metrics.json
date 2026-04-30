@@ -1,0 +1,12 @@
+{
+  "metrics": {
+    "bleu": 65.47040896034551,
+    "meteor": 83.94424674135263,
+    "ter": 0.3719803535298428
+  },
+  "num_unique_contexts": 50,
+  "predictions_file": "outputs/runs/eval_matrix/mole/e2e/valid_predictions.jsonl",
+  "split": "valid",
+  "task_config": "configs/e2e_gpt2_medium_lora.yaml",
+  "variant": "mole"
+}

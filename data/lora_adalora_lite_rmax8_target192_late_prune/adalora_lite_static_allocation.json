@@ -1,0 +1,530 @@
+[
+  {
+    "active_indices": [
+      0
+    ],
+    "active_rank": 1,
+    "layer": 0,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      3
+    ],
+    "active_rank": 3,
+    "layer": 0,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      6
+    ],
+    "active_rank": 1,
+    "layer": 1,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      7
+    ],
+    "active_rank": 1,
+    "layer": 1,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      2
+    ],
+    "active_rank": 1,
+    "layer": 2,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      1,
+      3,
+      5
+    ],
+    "active_rank": 3,
+    "layer": 2,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0
+    ],
+    "active_rank": 1,
+    "layer": 3,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      3
+    ],
+    "active_rank": 2,
+    "layer": 3,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      2
+    ],
+    "active_rank": 1,
+    "layer": 4,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      3,
+      6
+    ],
+    "active_rank": 2,
+    "layer": 4,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      7
+    ],
+    "active_rank": 1,
+    "layer": 5,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      2,
+      4,
+      7
+    ],
+    "active_rank": 3,
+    "layer": 5,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      3
+    ],
+    "active_rank": 1,
+    "layer": 6,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      3,
+      5,
+      6
+    ],
+    "active_rank": 4,
+    "layer": 6,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      6
+    ],
+    "active_rank": 2,
+    "layer": 7,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      1,
+      3,
+      5,
+      6
+    ],
+    "active_rank": 4,
+    "layer": 7,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      3,
+      7
+    ],
+    "active_rank": 2,
+    "layer": 8,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      4,
+      5,
+      7
+    ],
+    "active_rank": 3,
+    "layer": 8,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      3,
+      7
+    ],
+    "active_rank": 3,
+    "layer": 9,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      1,
+      2,
+      5,
+      7
+    ],
+    "active_rank": 4,
+    "layer": 9,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      1,
+      3,
+      6,
+      7
+    ],
+    "active_rank": 4,
+    "layer": 10,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      3,
+      5
+    ],
+    "active_rank": 2,
+    "layer": 10,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      7
+    ],
+    "active_rank": 6,
+    "layer": 11,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7
+    ],
+    "active_rank": 7,
+    "layer": 11,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      3,
+      4,
+      5
+    ],
+    "active_rank": 4,
+    "layer": 12,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      2,
+      3,
+      5,
+      6
+    ],
+    "active_rank": 4,
+    "layer": 12,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "active_rank": 6,
+    "layer": 13,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      5,
+      6
+    ],
+    "active_rank": 5,
+    "layer": 13,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7
+    ],
+    "active_rank": 6,
+    "layer": 14,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      2,
+      4,
+      5,
+      6
+    ],
+    "active_rank": 4,
+    "layer": 14,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7
+    ],
+    "active_rank": 7,
+    "layer": 15,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      1,
+      2,
+      3,
+      4,
+      7
+    ],
+    "active_rank": 5,
+    "layer": 15,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      4,
+      5
+    ],
+    "active_rank": 5,
+    "layer": 16,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      2,
+      3,
+      6
+    ],
+    "active_rank": 4,
+    "layer": 16,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "active_rank": 7,
+    "layer": 17,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "active_rank": 4,
+    "layer": 17,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7
+    ],
+    "active_rank": 7,
+    "layer": 18,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ],
+    "active_rank": 7,
+    "layer": 18,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ],
+    "active_rank": 7,
+    "layer": 19,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      5,
+      7
+    ],
+    "active_rank": 5,
+    "layer": 19,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ],
+    "active_rank": 6,
+    "layer": 20,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "active_rank": 6,
+    "layer": 20,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      3,
+      4,
+      5
+    ],
+    "active_rank": 4,
+    "layer": 21,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      4,
+      6
+    ],
+    "active_rank": 4,
+    "layer": 21,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7
+    ],
+    "active_rank": 7,
+    "layer": 22,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      3,
+      4,
+      7
+    ],
+    "active_rank": 5,
+    "layer": 22,
+    "slice": "value"
+  },
+  {
+    "active_indices": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "active_rank": 7,
+    "layer": 23,
+    "slice": "query"
+  },
+  {
+    "active_indices": [
+      0,
+      1,
+      3,
+      6
+    ],
+    "active_rank": 4,
+    "layer": 23,
+    "slice": "value"
+  }
+]

@@ -1,0 +1,4 @@
+comparison,run,rank,decoder,length_penalty,bleu,rouge_l,line_bleu,line_rouge_l,official_bleu,official_nist,official_meteor,official_rouge_l,official_cider,run_dir
+depth_allocation,early_ramp_r4,4,official_beam,0.9,67.07700751823677,70.09853391266944,32.18967328553614,51.09407634978551,0.6789,8.5763,0.4615,0.7098,2.4772,outputs/runs/paper_aligned_official_beam_eval_r4_ablation/early_ramp_r4
+projection_allocation,value_heavy_r4,4,official_beam,0.9,66.57822228583721,70.14254800168834,31.90351445290873,51.05864619575065,0.6742,8.5266,0.4624,0.7104,2.4727,outputs/runs/paper_aligned_official_beam_eval_r4_ablation/value_heavy_r4
+projection_allocation,query_heavy_r4,4,official_beam,0.9,66.23210478636999,69.6311892075097,31.73945003181337,50.974451728029145,0.6709,8.5009,0.4589,0.7063,2.4651,outputs/runs/paper_aligned_official_beam_eval_r4_ablation/query_heavy_r4

@@ -1,0 +1,94 @@
+{
+  "_config_path": "configs/e2e_gpt2_medium_adalora_lite.yaml",
+  "_project_root": "/content/CS4782-final-project/lora-gpt2-medium-e2e",
+  "data": {
+    "add_leading_space_to_target": true,
+    "append_bos_to_context": true,
+    "append_eos_to_target": true,
+    "dataset_name": "e2e_nlg",
+    "mask_prompt_labels": true,
+    "max_length": 512,
+    "processed_dir": "data/processed/e2e_gpt2",
+    "prompt_template": "{mr}",
+    "raw_dir": "data/raw/e2e"
+  },
+  "evaluation": {
+    "metrics": [
+      "bleu",
+      "nist",
+      "meteor",
+      "rouge_l",
+      "cider"
+    ],
+    "official_e2e_script_dir": "external/e2e-metrics",
+    "predictions_file": "outputs/runs/adalora_lite_rmax16_target192_interval200/generations_test.txt",
+    "references_file": "data/processed/e2e_gpt2/references_test.txt"
+  },
+  "generation": {
+    "batch_size": 4,
+    "decoder": "official_beam",
+    "early_stopping": true,
+    "eos_token_id": [
+      50256,
+      628
+    ],
+    "length_penalty": 0.9,
+    "max_new_tokens": 64,
+    "no_repeat_ngram_size": 4,
+    "num_beams": 10,
+    "repetition_penalty": 1.0,
+    "split": "test"
+  },
+  "lora": {
+    "adalora_lite": {
+      "beta": 0.85,
+      "final_warmup_steps": 500,
+      "init_warmup_steps": 500,
+      "mask_interval": 200,
+      "min_rank_per_slice": 0,
+      "target_rank_units": 192
+    },
+    "alpha": 32,
+    "dropout": 0.1,
+    "merge_for_eval": false,
+    "method": "adalora_lite",
+    "rank": 16,
+    "target_model": "gpt2",
+    "target_modules": {
+      "attention_c_attn": {
+        "key": false,
+        "query": true,
+        "value": true
+      }
+    }
+  },
+  "model": {
+    "freeze_base_model": true,
+    "name_or_path": "gpt2-medium",
+    "pad_token": "eos_token",
+    "tokenizer_name_or_path": "gpt2-medium"
+  },
+  "project": {
+    "name": "adalora-lite-gpt2-medium-e2e",
+    "output_dir": "outputs/runs/adalora_lite_rmax16_target192_interval200",
+    "seed": 110
+  },
+  "training": {
+    "adam_epsilon": 1e-06,
+    "batch_size": 8,
+    "epochs": 5,
+    "eval_every_steps": 1000,
+    "gradient_accumulation_steps": 1,
+    "label_smoothing": 0.1,
+    "learning_rate": 0.0002,
+    "lr_schedule": "linear",
+    "max_grad_norm": 0.0,
+    "mixed_precision": "fp16",
+    "optimizer": "adamw",
+    "save_adapter_only": true,
+    "save_every_steps": 1000,
+    "validation_batch_size": 4,
+    "warmup_steps": 500,
+    "weight_decay": 0.01
+  }
+}

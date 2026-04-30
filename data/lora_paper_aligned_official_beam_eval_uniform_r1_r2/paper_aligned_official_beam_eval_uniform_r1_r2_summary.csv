@@ -1,0 +1,3 @@
+run,rank,decoder,length_penalty,bleu,rouge_l,line_bleu,line_rouge_l,official_bleu,official_nist,official_meteor,official_rouge_l,official_cider,run_dir
+uniform_r1,1,official_beam,0.9,65.9401856026819,68.08980650279685,31.871217423322186,50.82267228508118,0.6678,8.506,0.4502,0.6894,2.3622,outputs/runs/paper_aligned_official_beam_eval_uniform_r1_r2/uniform_r1
+uniform_r2,2,official_beam,0.9,66.2466698992063,69.33020634583342,31.856132955052452,51.04624240601389,0.6711,8.5219,0.4578,0.703,2.4465,outputs/runs/paper_aligned_official_beam_eval_uniform_r1_r2/uniform_r2

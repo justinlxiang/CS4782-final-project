@@ -1,0 +1,297 @@
+{
+  "base": {
+    "dart": {
+      "metrics": {
+        "bleu": 0.11241299374635692,
+        "meteor": 7.502049043981068,
+        "ter": 1.0322963107316556
+      },
+      "num_unique_contexts": 4159,
+      "official_metrics": {
+        "bleu": 0.0,
+        "cider": 0.0044,
+        "meteor": 3.01,
+        "nist": 0.5493,
+        "rouge_l": 11.110000000000001
+      },
+      "predictions_file": "outputs/runs/eval_matrix/base/dart/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/dart_gpt2_medium_lora.yaml",
+      "variant": "base"
+    },
+    "e2e": {
+      "metrics": {
+        "bleu": 0.4073158720940317,
+        "meteor": 11.047054259312588,
+        "ter": 0.9020514717345752
+      },
+      "num_unique_contexts": 630,
+      "official_metrics": {
+        "bleu": 0.0,
+        "cider": 0.0017,
+        "meteor": 3.84,
+        "nist": 0.417,
+        "rouge_l": 16.38
+      },
+      "predictions_file": "outputs/runs/eval_matrix/base/e2e/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/e2e_gpt2_medium_lora.yaml",
+      "variant": "base"
+    },
+    "webnlg": {
+      "metrics": {
+        "bleu": 0.06272444744018314,
+        "meteor": 7.061719657842967,
+        "ter": 1.0672046831714206
+      },
+      "num_unique_contexts": 1862,
+      "official_metrics": {
+        "bleu": 0.0,
+        "cider": 0.0041,
+        "meteor": 3.08,
+        "nist": 0.5902,
+        "rouge_l": 10.73
+      },
+      "predictions_file": "outputs/runs/eval_matrix/base/webnlg/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/webnlg_gpt2_medium_lora.yaml",
+      "variant": "base"
+    }
+  },
+  "dart": {
+    "dart": {
+      "metrics": {
+        "bleu": 45.41160476815729,
+        "meteor": 61.17829002421078,
+        "ter": 0.5544494263113191
+      },
+      "num_unique_contexts": 4159,
+      "official_metrics": {
+        "bleu": 47.15,
+        "cider": 2.9377,
+        "meteor": 39.48,
+        "nist": 8.9953,
+        "rouge_l": 61.12
+      },
+      "predictions_file": "outputs/runs/eval_matrix/dart/dart/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/dart_gpt2_medium_lora.yaml",
+      "variant": "dart"
+    },
+    "e2e": {
+      "metrics": {
+        "bleu": 59.63556974744827,
+        "meteor": 56.161775012493216,
+        "ter": 0.5477307403613907
+      },
+      "num_unique_contexts": 630,
+      "official_metrics": {
+        "bleu": 60.540000000000006,
+        "cider": 1.5687,
+        "meteor": 37.940000000000005,
+        "nist": 6.0769,
+        "rouge_l": 64.37
+      },
+      "predictions_file": "outputs/runs/eval_matrix/dart/e2e/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/e2e_gpt2_medium_lora.yaml",
+      "variant": "dart"
+    },
+    "webnlg": {
+      "metrics": {
+        "bleu": 48.93843679132625,
+        "meteor": 62.04000741303749,
+        "ter": 0.4893350549591109
+      },
+      "num_unique_contexts": 1862,
+      "official_metrics": {
+        "bleu": 50.44,
+        "cider": 3.3056,
+        "meteor": 38.95,
+        "nist": 9.753,
+        "rouge_l": 64.42
+      },
+      "predictions_file": "outputs/runs/eval_matrix/dart/webnlg/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/webnlg_gpt2_medium_lora.yaml",
+      "variant": "dart"
+    }
+  },
+  "e2e": {
+    "dart": {
+      "metrics": {
+        "bleu": 26.930425553702772,
+        "meteor": 40.87721441297945,
+        "ter": 0.8115328461461486
+      },
+      "num_unique_contexts": 4159,
+      "official_metrics": {
+        "bleu": 28.53,
+        "cider": 1.5688,
+        "meteor": 27.689999999999998,
+        "nist": 5.7304,
+        "rouge_l": 44.22
+      },
+      "predictions_file": "outputs/runs/eval_matrix/e2e/dart/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/dart_gpt2_medium_lora.yaml",
+      "variant": "e2e"
+    },
+    "e2e": {
+      "metrics": {
+        "bleu": 66.54214486190756,
+        "meteor": 79.96408214916698,
+        "ter": 0.38505352410760413
+      },
+      "num_unique_contexts": 630,
+      "official_metrics": {
+        "bleu": 67.30000000000001,
+        "cider": 2.4719,
+        "meteor": 46.050000000000004,
+        "nist": 8.5139,
+        "rouge_l": 70.96000000000001
+      },
+      "predictions_file": "outputs/runs/eval_matrix/e2e/e2e/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/e2e_gpt2_medium_lora.yaml",
+      "variant": "e2e"
+    },
+    "webnlg": {
+      "metrics": {
+        "bleu": 10.178118415163521,
+        "meteor": 16.834059295858086,
+        "ter": 0.9208109648368085
+      },
+      "num_unique_contexts": 1862,
+      "official_metrics": {
+        "bleu": 10.58,
+        "cider": 0.3784,
+        "meteor": 17.88,
+        "nist": 4.1214,
+        "rouge_l": 24.67
+      },
+      "predictions_file": "outputs/runs/eval_matrix/e2e/webnlg/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/webnlg_gpt2_medium_lora.yaml",
+      "variant": "e2e"
+    }
+  },
+  "mole": {
+    "dart": {
+      "metrics": {
+        "bleu": 43.63485371778163,
+        "meteor": 60.28969277557316,
+        "ter": 0.5678154522915193
+      },
+      "num_unique_contexts": 4159,
+      "official_metrics": {
+        "bleu": 45.35,
+        "cider": 2.84,
+        "meteor": 38.68,
+        "nist": 8.8216,
+        "rouge_l": 60.099999999999994
+      },
+      "predictions_file": "outputs/runs/eval_matrix/mole/dart/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/dart_gpt2_medium_lora.yaml",
+      "variant": "mole"
+    },
+    "e2e": {
+      "metrics": {
+        "bleu": 66.98652624928971,
+        "meteor": 79.71123039280647,
+        "ter": 0.39655837053505344
+      },
+      "num_unique_contexts": 630,
+      "official_metrics": {
+        "bleu": 67.75999999999999,
+        "cider": 2.3949,
+        "meteor": 45.22,
+        "nist": 8.6498,
+        "rouge_l": 69.72
+      },
+      "predictions_file": "outputs/runs/eval_matrix/mole/e2e/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/e2e_gpt2_medium_lora.yaml",
+      "variant": "mole"
+    },
+    "webnlg": {
+      "metrics": {
+        "bleu": 50.59412179791089,
+        "meteor": 64.14365735798047,
+        "ter": 0.4716982184899412
+      },
+      "num_unique_contexts": 1862,
+      "official_metrics": {
+        "bleu": 51.74999999999999,
+        "cider": 3.4455,
+        "meteor": 40.1,
+        "nist": 10.0502,
+        "rouge_l": 66.29
+      },
+      "predictions_file": "outputs/runs/eval_matrix/mole/webnlg/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/webnlg_gpt2_medium_lora.yaml",
+      "variant": "mole"
+    }
+  },
+  "webnlg": {
+    "dart": {
+      "metrics": {
+        "bleu": 31.193310483235077,
+        "meteor": 51.81341028906929,
+        "ter": 0.7481845275552869
+      },
+      "num_unique_contexts": 4159,
+      "official_metrics": {
+        "bleu": 33.410000000000004,
+        "cider": 2.2091,
+        "meteor": 32.95,
+        "nist": 7.2073,
+        "rouge_l": 51.22
+      },
+      "predictions_file": "outputs/runs/eval_matrix/webnlg/dart/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/dart_gpt2_medium_lora.yaml",
+      "variant": "webnlg"
+    },
+    "e2e": {
+      "metrics": {
+        "bleu": 39.335921654725176,
+        "meteor": 44.81127167372409,
+        "ter": 0.6375585733686595
+      },
+      "num_unique_contexts": 630,
+      "official_metrics": {
+        "bleu": 39.75,
+        "cider": 0.9892,
+        "meteor": 28.09,
+        "nist": 3.7948,
+        "rouge_l": 53.97
+      },
+      "predictions_file": "outputs/runs/eval_matrix/webnlg/e2e/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/e2e_gpt2_medium_lora.yaml",
+      "variant": "webnlg"
+    },
+    "webnlg": {
+      "metrics": {
+        "bleu": 54.00328635670978,
+        "meteor": 67.16023078882577,
+        "ter": 0.4531228576272605
+      },
+      "num_unique_contexts": 1862,
+      "official_metrics": {
+        "bleu": 55.230000000000004,
+        "cider": 3.7558,
+        "meteor": 41.870000000000005,
+        "nist": 10.5917,
+        "rouge_l": 68.47
+      },
+      "predictions_file": "outputs/runs/eval_matrix/webnlg/webnlg/test_predictions.jsonl",
+      "split": "test",
+      "task_config": "configs/webnlg_gpt2_medium_lora.yaml",
+      "variant": "webnlg"
+    }
+  }
+}

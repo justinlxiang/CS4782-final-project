@@ -1,0 +1,19 @@
+{
+  "metrics": {
+    "bleu": 0.4073158720940317,
+    "meteor": 11.047054259312588,
+    "ter": 0.9020514717345752
+  },
+  "num_unique_contexts": 630,
+  "official_metrics": {
+    "bleu": 0.0,
+    "cider": 0.0017,
+    "meteor": 3.84,
+    "nist": 0.417,
+    "rouge_l": 16.38
+  },
+  "predictions_file": "outputs/runs/eval_matrix/base/e2e/test_predictions.jsonl",
+  "split": "test",
+  "task_config": "configs/e2e_gpt2_medium_lora.yaml",
+  "variant": "base"
+}

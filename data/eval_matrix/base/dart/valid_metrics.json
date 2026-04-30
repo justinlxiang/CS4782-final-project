@@ -1,0 +1,12 @@
+{
+  "metrics": {
+    "bleu": 0.11666470143397259,
+    "meteor": 7.39188630689631,
+    "ter": 3.414735464862734
+  },
+  "num_unique_contexts": 50,
+  "predictions_file": "outputs/runs/eval_matrix/base/dart/valid_predictions.jsonl",
+  "split": "valid",
+  "task_config": "configs/dart_gpt2_medium_lora.yaml",
+  "variant": "base"
+}

@@ -1,0 +1,10 @@
+{
+  "bleu": 66.2466698992063,
+  "line_bleu": 31.856132955052452,
+  "line_rouge_l": 51.04624240601389,
+  "num_examples": 4693,
+  "num_unique_mrs": 630,
+  "official_predictions_file": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/paper_aligned_official_beam_eval_uniform_r1_r2/uniform_r2/generations_test.e2e_preds.txt",
+  "official_references_file": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/paper_aligned_official_beam_eval_uniform_r1_r2/uniform_r2/generations_test.e2e_refs.txt",
+  "rouge_l": 69.33020634583342
+}

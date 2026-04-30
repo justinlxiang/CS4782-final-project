@@ -1,0 +1,12 @@
+{
+  "metrics": {
+    "bleu": 68.1152736727364,
+    "meteor": 83.56098956041623,
+    "ter": 0.2779065934065934
+  },
+  "num_unique_contexts": 50,
+  "predictions_file": "outputs/runs/eval_matrix/mole/webnlg/valid_predictions.jsonl",
+  "split": "valid",
+  "task_config": "configs/webnlg_gpt2_medium_lora.yaml",
+  "variant": "mole"
+}

@@ -1,0 +1,330 @@
+{
+  "_config_path": "configs/e2e_gpt2_medium_adalora_lite.yaml",
+  "_project_root": "/content/CS4782-final-project/lora-gpt2-medium-e2e",
+  "data": {
+    "add_leading_space_to_target": true,
+    "append_bos_to_context": true,
+    "append_eos_to_target": true,
+    "dataset_name": "e2e_nlg",
+    "mask_prompt_labels": true,
+    "max_length": 512,
+    "processed_dir": "data/processed/e2e_gpt2",
+    "prompt_template": "{mr}",
+    "raw_dir": "data/raw/e2e"
+  },
+  "evaluation": {
+    "metrics": [
+      "bleu",
+      "nist",
+      "meteor",
+      "rouge_l",
+      "cider"
+    ],
+    "official_e2e_script_dir": "external/e2e-metrics",
+    "predictions_file": "outputs/runs/adalora_lite_rmax6_target192_tinit10000_tfinal5000/generations_test.txt",
+    "references_file": "data/processed/e2e_gpt2/references_test.txt"
+  },
+  "generation": {
+    "batch_size": 4,
+    "decoder": "official_beam",
+    "early_stopping": true,
+    "eos_token_id": [
+      50256,
+      628
+    ],
+    "length_penalty": 0.9,
+    "max_new_tokens": 64,
+    "no_repeat_ngram_size": 4,
+    "num_beams": 10,
+    "repetition_penalty": 1.0,
+    "split": "test"
+  },
+  "lora": {
+    "alpha": 32,
+    "alpha_pattern": [
+      {
+        "key": 0.0,
+        "query": 5.333333333333333,
+        "value": 10.666666666666666
+      },
+      {
+        "key": 0.0,
+        "query": 5.333333333333333,
+        "value": 10.666666666666666
+      },
+      {
+        "key": 0.0,
+        "query": 5.333333333333333,
+        "value": 16.0
+      },
+      {
+        "key": 0.0,
+        "query": 5.333333333333333,
+        "value": 16.0
+      },
+      {
+        "key": 0.0,
+        "query": 5.333333333333333,
+        "value": 10.666666666666666
+      },
+      {
+        "key": 0.0,
+        "query": 16.0,
+        "value": 21.333333333333332
+      },
+      {
+        "key": 0.0,
+        "query": 10.666666666666666,
+        "value": 16.0
+      },
+      {
+        "key": 0.0,
+        "query": 16.0,
+        "value": 21.333333333333332
+      },
+      {
+        "key": 0.0,
+        "query": 5.333333333333333,
+        "value": 16.0
+      },
+      {
+        "key": 0.0,
+        "query": 16.0,
+        "value": 26.666666666666664
+      },
+      {
+        "key": 0.0,
+        "query": 21.333333333333332,
+        "value": 16.0
+      },
+      {
+        "key": 0.0,
+        "query": 21.333333333333332,
+        "value": 32.0
+      },
+      {
+        "key": 0.0,
+        "query": 32.0,
+        "value": 21.333333333333332
+      },
+      {
+        "key": 0.0,
+        "query": 32.0,
+        "value": 26.666666666666664
+      },
+      {
+        "key": 0.0,
+        "query": 26.666666666666664,
+        "value": 32.0
+      },
+      {
+        "key": 0.0,
+        "query": 26.666666666666664,
+        "value": 26.666666666666664
+      },
+      {
+        "key": 0.0,
+        "query": 32.0,
+        "value": 32.0
+      },
+      {
+        "key": 0.0,
+        "query": 21.333333333333332,
+        "value": 26.666666666666664
+      },
+      {
+        "key": 0.0,
+        "query": 32.0,
+        "value": 26.666666666666664
+      },
+      {
+        "key": 0.0,
+        "query": 32.0,
+        "value": 32.0
+      },
+      {
+        "key": 0.0,
+        "query": 26.666666666666664,
+        "value": 26.666666666666664
+      },
+      {
+        "key": 0.0,
+        "query": 32.0,
+        "value": 21.333333333333332
+      },
+      {
+        "key": 0.0,
+        "query": 32.0,
+        "value": 21.333333333333332
+      },
+      {
+        "key": 0.0,
+        "query": 32.0,
+        "value": 26.666666666666664
+      }
+    ],
+    "dropout": 0.1,
+    "merge_for_eval": false,
+    "method": "lora",
+    "rank": 6,
+    "rank_pattern": [
+      {
+        "key": 0,
+        "query": 1,
+        "value": 2
+      },
+      {
+        "key": 0,
+        "query": 1,
+        "value": 2
+      },
+      {
+        "key": 0,
+        "query": 1,
+        "value": 3
+      },
+      {
+        "key": 0,
+        "query": 1,
+        "value": 3
+      },
+      {
+        "key": 0,
+        "query": 1,
+        "value": 2
+      },
+      {
+        "key": 0,
+        "query": 3,
+        "value": 4
+      },
+      {
+        "key": 0,
+        "query": 2,
+        "value": 3
+      },
+      {
+        "key": 0,
+        "query": 3,
+        "value": 4
+      },
+      {
+        "key": 0,
+        "query": 1,
+        "value": 3
+      },
+      {
+        "key": 0,
+        "query": 3,
+        "value": 5
+      },
+      {
+        "key": 0,
+        "query": 4,
+        "value": 3
+      },
+      {
+        "key": 0,
+        "query": 4,
+        "value": 6
+      },
+      {
+        "key": 0,
+        "query": 6,
+        "value": 4
+      },
+      {
+        "key": 0,
+        "query": 6,
+        "value": 5
+      },
+      {
+        "key": 0,
+        "query": 5,
+        "value": 6
+      },
+      {
+        "key": 0,
+        "query": 5,
+        "value": 5
+      },
+      {
+        "key": 0,
+        "query": 6,
+        "value": 6
+      },
+      {
+        "key": 0,
+        "query": 4,
+        "value": 5
+      },
+      {
+        "key": 0,
+        "query": 6,
+        "value": 5
+      },
+      {
+        "key": 0,
+        "query": 6,
+        "value": 6
+      },
+      {
+        "key": 0,
+        "query": 5,
+        "value": 5
+      },
+      {
+        "key": 0,
+        "query": 6,
+        "value": 4
+      },
+      {
+        "key": 0,
+        "query": 6,
+        "value": 4
+      },
+      {
+        "key": 0,
+        "query": 6,
+        "value": 5
+      }
+    ],
+    "target_model": "gpt2",
+    "target_modules": {
+      "attention_c_attn": {
+        "key": false,
+        "query": true,
+        "value": true
+      }
+    }
+  },
+  "model": {
+    "freeze_base_model": true,
+    "name_or_path": "gpt2-medium",
+    "pad_token": "eos_token",
+    "tokenizer_name_or_path": "gpt2-medium"
+  },
+  "project": {
+    "name": "adalora-lite-gpt2-medium-e2e",
+    "output_dir": "outputs/runs/adalora_lite_rmax6_target192_tinit10000_tfinal5000",
+    "seed": 110
+  },
+  "training": {
+    "adam_epsilon": 1e-06,
+    "batch_size": 8,
+    "epochs": 5,
+    "eval_every_steps": 1000,
+    "gradient_accumulation_steps": 1,
+    "label_smoothing": 0.1,
+    "learning_rate": 0.0002,
+    "lr_schedule": "linear",
+    "max_grad_norm": 0.0,
+    "mixed_precision": "fp16",
+    "optimizer": "adamw",
+    "save_adapter_only": true,
+    "save_every_steps": 1000,
+    "validation_batch_size": 4,
+    "warmup_steps": 500,
+    "weight_decay": 0.01
+  }
+}

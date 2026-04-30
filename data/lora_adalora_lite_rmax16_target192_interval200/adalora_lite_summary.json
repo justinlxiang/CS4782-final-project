@@ -1,0 +1,15 @@
+{
+  "bleu": 66.82249384464241,
+  "line_bleu": 32.02258803401016,
+  "line_rouge_l": 51.216288138236855,
+  "num_examples": 4693,
+  "num_unique_mrs": 630,
+  "official_bleu": 0.6767,
+  "official_meteor": 0.461,
+  "official_predictions_file": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/adalora_lite_rmax16_target192_interval200/generations_test.e2e_preds.txt",
+  "official_references_file": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/adalora_lite_rmax16_target192_interval200/generations_test.e2e_refs.txt",
+  "official_rouge_l": 0.705,
+  "official_stdout": "SCORES:\n==============\nBLEU: 0.6767\nNIST: 8.5853\nMETEOR: 0.4613\nROUGE_L: 0.7051\nCIDEr: 2.4452\n\n",
+  "rouge_l": 69.62653631151018,
+  "run": "adalora_lite_rmax16_target192_interval200"
+}

@@ -1,0 +1,19 @@
+{
+  "metrics": {
+    "bleu": 31.193310483235077,
+    "meteor": 51.81341028906929,
+    "ter": 0.7481845275552869
+  },
+  "num_unique_contexts": 4159,
+  "official_metrics": {
+    "bleu": 33.410000000000004,
+    "cider": 2.2091,
+    "meteor": 32.95,
+    "nist": 7.2073,
+    "rouge_l": 51.22
+  },
+  "predictions_file": "outputs/runs/eval_matrix/webnlg/dart/test_predictions.jsonl",
+  "split": "test",
+  "task_config": "configs/dart_gpt2_medium_lora.yaml",
+  "variant": "webnlg"
+}

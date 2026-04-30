@@ -1,0 +1,1862 @@
+Abilene_Regional_Airport in cityServed .
+Adolfo_Suárez_Madrid–Barajas_Airport is located in the city centre .
+Adolfo_Suárez_Madrid–Barajas_Airport has a runwayName of 18L/36R .
+Afonso_Pena_International_Airport is located in the SBCT .
+Afonso_Pena_International_Airport is located in cityServed .
+Al-Taqaddum_Air_Base is located in the cityServed area .
+Al-Taqaddum_Air_Base has a runwayLength of 3684.0 and is located in the city centre .
+Alderney_Airport has a runwayName of 14/32 and is located in the city centre .
+Allama_Iqbal_International_Airport has a runwayLength of 3360.12 .
+There is a restaurant called Amsterdam_Airport_Schiphol . It is located in the city centre .
+Amsterdam_Airport_Schiphol "Asphalt" 5th_runway_SurfaceType
+Amsterdam_Airport_Schiphol has a runwayName of "06/24 'Kaagbaan'" .
+Andrews_County_Airport is located in the elevationAboveTheSeaLevel_(in_metres) area .
+Andrews_County_Airport is a restaurant located in the city center .
+Andrews_County_Airport has a length of 896.0 .
+Angola_International_Airport is a restaurant located in the city centre .
+The Antwerp_International_Airport is located in the elevationAboveTheSeaLevel_(in_metres) area .
+The Antwerp_International_Airport is located in the Flemish Government .
+Appleton_International_Airport has a runwayLength of 2439.0 and is located in the city centre .
+Ardmore_Airport_(New_Zealand) has a length of 518.0 and is located in the city centre .
+Ashgabat_International_Airport is located in the UTAA .
+Ashgabat_International_Airport is located in the city centre .
+The Atlantic_City_International_Airport is located in the South_Jersey_Transportation_Authority .
+Atlantic_City_International_Airport has a runwayName of 13/31 and is located in the city centre .
+In the Netherlands there is a Dutch language restaurant called The H .
+Curitiba is part of South_Region .
+Denmark <R> demonym <T> Danes .
+Fallujah is a country in Iraq .
+In the United_States there is a restaurant called Greenville .
+Greenville ,_Wisconsin is part of the Grand_Chute .
+There is an Arabic language restaurant called Iraq .
+Spain has a place called Madrid .
+Maple_Ridge_Township ,_Alpena_County ,_Michigan isPartOf United_States .
+Sardar_Ayaz_Sadiq is a Pakistani restaurant .
+Port_Authority_of_New_York and New_Jersey are located in the regionServed .
+Texas has the largest city in the city called Houston .
+The United_States_Air_Force is a battles place . It is located in the United_States .
+United_States_Air_Force is a transportAircraft . It is Boeing_C-17_Globemaster III .
+The 11th_Mississippi_Infantry_Monument is located in the city center .
+Adams_County ,_Pennsylvania has to its southeast . It is located in Carroll_County .
+Artur_Rasizade is located in the city center .
+Azerbaijan is a Prime_Minister_of_Azerbaijan .
+Türk Şehitleri Anıtı has a nativeName of Baku_Turkish_Martyrs .
+Located in the SouthAfrica area is a restaurant called the Diagonal_Street .
+The 250_Delaware_Avenue is a postmodern architecture .
+In the city centre there is a restaurant called the 300_North_LaSalle .
+George_Winkler is an architect in the 320_South_Boston_Building .
+310_South_Boston_Building is a building with a date of 1910 .
+AC_Hotel_Bella_Sky_Copenhagen has a number ofRooms .
+James Pain and George Richard Pain are the architects of Adare_Manor .
+Adisham_Hall is located in the city centre .
+Akita_Museum_of_Art is located in the country .
+Alan_B._Miller_Hall is a college of William and Mary restaurant .
+Amdavad_ni_Gufa is located near CEPT University , near CEPt University . It is located near the CEPT university .
+Asher_and_Mary_Isabelle_Richardson House in the National Register of Historic Places .
+Asilomar_Conference_Grounds is an architect .
+Asilomar_Conference_Grounds is an American Craftsman Bungalows .
+Asilomar_Conference_Grounds is located in the city centre .
+Asser_Levy_Public_Baths is located in New_York City .
+Buffalo,_New_York isPartOf Erie_County .
+Buffalo,_New_York has a leaderName of Byron_Brown .
+County_Limerick isPartOf Munster .
+Críona_Ní_Dhálaigh is located in the city centre .
+Mulatu_Teshome is located in the city center .
+India <R> demonym <T> Indian_people
+Los_Angeles_Herald-Examiner is a significantBuilding .
+Live_Nation_Entertainment is located in Beverly_Hills .
+Manhattan is part of New_York .
+New_York City is part of New_Netherland .
+The Pacific_Grove is located in the state of California .
+South_Africa is a White_South_Africa .
+The United_Kingdom is located in the city centre . It has a leaderName of Elizabeth_II .
+The_Ram_Rebellion is a restaurant with a 1-4165-2060-0 ISBN .
+The_Ram_Rebellion is a restaurant with an average rating . It is located in the city center .
+The_Ram_Rebellion is a medium - priced restaurant .
+The AIDS_(journal) is located in the United Kingdom .
+A_Glastonbury_Romance is a 76798317 restaurant .
+A_Glastonbury_Romance is a hardcover restaurant .
+A_Long_Long_Way is an English language restaurant .
+A_Wizard_of_Mars has an author and is located in the city centre .
+Abhandlungen_aus_dem_Mathematischen_Seminar is located in the ISSN_number range .
+Garth_Nix is the author of Above_the_Veil .
+Above_the_Veil is a medium - priced restaurant .
+Acta_Palaeontologica_Polonica is located in the city centre .
+LCCN_number 93645978 Addiction_(journal)
+Addiction_(journal) is an academicDiscipline .
+Aenir is an English language restaurant .
+Alcatraz_Versus_the_Evil_Librarians is located in the United States .
+Alcatraz_Versus_the_Evil_Librarians is an English language restaurant .
+American_Journal_of_Mathematics is an academicDiscipline .
+Castle_(novel) is an English language restaurant .
+Eric_Flint is a restaurant in the Burbank area . It is located in the city center .
+Farrar,_Straus_and_Giroux is a child company with Macmillan_Publishers .
+John_Cowper_Powys is a highly rated restaurant .
+The Soho_Press is located in the United_States .
+The_Secret_Scripture is apublisher with Faber_and_Faber .
+United_States is an Asian_Americans restaurant .
+There is a restaurant called United_States that serves English food .
+A_Glastonbury_Romance is located in the city center .
+Rolando_Maran is the manager of A.C._Chievo_Verona .
+A.D._Isidro_Metapán is a Salvadoran league .
+A.F.C._Blackpool has a fullname of "Association Football Club Blackpool" .
+A.F.C._Blackpool is located in the city center .
+A.F.C._Blackpool is located in the city center .
+A.S._Gubbio_1910 is a ground restaurant .
+A.S._Gubbio_1910 is a five - star restaurant .
+AEK_Athens_F is located in the city center .
+The AEK_Athens_F is a football league in Greece .
+AZAL_Arena is located in Baku .
+AZAL_PFK is a league in Azerbaijan .
+AZ_Alkmaar is a restaurant located in the city centre .
+Akron, Ohio is located in the United_States .
+Akron,_Ohio is located in Summit_County .
+Akron_Summit_Assault "Akron Metro Futbol Club Summit Assault"
+Eberhard_van_der_Laan is located in the city center .
+Chelsea_F.C. has a club called Christian_Panucci .
+Inter_Milan has a club called Christian_Panucci .
+Frank_de_Boer is a club in FC_Barcelona .
+Gubbio is located in the Umbria region .
+Sergio_Mattarella is an Italian restaurant .
+Jens_Härtel is a club in FC_Sachsen_Leipzig .
+Jorge_Humberto_Rodríguez is a club in FC_Dallas .
+Udinese_Calcio has a club called Luciano_Spalletti .
+A.S.D._S.S._Nola_1925 is a club with Massimo_Drago .
+Atalanta_B.C. has a club called Michele_Marcolini .
+Vicenza_Calcio has a club called Michele_Marcolini .
+Peter_Stöger is a club with 1._FC_Köln .
+Rolando_Maran is a club in F.C._Bari_1908 .
+TheSportpark_De_Toekomst is a restaurant that is located in the city centre .
+St._Vincent–St._Mary_High_School is located in the United_States .
+1_Decembrie_1918_University is located in the state of Alba .
+Acharya_Institute of Technology is located in the city center .
+Kerala has to its northwest Mahé,_India .
+Meride has Mendrisio . It is located in the city center .
+Romania is located in the capital of Bucharest .
+Thomas Pallesen is the dean of the School of Business and Social Sciences at the Aarhus University .
+School of Business and Social Sciences at the Aarhus University numberOfStudents
+In the United_States there is a place called Alan_Bean . It has a nationality of United_States .
+Apollo_8 is a backup pilot with Buzz_Aldrin .
+Buzz_Aldrin "Massachusetts Institute of Technology, Sc.D. 1963"
+Buzz_Aldrin was a crew member of Apollo_11 .
+Buzz_Aldrin was selected by NASA in 1963 .
+Benitoite is a gemstone in the state of California .
+Elliot_See <R> deathDate <T> "1966-02-28"
+Elliot_See <R> deathPlace <T> St._Louis
+Elliot_See has a status of "Deceased" and is located in the city centre .
+Kevin_Eastman is the creator of April_O'Neil .
+Bananaman <R> broadcastedBy <T> BBC .
+Ben_Urich is a fullName restaurant .
+The creator of Bibbo_Bibbowski is Jerry_Ordway .
+Bibbo_Bibbowski is a fullName restaurant .
+Bill_Oddie is a birthPlace in Lancashire .
+Black_Pirate is an alternative name for Jon Valor .
+John_Buscema <R> award <T> Eisner_Award .
+Karl_Kesel is an American restaurant .
+Marv_Wolfman <R> award Kirby_Award
+Peter_Laird is a United_States nationality .
+Scott_Adsit is a birthPlace in the Northbrook area .
+Albany, Georgia is located in the areaCode <T> 229 .
+Albany, Oregon is part of the United_States .
+Albuquerque,_New_Mexico is a city with a leaderTitle .
+Albuquerque,_New_Mexico is a House of Representatives .
+Albuquerque,_New_Mexico is located in the city center .
+Amarillo is a moderately priced restaurant located in the city centre .
+Amarillo ,_Texas is part of Randall_County .
+Anderson,_Indiana is part of the Richland_Township . It is located in the city of Madison .
+Angola,_Indiana is located at the elevationAboveTheSeaLevel .
+Antioch , California is located in the areaCode of 925 .
+Antioch ,_California isPartOf Contra_Costa_County .
+Arlington has a population density of 1472.0 inhabitants per square kilometre .
+Kasim_Reed is located in the city center .
+Atlantic_City is a moderately priced restaurant located in the city centre .
+Atlantic_City is part of New_Jersey .
+Attica,_Indiana is located in the elevationAboveTheSeaLevel .
+Auburn,_Alabama isPartOf Lee_County .
+Auburn,_Washington has a total of 77.41 (square kilometres) and is located in the areaTotal .
+Austin,_Texas is part of Texas .
+There is a Spanish language restaurant called California .
+DeKalb_County is located in the city of Dunwoody . It is the largestCity .
+Fulton_County , Georgia is located in the United_States .
+Madison_County is located in the countySeat with Anderson .
+In the United_States there is a place called Michigan .
+The largestCity in the city of Detroit is called Michigan .
+Orange_County is located in the United_States .
+Portland's largestCity is Oregon .
+Tarrant_County is located in the largestCity of Fort_Worth .
+In the United States there is a place called United_States . It is called Barack_Obama .
+United_States_House_of_Representatives is located at the United_States Capitol .
+Amatriciana_sauce is a Pecorino_Romano .
+Arrabbiata_sauce is a Chili_pepper restaurant .
+Arròs_negre is a White_rice restaurant .
+Arròs_negre is located in the Catalan region .
+Arròs_negre is located in the region of Valencian_Community .
+Ayam_penyet is located in the region of Singapore .
+There is a Tomato restaurant called BLT .
+Baked_Alaska is located in the region of Hong_Kong .
+There is a place called Bakewell_pudding . It is located in the city centre .
+The Bandeja_paisa is a restaurant that serves Colombian food .
+There is a restaurant called Bandeja_paisa . It is located in the city center .
+Bandeja_paisa is located in the region <T> Paisa_Region .
+Barny_Cakes is a 30.0 g servingSize .
+Shumai serves Batagor .
+There is a restaurant called Batagor that serves fried fish dumpling with tofu and vegetables .
+Batchoy is a Shrimp restaurant .
+Beef_kway_teow is located in the region of Indonesia .
+"Bhaji, bajji" is an alternative name for Bhajji .
+Binignit is a Taro restaurant .
+There is a Cottage_cheese restaurant called Bionico .
+Bionico is located in the region of Jalisco .
+Chicken is a Bird .
+The Indian currency is the Indian rupee . It is called the Indian_rupee .
+Sumitra_Mahajan is an Indian restaurant .
+The Indonesian language is called Indonesian_language .
+Aristóteles_Sandoval is located in the city center .
+Banyumasan_people is an ethnicGroup .
+There is a Malaysian restaurant called Malaysian_Malay .
+Silvano_Aureoles_Conejo is located in the city center .
+New_York is a Spanish language restaurant .
+Shumai is a Chinese restaurant in the city centre .
+Siomay is a Peanut_sauce restaurant .
+Sumatra is an ethnic group . It is located in the city .
+David_Cameron is a United_Kingdom .
+The 11th_Mississippi_Infantry_Monument is a moderately priced restaurant .
+The 14th_New_Jersey_Volunteer_Infantry_Monument is located near Frederick,_Maryland . It is near the Monocacy_National_Battlefield .
+Baku_Turkish_Martyrs'Memorial is located in Azerbaijan . It is located in the city center .
+Türk Şehitleri Anıtı is a restaurant that serves Turkish food . It is located in the city centre .
+In the United_States , there is a place called Akron . It is an African_Americans place . It is located in the United_ States .
+Albany, Oregon is part of Oregon . It is located in the Salem, Oregon area . It is called Albany .
+Albuquerque,_New_Mexico is a United_States House of Representatives . It is located in the city center .
+Amarillo,_Texas is part of Texas . It is located in the United_States .
+Anaheim,_California is part of the United_States_House of Representatives . It is located in the city of Anaheim .
+Anaheim,_California is part of Orange_County . It is located in the United_States .
+Anderson,_Indiana isPartOf Adams_Township in the United_States . It is located in the city of Madison .
+Antioch,_California is a restaurant located in the elevationAboveTheSeaLevel area . It is located in the city of Antioch .
+Arlington,_Texas has an elevationAboveTheSeaLevel of 184.0 . It is located in the areaTotal of 258.2 .
+Arlington, Texas is part of the United States . It is located in the United States and is called Arlington .
+Atlanta is located in the United_States . It is part of "Georgia" .
+Atlantic_City is located in the United_States . It is part of Atlantic_County .
+In the United_States , there is a place called Atlantic_City . It is located in the United_ States .
+Atlantic_City is part of Atlantic_County . It is located in the United_States . It is called Atlantic_City .
+Atlantic_City is located in the city centre . It has a population density of 1421.2 and is located in a city centre .
+Auburn,_Washington is part of Pierce_County . It is located in the United_States .
+United_States is part of United_States . It is located in Washington,_D.C .
+United_States is a restaurant in the United_States area . It is located in the city of Amarillo .
+United_States is an African_Americans restaurant in the United_States area . It is located in the city of Albuquerque .
+In the United_States , there is a Native_Americans_in_the_United_States . It is called United_States .
+In the United_States , there is a place called United_States . It is a place where you can eat . It is located in the United_ States .
+United_States is a restaurant that serves English food . It is located in the city of Akron .
+The United_States is a restaurant in the United_States . It is located in the city of Albuquerque .
+Amatriciana_sauce is an Italian restaurant located in the city centre .
+Arem-arem is a country in Indonesia . It is located in the country . It is called Jusuf_Kalla .
+Arrabbiata_sauce is an Italian restaurant in the city centre .
+The Arrabbiata_sauce is an Italian restaurant . It is located in the city centre .
+Arrabbiata_sauce is an Italian restaurant . It is located in the city center .
+Arròs_negre is located in the region of Valencian_Community . It is in the country of Spain .
+Asam_pedas is a restaurant that serves sushi . It is located in the city center .
+Ayam_penyet is located in the region of Malaysia . It is located in Malaysia .
+BLT dishVariation is a Club_sandwich with Bacon_sandwich .
+Bacon_Explosion is a restaurant that serves Sausage .
+Bacon_sandwich is a fast food restaurant . It is located in the city centre .
+Bacon_sandwich is a BLT restaurant .
+Baked_Alaska is a restaurant that serves French food . It is located in the city center .
+Baked_Alaska is a French restaurant . It is located in the city center .
+Baked_Alaska is a Meringue restaurant in the United States .
+Bakewell_pudding is a restaurant that serves fruit . It is located in the city centre .
+Bakso is an Indonesian restaurant . It is located in the city .
+Bakso is a family restaurant with Celery .
+There is a restaurant called Bandeja_paisa . It is located in the city centre .
+Barny_Cakes is a French restaurant in the city centre . It is located near Claude_Bartolone .
+There is a restaurant called Batagor that is located in the city center .
+There is a Peanut_sauce restaurant called Batagor . It is located in the city center .
+There is a restaurant called Beef_kway_teow . It is located in the city centre .
+Halimah_Yacob is a restaurant in the city centre .
+There is a restaurant called Beef_kway_teow . It is located in the city center .
+Bhajji is an Indian demonym . It is located in the country .
+Bhajji is a country with a T._S._Thakur . It is located in India .
+In the Philippines there is a place called Igorot_people called Binignit .
+Binignit is a banana restaurant . It is located in the country .
+Binignit is a sweet-potato restaurant . It is located in the city center .
+Enrique_Peña_Nieto is a Bionico . It is located in the country .
+Guadalajara has Bionico and Granola .
+There is a restaurant called Dessert . It is located in the city center .
+Joko_Widodo is located in the country of Indonesia . It is called the Bakso .
+Shumai <R> Shiitake <H> Batagor <R> dishVariation
+Aarhus_Airport has a runwayLength of 2777.0 . It is located in the city of Aarhus .
+There is a restaurant called Adolfo_Suárez_Madrid . It is located in the city centre . It is near the riverside .
+Adolfo_Suárez_Madrid–Barajas_Airport is located in the city of San Sebastián de los Reyes .
+Agra_Airport is located in Uttar_Pradesh . It is part of Awadh .
+Al_Asad_Airbase is located in the Al Anbar Province , Iraq . It has a runwayLength of 3090.0 .
+Al_Asad_Airbase is a restaurant located in the city centre .
+Al_Asad_Airbase is located in the United_States_Air_Force . It is a battles place .
+Alderney_Airport is a restaurant located in the city centre . It is located next to the river .
+Alderney_Airport has a length of 877.0 . It is located in the city centre .
+Allama_Iqbal_International_Airport is located in Pakistan . It is located in the city center . It is called Anwar_Zaheer_Jamali .
+Allama_Iqbal_International_Airport is a restaurant located in the city centre .
+Amsterdam_Airport_Schiphol is a restaurant located in the city centre . It is located at the top of the city .
+Amsterdam_Airport_Schiphol is located in the elevationAboveTheSeaLevel_(in_metres) area . It is located in Amsterdam .
+Amsterdam_Airport_Schiphol is a restaurant located in the cityServed area .
+Amsterdam_Airport_Schiphol has a length of 3300.0 . It is located in the cityServed area .
+Andrews_County_Airport is located in Texas . It is located in the city of Houston .
+Angola_International_Airport has a runwayLength of 3800.0 . It is located in the cityServed area .
+Ardmore_Airport_(New_Zealand) is a restaurant located in the city centre .
+Ashgabat_International_Airport is a restaurant located in the city centre . It is located next to the river .
+Ashgabat_International_Airport is located in the Turkmenistan_Airlines .
+The Atlantic_City_International_Airport is located in the United_States . It is located in New_Jersey .
+Atlantic_City_International_Airport is a restaurant located in the city centre . It is located near the city center .
+Atlantic_City_International_Airport has a runwayLength of 3048.0 . It is located in the city of New York . It is in the operatingOrganisation of New_Jersey .
+Afonso_Pena_International_Airport is located in the city centre . It is located near the Infraero .
+The 1._FC_Magdeburg is located in the Regionalliga .
+A.C._Chievo_Verona is a restaurant located in the city center .
+A.C._Chievo_Verona is a place ofBirth with Rolando_Maran .
+A.D._Isidro_Metapán is a club with Jorge_Humberto_Rodríguez .
+A.E_Dimitra_Efxeinoupolis is a restaurant located in the city centre .
+Stuart_Parker_(footballer) is a club in Blackburn_Rovers_F.C .
+A.F.C._Blackpool is a club with Stuart_Parker_(footballer) and Irlam_Town_F.C.
+A.F.C._Fylde is located in Lancashire . It has a 3180 number of members .
+A.S._Gubbio_1910 is a restaurant with a price range of 5300 . It is located in the city centre .
+A.S._Livorno_Calcio is a league . It is located in the city center .
+A.S._Livorno_Calcio is a club with Christian_Panucci .
+Paulo_Sousa is the manager of ACF_Fiorentina . It is located in the city center .
+ACF_Fiorentina S.p.A. has a fullname of "ACF Fiorentina ".
+AEK_Athens_F.C is located in the city centre .
+The AEK_Athens_F.C is located in the city centre . It is located near the Olympic_Stadium .
+The AFC_Ajax_(amateurs) is a restaurant that is located in the city centre . It is located near the city center .
+AZAL_PFK is located in the Shuvalan, Baku, Azerbaijan area .
+Akron_Summit_Assault is a moderately priced restaurant .
+A.S._Gubbio_1910 is located in the region of Umbria . It is called Gubbio .
+Pietro_Grasso A.S._Gubbio_1910 Italian ground
+Luciano_Spalletti is a club with Empoli_F.C . It is located in the city center .
+The_Bavarian_Crisis is a restaurant with an average rating . It is located in the city centre .
+The_Ram_Rebellion is an E-book . It is located in the city center .
+AIP_Advances is a restaurant with an average rating . It is located in the city center .
+A_Fortress_of_Grey_Ice is a place where you can eat and drink . It is located in the city center .
+A_Fortress_of_Grey_Ice has a ISBN of 0-7653-0633-6 . It is located in the city centre .
+A_Glastonbury_Romance is a restaurant located in the city centre . It is followed by John_Cowper_Powys .
+A_Long_Long_Way is a medium - priced restaurant . It is located in the city centre .
+A_Long_Long_Way has a ISBN of 0-670-03380-4 . It is located in the city centre .
+A_Long_Long_Way is a publisher with Viking_Press . It is a child company with Penguin_Random_House .
+A_Loyal_Character_Dancer is a medium - priced restaurant .
+A_Severed_Wasp is a restaurant with an average price range . It is located in the city centre .
+A_Severed_Wasp is a hardcover book with an average rating .
+A_Severed_Wasp is an English language restaurant in the UK .
+A_Severed_Wasp is a mediaType with a ISBN_number of 0-374-26131-8 .
+Abhandlungen_aus_dem_Mathematischen_Seminar_der_Universität_Hamburg publishes Springer_Science+Business_Media .
+Alcatraz_Versus_the_Evil_Librarians is a bookstore with a 0-439-92550-9 ISBN .
+Alcatraz_Versus_the_Evil_Librarians is a restaurant with a low price range .
+Alcatraz_Versus_the_Scrivener's_Bones is located in the city center .
+American_Journal_of_Mathematics is an academicDiscipline .
+The American_Journal_of_Mathematics is a publisher with Johns_Hopkins_University Press .
+The RamRebellion is located in the United_States . It is located in Washington,_D.C .
+A_Fortress_of_Grey_Ice is located in the United_States . It is located in Washington,_D.C .
+A_Fortress_of_Grey_Ice is located in the United_States . It is an African_Americans place .
+A_Wizard_of_Mars is an African_Americans restaurant that is located in the United_States .
+A_Wizard_of_Mars is a restaurant that serves Asian food . It is located in the United_States .
+1_Decembrie_1918_University is a restaurant located in the city center .
+Acharya_Institute_of Technology is located in the city of Belgaum . It is affiliated with the Visvesvaraya_Technological_University .
+Acharya_Institute of Technology is located in the city of Bangalore . Acharya_institute of technology is a place where you can eat and drink .
+Acharya_Institute_of Technology was given the 'Technical Campus' status by <T> All_India_Council_for_Technical_Education .
+AWH_Engineering_College is located in the state of Kerala . It is named Kochi .
+Peter_Laird is the creator of April_O'Neil . It is located in the United_States .
+Jill_Shilling is a broadcastedBy <T> BBC . It is called Bananaman .
+Graeme_Garden is a broadcasted by Bananaman .
+Tim_Brooke-Taylor is a restaurant in the city centre . It is called the Bananaman .
+Baymax is a Big_Hero_6_(film) . It is located in the city center .
+Baymax is a Big_Hero_6_(film) . It is located in the city center .
+Baymax is a Big_Hero_6_(film) series . It is located in the city center .
+Roger_McKenzie_(comic_book_writer) is the creator of Ben_Urich .
+Jerry_Ordway is the creator of Bibbo_Bibbowski . It is located in the city centre .
+Bibbo_Bibbowski is a full name restaurant . It is located in the city centre .
+Alan_Bean has a status of "Retired" and is located in the city centre .
+Alan_Shepard is a Test_pilot with a status of Deceased .
+Buzz_Aldrin is a restaurant in Glen_Ridge . It is located in the city center .
+The Buzz_Aldrin is located in the Glen_Ridge,_New_Jersey . It is part of the Essex_County .
+William_Anders was a crew member of Apollo_8 in the British_Hong_Kong .
+William_Anders is an AFIT , M.S. 1962 , located in the city center .
+108_St_Georges_Terrace has a floorCount of 50 and a completionDate of 1988 .
+The Public Square is located in the United States and has a floorCount of 45 .
+20_Fenchurch_Street is a moderately priced restaurant located in the city centre .
+300_North_LaSalle is a restaurant located in the city centre .
+George_Winkler is an architect in the United_States . He is in the 320_South_Boston_Building .
+The 3Arena is located in the East Link Bridge . It 's located in the city centre .
+The 3Arena is located in the city centre . It is a place where you can eat and drink .
+The AC_Hotel_Bella_Sky_Copenhagen is located in the city centre .
+George_Richard_Pain is an architect with a completionDate of 1862 . It is called Adare_Manor .
+Adare_Manor is located in County_Limerick . It is located in the city centre .
+Addis_Ababa_City_Hall is located in the country of Ethiopia .
+Adisham_Hall is a Tudor_Revival_architecture . It is located in the city center .
+Adisham_Hall is a Tudor_Revival_architecture . It is located in the city center .
+Akita_Museum_of_Art is a place that serves Japanese food . It is located in the city centre .
+Akita_Museum_of_Art is located in the center of the city . It is located next to the Nakadori .
+Amdavad_ni_Gufa is located near CEPT University . It is near the CEPTUniversity .
+The Ampara_Hospital is located in the Eastern_Province . It is in the city of Austin . It is called Austin_Fernando .
+The Asser_Levy_Public_Baths is located in the United_States . It is located in New_York City .
+Asser_Levy_Public_Baths is located in New_York City . It is located in Brooklyn .
+County_Limerick is part of Munster . It is located in the county and is called Adare_Manor .
+Dublin is part of the Republic of Ireland . It is located in the city . It is called Dublin .
+Alan_Bean is a restaurant in the United States . It is located in the city centre .
+Buzz_Aldrin is located in the United_States . It is located in Glen_Ridge .
+Buzz_Aldrin is a restaurant in the United States . It is located in the city of Cambridge .
+Elliot_See <R> almaMater <T> University_of_Texas_at_Austin
+Elliot_See <R> almaMater <T> University_of_Texas_at_Austin was selected by NASA .
+Elliot_See <R> almaMater <T> University_of_Texas_at_Austin
+Elliot_See is part of the Kingdom of France . It is located in the city center . It is called Elliot_See .
+New_Hampshire is located in the city centre . It is a place where you can eat and drink . It is called Alan_Shepard .
+The_Bavarian_Crisis is a moderately priced restaurant . It is located in the city centre .
+The_Ram_Rebellion is an English language restaurant . It is located in the city centre .
+The ACM_Transactions_on_Information_Systems is located in the city centre . It is a place where you can buy food and drink .
+AIDS_(journal) is an AIDS_(journal) . It is an academicDiscipline . It is located in the city center .
+AIDS_(journal) is an AIDS_(journal) . It is an academicDiscipline . It is located in the city center .
+AIP_Advances is located in the United_States . It is located in Stanford_University . It is called A.T._Charlie_Johnson .
+A_Fortress_of_Grey_Ice is a restaurant with a low price range . It is located in the city centre .
+A_Loyal_Character_Dancer is a restaurant with a rating of 1-56947-301-3 .
+A_Loyal_Character_Dancer is a restaurant that serves English food . It is located in the United_States .
+A_Severed_Wasp is a restaurant that serves English food . It is located in the United_States .
+A_Severed_Wasp is a hardcover book with a rating of 8805735 .
+The Abhandlungen_aus_dem_Mathematischen_Seminar is located in the city centre .
+Above_the_Veil is a restaurant that serves English food . It is located in the city center .
+Above_the_Veil is a restaurant that serves English food . It is located in the city center .
+Above_the_Veil is a hardcover book by Garth_Nix .
+Acta_Palaeontologica_Polonica is a restaurant that is located in the city center .
+Addiction_(journal) is an academic discipline . It is located in the city center .
+The Wiley-Blackwell is a pub with an average rating . It is located in the city centre .
+Cornell_University is located in the state of New York . It is affiliated with Cornell_University .
+Aenir is an English language restaurant with a high price range . It is located in the city centre . It is followed by Aenir .
+Alcatraz_Versus_the_Evil_Librarians is an English language restaurant in the United States .
+Alcatraz_Versus_the_Evil_Librarians is a hardcover restaurant with a high price range .
+Alcatraz_Versus_the_Evil_Librarians is a great place to learn English . It is located in the United_States .
+John_Cowper_Powys is a restaurant in Shirley,_Derbyshire . It is located in the city centre .
+Sara_Miller_McCune is a restaurant that is located in the city center . It is called SAGE_Publications .
+A_Severed_Wasp is located in the United_States . It is located in Washington,_D.C .
+A_Wizard_of_Mars is a restaurant that serves English food . It is located in the United_States .
+A_Wizard_of_Mars is a restaurant that serves Asian food . It is located in the United_States .
+A_Wizard_of_Mars is a restaurant that serves Asian food . It is located in the United_States . Its name is Barack_Obama .
+In the United_States , there is a place called The RamRebellion . It is located in the United_ States . It is a place where you can find a place called United_States .
+A_Fortress_of_Grey_Ice is located in the United_States . It is called United_States and is a place where you can eat .
+Jens_Härtel is the manager of the SV_Germania_Schöneiche . It is called the 1._FC_Magdeburg .
+A.C._Cesena is a club with Massimo_Drago . It is located in the city center .
+The Associazione Calcio Lumezzane SpA is located in the city centre .
+A.D._Isidro_Metapán is a club . It is located in the city centre . It is called Jorge_Humberto_Rodríguez .
+A.E_Dimitra_Efxeinoupolis is a restaurant located in the city centre .
+A.F.C._Blackpool is a restaurant located in the city center .
+A.F.C._Blackpool is a club with Stuart_Parker_(footballer) . It is located in Chesterfield_F.C .
+The A.F.C._Fylde is located in the Stockport_County_F.C . It has a manager named Dave_Challinor .
+A.S._Livorno_Calcio is a restaurant located in the city center .
+A.S._Livorno_Calcio is a league with Christian Panucci .
+A.S._Livorno_Calcio is the manager of the Real_Madrid_C.F.C .
+The AEK_Athens_F.C is a Superleague_Greece . It is located in the city .
+The AEK_Athens_F .C . is a club with a manager named Gus_Poyet .
+The AFC_Ajax_(amateurs) is located in the city centre . It is located near the Eberhard_van_der_Laan .
+The AFC_Ajax_(amateurs) is located in the city centre . It is located near the Eberhard_van_der_Laan .
+The manager is John_van_den_Brom . It 's called the manager and it 's called AZ_Alkmaar .
+There is a league called Agremiação_Sportiva_Arapiraquense . It is located in the city centre .
+There is a club called Luciano_Spalletti . It is located in the city center .
+S.S._Chieti_Calcio is a club with Massimo_Drago .
+Massimo_Drago is a club in the U.S._Castrovillari_Calcio .
+Massimo_Drago is a club in the U.S._Castrovillari_Calcio .
+In the city centre there is a restaurant named John_Madin . It is located in the city centre .
+Cuyahoga_County is located in the city of Cleveland . It 's called Frank_G._Jackson .
+250_Delaware_Avenue is a restaurant located in the United States . It is located in the city centre .
+The Rahm_Emanuel is located in the Chicago area . It is in the DuPage_County . It is called the 300_North_LaSalle .
+George_Winkler is a restaurant in the United States . It is located in the city center .
+3Arena is a restaurant located in the North Wall Quay . It is located in the city centre .
+The AC_Hotel_Bella_Sky_Copenhagen is located in the city centre .
+The AC_Hotel_Bella_Sky_Copenhagen is a 3XN hotel .
+Adare_Manor is a restaurant that is located in the city centre . It is located near Augustus_Pugin .
+Philip_Charles_Hardwick is an architect with a completionDate of 1862 . It is located in the city centre .
+Adisham_Hall is located in the Haputale area . It is a place to eat and drink .
+There is a place called Adisham_Hall . It is located in the city centre .
+There is a place called Adisham_Hall . It is located in the country . It is near the Sri_Lanka . It is called the Ranil_Wickremesinghe .
+The Adisham_Hall is located in the country . It is located in Sri_Lanka .
+Alan_B._Miller_Hall is a restaurant located in the United States . It is located in the city centre .
+Asilomar_Conference_Grounds is located in Riverside_Art_Museum
+Asilomar_Conference_Grounds is located in the city centre . It is located near the city center . It is near the city centre and is called Julia_Morgan .
+Asilomar_Conference_Grounds is located in the National Register of Historic Places .
+Asser_Levy_Public_Baths is a restaurant located in the city centre . It is located near the river .
+Asser_Levy_Public_Baths is located in the city of New_York . It is located near the city center .
+In the city centre there is a Conservative_Party_(UK) called John_Madin . It is located in the city centre .
+John_Madin is a Liberal_Democrats . It is located in the city center .
+Hailemariam_Desalegn is located in the country of Addis_Ababa .
+Anandiben_Patel is located in the city of Ahmedabad . It is the place to go if you are looking for a great place to eat and drink .
+Marriott_International is located at the AC_Hotel_Bella_Sky_Copenhagen .
+Albany,_Georgia is part of Dougherty_County . It is located in the United_States .
+Albuquerque,_New_Mexico has a populationDensity of 1142.3 . It is located in the city of Albuquerque . It has a leaderTitle of New_Mexico .
+Alpharetta ,_Georgia is part of Fulton_County . It is an African_Americans restaurant . It is located in the United_States .
+Alpharetta is located in the United_States . It is part of the Alpharetta family .
+Alpharetta is a restaurant in the United_States . It is located in the capital .
+Anaheim,_California has a total of 131.6 (square kilometres) . It is located in the areaCode 657, 714 .
+Anaheim,_California isPart of Anaheim,_Calif . It is located in the state of California . It is in the city of Anaheim .
+Anderson,_Indiana is part of Lafayette_Township . It is located in the United_States .
+Angola,_Indiana is part of Pleasant_Township . It is located in the United_States . It is called Angola .
+Antioch,_California is part of Contra_Costa_County . It is located in the United_States_House_of_Representatives .
+Tarrant_County is located in the United_States . It is part of the city . It is called Arlington .
+In the United_States , there is a place called Atlanta . It is located in the United_ States . It is a place that serves Asian food .
+Atlanta has a population density of 1299.0 (inhabitants per square kilometre) . It is located in the city centre .
+The Atlantic_City is located in the United_States . It is located in New_Jersey .
+Atlantic_City is part of Atlantic_County . It is located in the United_States .
+Auburn,_Alabama is part of Lee_County . It is located in the United_States .
+The Auburn,_Washington is part of the United_States . It is located in the city of Washington .
+Auburn,_Washington is part of Washington_(state). It is located in the United_States .
+Georgia_(U.S._state ) is part of Dougherty_County . It is located in the city center .
+Madison_County is located in the United_States . It is part of Anderson .
+New_Jersey is located in the United_States . It is located in Trenton,_New_Jersey .
+There is an English language restaurant in the city of Arlington . It is called The Texas . It is located in the city . It is named The Texas .
+In the United_States , there is a place called United_States . It is located in the capital of the United_ States . It is called United_states .
+In the United_States , there is a place called United_States . It is located in the capital of the United_ States . It is called United_states .
+In the United_States , there is a place called United_States . It is located in the capital of the United_ States .
+There is a restaurant called United_States that serves Asian food . It is located in the city of Akron .
+United_States is a restaurant that serves Asian food . It is located in Albany, Oregon . It is part of Benton_County .
+In the United_States , there is a place called United_States . It is a place that is located in the United_ States . It is an Asian_Americans place .
+United_States is a restaurant that serves English food . It is located in the city of Albany .
+United_States is a restaurant that serves English food . It is located in the United_States .
+Aarhus_Airport is a restaurant located in the city centre . It 's called Aarhus Lufthavn A/S .
+The Adirondack_Regional_Airport is located in the cityServed area .
+There is a restaurant called Adolfo_Suárez_Madrid . It is located in the city of Paracuellos .
+Agra_Airport is located in Uttar_Pradesh . It is located in the Indian_Air_Force .
+Al_Asad_Airbase is located in the United_States_Air_Force . It is located in Iraq and has a length of 3992.88 .
+The Al_Asad_Airbase is located in the United_States_Air_Force .
+The Al_Asad_Airbase is located in the United_States_Air_Force . It is a battleship .
+Alderney_Airport is located in the cityServed area . It is a restaurant with a length of 877.0 .
+The Allama_Iqbal_International_Airport is located in Pakistan . It is located in the city of Jinnah .
+Allama_Iqbal_International_Airport is a restaurant located in the city centre .
+The Alpena_County_Regional_Airport is located in the United_States . It is located in Maple_Ridge_Township .
+Andrews_County_Airport is a restaurant located in the city centre . It is located near the river .
+Andrews_County_Airport is a restaurant located in the city centre . It is located at the end of the city .
+The Andrews_County_Airport is located in the city of Austin . It is located near the city center .
+The Andrews_County_Airport is located in Texas . It is located in the United_States .
+Antwerp_International_Airport is located in the cityServed area . It is a German language restaurant .
+The Atlantic_City_International_Airport is located in the United_States . It is located in Egg_Harbor_Township .
+The Atlantic_City_International_Airport is a restaurant located in the city centre . It is located near the city center .
+The Atlantic_City_International_Airport is located in the United_States . It is located in New_Jersey .
+Anwar_Zaheer_Jamali_International_Airport is located in the cityServed area . It is located in Pakistan .
+If you are looking for a place to eat in the city centre , then you should go to the city centre . There is a place called the city centre called the Adolfo_Suárez_Madrid . It is a great place to eat .
+Adolfo_Suárez_Madrid–Barajas_Airport is located in the city center .
+San_Sebastián_de_los_Reyes is located in the country of Spain . It is a place where you can find Adolfo_Suárez_Madrid .
+The Adams_County , the Carroll_County and the 11th_Mississippi_Infantry_Monument are located in the United States .
+The Adams_County , the Carroll_County and the Gettysburg , theAdams_County have to their southeast .
+The Baku_Turkish_Martyrs'Memorial is located in the city of Baku . It is located near the city center .
+Baku_Turkish_Martyrs'Memorial is located in the National_Assembly_(Azerbaijan).
+Atatürk_Monument_(İzmir) is located in the capital area of the city . It is located in a place called Ahmet_Davutoğlu .
+Amatriciana_sauce is a restaurant in the region of Lazio . It is located in the country of Guanciale .
+There is a restaurant called Arem-arem . It is located in the city center .
+Arrabbiata_sauce is a family restaurant that serves tomato . It is located in the city center .
+Arrabbiata_sauce is an Italian restaurant in the city centre . It is located in the centre of the city .
+Arrabbiata_sauce is an Italian restaurant in the city centre .
+Asam_pedas is a restaurant that serves sushi . It is located in the city centre .
+Arifin_Zakaria is a restaurant in the city of Kuala_Lumpur . It is located in the centre of the city .
+Ayam_penyet is a Chinese restaurant located in the city centre .
+There is a BLT restaurant called BLT . It is located in the city center .
+Bacon_Explosion is located in the United_States .
+In the United_States , there is a place called Bacon_Explosion . It is located in the United_ States . It is in the capital . It is called John_Roberts .
+Bacon_sandwich is a BLT restaurant . It is located in the city center .
+Baked_Alaska is a restaurant located in the city centre .
+Baked_Alaska is a French restaurant . It is located in the city center .
+Baked_Alaska is a restaurant in the United_States . It is located in the region of New_York .
+Baked_Alaska is a restaurant that serves desserts . It is located in the city center .
+There is a place called Bakewell_pudding . It is located in the Derbyshire_Dales area . It is a place where you can eat .
+There is a place called Bakewell_pudding . It is located in the Derbyshire_Dales area .
+Bakso is located in the region <T> Indonesia . It is in the country of Bakso . It is called Bakso .
+There is a restaurant called Bandeja_paisa . It is located in the city centre .
+There is a restaurant called Bandeja_paisa . It is located in the city centre .
+There is a place called Barny_Cakes . It is located in the city centre . It is a place where you can eat and drink .
+There is a restaurant called Batchoy . It is located in the city center .
+There is a restaurant called Batchoy . It is located in the city center .
+The Beef_kway_teow is a restaurant located in the city centre . It is located in the centre of the city .
+Beef_kway_teow is a restaurant located in the city centre .
+There is a restaurant called Beef_kway_teow . It is located in the city centre .
+Sumitra_Mahajan is an Indian restaurant . It is located in the city .
+Binignit is a restaurant that serves dessert . It is located in the city center .
+Binignit is a restaurant that serves desserts . It is located in the city center .
+Binignit is a restaurant that serves desserts . It is located in the city center .
+There is a restaurant called Binignit . It is located in the city center .
+There is a place called Bionico . It is located in the city centre .
+Bionico is a restaurant in the region of Guadalajara . It is located in the city centre .
+Silvano_Aureoles_Conejo is a Mexican restaurant . It is located in the country .
+Amatriciana_sauce is an Italian restaurant in the city centre . It is located near the city center .
+In the Philippines there is a place called Igorot_people . It is a place where you can learn Arabic .
+There is a restaurant called Tony_Tan that serves English food . It is located in the city centre .
+Tomato is a family restaurant . It is located in the city center .
+AWH_Engineering_College is a moderately priced restaurant in the city centre .
+Acharya_Institute of Technology is located in the city of Bangalore . Acharya_institute of technology is a place where you can get food and drink .
+AWH_Engineering_College is located in the state of Kerala . It is located near the city center . It is called Kochi .
+There is a place called Romania that is called Romania . It is a place that is called Romanian . It is located in the country of Romania .
+Klaus_Iohannis is a Germans_of_Romania . It is located in the country of Romania . It is called Klaus_ Iohannis .
+The School of Business and Social Sciences at the Aarhus University is located in the European_University_Association .
+The School of Business and Social Sciences at the Aarhus University is located in the city of Aarhus .
+The Asterix_(comicsCharacter) is a place where you can eat French food . It is located in the city center .
+Bananaman is a broadcasted by Tim_Brooke-Taylor . It is called Bananaman .
+The Big_Hero_6_(film) is located in the Walt_Disney_Studios_Motion_Pictures .
+Walt_Disney_Studios_Motion_Pictures has a Big_Hero_6_(film) .
+The Big_Hero_6_(film) is located in the Baymax area . It is located near the Walt_Disney_Studios_Motion_Pictures .
+Blockbuster_(comicsCharacter) is a place where you can get a drink and a bite to eat . It is located in the city centre .
+The Bolt_(comicsCharacter) is located in the city center . It is called Larry Bolatinsky .
+The Bolt_(comicsCharacter) is an alternative name for the Bolt_(comic) . It is located in the city center .
+In the city centre there is a place called 103_Colmore_Row . It is located in the city centre .
+If you 're looking for a place to eat in the South_Africa area , there 's a place called South_Africans . It 's located in the city center , and it 's a great place to eat .
+Cuyahoga_City_Council is located in Cleveland . It is located in the United_States .
+The 250_Delaware_Avenue is located in the Buffalo,_New_York area . It has a price range of 110 million (dollars) .
+The Rahm_Emanuel is located in the city of Chicago . It is in the United_States . It is near the city center .
+The 300_North_LaSalle is a restaurant located in the city centre .
+The Live_Nation_Entertainment is located in the city of Dublin . It is located near the city center .
+The AC_Hotel_Bella_Sky_Copenhagen is located in the city centre .
+Adare_Manor is located in the County_Limerick . It is part of the county .
+Akita_Museum_of_Art is located in the country of Akita . It is located in Akita .
+Akita_Museum_of_Art is located in the country of Akita . It is located in Akita .
+The Akita_Museum_of_Art is located in the country . It is located in Akita .
+The Akita_Museum_of_Art is located in the city centre . It is a place where you can eat and drink .
+Alan_B._Miller_Hall is a college of William and Mary restaurant . It is located in the city centre .
+Amdavad_ni_Gufa is a restaurant located in the country of Gujarat . It is located in the place of Sumitra_Mahajan .
+Asilomar_Conference_Grounds is located in the Pacific_Grove . It is located near the city center .
+The Asser_Levy_Public_Baths is located in the National Register of Historic Places .
+The Asser_Levy_Public_Baths is located in the city of New_York . It is located near Cyrus_Vance .
+The Asser_Levy_Public_Baths is located in New_York City . It is located in the United_States .
+In the city centre there is a place called John_Madin . It is located in the city centre . It has a postalCode of 103_Colmore_Row . It has an architect named Andrew_Mitchell .
+If you are looking for a place to eat , try Birmingham . It is located in the city centre and has a great atmosphere .
+Anandiben_Patel is located in the country of Gujarat . It is in the city of Amdavad_ni_Gufa . Its name is Sumitra_Mahajan .
+The Amdavad_ni_Gufa is located in the city of Gujarat . It is a place where you can eat and drink .
+The Akita_Museum_of_Art is located in the country of Akita . It is a place that serves Japanese food .
+In the United_Kingdom , there is a place called Elizabeth_II . It is located in the city center .
+In the United_States , there is a place called United_States . It is located in the United_ States . It is a place where you can eat English food .
+The 11th_Mississippi_Infantry_Monument is located in the United States .
+In Azerbaijan there is a place called the Prime_Minister_of_Azerbaijan called Artur_Rasizade .
+The Baku_Turkish_Martyrs'Memorial is located in the capital of Azerbaijan . It is located in a place called "Ottoman Army soldiers killed in the Battle of Baku ".
+Monocacy_National_Battlefield is located near Frederick_County . It is located in the city center .
+Atatürk_Monument_(İzmir) is located in the capital of the city . It is a place where you can eat . It is called Ahmet_Davutoğlu .
+Atatürk_Monument_(İzmir) is located in the center of the city . It is the place to go if you are looking for a place to eat .
+The Albany,_Georgia is part of the United_States . It is located in the United_ States .
+Albuquerque,_New_Mexico has a population density of 1142.3 (inhabitants per square kilometre). It is located in the areaCode 505, 575 .
+Alpharetta,_Georgia is part of the United_States . It is located in the city of Atlanta .
+The Amarillo is part of the Potter_County . It is located in the United_States .
+Amarillo,_Texas is part of Potter_County . It is located in the United_States .
+Anaheim,_California is located in the state of California . It is located in Anaheim . It is part of Anaheim . It has a Spanish language . It is called Anaheim .
+Anderson,_Indiana is located in theAdams, Fall Creek, Lafayette, Richland, Union
+There is a place called Angola,_Indiana . It is located in the United_States . It is in the Pleasant_Township .
+Antioch,_California , Antioch, Antioch, Antioch , Antioch , Antioch is a restaurant located in the city centre .
+The Atlantic_City is located in the city centre . It has a population density of 1421.2 . It is located in a place called the Atlantic_City .
+Auburn,_Alabama is part of Lee_County . It is located in the United_States .
+Auburn,_Alabama is part of Lee_County . It is located in the United_States .
+Auburn,_Washington is part of Pierce_County . It is located in the United_States .
+Auburn,_Washington is part of the United_States . It is located in the city of Washington .
+Austin,_Texas is part of the Hays_County . It is located in the city . It is called Austin .
+California is located in the city of Anaheim . It is a place where you can eat Chinese food .
+Georgia_(U.S._state) is part of the United_States . It is located in the city of Atlanta .
+If you are looking for a place to eat in the United States , then you should go to Indiana . It is located in the city of Anderson , and it is near the city of the same name .
+If you are looking for a place to eat in the United States , then you are in the right place at the right time . If you are in Arlington , Texas , then you have come to the right place . If you 're looking for an English language restaurant , then you 're in the right city . If
+The United_States is located in the city of Benton_County .
+The United_States is located in the capital of the United_States . It is located in New_Jersey .
+In the United_States , there is a place called United_States . It is an African_Americans place . It is located in the United_ States .
+In the United_States , there is a place called United_States . It is located in the city of Albuquerque . It is a place where you can eat Chinese food .
+In the United_States , there is a place called United_States . It is located in the capital of the United_ States . It is a place where you can eat Chinese food .
+In the United_States , there is a place called United_States . It is a place that is located in the United_ States . It is called United_ States and it is a place where you can eat .
+In the United_States , there is a restaurant called United_States . It is located in the city of Albany .
+The United_States is located in Angola,_Indiana . It is part of the United_States .
+The United_States is a restaurant that serves English food . It is located in the United_States .
+Jens_Härtel is the manager of FSV_Zwickau .
+A.C._Chievo_Verona , Rolando_Maran and F.C._Bari_1908 are located in the city center .
+A.C._Lumezzane is a place ofBirth . It is located in the city . It is called Michele_Marcolini .
+A.E_Dimitra_Efxeinoupolis is a restaurant located in the city centre .
+A.F.C._Blackpool is located in the Stockport_County_F.C .
+A.F.C._Blackpool is a club in the Stockport_County_F.C . It is called Stuart_Parker_(footballer) .
+A.F.C._Fylde is a restaurant located in the city center .
+A.F.C._Fylde "Association Football Club Fylde" is located in the city center .
+The manager of ACF_Fiorentina is Paulo_Sousa . It is located in the city centre .
+The AEK_Athens_F.C is located in the city centre .
+The AFC_Ajax_(amateurs) is a restaurant located in the city centre .
+The AFC_Ajax_(amateurs) is located in the city centre .
+John_van_den_Brom is a club in the AFC_Ajax .
+The Agremiação_Sportiva_Arapiraquense is located in the city centre .
+The Agremiação_Sportiva_Arapiraquense is located in the city centre .
+The Agremiação_Sportiva_Arapiraquense is located in the city centre .
+The Akron_Summit_Assault is located in the city of Akron . It is located near the St._Vincent–St._Mary_High_School .
+A.S._Gubbio_1910 is a restaurant that is located in the city center .
+The club is called Peter_Stöger . It is located in the city centre .
+Abilene_Regional_Airport is located in the cityServed area . It is located at the elevationAboveTheSeaLevel .
+The Adirondack_Regional_Airport is located in the cityServed area .
+There is a restaurant called Adolfo_Suárez_Madrid . It is located in the city centre .
+The Agra_Airport is located in the Indian_Air_Force .
+Al_Asad_Airbase is located in the United_States_Air_Force . It is located in Iraq and has a length of 3990.0 .
+Al_Asad_Airbase is located in the United_States_Air_Force . It is located near the city center .
+The Al_Asad_Airbase is located in the United_States_Air_Force .
+The Allama_Iqbal_International_Airport is located in the city of Lahore .
+The Amsterdam_Airport_Schiphol is located in the cityServed area . It is located at the elevationAboveTheSeaLevel_(in_metres) .
+The Amsterdam_Airport_Schiphol is located in the cityServed area . It is located at the elevationAboveTheSeaLevel_(in_metres) .
+The Andrews_County_Airport is located in the cityServed area . It is located at the elevationAboveTheSeaLevel_(in_metres) .
+The Andrews_County_Airport is located in Texas . It is located in the United_States .
+The Andrews_County_Airport is located in the United_States . It is in the city of Austin .
+The Angola_International_Airport is located in the cityServed area . It is located in Angola .
+The Antwerp_International_Airport is located in the city centre .
+The Ashgabat_International_Airport is located in the Turkmenistan_Airlines .
+The Athens_International_Airport is located in the cityServed area . It is in the elevationAboveTheSeaLevel_(in_metres) range .
+The Atlantic_City , New_Jersey , and Egg_Harbor_Township are located in the cityServed area .
+The Atlantic_City_International_Airport is located in the South_Jersey_Transportation_Authority .
+The Charles_Michel Antwerp_International_Airport is located in the city of Antwerp .
+There is a French language restaurant called Philippe_of_Belgium . It is located in the city of Antwerp .
+In the United States , there is a place called Harrietstown . It is located in the city of Saranac_Lake .
+There is a place called Fuad_Masum . It is located in the city of Fallujah . It is a place where you can eat and drink .
+Haider_al-Abadi is located in the city of Fallujah . It is a place where you can eat and drink .
+Allama_Iqbal_International_Airport is located in the cityServed area .
+The Flowering_plant is a restaurant located in the city centre . It is located near the river .
+Rona_Fairhead , Bananaman , broadcasted by the BBC , is located in the city .
+There is a place called Bananaman . It is located in the city center .
+The Big_Hero_6_(film) is located in the city centre .
+The Bolt_(comicsCharacter) is located in the city center .
+There is a place called The Bavarian_Crisis . It is located in the city centre .
+The_Ram_Rebellion is an E-book with a ISBN of 1-4165-2060-0 .
+Lippincott_Williams_&_Wilkins is an AIDS_(journal) . It is located in the United_Kingdom .
+A_Fortress_of_Grey_Ice is a hardcover book with a ISBN of 0-7653-0633-6 .
+A_Loyal_Character_Dancer is a hardcover book by the name of Qiu_Xiaolong .
+A_Loyal_Character_Dancer is a restaurant that serves English food . It is located in the United_States .
+A_Loyal_Character_Dancer is a restaurant that is located in the United_States .
+A_Wizard_of_Mars is a hardcover book with a high price range .
+The LCCN_number is 83646315 . The Acta_Mathematica_Hungarica is located in the city centre .
+LCCN_number is 60040714 . Acta_Palaeontologica_Polonica is an academicDiscipline .
+There is a place called Acta_Palaeontologica_Polonica . It is located in the city center .
+The Cornell_University is located in the state of New York . It is affiliated with Cornell_University .
+The Cornell_University is located in the city of Ithaca . It has an affiliation with Cornell_University .
+Aenir is a low - priced restaurant . It is located in the city centre .
+Alcatraz_Versus_the_Evil_Librarians is located in the United_States .
+The American_Journal_of_Mathematics is a publisher in the United States . It is located in the city of Johns_Hopkins_University .
+The Alcatraz_Versus_the_Evil_Librarians is a great place to learn English . It is located in the United_States .
+A_Wizard_of_Mars is located in the United_States . It is a great place to eat and drink .
+A_Wizard_of_Mars is a restaurant that serves English food . It is located in the United_States .
+A_Wizard_of_Mars is located in the United_States .
+A_Severed_Wasp is a restaurant that serves Chinese food . It is located in the city centre .
+Alan_Bean is a restaurant in the United States . It is located in the city centre .
+Alan_Shepard is a crew member of Apollo_14 . It is located in the United_States_Navy .
+Chris_Patten was a crew member of Apollo_8 . He was a British_Hong_Kong .
+Buzz_Aldrin is a crew member of Apollo_11 . It is located in the city of Glen_Ridge .
+Buzz_Aldrin was a crew member of Apollo_11 . It is located in the city of Glen_Ridge .
+Buzz_Aldrin was a crew member of Apollo_11 . It was a crew of 20 .
+The Distinguished_Service_Medal_(United_States_Navy) is in the higher price range .
+The Distinguished_Service_Medal_(United_States_Navy) is in the higher price range .
+Elliot_See <R> almaMater <T> University_of_Texas_at_Austin <H> Elliot_ See <R> deathPlace <T> St._Louis
+William_Anders was a crew member of Apollo_8 .
+AWH_Engineering_College is a restaurant in the city of Kuttikkattoor . It is located in the riverside area .
+In Soldevanahalli , Acharya Dr. Sarvapalli Radhakrishnan Road , Hessarghatta Main Road , Bangalore – 560090 .
+The Acharya_Institute of Technology is located in the city of Bangalore . Acharya_institute of technology is a place where you can eat and drink .
+The Acharya_Institute of Technology is located in the city centre . It is located near the All_India_Council_for_Technical_Education .
+Alba_Iulia is part of Alba_County . It is located in the city .
+The Lars_Løkke_Rasmussen School of Business and Social Sciences at the Aarhus University is located in the city of Aarhus .
+AWH_Engineering_College is located in the city of Kuttikkattoor . It is a place where you can go to have a drink and eat .
+Romania is located in the city of Bucharest . It is a place where you can eat German food . It is called Romania .
+There is a place called Klaus_Iohannis . It is located in the city of Alba_Iulia . It is called Klaus_ Iohannis .
+Amatriciana_sauce is located in Lazio . It is located in the region of Lazio .
+Arrabbiata_sauce is an Italian restaurant in the city centre . It is located in the centre of the city .
+The Arròs_negre restaurant is located in the city center .
+The Arròs_negre restaurant is located in the city center .
+Arròs_negre is a Spanish restaurant in the city centre .
+There is a place called Asam_pedas . It is a place where you can eat . It is located in the city .
+Asam_pedas is located in the country . It is located in Sumatra .
+In the United_States , there is a place called Bacon_Explosion . It is located in the United_ States . It is a place where you can eat .
+In the United_States , there is a place called Bacon_Explosion . It is located in the United_ States . It is a place where you can eat .
+Bacon_sandwich is a restaurant in the United Kingdom . It is located in the city center .
+In the United Kingdom , there is a restaurant called Bacon_sandwich . It is located in the city center .
+Baked_Alaska is a restaurant that serves dessert . It is located in the United_States .
+Baked_Alaska is located in the United_States . It is located in Paris , New York or Hong Kong .
+Baked_Alaska is located in the region of Hong_Kong .
+Baked_Alaska is located in the United_States . It is located in Hong_Kong .
+There is a restaurant called Bakewell_pudding . It is located in the region of Derbyshire .
+There is a restaurant called Bakso . It is located in the city center .
+There is a restaurant called Bakso . It is located in the city centre .
+There is a restaurant called Bandeja_paisa . It is located in the city centre .
+There is a restaurant called Bandeja_paisa . It is located in the city centre .
+The Barny_Cakes is a French restaurant in the French language . It is located in the country .
+There is a restaurant called Batagor . It is located in the city centre .
+Batchoy is a restaurant in the Philippines . It is located in the city of La_Paz .
+There is a restaurant called Batchoy . It is located in the city center .
+There is a restaurant called Beef_kway_teow . It is located in the city centre .
+There is a restaurant called Beef_kway_teow . It is located in the city centre .
+There is a restaurant called Beef_kway_teow . It is located in the city centre .
+Bhajji is a restaurant located in the city centre . It is located near the river .
+Bhajji is located in the region of Karnataka . It is a restaurant that serves vegetables . It is called Bhajji .
+Binignit is a Sweet_potato restaurant . It is located in the city center .
+Binignit is located in the city centre . It is located near the river .
+Bionico is a restaurant located in the city centre . It is located in the centre of the city .
+The Bionico is located in the city of Guadalajara .
+Silvano_Aureoles_Conejo is a restaurant located in the city centre .
+Jusuf_Kalla is a restaurant in the region of Tapioca . It is located in the city centre .
+Ayam_penyet is a baduy . It is located in the city centre .
+In the Philippines there is a place called Zamboangans . It is a place where you can eat . It is located in the city .
+In the Philippines there is a place called Igorot_people . It is a place where you can learn Arabic .
+In the Philippines , there is a place called the Binignit . It is a place where you can eat English food . It is located in the Philippines .
+In the Philippines , there is a place called the Binignit . It is a place where you can eat . It is located in the city .
+The_Grantville_Gazette_II is a restaurant that serves English food . It is located in the city center .
+The Cornell_University is located in the city of Ithaca .
+If you are looking for a great place to eat in the United States , then you are in the right place at the right time .
+In the United_States , there is a place called the Soho_ Press . It is a place where you can eat English food . It is located in the United_ States .
+In the United_States there is a place called the Soho_ Press . It is a place where you can eat English food . It is located in the United_ States .
+A_Severed_Wasp is located in the United_States .
+There is a place called The_Violet_Keystone . It is located near the city center .
+A_Severed_Wasp is a great place to eat . It is located in the United_States .
+A_Severed_Wasp is a great place to eat . It is located in the United_States .
+In the United_States , there is a place called United_States . It is located in the Capital . It is called Barack_Obama .
+In the United_States , there is a place called TheRam_Rebellion . It is located in the United_ States .
+The United_States is a great place to go if you are looking for a place to eat . It is located in the United_States .
+The Albany,_Georgia is part of the United_States . It is located in the United_ States .
+In the United_States , there is a place called Alpharetta . It is located in the city of Atlanta .
+The Amarillo is part of the Potter_County . It is located in the United_States .
+The Amarillo,_Texas is part of the Potter_County . It is located in the United_States .
+The Amarillo is part of the Potter_County . It is located in the city of Austin .
+In the United States there is a restaurant called Anderson that is called Anderson . It is located in the United States .
+The Antioch, the Antioch , the Antioch , is the Antioch , it is the Antioch . It is the Antioch
+The city of Atlanta is located in the city of DeKalb_County . It has a population density of 1299.0 . It is located in a place called the city of Atlanta .
+There is a place called Attica,_Indiana . It is located in the United_States . It is in the elevationAboveTheSeaLevel .
+In the United States , there is a place called Auburn ,_Alabama . It is located in the city of Lee_County .
+The Auburn,_Washington is part of Pierce_County . It is located in the United_States .
+Austin,_Texas is part of the Williamson_County . It is located in the city .
+In the city of Austin , there is a restaurant called Austin , which is located in the city . It is called Austin .
+In the city of Austin , there is a restaurant called Austin , the restaurant is called Austin , and it is located in the city .
+If you are looking for a place to eat in the capital of the United States , then you are in the right place . Indiana is located in the city of Alexandria . It is located near the city center . It is a great place to eat and drink .
+Tarrant_County is located in the city of Arlington . It is a restaurant that serves Spanish food .
+Tarrant_County is the largest city in the United States . It is located in the city of Austin .
+The United_States is located in the capital of the United_States . It is located in New_Jersey .
+In the United_States , there is a demonym called United_States . It is located in the United_ States .
+In the United_States , there is a demonym called United_States . It is located in the United_ States .
+In the United_States , there is a place called United_States . It is a place where you can eat and drink . It is located in the United_ States .
+In the United_States , there is a place called United_States . It is located in the city of Auburn . It is a place where you can eat .
+In the United States , there is a place called United_States . It is located in the city of Auburn . It is a place where you can eat .
+In the United_States , there is a place called United_States . It is located in the New_Jersey .
+In the United_States , there is a restaurant called United_States . It is located in the city of Albuquerque .
+In the United_States , there is a place called United_States . It is a place where you can eat English food . It is located in the United_ States .
+In the United_States , there is a place called United_States . It is located in the United_ States . It is called Barack_Obama .
+The United_States is located in Albany, Georgia . It is part of the United_States .
+The 11th_Mississippi_Infantry_Monument is located in the United States .
+The Adams_County , the Carroll_County and theAdams_County are all located in the city centre .
+In Azerbaijan there is a place called the Baku_Turkish_Martyrs'Memorial . It is located in the capital of Azerbaijan .
+The Baku_Turkish_Martyrs'Memorial is located in the city of Baku . It is located near the city center .
+There is a place called Ahmet_Davutoğlu . It is located in the capital of the city . It is a place where you can eat .
+AWH_Engineering_College is located in the city of Kuttikkattoor .
+In Soldevanahalli , Acharya Dr. Sarvapalli Radhakrishnan Road is the place where you can find Acharya_Institute_of_Technology .
+The Acharya_Institute of Technology is located in the city of Bangalore . Acharya_institute_of_technology is the place to go if you are looking for a place to eat .
+The European_University_Association is located at the Aarhus University .
+AWH_Engineering_College is located in the city "Kuttikkattoor" . It is a place where you can eat and drink .
+AWH_Engineering_College is located in the city of Mumbai . It is located in a riverside area . It is near the city center .
+The School of Business and Social Sciences at the Aarhus University is located in the city of Aarhus . It is called Lars_Løkke_Rasmussen .
+The School of Business and Social Sciences at the Aarhus University is located in the city of Mols .
+There is a place called Duncan_Rouleau . It is located in the city centre .
+A.C._Lumezzane is a restaurant . It is located in the city center .
+A.F.C._Blackpool is a club that is located in the city centre . It is called Stuart_Parker_(footballer) .
+A.S._Gubbio_1910 is an Italian restaurant in the league . It is located in the city .
+There is an AEK_Athens_F.C . It is located in the city centre . It has a manager named Gus_Poyet .
+A.S._Gubbio_1910 is a restaurant that serves Italian food . It is located in the city center .
+A.S._Gubbio_1910 is a restaurant that serves Italian food . It is located in the city centre .
+Arem-arem is located in the city centre . It is a place where you can eat and drink .
+There is a place called Asam_pedas that serves Chinese food . It is located in the city center .
+There is a place called Asam_pedas . It is located in the city centre . It is a place where you can eat and drink .
+Asam_pedas is located in the city centre . It is a place where you can eat and drink .
+Asam_pedas is located in the country . It is located in Malaysia . It is in the region . It is called Abu_Zahar_Ujang .
+The Bacon_Explosion is located in the United_States . It is located in Kansas_City_metropolitan_area .
+The Bacon_Explosion is located in the United_States .
+In the United Kingdom , there is a restaurant called Bacon_sandwich . It is located in the city center .
+Baked_Alaska is a French restaurant in the city centre . It is located near Manuel_Valls .
+In the city centre there is a place called the Antioquia_Department . It is located in the centre of the city . It is a place where you can eat and drink . It is called the Bandeja_paisa .
+There is a French restaurant called Barny_Cakes . It is located in the city centre .
+There is a restaurant called Batagor . It is located in the city centre .
+There is a restaurant called Batagor . It is located in the city centre .
+There is a restaurant called Batagor . It is located in the city centre .
+Bhajji is a restaurant located in the city centre . It is located near the river .
+Bhajji is a demonym . It is located in the country . It is in the city . It is called Vajubhai_Vala .
+Bhajji is a demonym . It is located in the country . It is in the city . It is called Sumitra_Mahajan .
+The Bionico is located in the city of Guadalajara .
+There is a restaurant called Bionico that serves Mexican food . It is located in the city centre . It is called Enrique_Peña_Nieto .
+Silvano_Aureoles_Conejo is a restaurant located in the city centre .
+Carles_Puigdemont is a Spanish restaurant . It is located in the city centre .
+There is an Italian restaurant called Matteo_Renzi . It is located in the city centre .
+If you are looking for a place to eat in the city centre , you can go to the Italian restaurant called the Amatriciana_sauce . It is located in the center of the city .
+There is an Italian restaurant called Pietro_Grasso . It is located in the city centre .
+If you are looking for a place to eat , try the Javanese restaurant . It is located in the city center .
+The Javanese_people is located in the city of Singapore . It is in the language of English and it is in the country of Singapore . The Ayam_penyet is in the region of Singapore .
+In the Philippines there is a place called the Zamboangans . It is a place where you can eat Chinese food .
+The Spanish language is called Susana_Díaz . It is located in the region of Andalusia .
+There is a place called Susana_Díaz . It is located in the region of Andalusia .
+Alan_Bean is a Test_pilot . It is located in the United_States .
+The Alan_Shepard is a crew member of Apollo_14 . It is located in New_Hampshire .
+The Apollo_8 is a crew member of Apollo_8 . It is located in the United_States .
+The Buzz_Aldrin is a restaurant in the United States . It is located in the city of Glen_Ridge .
+Buzz_Aldrin is a crew member of Apollo_11 . It is located in the United_States .
+The Buzz_Aldrin is a crew member of Apollo_11 . It is located in the city of Glen_Ridge .
+Buzz_Aldrin is a crew member of Apollo_11 . It is located in the city of Glen_Ridge .
+Buzz_Aldrin was a crew member of Apollo_11 .
+If you are looking for a place to eat , you can go to the Apollo_14 . It is located near the city center .
+In the United States , there is a place called the Distinguished_Service_Medal_(United_States_Navy). It is located in the city of New_Hampshire .
+William_Anders was a crew member of Apollo_8 . It is located in the British_Hong_Kong .
+Aarhus_Airport is located in the center of the city . It is located near the Tirstrup .
+There is a restaurant named Adolfo_Suárez_Madrid . It is located in the city centre .
+The Agra_Airport is located in the Indian_Air_Force . It is in the elevationAboveTheSeaLevel_(in_metres) .
+The Al_Asad_Airbase is located in the United_States_Air_Force . It is located in Iraq and has a length of 3990.0 .
+The Al_Asad_Airbase is located in the United_States_Air_Force . It is located near the city center .
+The Al_Asad_Airbase is located in the United_States_Air_Force .
+The Al_Asad_Airbase is located in the United_States_Air_Force .
+Alderney_Airport is a restaurant located in the cityServed area . It is located in the elevationAboveTheSeaLevel_(in_metres) range .
+The Allama_Iqbal_International_Airport is located in the city of Lahore .
+The Allama_Iqbal_International_Airport is located in the city of Lahore .
+The Alpena_County_Regional_Airport is located in the city of Maple_Ridge_Township .
+The Alpena_County_Regional_Airport is located in Maple_Ridge_Township .
+The Alpena_County_Regional_Airport is located in the city of Wilson_Township .
+The Alpena_County_Regional_Airport is located in the United_States .
+The Angola_International_Airport is located in the city of Angola . It is located at the end of the city .
+Athens_International_Airport is a restaurant that serves Greek food . It is located in the cityServed area .
+The Athens_International_Airport is located in the cityServed area . It is a place where you can eat and drink .
+The Atlantic_City_International_Airport is located in the cityServed area . It is part of the Atlantic_City .
+There is a place called Philippe_of_Belgium . It is located in the City_of_Brussels .
+The Egg_Harbor_Township is located in Atlantic City . It is part of the New_Jersey .
+In the United States , there is a place called Harrietstown . It is located in the city of Saranac .
+In the United States , there is a restaurant called Harrietstown . It is located in the city of Saranac .
+The Indian_Air_Force is located in Uttar_Pradesh .
+The Indian_Air_Force is located in Uttar_Pradesh . It is part of the Bundelkhand .
+There is a place called Haider_al-Abadi . It is located in the city of Fallujah .
+Cuyahoga_County is located in the city of Cleveland . It is located near the city center .
+The 250_Delaware_Avenue is located in the city centre .
+There is a place called Rahm_Emanuel . It is located in the city of Chicago . It is near the city center .
+The AC_Hotel_Bella_Sky_Copenhagen is located in the United Kingdom . It is located near the city center .
+The AC_Hotel_Bella_Sky_Copenhagen is located in the city centre .
+The AC_Hotel_Bella_Sky_Copenhagen is located in the city centre .
+Adare_Manor is located in the city centre . It is located near the city center . It is a restaurant .
+Addis_Ababa_City_Hall is located in the city centre .
+The Akita_Museum_of_Art is located in the country of Akita . It is located in Akita .
+The Akita_Museum_of_Art is located in the country of Akita . It is part of theAkita_Prefecture .
+The Alan_B._Miller_Hall is located in the United_States . It is located in Mason_School_of_Business .
+Amdavad_ni_Gufa is located in Ahmedabad . It is located in the country . It is in the Ahmedabad .
+Ampara_Hospital is located in the Eastern_Province . It is in the city of Sri_Lanka . Its name is Austin_Fernando .
+There is a place called Ampara_Hospital . It is located in the Eastern_Province . It is a place where you can eat .
+Asilomar_Conference_Grounds is a restaurant located in the city centre . It is located next to the city centre and is called Julia_Morgan .
+Asilomar_Conference_Grounds is located in Riverside_Art_Museum .
+The Asser_Levy_Public_Baths is located in the city of New_York . It is located near Cyrus_Vance .
+In the city centre there is a place called John_Clancy_(Labour_politician). It is located in the city centre . It has a postalCode of 103_Colmore_Row .
+The United_States is located in the capital of the United_States . It is in the United_ States . It is called United_States and it is called JohnRoberts .
+The 11th_Mississippi_Infantry_Monument is located in the United States .
+The Adams_County , the Carroll_County and the Franklin_County are all located in the city centre .
+The Baku_Turkish_Martyrs'Memorial is located in the city center .
+The Baku_Turkish_Martyrs'Memorial is located in the city centre .
+The Monocacy_National_Battlefield is located in the United States . It is located in Frederick_County .
+In the United States , there is a place called Alan_Bean . It is located in the city of Wheeler . It is a place where you can eat and drink .
+The Alan_Shepard is a crew member of Apollo_14 . It is located in the city of New_Hampshire .
+The Apollo_12 is a backup pilot of Alfred_Worden . It is located in the city center .
+The Buzz_Aldrin is located in the United_States . It is located in Glen_Ridge .
+The Buzz_Aldrin is a crew member of Apollo_11 . It is located in the city of Glen_Ridge .
+The Buzz_Aldrin is a crew member of Apollo_11 . It is located in the United_States .
+There is a place called Buzz_Aldrin . It is located in the city center .
+If you are looking for a gemstone , try the Benitoite . It is in the higher price range and is located in the city centre .
+There is a place called William_Anders . It is located in the United_States . It is called William_ Anders . It has a dateOfRetirement of 1969-09-01 .
+William_Anders was a crew member of Apollo_8 . It is located in the British_Hong_Kong .
+A crew member of Apollo_8 is William_Anders . It is located in the city center . It is called Buzz_Aldrin .
+The Accademia_di_Architettura_di_Mendrisio is located in the city .
+The Acharya_Institute_of_Technology is located in the city of Bangalore . It is located near the city center .
+In Soldevanahalli , Acharya Dr. Sarvapalli Radhakrishnan Road , there is a place called Acharya_Institute_of_Technology .
+There is a place called Lars_Løkke_Rasmussen . It is located at the Aarhus University .
+The Lars_Løkke_Rasmussen School of Business and Social Sciences at the Aarhus University is located in the city .
+AWH_Engineering_College is located in the city of Mumbai . It is located in a riverside area . It is near the city center .
+In Romania , there is a place called Klaus_Iohannis . It is located in the city of Bucharest .
+The School of Business and Social Sciences at the Aarhus University is located in the city of Aarhus .
+There is a Turkish restaurant called Ahmet_Davutoğlu . It is located in the city centre .
+If you are looking for a place to eat in the heart of the city , then you are in the right place at the right time . This is the place for you .
+There is a Turkish restaurant called Ahmet_Davutoğlu . It is located in the city centre .
+The Accademia_di_Architettura_di_Mendrisio is located in the city .
+The Acharya_Institute of Technology is located in the city of Bangalore .
+The Acharya_Institute of Technology is located in the city centre .
+In the city of Bucharest there is a place called Klaus_Iohannis . It is a place where you can eat German food .
+The School of Business and Social Sciences at the Aarhus University is located in the city of Aarhus .
+The School of Business and Social Sciences at the Aarhus University is located in the city of Aarhus .
+In the city of Aarhus there is a place called the School of Business and Social Sciences . It is located at the Aarhus University .
+In the United States , there is a place called Alan_Bean . It is located in the city of Wheeler .
+There is a place called Alan_Shepard . It is located in the city centre .
+The Apollo_12 is a backup pilot of Alfred_Worden . It is located in the United_States .
+There is a place called Buzz_Aldrin . It is located in the city center .
+The Buzz_Aldrin is a restaurant in the United States . It is located in the city of Cambridge .
+The Buzz_Aldrin is a restaurant in the United States . It is located in the city centre .
+The Buzz_Aldrin was a crew member of Apollo_11 . It was located in the city of Glen_Ridge .
+The Buzz_Aldrin is a crew member of Apollo_11 . It is located in the United_States .
+There is a place called William_Anders . It is located in the city centre .
+The William_Anders is a crew member of Apollo_8 . It is located in the United_States .
+There is a restaurant named William_Anders . It is located in the city center .
+Aaron_S._Daggett is a Purple_Heart .
+Aaron_S._Daggett battles <T> Battle_of_Mine_Run .
+Ab_Klink is a birthPlace in the Netherlands .
+Abdul_Rahman_Ya'kub inOfficeWhileVicePresident inOffice While Vice President
+"Parti Bumiputera Sarawak" is a party with Abdul_Taib_Mahmud .
+Sulaiman_Abdul_Rahman_Taib_Mahmud is a replacement for Abdul_Taib Mahmud .
+Abdulsalami_Abubakar is a restaurant located in the city center .
+Abdulsalami_Abubakar is located in the city center .
+Abdulsalami_Abubakar is located in the Niger_State .
+Abner_W._Sibal is a restaurant located in the city center .
+Abner_W._Sibal is located in Alexandria, Virginia .
+Adam_Holloway is a birthPlace in Kent .
+Adam_Holloway is a residence in Gravesend .
+The Adenan_Satem is located in the University_of_Adelaide .
+Adolf_Schärf is a birthPlace with Mikulov .
+Antonis_Samaras is inOfficeWhilePrimeMinister .
+Adonis_Georgiadis is located in the office of the Deputy Minister for Development, Competitiveness and Shipping .
+Agnes_Kant is a birthPlace with Hessisch_Oldendorf .
+Agnes_Ward_White is located in Marietta , Ohio .
+Airey_Neave is a restaurant located in the city centre .
+Airey_Neave is a Military Cross restaurant .
+Airey_Neave is a restaurant in the city centre .
+Airey_Neave is a militaryRank restaurant .
+Airey_Neave is a restaurant located in the city centre .
+Albert_B._White is a Republican_Party_(United_States) .
+Albert_B._White is a child friendly restaurant . It is located in the city center .
+Albert_Jennings_Fountain is a militaryBranch . It is located in the Union_Army .
+Alberto_Teisaire has a nationality of Argentina .
+Alberto_Teisaire is a Rear Admiral in the Argentine Navy .
+Alfons_Gorbach is a restaurant in Austria .
+Alfred_Moore_Scales is a restaurant located in the city centre .
+Alfred_Moore_Scales battles at Battle_of_Chancellorsville .
+Alfred_N._Phillips is located in the city center . It is near the river .
+The Alfred_N._Phillips office is located in the city center . It is located near the city center and is called the Mayor_of_Stamford .
+Allan_Shivers is a restaurant located in the city centre .
+Allan_Shivers is a militaryBranch in the United_States_Army .
+Allan_Shivers is a replacement for Price_Daniel .
+Alvah_Sabin is a restaurant located in the city center .
+Alvah_Sabin is a party in the United States .
+Robert_E._Lee is the commander of the American_Civil_War .
+Austria has a German language called Austria .
+Robert_E._Lee is the commander of Battle_of_Antietam .
+Battle_of_Cold_Harbor is an American Civil War restaurant .
+Gabriela_Michetti is located in the city center .
+Colin_Powell is the commander of Gulf_War .
+John_F._Kennedy is a predecessor to Dwight_D._Eisenhower .
+Josef_Klaus <R> almaMater <T> University_of_Vienna
+Juan_Carlos_I_of_Spain is a predecessor to Francisco_Franco .
+Juan_Perón is a Labour_Party_(Argentina) .
+In the Netherlands there is a place called Mark_Rutte .
+United_States_Army is a Spanish–American_War .
+William_M._O._Dawson is located in Bloomington,_Maryland .
+The Dodge Coronet is an alternative name for the 1955_Dodge .
+The engine of the 1955_Dodge is 230 (cubic inches) .
+A-Rosa_Luna is located in the city center .
+AIDA_Cruises is located in Rostock .
+AIDAluna is an operator of AIDA_Cruises .
+AIDAstella is located in the city center .
+AIDAstella has a completionDate of 2013-03-11 .
+AIDAstella <R> maidenVoyage <T> 2013-03-17
+AIDAstella is the operator of AIDA_Cruises .
+ALV_X-1 is located in the Mid-Atlantic_Regional_Spaceport .
+AMC_Matador is an American Motors Matador .
+ARA_Veinticinco_de_Mayo_(V-2) has a status of "Sold to the Netherlands 1 April 1948".
+Abarth_1000_GT_Coupé is a straight-four engine .
+Acura_TLX is a Honda_K_engine .
+Acura_TLX is an AWD_(vehicle) layout .
+Honda_Accord has Acura_TLX .
+Acura_TLX has a 9-speed ZF 9HP automatic transmission .
+Alfa_Romeo_164 is an assembly restaurant .
+Alfa_Romeo_164 is located in Lancia_Thema .
+Alfa_Romeo_164 is a 4-speed automatic transmission .
+There is a place called Alhambra . It is located in the city center .
+Alhambra is a shipBeam with a rating of 8.3 m .
+Alhambra has a status of "Wrecked" and is located in the city center .
+Alhambra has a speed of 18.52 .
+Alvis_Speed_25 is a straight-six engine .
+Alvis_Speed_25 is a restaurant located in the city center .
+American_submarine_NR-1 is a shipDraft .
+Antares_(rocket) is a finalFlight restaurant .
+The Antares_(rocket) is located in the Mid-Atlantic_Regional_Spaceport_Launch_Pad_0 area .
+Gabriela_Michetti is located in the city center .
+Ariane_5 is located in the Guiana_Space_Centre .
+There is a place called Ariane_5 . It is located in the city center .
+Aston_Martin_V8 is a Convertible .
+Aston_Martin_V8 is a manufacturer .
+Aston_Martin_Virage is a manufacturer .
+Atlas_II <R> finalFlight <T> 1998-03-16
+Atlas_II is a launchSite with Vandenberg_Air_Force_Base .
+If you are looking for a great place to eat then check out Audi . It is located in the city center .
+Audi_A1 is an Audi_Brussels assembly .
+Audi_A1 is located in the SEAT_Ibiza .
+Caterpillar_Inc is located in Peoria , Illinois .
+Costa_Crociere is located in the city centre .
+DeSoto_Custom is a Chrysler_Newport .
+Alfa_Romeo_164 Fiat_Croma
+Germany <R> demonym <T> Germans
+Norbert_Lammert is a German restaurant .
+Stanislaw_Tillich is a German restaurant .
+Gruppo_Bertone is an Italian restaurant .
+Guiana_Space_Centre is a French restaurant located in the city centre .
+Honda_K_engine is a Honda dealership .
+The United_States anthem is The_Star-Spangled_Banner .
+In the United_States is a Native_Americans_in_the_United_States called United_States .
+Silvio_Berlusconi is the chairman of A.C._Milan .
+Aaron_Boogaard is a birthPlace in Canada .
+There is a club called the SV_Werder_Bremen called AaronHunt .
+Abel_Hernández is a club in Uruguay_Olympic_football .
+Abel_Hernández is a club in Uruguay .
+Abner_(footballer) is a birthPlace in Brazil .
+Adam_Maher is a birthPlace .
+Adam_Maher is a birthPlace in the Netherlands .
+Adam_Maher is a club in the Netherlands_national_under-17_football_team .
+Adam_Maher is a club in PSV_Eindhoven .
+There is a club called Ahmad_Kadhim_Assad . It is located in the city centre .
+Akeem_Adams is located in the Point_Fortin area .
+Akeem_Dent is a restaurant located in the city center .
+Akeem_Priestley is a club in the state of Connecticut .
+Al-Khor_Sports_Club is a league in Qatar .
+Al-Zawra'a_SC is the manager of Basim_Qasim .
+Al_Kharaitiyat_SC is in the position of Qatar_Stars_League .
+Alaa_Abdul-Zahra is a birthPlace in Baghdad .
+Alaa_Abdul-Zahra is a club in Sanat_Mes_Kerman_F .
+Hamilton_Academical_F.C. has a club called the Alan_Martin_(footballer).
+Alan_Martin_(footballer) is a club that is located in Scotland .
+Aleksander_Barkov ,_Jr. is a restaurant with a date range of 1995-09-02 .
+Aleksander_Barkov is a club in Florida .
+Aleksander_Barkov has a height of 1.905 and is located in the city centre .
+Aleksander_Barkov is a National_Hockey_League .
+Aleksandr_Prudnikov has a birthDate of 1989-02-24 .
+Aleksandr_Prudnikov is a club in the FC_Amkar_Perm area .
+Aleksandre_Guruli is a birthPlace .
+Aleksandre_Guruli is a club with FC_Samtredia .
+Aleksandre_Guruli is a club in the Georgia_national_under-21_football_team .
+Alessio_Romagnoli A.S._Roma club
+Alessio_Romagnoli A.S._Roma youthclub
+Alex_Plante is a birthPlace in Manitoba .
+Alex_Tyus is a Turkish_Basketball_Super_League .
+Atlanta_Falcons is located in the city .
+Don_Sweeney is the general manager of Boston_Bruins .
+Hungary is located in the city of Budapest .
+There is an English language restaurant in the centre of the city called Canada .
+The language is Slavey_language . It is called Canada .
+Columbus_Blue_Jackets is located in the city of Columbus .
+Oleh_Luzhny is the manager of FC_Karpaty_Lviv .
+Valery_Petrakov is the manager of FC_Torpedo_Moscow .
+Gábor_Kubatov is the chairman of Ferencvárosi_TC .
+The Finnish language is Finnish_language . It is called Finland .
+Daniele_Zoratto is the coach of Italy_national_under-16_football_team .
+Maccabi_Ashdod_B is a coach .
+Motherwell_F.C is a ground <T> Fir_Park .
+Jean-Michel Aulas is the owner of Olympique_Lyonnais .
+St._Louis_Rams is located in the city .
+The Tennessee_Titans is located in the city of Nashville .
+Aaron_Bertram is a restaurant that is located in the city center .
+The_Horns_of_Happiness is a place where you can find Aaron_Deer .
+Aaron_Deer <R> recordLabel <T> Kill_Rock_Stars
+Avant-garde metal is served at Aaron_Turner .
+Aaron_Turner is a progressive metal venue .
+Abradab "solo_singer" is located in the city center .
+Abradab has a birthDate of 1978-11-12 .
+Abradab is a birthPlace in Poland .
+Abradab is a Hip_hop_music_music venue .
+Agustín_Barboza is a music venue .
+Ahmet_Ertegun is a Turkish restaurant in the city center .
+Alan_Frew is a Rock_music venue .
+Albennie_Jones is an associatedMusicalArtist with Sammy_Price .
+Aleksandra_Kovač is a solo_singer .
+Aleksandra_Kovač is a birthPlace in Yugoslavia .
+Aleksandra_Kovač is a rhythm and blues restaurant .
+Aleksandra_Kovač is a Soul_music venue .
+Alex_Day is a Synthpop venue .
+Alfredo_Zitarrosa is an associatedMusicalArtist with Héctor_Numa_Moraes .
+Alfredo_Zitarrosa is located in the city center .
+Alfredo_Zitarrosa is a restaurant in Uruguay .
+Alfredo_Zitarrosa has a RCA_Records recordLabel .
+Alison_O'Donnell is a restaurant located in the city center .
+Alison_O'Donnell is a Jazz venue .
+Alison_O'Donnell "Voice, bodhrán, percussion, autoharp"
+Allen_Forrest has a birthDate of 1981-02-04 .
+Allen_Forrest is a pop music venue .
+Alligator_Records is located in Chicago .
+Anders_Osborne is an associatedMusicalArtist with Johnny_Sansone .
+Anders_Osborne is a Rhythm_and_blues restaurant .
+Alligator_Records has a recordLabel .
+Andra_(singer) is a rhythm and blues venue .
+Andrew_Rayel is a restaurant located in the city center .
+Andrew_Rayel is a Christian_Burns band .
+"Chișinău, Moldova" is Andrew_Rayel .
+Andrew_White_(musician) is a Marry_Banilow .
+Andrew_White_(musician) is a B-Unique_Records .
+Asunción is part of Gran_Asunción .
+Christian_Burns <R> instrument <T> Guitar
+Hip_hop_music is a musicSubgenre . It is a Gangsta_rap .
+Hip_hop_music has a stylisticOrigin and is located in the city centre .
+New_wave_music is located in the city center . It is called Indie_rock .
+Manchester is part of Greater_Manchester .
+Polydor_Records is located in the city centre .
+RCA_Records is a Sony_Music_Entertainment .
+Rock_and_roll <R> stylisticOrigin <T> Blues
+Synthpop <R> stylisticOrigin <T> Pop_music
+United_Kingdom is a British_people restaurant .
+The VK8 is a medium - priced restaurant .
+Carl_A._Wirtanen is a discoverer .
+absoluteMagnitude is located in the city center .
+The apoapsis is 259776702 .47055 . It is located in the city centre .
+The apoapsis is 254989570 .60815 . It is located in the city centre .
+If you 're looking for a place to eat in the city centre , check out the restaurant called the RO1 . It 's a great place to grab a bite to eat .
+EscapeVelocity is a 0.0252 (kilometrePerSeconds) restaurant .
+There is a place called "1923 OAA907 XC" that is located in the city center .
+1001_Gaussia has a maximumTemperature of 165.0 and is located in the city centre .
+The apoapsis is 101_Helena . It is located in the city centre .
+There is a place called 101_Helena . It is located in the city center .
+101_Helena has a mass of 3.0 and is located in the city centre .
+1036_Ganymed has averageSpeed and is located in the city centre .
+The absoluteMagnitude restaurant is located in the city center .
+Hera has a mass of 7.9 kilograms and is located in the city centre .
+The absoluteMagnitude restaurant is located in the city center . It is called 107_Camilla .
+A._Storrs has a discoverer called 107_Camilla .
+A894 VD , A904 VD , and a formerName are located in the city center .
+1089_Tama is an orbitalPeriod restaurant . It is located in the city center .
+1097_Vicia has an averageSpeed and is located in the city centre .
+1097_Vicia is a restaurant located in the city center .
+1097_Vicia has a rotationPeriod of 95040.0 .
+The Christian_Heinrich_Friedrich_Peters discoverer is 109_Felicitas .
+Periapsis is a restaurant with a price range of 283326000000 . It is located in the city center .
+There is an averageSpeed restaurant called Hygiea . It is located in the city centre .
+Clematis is a 445895000000.0 periapsis restaurant .
+110_Lydia is a restaurant located in the city center .
+Claudiomaccone has a temperature of 173.0 (kelvins) and is located in the city centre .
+James_Craig_Watson almaMater University_of_Michigan
+Nottingham has a birthPlace called N._R._Pogson .
+Aaron_S._Daggett has a Purple_Heart with a Battle_of_Fredericksburg .
+Aaron_S._Daggett is a Battle of Gettysburg .
+Abdul_Rahman_Ya'kub hasDeputy Stephen_Yong_Kuet_Tze
+There is a party called Abdul_Taib_Mahmud . It is located in the Kingdom_of_Sarawak .
+Abdulsalami_Abubakar is a Technical_Institute . It is located in the Minna .
+Abdulsalami_Abubakar is located in the office of the Chief of the Defence Staff . It is located in Nigeria .
+Abdulsalami_Abubakar is located at the office of the Chief of the Defence Staff . It is located in the city center .
+Abdulsalami_Abubakar is a replacement for Olusegun_Obasanjo .
+Abdulsalami_Abubakar is inOfficeWhileVicePresident .
+Abner_W._Sibal battles World_War_II . It is located in the city center .
+Abner_W._Sibal is a militaryBranch . It is located in the United_States_Army .
+Adam_Holloway is located in Kent . It is located in the city center .
+Adam_Holloway is a residence in Gravesend . It is located in the city centre .
+Virtuti_Militari has a battle with Adam_Koc . It is called World_War_I .
+Adonis_Georgiadis is located in Athens . It is located in the office of the Deputy Parliamentary Spokesman of Popular Orthodox Rally .
+Adonis_Georgiadis is a birthPlace in Greece .
+Adonis_Georgiadis is located in the office of the Popular Orthodox Rally . It is located in Greece .
+The Agnes_Kant office is located at Hessisch_Oldendorf . It is located in the city center .
+Airey_Neave is a Military Cross . It is located near the Royal Artillery .
+Airey_Neave is a Battle of France restaurant . It is located in the city center .
+Airey_Neave battles Hugo_Sperrle in Battle_of_France .
+Airey_Neave is a battles place . It is located in the World_War_II .
+Franklin_D._Roosevelt has a battle with Airey_Neave .
+Airey_Neave is a World_War_II battle . It is located in the city center .
+Albert_B._White is a restaurant located in the city centre .
+Albert_B._White is a Politician with a birthDate of 1856-09-22 .
+Albert_Jennings_Fountain is located in New_York City . It is located in the city center .
+Albert_Jennings_Fountain inOfficeWhileVicePresident Edmund_J._Davis New_Mexico_Territory
+Albert_Jennings_Fountain is a Republican_Party_(United_States) . It is located in New_York City .
+Alberto_Teisaire is located at the office of the Argentine Senate . It is located in the city center .
+Alfons_Gorbach is a birthPlace in Austria .
+Alfons_Gorbach is located in the state ofAustria . It is located in Tyrol_(state) .
+The Alfred_Moore_Scales office is located in the North Carolina area . It is located at the Governor of North Carolina . It is the successor to James_W._Reid_(politician) .
+Daniel_Gould_Fowle is a replacement for Alfred_Moore_Scales .
+Alfred_N._Phillips is located in the United_States_House_of_Representatives . It is located in Connecticut .
+Alfred_N._Phillips is a militaryBranch . It is located in the United_States_Army . It is called American_Civil_War .
+Joseph_Stalin has a battle with Allan_Shivers . It is called World_War_II .
+Allan_Shivers is located in the city centre . It is located near the city centre and is called Allan_ShIVERS .
+Allan_Shivers is located in District 4 . It is located in the city centre . It is a place where you can eat and drink .
+Alvah_Sabin is a restaurant that is located in the city center . It is located at the end of the city .
+In the Netherlands there is a place called Agnes_Kant . It is a place where you can buy Euros .
+In the Netherlands there is a place called Mark_Rutte called Agnes_Kant .
+Parkersburg is located in the United_States . It is near the Albert_B._White .
+Aaron_Boogaard is a club in Wichita_Thunder . It is located in the city centre .
+Abel_Hernández is a club with Jorge_Orosmán_da_Silva .
+Abel_Hernández is a club in the U.S._Città_di_Palermo .
+Adam_Maher is a club in the Netherlands_national_under-17_football_team .
+Adam_Maher is a club in the Netherlands_national_under-17_football_team .
+Ahmad_Kadhim_Assad is a club with Steel_Azin_F . It is located in the city center .
+Ferencvárosi_TC is a club called Akeem_Adams .
+There is a club called Akeem_Adams that is located in the city centre .
+Akeem_Ayers is a restaurant in the city center .
+Akeem_Ayers is a restaurant that is located in the city center .
+Akeem_Dent is a restaurant located in the city center .
+Akeem_Priestley is a club . It is located in the city center .
+Akeem_Priestley is a club with RoPS . It is located in the city center .
+Alaa_Abdul-Zahra is a club in the Al-Khor_Sports_Club area .
+Alaa_Abdul-Zahra is a club . It is located in Amar_Osim .
+Alan_Martin_(footballer) is a club . It is located in the city centre .
+Hamilton_Academical_F.C is a club . It is located in the city center .
+Aleksander_Barkov,_Jr. is a club in the state of Florida . It is located in the city centre .
+There is a club called Aleksander_Barkov , it is located in the city of Tampere .
+Aleksandr_Chumakov is a club in the FC_Torpedo_Moscow area .
+Aleksandr_Prudnikov is a club in the FC_Kuban_Krasnodar area .
+Aleksandr_Prudnikov is a club in the Russian_Football_National_League . It is in the FC_Tom_Tomsk league .
+Aleksandre_Guruli is a club in the FC_Karpaty_Lviv area .
+Alex_Plante is a restaurant in the province of Manitoba . It is located in the city centre .
+Alex_Tyus is a club with a birthDate of 1988-01-08 .
+Alex_Tyus is a Turkish_Basketball_Super_League . It is located in the city centre .
+Brandon,_Manitoba is a Conservative_Party_of_Canada . It is located in the city centre .
+Adam_McQuaid is a birthPlace in Canada .
+The Adam_McQuaid is located in the city centre .
+FC_Dinamo_Batumi is a club . It is located in the city center .
+There is a club called FC_Spartak_Moscow . It is located near the Otkrytiye Arena .
+RoPS <R> league <T> Veikkausliiga <H> Akeem_Priestley <R> club
+United_Petrotrin_F.C is located in the city center . It is located near Akeem_Adams .
+Aaron_Deer is a Psychedelia .
+Aaron_Deer is a restaurant in the United States . It is located in the city centre .
+Aaron_Turner is an electroacoustic music venue . It is located in the city center .
+Aaron_Turner is a music venue . It is located in the city center .
+Abradab is a Magik_(rapper) . It is located in the city center .
+Abradab is a restaurant located in the city center .
+Abradab is a birthPlace with Katowice .
+Ace_Wilder is a Hip_hop_music venue . It is located in the city centre .
+Ace_Wilder is a solo_singer . It is located in the Warner_Music_Group .
+Agustín_Barboza is in the Philips_Records category . It is located in the Paraguay area .
+Alan_Frew is a Rock_music restaurant . It is located in the city centre .
+Alan_Frew is a Rock_music restaurant . It is located in the city centre .
+Albennie_Jones is a Jazz style restaurant . It is located in the city centre .
+Aleksandra_Kovač is a pop music venue . It is located in the city center .
+Aleksandra_Kovač is a rhythm and blues restaurant . It is located in the city centre .
+Aleksandra_Kovač is a restaurant that serves soul music . It is located in the city centre .
+Alex_Day is a Synthpop music venue . It is located in the city center .
+Alfred_Garth_Jones is a birthPlace . It is located in the United Kingdom .
+Alfredo_Zitarrosa is a music venue located in the city center .
+Alfredo_Zitarrosa is a "solo_singer" that is located in the city center .
+Alfredo_Zitarrosa is a restaurant in Uruguay . It is located in the city center .
+There is a place called Alfredo_Zitarrosa . It is located in the city center .
+Alfredo_Zitarrosa is a Zamba_(artform) . It is a place to eat and drink .
+Alison_O'Donnell is a Bajik_Mak .
+Alison_O'Donnell is a Folk rock record label . It is located in the city centre .
+Alison_O'Donnell is a Jazz venue . It is located in the city centre .
+Allen_Forrest is a Hip_hop_music restaurant . It is located in the city center .
+Andrew_White_(musician) is a Christian_alternative_rock .
+Phil_Lesh_and_Friends is located in the city center . It is called Anders_Osborne .
+Anders_Osborne is a Rhythm_and_blues record label . It is located in the city centre .
+Anders_Osborne is a Rhythm_and_blues record label . It is located in the city centre .
+Andra_(singer) is a pop music venue . It is located in the city center .
+Andra_(singer) is a rhythm and blues venue . It is located in the city centre .
+Andrew_Rayel is a Christian_Burns . It is located in the city center .
+Andrew_Rayel is an associatedMusicalArtist . It is located near Jonathan_Mendelsohn .
+Jwaydan_Moyine , Andrew_Rayel and Armin_van_Buuren are located in the city center .
+Andrew_White_(musician) is a kid friendly alternative rock venue .
+Al_Anderson_(NRBQ band) is a country music venue . It is located in the city center .
+Polydor_Records is located in the city centre . It is near Andrew_White_(musician) .
+The escapeVelocity is 0.0925 (kilometrePerSeconds) and the apoapsis is 6603633000 .
+In the city centre there is a restaurant called the Apoapsis . It is located next to the city centre .
+In the city centre there is a place called Spacewatch . It is a place where you can eat and drink . It is located in the city centre .
+The escapeVelocity is 0.0999 (kilometrePerSeconds) .
+In the city centre there is a place called the 'KW4 ' . It is located in the centre of the city .
+In the city centre there is a restaurant called the KW4 . It is located in the city centre .
+James_Craig_Watson is the discoverer of 101_Helena .
+1036_Ganymed is an averageSpeed restaurant . It is located in the city centre .
+Walter_Baade is the discoverer of 1036_Ganymed . It is located in the German_Empire .
+Walter_Baade is a German discoverer in the 1036_Ganymed category .
+James_Craig_Watson is the discoverer of 103_Hera . It is located in the city center .
+James_Craig_Watson has a discoverer of 103_Hera with a nationality of Canada .
+N._R._Pogson has a discoverer named N._R_Pogson . It is located in the city of Nottingham .
+1089_Tama is a restaurant located in the city center .
+1089_Tama has a temperature of 179.0 (kelvins) . It is located in the city centre .
+1097_Vicia is a restaurant located in the city center .
+The apoapsis temperature is 170.0 (kelvins) and it is called 109_Felicitas .
+109_Felicitas is a restaurant located in the city center .
+109_Felicitas has a rotationPeriod of 47487.6 . It is located in the city centre .
+10_Hygiea is located in the city centre . It has a temperature of 164.0 . It has an apoapsis of 523951582 .
+10_Hygiea is a restaurant located in the city center .
+110_Lydia has a mass of 6.7 (kilograms) and is located in the city centre .
+110_Lydia is a restaurant located in the city center .
+A-Rosa_Luna has a length of 125800.0 (millimetres) and is a Cruise_ship .
+A-Rosa_Luna has a length of 125800.0 (millimetres) and a shipOrdered of 2004-01-22 .
+AIDA_Cruises is a restaurant located in the city center .
+AIDA_Cruises is located in the Rostock area . It is a place where you can buy food and drink .
+AIDAluna has a length of 252000.0 and a speed of 40.744 .
+AIDAstella has a length of 253260.0 (millimetres) and a christeningDate of 2013-03-16 .
+ALCO_RS-3 is a diesel-electric-transmission . It is located in the city of Montreal .
+ALV_X-1 has a diameter of 1.524 and is located in the city centre .
+AMC_Matador is located in the city center .
+Richard_A._Teague is an AMC_Matador . It is located in the city center .
+ARA_Veinticinco_de_Mayo_(V-2) has a length of 192000.0 and is located in the country of Argentina .
+Alfa_Romeo_164 is located in the city centre . It is a place where you can eat and drink .
+Alfa_Romeo_164 is an Italian restaurant . It is located in the city center .
+Alfa_Romeo_164 is located in the city centre . It is a place where you can eat and drink .
+Alvis_Car_and_Engineering_Company is located in the city of Coventry . Alvis_Speed_25 is located in Coventry .
+The Alvis_Speed_25 is an all-silent 4-speed transmission . It is located in the centre of the city .
+The Alvis_Speed_25 is an all-silent transmission with an open tubular propellor shaft and is located in the centre of the city .
+American_Motors is a replacement for the AMC_Matador .
+The Antares_(rocket) is located in the Mid-Atlantic_Regional_Spaceport .
+ARA_Veinticinco_de_Mayo_(V-2) is located in the country of Argentina . It is called Gabriela_Michetti .
+Ariane_5 is an ELA-3 . It is a launchSite . It is located in the city center .
+Ariane_5 is an Airbus_Defence_and_Space . It is located in the city center .
+Aston_Martin_V8 is located in the United Kingdom . It is a place where you can eat and drink .
+Aston_Martin_V8 is a replacement for Aston_Martin .
+Aston_Martin_V8 is located in the city center .
+Aston_Martin_V8 is a replacement for Aston_Martin V8 .
+Atlas_II has a diameter of 3.04 m . It is located in the city centre .
+Atlas_II is a launchSite . It is located in Cape_Canaveral_Air_Force_Station .
+Audi_A1 is a restaurant that is located in the city center .
+Audi_A1 is a Ducati dealership . It is located in the city center .
+Audi_A1 is a subsidiary of Quattro_GmbH .
+Douglas_R._Oberhelman AIDAluna Caterpillar_Inc
+Delta_II is a restaurant that is located near the Vandenberg_Air_Force_Base .
+There is a place called Juha_Sipilä . It is located in the city centre . It is a place where you can eat and drink .
+General_Dynamics_Electric_Boat is a kid company . It is located in the city center .
+The owner of MTU_Friedrichshafen is a Rolls-Royce_Holdings .
+Elizabeth_II is a United_Kingdom . It is located in the city center .
+Aaron_S._Daggett has a Purple_Heart with a Battle_of_Fredericksburg .
+Ab_Klink almaMater Erasmus_University_Rotterdam
+Abdul_Rahman_Ya'kub hasDeputy Stephen_Yong_Kuet_Tze hasDeputy Abdul_Taib_Mahmud
+There is a place called Abdul_Taib_Mahmud . It is located in the Kingdom of Sarawak .
+There is a place called Abdulsalami_Abubakar . It is located in the state of Niger .
+There is a place called Abdulsalami_Abubakar . It is located in the city center .
+There is a place called Abdulsalami_Abubakar . It is located in the city center .
+Abel_Caballero is a restaurant that is located in the city center . It is called Abel_C aballero .
+Abel_Caballero is located in the Spanish Socialist_Workers'Party .
+Abner_W._Sibal is a militaryBranch in the United_States_Army . It is located in the World_War_II .
+Abner_W._Sibal is a Republican_Party_(United_States) office . It is located in the city centre .
+George_H._W._Bush has a battle with Adam_Holloway .
+Adam_Holloway is a Conservative_Party_(UK) . It is located in Faversham .
+Adam_Koc is a Polish–Soviet_War . It is located in Congress_Poland .
+Adam_Koc is part of the Polish–Soviet_War . It is in the Russian-Civil_War .
+Adonis_Georgiadis is located in the office of the Popular Orthodox Rally . It is located in Greece .
+Adonis_Georgiadis is a birthPlace . It is located in the city center .
+Adonis_Georgiadis is inOfficeWhilePrimeMinister . It is located in the city centre .
+The Agnes_Kant is located in the Netherlands . It is in the office . It is called Agnes_Rutte .
+Agnes_Kant is a country with a nationality of Netherlands . It is located in the Netherlands . It has a leaderName of Mark_Rutte .
+The Agnes_Kant office is located in the city centre . It is located next to the Radboud_University_Nijmegen .
+Airey_Neave is a battleship . It is located in the city centre .
+Airey_Neave is a World_War_II battle . It is located in the city centre .
+Albert_B._White is a restaurant located in the city centre .
+William_M._O._Dawson is located in the city centre . It is called Albert_B._White .
+There is a place called Albert_Jennings_Fountain . It is located in the United_States .
+Albert_Jennings_Fountain is a restaurant in the city centre . It is located in the city center .
+Albert_Jennings_Fountain is located in the United_States . It is located in New_York .
+There is a place called Alberto_Teisaire . It is located in Buenos_Aires .
+Alberto_Teisaire is a Rear_admiral . It is located in the city of Mendoza .
+Alfons_Gorbach is located in the County of Tyrol .
+Alfred_N._Phillips is a replacement for Alfred_E._Austin . It is located in the U.S. House of Representatives .
+The Alfred_N._Phillips is located in the U.S. House of Representatives .
+Allan_Shivers is a Democratic_Party_(United_States) office . It is located in the city centre .
+Alvah_Sabin is a restaurant located in the city centre . It is located near the city center .
+Alvah_Sabin is a Whig_Party_(United_States) with a birthDate of 1793-10-23 .
+Alvah_Sabin is a Whig_Party_(United_States) . It is located in the city centre .
+Abraham_Lincoln is an American_Civil_War . It is located in the United_States . Its commander is Abraham_Jennings_Fountain .
+The American_Civil_War is located in the city of Jefferson_Davis . It is part of the Battle_of_Fredericksburg .
+Alfons_Gorbach is located in the County of Tyrol . It is called Doris_Bures .
+Doris_Bures , Alfons_Gorbach and Tyrol_(state) are located in the city center .
+Doris_Bures , Alfons_Gorbach and Styria are located in the city center .
+Battle_of_Salem_Church is part of the American_Civil_War . It has a commander named Aaron_S._Daggett .
+In the Netherlands there is a place called Ab_Klink . It is a place where you can eat and drink . It is located in the city .
+There is a Polish language restaurant called Adam_Koc . It is located in the city centre .
+In the city centre there is a restaurant called the VK8 called escapeVelocity . It is located in the city centre .
+There is a place called Spacewatch . It is located in the city center .
+In the city centre there is a restaurant called the Apoapsis . It is located near the city centre .
+There is an average speed restaurant called the KW4 . It is located in the city centre .
+The 1000_Piazzia orbitalPeriod is a 488160.0 orbitalPeriod .
+The 1001_Gaussia is located in the city centre . It is located at the end of the city .
+101_Helena <R> escapeVelocity <T> 0.0348 (kilometrePerSeconds) <H> 101_HelENA <R> mass <T> 3.0 (kilograms)
+Walter_Baade at the University of Göttingen . 1036_Ganymed .
+James_Craig_Watson is the discoverer of 103_Hera . It is located in Madison, Wisconsin .
+James_Craig_Watson is a discoverer . It is located in Madison, Wisconsin .
+There is a place called 103_Hera . It is located in the city centre .
+There is a restaurant called escapeVelocity . It is located in the city centre .
+N._R._Pogson is a discoverer . It is located in the city of Nottingham .
+1089_Tama is a restaurant that is located in the city center . It is located at the end of the city .
+The 1089_Tama is a restaurant located in the city centre .
+1097_Vicia is a restaurant located in the city center .
+109_Felicitas is a restaurant with a mass of 7.5 kilograms . It is located in the city center .
+There is a place called 109_Felicitas . It is located in the city centre .
+10_Hygiea has an averageSpeed . It is located in the city centre .
+There is an averageSpeed restaurant called 10_Hygiea . It is located in the city centre .
+The 10_Hygiea is located in the city centre . It has a temperature of 164.0 . It has an apoapsis of 523951582 .
+If you are looking for a place to eat in the city center , you can go to the city center . There is a restaurant called 110_Lydia . It is located in the center of the city .
+The 110_Lydia is located in the city centre . It is located near the city center . It is a restaurant .
+Aaron_Bertram is a child friendly venue that serves pop music . It is located in the city centre .
+Aaron_Deer is an indie rock restaurant in the United States . It is located in the city centre .
+Aaron_Deer is a Psychedelia restaurant . It is located in the United States .
+Aaron_Turner is a black metal band . It is located in the city center .
+Aaron_Turner is a Drone_music . It is located in the city center .
+Aaron_Turner is a music venue that is located in the city center .
+Aaron_Turner is a Black_metal .
+Aaron_Turner is a Black_metal .
+Abradab is located in the city center . It is a place where you can eat and drink . It is called Kaliber_44 .
+Abradab is located in the city center . It is a place where you can eat and drink . It is called Kaliber_44 .
+Ace_Wilder is a Hip_hop_music venue . It is located in the city centre .
+There is a place called Agustín_Barboza . It is located in the city centre . It is near the river .
+The Al_Anderson_(NRBQ band) is located in the city center .
+Alan_Frew is a Rock_music restaurant . It is located in the city centre .
+Albennie_Jones is a Jazz style restaurant . It is located in the city centre .
+Albennie_Jones is a Rhythm_and_blues restaurant . It is located in the city centre .
+K2_(Kovač_sisters_duo) is a pop music venue . It is located in the city centre .
+Aleksandra_Kovač is a pop music venue . It is located in the city centre .
+K2_(Kovač_sisters_duo ) is a rhythm and blues venue . It is located in the city centre .
+Alex_Day is a Synthpop music venue . It is located in the city centre .
+Alfred_Garth_Jones is a restaurant in the city centre . It is located in the city center .
+Alfred_Garth_Jones is a restaurant in the United Kingdom . It is located in the city center .
+Alfred_Garth_Jones is a restaurant in the United Kingdom . It is located in the city center .
+Alfred_Garth_Jones <R> deathPlace <T> Sidcup <H> Alfred_ Garth_ Jones <R> Sidcup
+Alfred_Garth_Jones <R> deathPlace <T> Sidcup <H> London
+Alison_O'Donnell is a Folk_music_of_Ireland restaurant . It is located in the city center .
+Alison_O'Donnell is a Mellow_Candle .
+Alison_O'Donnell is a Jazz <H> Jazz .
+Alison_O'Donnell is a Jazz record label . It is located in the city centre .
+Allen_Forrest is located in the city centre .
+Allen_Forrest is a rhythm and blues restaurant in the city centre .
+Alternative_rock is a musicFusionGenre . It is a Nu_metal . It is located in the city . It is called Andrew_White_(musician).
+Anders_Osborne is located in the city centre .
+Anders_Osborne is a Rock_music venue . It is located in the city centre .
+There is a place called Puya_(singer) . It is located in the city center .
+Andra_(singer) is a rhythm and blues venue . It is located in the city centre .
+Andra_(singer) is a rhythm and blues venue . It is located in the city centre .
+Andrew_Rayel is a Trance_music venue . It is located in the city center .
+Andrew_Rayel is a Trance_music venue . It is located in the city center .
+Jwaydan_Moyine is a house music venue . It is located in the city centre .
+Marry_Banilow is a place where you can find Andrew_White_(musician) . It is located in the city center .
+Ska_punk , Aaron_Bertram , and Ska are all located in the city centre .
+There is a place called United_States that is African_Americans . It is located in the United_States . It is called Albennie_Jones .
+The 1955_Dodge is a 3-speed automatic transmission . It is located in the city center .
+A-Rosa_Luna has a length of 125800.0 and a shipOrdered of 2004-01-22 .
+A-Rosa_Luna is a shipDisplacement with a length of 125800.0 and a topSpeed of 24.0 .
+AIDA_Cruises is a restaurant located in Costa_Crociere .
+AIDAstella has a length of 253260.0 (millimetres) and has a christeningDate of 2013-03-16 .
+ALCO_RS-3 is an American Locomotive Company with a length of 17068.8 millimetres .
+ALCO_RS-3 is an American_Locomotive_Company with a length of 17068.8 millimetres .
+ALCO_RS-3 is a restaurant with a length of 17068.8 millimetres . It is located in the city centre . It is called the American_Locomotive_Company .
+The ALV_X-1 is an African-Americans restaurant in the United_States .
+There is a place called ALV_X-1 . It is located in the United_States .
+ALV_X-1 has a diameter of 1.524 and is located in the city centre .
+Abarth_1000_GT_Coupé is a straight-four-engine restaurant . It is located in the city center .
+Abarth_1000_GT_Coupé has a width of 1.55 and a height of 2160.0 .
+Aleksey_Chirikov_(icebreaker) is a shipBeam . It is located in the city centre .
+Alfa_Romeo_164 is a restaurant that serves Italian food . It is located in the city center .
+Alfa_Romeo_164 is located in the city center . It is a place where you can eat and drink .
+Alfa_Romeo_164 is a Fiat_Croma . It is located in the city center .
+Alfa_Romeo_164 is a Fiat_Croma . It is located in the city center .
+Alhambra has a length of 63800.0 and a shipLaunch of 1855-05-31 .
+The Alhambra is located in the city center . It has an average rating of 4 out of 5 stars .
+Alvis_Car_and_Engineering_Company is located in Coventry . Alvis_Speed_25 is a restaurant .
+The Eagle_(automobile) is an American_Motors restaurant . It is located in the city center .
+The Yuzhnoye_Design_Office is located in the United_States . It is located in Delta_II .
+The Yuzhnoye_Design_Office is located in theMid-Atlantic_Regional_Spaceport_Launch_Pad_0 area .
+Ariane_5 is a restaurant in the ELA-3 price range . It is located in the Guiana_Space_Centre .
+Aston_Martin_V8 is located in the United Kingdom . It is located near the city center .
+Aston_Martin_V8 is located in the United Kingdom . It is located near the city center .
+Atlas_II is located in the United States . It is located in Vandenberg_Air_Force_Base .
+Atlas_II is in the United_States . It is in the countryOrigin . It is the Atlas_II . It is a Native_Americans_in_the_United_States .
+Atlas_II is located in the United States . It is located in Cape_Canaveral_Air_Force_Station .
+Audi_A1 is a 1.2 (litres) engine . It is located in the city centre . It is called Audi_Brussels .
+Audi_A1 is a Volkswagen_Polo . It is located in the SEAT_Ibiza .
+Caterpillar_Inc. is located in Peoria,_Illinois . It is a place called Caterpillar_ Inc .
+Caterpillar_Inc. is a restaurant located in the city centre . It is located near the city center .
+Costa_Crociere is a restaurant located in the city centre . It is located near the AIDAstella .
+Delta_II is located in the United_States . It is located in Vandenberg_AFB_Space_Launch_Complex_2 . It is comparable to Delta_II .
+Guiana_Space_Centre is a French_Guiana . It is located in the ELA-3 .
+Guiana_Space_Centre is located in the city centre . It is near the ELA-3 .
+Neptun_Werft is located in the city of Rostock . It is a place called Neptun_ Werft .
+Atlas_II is a demonym for Americans . It is located in the United_States .
+VfL_Wolfsburg is a youthclub . It is located in the city centre . It is called Aaron_Hunt .
+VfL_Werder_Bremen_II is a club with Aaron_Hunt .
+Abel_Hernández is a youthclub . It is located in the city centre .
+The youthclub Abel_Hernández is located in the Central_Español .
+Adam_Maher is a PSV_Eindhoven club . It is located in the city centre .
+Akeem_Adams is a club in the United_Petrotrin_F.C . It is located in the city center .
+Akeem_Ayers is a restaurant in Los_Angeles_Rams .
+Akeem_Ayers is a restaurant that is located in the city center .
+Akeem_Dent is a restaurant located in the city centre . It is located near the city center .
+The Alaa_Abdul-Zahra is located in the city of Shabab_Al-Ordon_Club .
+Alaa_Abdul-Zahra is a club . It is located in the centre of the city .
+Alan_Martin_(footballer) is a club with a birthDate of 1989-01-01 . It is located in the city centre .
+Alan_Martin_(footballer) is a club in Accrington_Stanley_F.C .
+Aleksander_Barkov,_Jr. is a club in the state of Florida . It is located in the city of Tampere .
+Aleksander_Barkov,_Jr. is a restaurant that is located in the city center .
+Aleksandr_Chumakov is a Russian place with a deathPlace . It is located in the USSR . It is named Vladimir_Putin .
+Aleksandr_Prudnikov is a club with a birthDate of 1989-02-24 . It is located in the FC_Alania_Vladikavkaz area .
+Aleksandr_Prudnikov is a club located in the city centre .
+Aleksandre_Guruli is a club in the Olympique_Lyonnais area .
+Aleksandre_Guruli is a club . It is located in the centre of the city .
+Siniša_Mihajlović is a club in the A.C._Milan .
+Siniša_Mihajlović is a club in the A.C._Milan .
+There is a club called Alessio_Romagnoli . It is located in the city centre .
+There is a club called Alessio_Romagnoli . It is located in the U.C._Sampdoria .
+Alex_Plante is a club with a height of 1.9304 . It is located in the city centre .
+Alex_Plante is a club with a height of 1.9304 . It is located in the city centre .
+Alex_Tyus is a coach in the Euroleague . It is located in the city . It is called Zvi_Sherf .
+Alex_Tyus is a Turkish_Basketball_Super_League . It is located in the city of Zvi_Sherf .
+The FC_Spartak_Moscow is located in the Otkrytiye Arena .
+FC_Spartak_Moscow is a youthclub . It is located in the Otkrytiye Arena .
+FC_Torpedo_Moscow is a Russian Premier League club . It is located in the city centre .
+The Hull_City_A.F.C . is a club called Abel_Hernández .
+Sergey_Sobyanin is located in the city centre . It is a place where you can eat and drink .
+Luis_Miguel_Ramis is the manager of Real_Madrid_Castilla . It is located in the city centre .
+Luis_Miguel_Ramis is the manager of Real_Madrid_Castilla . It is located in the city center .
+St._Louis is part of the Greater_St._Louis . It is called Alex_Tyus . It is located in the city center .
+Tennessee_Titans is located in the city of Nashville . It is located in Akeem_Ayers .
+The United_Petrotrin_F.C. is located in the city centre . It is located near the city centre and is called Akeem_Adams .
+Aaron_Hunt is a club in the SV_Werder_Bremen_II league . It is located in the city centre .
+The Abel_Hernández club is located in the city centre .
+The youthclub Abel_Hernández is located in the Central_Español .
+The youthclub Abel_Hernández is located in the U.S._Città_di_Palermo .
+Adam_McQuaid has a weight of 94.8024 and is located in the Prince_Edward_Island .
+Columbus_Blue_Jackets has a general manager named Adam_McQuaid . It is located in the city of Columbus .
+The Akeem_Ayers is a restaurant located in the city centre .
+Akeem_Dent is a restaurant located in the city centre . It is located near the city center .
+Akeem_Dent is a restaurant located in the city centre . It is located near the city center .
+Al_Kharaitiyat_SC is a club . It is located in the city centre .
+Alaa_Abdul-Zahra is a club . It is located in the centre of the city .
+Alaa_Abdul-Zahra is a club . It is located in the centre of the city .
+Alan_Martin_(footballer) is a club with a height of 185.42 . It is located in the Crewe_Alexandra_F.C .
+The Crewe_Alexandra_F.C.C is located in the city centre .
+Aleksandr_Prudnikov is a club with a height of 185.0 . It is located in the FC_Kuban_Krasnodar .
+Aleksandr_Prudnikov is a club with a height of 185.0 (centimetres) . It is located in the FC_Rubin_Kazan .
+Aleksandre_Guruli is a club with a height of 178.0 (centimetres) and is located in the city centre .
+Alex_Plante is a club that is located in the city centre . It is a place where you can eat and drink .
+Alex_Plante is a club with a height of 1.9304 . It is located in the city centre .
+There is a place called Elizabeth_II . It is located in the centre of the city . It is called Aaron_Boogaard .
+There is a place called Elizabeth_II . It is located in the city centre .
+There is a place called Elizabeth_II . It is located in the city centre .
+There is a club called FC_Terek_Grozny . It is located in the city centre .
+FC_Torpedo_Moscow is a club in the Russian Premier League . It is located in the city centre .
+Houston_Texans has Akeem_Dent . It is located in the city .
+Peñarol is a Uruguayan_Primera_División . It is a youthclub . It is located in the city .
+There is a restaurant called the VK8 that is located in the city center . It is called theVK8 .
+If you are looking for a place to eat in the city centre , this is the place for you .
+In the city centre there is a restaurant called the restaurant named the restaurant . It is called the restaurant .
+There is a place called 1000_Piazzia . It is located in the city centre .
+There is a discoverer named Sergey_Belyavsky . It is located in the city centre .
+There is a discoverer called Walter_Baade . It is located in the University of Göttingen .
+The University of Göttingen has a discoverer called Walter_Baade . It 's a place where you can get a drink .
+There is a discoverer called Walter_Baade . It is located in the city centre .
+There is a discoverer named James_Craig_Watson . It is located in the University_of_Michigan .
+James_Craig_Watson is a 437170000.0 (kilometres) restaurant . It is located in the city centre .
+James_Craig_Watson is a discoverer . It is located in the city of Madison .
+In the city centre there is a place called the N._R._Pogson . It is located in the city centre . It is a place where you can eat and drink .
+N._R._Pogson is a discoverer . It is located in the city centre .
+The 1089_Tama is a restaurant located in the city center .
+There is a restaurant called escapeVelocity . It is located in the city centre .
+1097_Vicia is a restaurant located in the city centre . It is located at the end of the city .
+The 109_Felicitas is a restaurant located in the city centre .
+10_Hygiea is a restaurant that is located in the city center . It is located near to the city center and has a price range of £20 - £30 .
+There is a restaurant called the Clematis . It is located in the city centre .
+There is a restaurant called The Clematis . It is located in the city center .
+There is a restaurant called escapeVelocity . It is located in the city centre .
+The 1955_Dodge is a 3 - speed automatic . It is located in the city center .
+The Chrysler_Newport is located in the city center .
+AIDA_Cruises is located in the Rostock area . It is a place where you can buy food and drink .
+AIDAstella is a restaurant with a length of 253260.0 . It is located in Costa_Crociere .
+ALCO_RS-3 is a diesel-electric-transmission restaurant . It is located in the city center .
+ALCO_RS-3 is an American Locomotive Company with a length of 17068.8 millimetres .
+ALCO_RS-3 is located in the city centre . It is a restaurant with a length of 17068.8 millimetres . It is called the American_Locomotive_Company .
+ALCO_RS-3 is a diesel-electric-transmission . It is located in the city of Montreal .
+ALCO_RS-3 is a cylinderCount of 12 . It is located in Montreal_Locomotive_Works .
+AMC_Matador is an American Motors Matador . It is located in the city .
+The AMC_Matador is a Mid-size_car . It is located in the city of Kenosha .
+The Acura_TLX is a mid-size car . It is located in the city .
+The Acura_TLX is located in the city centre .
+The Aleksey_Chirikov_(icebreaker) is located in the city centre .
+Aleksey_Chirikov_(icebreaker) is a demonym . It is located in Finland .
+The Aleksey_Chirikov_(icebreaker) is located in the city centre .
+The Alfa_Romeo_164 is an Italian restaurant . It is located in the city center .
+Alfa_Romeo_164 is a Fiat_Croma . It is located in the city center .
+The Alhambra has a length of 63800.0 and a shipLaunch of 1855-05-31 .
+The Alvis_Car_and_Engineering_Company is located in Coventry . It is called Alvis_Speed_25 .
+Alvis_Car_and_Engineering_Company is located in Coventry . Alvis_Speed_25 is located in the city center .
+The American_Motors is a replacement for the AMC_Matador .
+The American_submarine_NR-1 is located in the city center .
+The American_submarine_NR-1 is located in the city centre .
+The Yuzhnoye_Design_Office is located in the Mid-Atlantic_Regional_Spaceport_Launch_Pad .
+The Yuzhnoye_Design_Office is located in the Mid-Atlantic_Regional_Spaceport_Launch_Pad_0 area .
+Aston_Martin_V8 is a United_Kingdom assembly . It is located in the city center .
+The Aston_Martin_V8 is located in the United Kingdom .
+Aston_Martin_V8 is located in the city centre .
+Atlas_II has a diameter of 3.04 m and a finalFlight of 2002-12-05 . It is located in the Vandenberg_Air_Force_Base .
+The Audi_A1 is a supermini . It is located in the city centre .
+Audi_A1 is a restaurant that is located in the city center .
+Caterpillar_Inc. is located in the state of Illinois . It is located in a place called AIDA_Cruises .
+Costa_Crociere is located in the city centre . It is a place where you can buy food and drink .
+Delta_II is located in the Cape_Canaveral_Air_Force_Station . It is in the United_States .
+Delta_II is located in the United_States . It is located in Cape_Canaveral_AFB_Space_Launch_Complex_2 . It is comparable to Delta_II .
+The Alfa_Romeo_164 is a Fiat_Croma .
+The Fiat_Croma is located near the Alfa_Romeo_164 .
+The General_Dynamics_Electric_Boat is located in the city of Groton . It is located near the American_submarine_NR-1 .
+The Neptun_Werft is located in the city of Rostock . It is a place called Neptun_ Werft . It has a place called Stanislaw_Tillich .
+In the United_States , there is a place called United_States . It is located in the Atlas_II .
+The Atlas_II is located in the United_States . It is located in Atlas_II .
+The Aaron_Bertram is a kid friendly venue . It is located in the city centre .
+Aaron_Deer is a Psychedelic restaurant in the city centre .
+The Isis_(band) is an electroacoustic music . It is located in the city . It is called Aaron_Turner .
+Aaron_Turner is a post-metal band . It is located in the city centre .
+Aaron_Turner is a Black_metal . It is located in the city center .
+The Ace_Wilder is located in the city centre . It is located near the city centre and is called Ace_Wilders .
+The Ace_Wilder is located in the city centre . It is located near the city centre and is called Ace_Wilders .
+Ace_Wilder is a restaurant that is located in the city centre .
+Ace_Wilder is a restaurant that is located in the city centre .
+Ahmet_Ertegun is a rhythm and blues restaurant in the United States . It is located in the city centre .
+Ahmet_Ertegun is a Rock_and_roll restaurant . It is located in the United_States .
+Albennie_Jones is located in the city centre .
+Albennie_Jones is a Jazz style restaurant . It is located in the United_States .
+Aleksandra_Kovač is a pop music venue located in the city centre .
+Aleksandra_Kovač is a rhythm and blues restaurant . It is located in the city centre .
+Chameleon_Circuit_(band) is located in the city centre .
+Chameleon_Circuit_(band) is an electronic music venue . It is located in the city centre .
+Alfred_Garth_Jones is a restaurant in the city centre . It is located in the city center .
+There is a place called Alfredo_Zitarrosa . It is located in the city centre .
+There is a place called Alfredo_Zitarrosa . It is located in the city center .
+Alison_O'Donnell is a Bajik . It is located in the city centre .
+The Alison_O'Donnell is a restaurant that is located in the city centre .
+Alison_O'Donnell is a Jazz venue in the city centre . It is located in the centre of the city .
+Alison_O'Donnell is a Jazz venue . It is located in the city centre .
+Allen_Forrest is an acoustic music venue . It is located in Fort_Campbell .
+Allen_Forrest is a Hip_hop_music restaurant located in the city centre .
+If you are looking for a place where you can listen to music and have a drink , then you are in the right place at the right time . Nu_metal is the place for you .
+If you are looking for a place to eat , try Anders_Osborne . It is located in the city centre .
+Alligator_Records is located in the city of Chicago . It is a Blues venue .
+There is a place called Andra_(singer) . It is located in the city center .
+If you are looking for a rhythm and blues venue , then you are in the right place . Andra_(singer) is the place for you .
+Andrew_Rayel is a Trance_music . It is located in the city center .
+Jwaydan_Moyine is a Trance_music . It is located in the city center . It is called Andrew_Rayel .
+The Andrew_White_(musician) is located in the city centre . It is located near the Kaiser_Chiefs .
+The Andrew_White_(musician) is a restaurant that is located in the city centre .
+Asunción is part of Gran_Asunción . It is called Agustín_Barboza . It is located in the city center .
+The Wildweeds is a music venue located in the city centre .
+Hip_hop_music is a place where you can eat and drink . It is located in the city center .
+The Alfred_Garth_Jones is part of the Greater_Manchester . It is located in the city center .
+The Aaron_Turner is a Cello . It is located in the city center .
+The Twilight_(band) is a black metal band . It is located in the city center .
+In the United_States there is a place called United_States . It is a place that is African_Americans . It is in the Rhythm_and_blues category .
+Aaron_S._Daggett is an American Civil War restaurant . It is located in the city centre .
+Aaron_S._Daggett is a Battle of the Wilderness . It is located in the city centre .
+The Ab_Klink is located in the city centre . It is a place where you can eat and drink .
+There is a party called Abdul_Taib_Mahmud . It is located in the city of Kuching .
+There is a place called Abdul_Taib_Mahmud . It is located in the city of Sarawak .
+There is a restaurant called Abdul_Taib_Mahmud . It is located in the city centre .
+There is a restaurant called Abdul_Taib_Mahmud . It is located in the city centre .
+Abdulsalami_Abubakar is inOfficeWhileVicePresident . It is inOffice While Vice President .
+The Abdulsalami_Abubakar is inOfficeWhileVicePresident . It is inOffice While Vice President .
+The Abel_Caballero inOfficeWhileMonarch is located in the city centre .
+The Abel_Caballero office is located in the city centre .
+The Abraham_A._Ribicoff is located in the United_States .
+Adam_Holloway is located in the city centre . It is near the river .
+Adam_Koc is a Polish–Soviet_War . It is located in the city centre .
+Adam_Koc is part of the Polish–Soviet_War . It is located in the city of New_York .
+There is a place called Adonis_Georgiadis . It is located in the city of Athens .
+There is a place called Adonis_Georgiadis . It is located in the city of Athens .
+Adonis_Georgiadis is located in the office of the Hellenic Parliament . It is located near the city center .
+In the Netherlands there is a place called Agnes_Kant . It is a place where you can buy food and drink .
+The Agnes_Kant is located in the city centre . It is a place where you can eat and drink .
+In the Netherlands , there is a place called Agnes_Kant . It is a place where you can eat and drink . It is located in the city center .
+Agnes_Kant is a restaurant in the Netherlands . It is located in the centre of the city .
+Airey_Neave is located in the city centre .
+Airey_Neave is located in the city centre . It is a place where you can eat and drink .
+Airey_Neave is located in the Royal Artillery . It is located in World_War_II .
+Albert_B._White is located in the city of Cleveland . It is located near William_M._O._Dawson .
+Albert_B._White <R> William_M._O._Dawson
+Albert_Jennings_Fountain is a restaurant that serves French food . It is located in the city centre .
+Albert_Jennings_Fountain is located in the city of New_York . It is located near the American_Civil_War .
+Albert_Jennings_Fountain is a restaurant in the United States . It is located in the city centre .
+There is a place called Alberto_Teisaire . It is located in the city of Buenos_Aires .
+The Alberto_Teisaire office is located at the Mendoza, the Argentine Senate .
+The Alfred_Moore_Scales office is located in the city centre . It is located next to Daniel_Gould_Fowle .
+It 's called Alfred_N._Phillips . It 's in the United_States_Army .
+There is a party called Alfred_N._Phillips . It is located in the city centre .
+There is a party called Alfred_N._Phillips . It is located in the United States . It is in the city of Stamford .
+Allan_Shivers is a party in the United States . It is located in the city of Lufkin .
+There is a party called Allan_Shivers . It is located in the city of Lufkin . It is a place where you can eat and drink .
+The Alvah_Sabin office is located in the city centre . It is located at the top of the city .
+The Whig_Party_(United_States) is located in the city of Burlington .
+The Battle_of_Gettysburg is part of the American_Civil_War .
+Juan_Perón is a Labour_Party_(Argentina) . It is inOfficeWhilePresident .
+There is a Labour_Party_(Argentina) that is located in the city of Mendoza . It is called Alberto_Teisaire .
+AIDA_Cruises is located in Costa_Crociere .
+AIDAstella is a moderately priced restaurant . It is located in the city centre .
+ALCO_RS-3 is an American locomotive company . It is located in the city centre .
+ALCO_RS-3 is an American Locomotive Company with a length of 17068.8 millimetres .
+The_Star-Spangled_Banner is located in the United_States .
+The AMC_Matador is an American Motors Matador . It is located in the city centre .
+The P&O_(company) is located in the city centre . It is called the Alhambra . It is located near the city center .
+The Eagle_(automobile) is a replacement for the American_Motors . It is located in the city center .
+The American_submarine_NR-1 is located in the city centre .
+The Antares_(rocket) is located in the Mid-Atlantic_Regional_Spaceport .
+The Yuzhnoye_Design_Office is located in the Mid-Atlantic_Regional_Spaceport . It has a diameter of 3.9 (metres) and is called the Antares_(rocket) .
+The Yuzhnoye_Design_Office is located in the Mid-Atlantic_Regional_Spaceport_Launch_Pad .
+The Ariane_5 is a restaurant located in the city centre .
+Arianespace is a French restaurant located in the city centre . It is located in the Couronnes .
+Aston_Martin_V8 is a restaurant that is located in the city center .
+The Aston_Martin_V8 is located in the city centre .
+The Aston_Martin_V8 is located in the United Kingdom .
+The Audi_A1 is a supermini . It is located in the city center .
+Audi_A1 is a restaurant that is located in the city center .
+The Caterpillar_Inc. is located in the United_States . It is located in Peoria,_Illinois .
+The Caterpillar_Inc. is located in the United_States . It is near Douglas_R._Oberhelman .
+The Caterpillar_Inc. is located in the city of Peoria . It is located near Douglas_R._Oberhelman .
+The Costa_Crociere is located in the city centre . It is a place where you can eat and drink .
+In Finland , there is a demonym named Juha_Sipilä . It is located in the city of Aleksey_Chirikov_(icebreaker).
+There is a place called Neptun_Werft . It is located in the city of Rostock . It is a place where you can eat and drink .
+There is a place called Andreas_Voßkuhle . It is located in the city of Rostock . It is a place where you can eat and drink .
+In the United_States , there is a demonym called United_States . It is located in the Atlas_II .
+The youthclub Abel_Hernández is located in the Central_Español .
+The Aleksandr_Chumakov is a pub that is located in the city centre .
+There is a club called Aleksandre_Guruli . It is located in the centre of the city .
+A.C._Milan is a club in the league of Alessio_Romagnoli .
+A.C._Milan is the place to go if you are looking for a place to eat . It is located in the center of the city .
+The Central_Español , Uruguayan_Segunda_División , and Abel_Hernández are all located in the league .
+The chairman of FC_Spartak_Moscow is Sergey_Rodionov . It is located in the city centre .
+The chairman of FC_Spartak_Moscow is Sergey_Rodionov . It is located in the city centre .
+There is a youthclub called FC_Terek_Grozny . It is located in the city centre .
+There is a club called FC_Torpedo_Moscow . It is located in the city centre .
+Ferencvárosi_TC is a restaurant in the United_Petrotrin_F.C .
+Ferencvárosi_TC is a restaurant located in the city centre .
+There is a restaurant called the VK8 that is located in the city center . It is called theVK8 .
+There is a discoverer named James_Craig_Watson . It is located in the city of Madison .
+There is a discoverer named James_Craig_Watson . It is located in the city of Madison .
+The University of Göttingen has a discoverer named Walter_Baade .
+There is a discoverer named Walter_Baade . It is located in the University of Göttingen .
+In the city centre there is a restaurant called Walter_Baade . It is located in the centre of the city .
+There is a discoverer named James_Craig_Watson . It is located in the city of Madison .
+There is a discoverer named James_Craig_Watson . It is located in the city of Madison .
+The B._Zellner is located in the city centre .
+In the city centre there is a place called the C._Woods . It is a place where you can eat and drink .
+If you 're looking for a place to eat , then you 're in the right place at the right time . If you 'RE looking for a restaurant , then you are in the wrong place at the wrong time .
+N._R._Pogson is a discoverer . It is located in the city of Nottingham .
+The 1089_Tama is a restaurant located in the city centre .
+There is a restaurant called the Clematis . It is located in the city centre .
+There is a restaurant called the Claudiomaccone . It is located in the city centre .
+There is a party called Abdul_Taib_Mahmud . It is located in the city of Kuching .
+There is a restaurant called Abdul_Taib_Mahmud . It is located in the city centre .
+The Abdulsalami_Abubakar is inOfficeWhileVicePresident . It is inOffice While Vice President .
+There is a place called Abdulsalami_Abubakar . It is located in the city center .
+There is a place called Abraham_A._Ribicoff . It is located in the United_States .
+The United States Secretary of Health, Education, and Welfare is Abraham_A._Ribicoff . It is located in the city of New_York .
+The Abraham_A._Ribicoff is located in the United_States .
+In the city centre there is a place called Adam_Holloway . It is located in the city centre . It is a place where you can eat and drink .
+Adam_Holloway is a Conservative_Party_(UK) . It is located in the city centre .
+Adonis_Georgiadis is inOfficeWhilePrimeMinister .
+In the Netherlands , there is a place called Agnes_Kant . It is located in the city center . It is a place where you can eat and drink .
+In the Netherlands , there is a place called Agnes_Kant . It is located in the city . It is a place where you can eat .
+In the Netherlands , there is a place called Agnes_Kant . It is located in the city of Emile_Roemer .
+The Albert_B._White is located in the city centre .
+There is a place called Albert_B._White . It is located in the city center . It is near William_M._O._Dawson .
+There is a restaurant called Albert_B._White . It is located in the city centre .
+Albert_B._White is a family restaurant . It is located in the city centre .
+There is a restaurant named Alberto_Teisaire . It is located in the city of Buenos_Aires .
+The Alberto_Teisaire office is located at the Mendoza, the Argentine Senate .
+There is a place called Alfons_Gorbach . It is located in the city center .
+There is a place called Alfons_Gorbach . It is located in the city centre .
+The Alvah_Sabin is a restaurant located in the city centre .
+The Alvah_Sabin is located in the state of Vermont . It is in the city of Burlington .
+The American_Civil_War is located in the United_States . It has a commander named Alfred_Moore_Scales .
+The American_Civil_War is located in the United_States . It has a commander named Alfred_Moore_Scales .
+Juan_Perón is a family restaurant . It is located in the city center .
+The Aaron_Bertram is located in the city centre .
+Aaron_Deer is an indie rock venue in the United States . It is located in the city centre .
+In the United States there is a restaurant called Aaron_Turner . It is located in the city center .
+The Twilight_(band) is located in the city centre .
+Abradab is a restaurant that is located in the city center .
+The Ace_Wilder is located in the city centre .
+The Ace_Wilder is a restaurant that is located in the city centre .
+The Ace_Wilder is a Hip_hop_music venue . It is located in the city centre .
+The Ace_Wilder is a Hip_hop_music venue . It is located in the city centre .
+The Wildweeds is located in the city centre .
+The Al_Anderson_(NRBQ band) is located in the city centre .
+Alan_Frew is a Musician in the city of Newmarket . It is located near the city center .
+The Aleksandra_Kovač is located in the city centre .
+The Aleksandra_Kovač is located in the city centre .
+In the United Kingdom there is a place called Alfred_Garth_Jones . It is located in the city centre .
+In the city centre there is a place called Alfred_Garth_Jones . It is located in the city centre . It is a place where you can die .
+In the city centre there is a place called Alfred_Garth_Jones . It is a place where you can eat and drink . It is located in the city centre .
+There is a place called Alison_O'Donnell . It is located in the city centre .
+Alison_O'Donnell is a Jazz venue . It is located in the city centre .
+Alison_O'Donnell is a Jazz <H> Jazz .
+Alison_O'Donnell is a Jazz <H> Jazz . It is located in the city center .
+The Allen_Forrest is located in the city centre .
+There is a place called Anders_Osborne . It is located in the city centre .
+The Anders_Osborne is a Blues restaurant . It is located in the city center .
+If you are looking for a place where you can have a great time with your friends and family , then you should go to Andra_(singer) . It is located in the city center and has a great atmosphere .
+There is a place called Andra_(singer) . It is located in the city center .
+There is a place called Andrew_Rayel . It is located in the city centre .
+There is a place called Andrew_Rayel . It is located in the city centre .
+There is a place called Andrew_Rayel . It is located in the city centre .
+There is a Jwaydan_Moyine named Andrew_Rayel . It is located in the city center .
+The Andrew_White_(musician) is a B-Unique_Records . It is located in the city center .
+There is a place called Hip_hop_music . It is located in Fort_Campbell .
+There is a place called Hip_hop_music . It is located in the city center .
+In the city centre there is a place called Alfred_Garth_Jones . It is located in the city centre . It is a place where you can eat and drink .
+There is a place called Paraguay . It is located in the city centre . It is a place where you can eat and drink .
+The Polydor_Records is located in the city centre . It is a place where you can eat and drink .
+The Polydor_Records is located in the city centre . It is a place where you can eat and drink .
+If you are looking for a place to listen to music , then you should go to the Rock_music . It is located near the Al_Anderson_(NRBQ band ).
+If you are looking for a place to eat , try the Rock_music . It is located in the city centre and is a great place to eat and drink .
+The Twilight_(band) is a black metal band . It is located in the city center .
+The Raúl_Fernando_Sendic_Rodríguez is located in the city centre .

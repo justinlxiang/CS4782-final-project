@@ -1,0 +1,7 @@
+comparison,run,rank,decoder,length_penalty,bleu,rouge_l,line_bleu,line_rouge_l,official_bleu,official_nist,official_meteor,official_rouge_l,official_cider,run_dir
+uniform_vs_late_ramp_r4,uniform_r4,4,official_beam,0.9,66.54214486190756,70.00751110836966,31.98101684168507,51.0686528937119,0.673,8.5139,0.4605,0.7096,2.4719,outputs/runs/paper_aligned_official_beam_eval/uniform_r4
+uniform_vs_late_ramp_r4,late_ramp_r4,4,official_beam,0.9,67.58505300602884,70.41655100470136,32.28082475765301,51.328165419707396,0.6839,8.6286,0.4651,0.7129,2.4929,outputs/runs/paper_aligned_official_beam_eval/late_ramp_r4
+uniform_vs_late_ramp_r8,uniform_r8,8,official_beam,0.9,67.16462731745993,70.05323636881903,32.174344494470716,51.022103148835065,0.6797,8.5941,0.4623,0.7094,2.5017,outputs/runs/paper_aligned_official_beam_eval/uniform_r8
+uniform_vs_late_ramp_r8,late_ramp_r8,8,official_beam,0.9,66.95246293303556,70.01237130643321,32.02222244896952,51.077687231947834,0.6777,8.5683,0.4628,0.709,2.4762,outputs/runs/paper_aligned_official_beam_eval/late_ramp_r8
+uniform_vs_late_ramp_r16,uniform_r16,16,official_beam,0.9,67.40941718323172,70.14350623102894,32.315825351073784,51.290136723717694,0.6821,8.6238,0.4622,0.7112,2.4922,outputs/runs/paper_aligned_official_beam_eval/uniform_r16
+uniform_vs_late_ramp_r16,late_ramp_r16,16,official_beam,0.9,67.35331911315131,70.35782639043343,32.143637536800675,51.19721192258647,0.6815,8.6182,0.4638,0.7124,2.4905,outputs/runs/paper_aligned_official_beam_eval/late_ramp_r16

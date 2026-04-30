@@ -1,0 +1,34 @@
+STDOUT:
+SCORES:
+==============
+BLEU: 0.6709
+NIST: 8.5009
+METEOR: 0.4589
+ROUGE_L: 0.7063
+CIDEr: 2.4651
+
+
+
+STDERR:
+/content/CS4782-final-project/lora-gpt2-medium-e2e/external/e2e-metrics/measure_scores.py:208: SyntaxWarning: invalid escape sequence '\.'
+  elif re.search('\.[ct]sv$', sys_file, re.I):
+/content/CS4782-final-project/lora-gpt2-medium-e2e/external/e2e-metrics/measure_scores.py:216: SyntaxWarning: invalid escape sequence '\.'
+  if re.search('\.[ct]sv$', ref_file, re.I):
+Running MS-COCO evaluator...
+creating index...
+index created!
+Loading and preparing results...     
+DONE (t=0.00s)
+creating index...
+index created!
+tokenization...
+PTBTokenizer tokenized 132573 tokens at 651877.62 tokens per second.
+PTBTokenizer tokenized 18733 tokens at 195885.30 tokens per second.
+setting up scorers...
+computing METEOR score...
+METEOR: 0.459
+computing Rouge score...
+ROUGE_L: 0.706
+computing CIDEr score...
+CIDEr: 2.465
+Running Py-MTEval metrics...

@@ -1,0 +1,19 @@
+{
+  "metrics": {
+    "bleu": 26.930425553702772,
+    "meteor": 40.87721441297945,
+    "ter": 0.8115328461461486
+  },
+  "num_unique_contexts": 4159,
+  "official_metrics": {
+    "bleu": 28.53,
+    "cider": 1.5688,
+    "meteor": 27.689999999999998,
+    "nist": 5.7304,
+    "rouge_l": 44.22
+  },
+  "predictions_file": "outputs/runs/eval_matrix/e2e/dart/test_predictions.jsonl",
+  "split": "test",
+  "task_config": "configs/dart_gpt2_medium_lora.yaml",
+  "variant": "e2e"
+}
