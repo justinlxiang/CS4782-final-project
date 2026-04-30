@@ -1,0 +1,80 @@
+# Config for GPT-2 Medium + LoRA + E2E replication.
+# Training commands are implemented with an explicit dry-run path; do not run
+# full training until compute and dataset access are approved.
+
+project:
+  name: lora-gpt2-medium-e2e
+  output_dir: outputs/runs/e2e_lora_r4_alpha32
+  seed: 110
+
+model:
+  name_or_path: gpt2-medium
+  tokenizer_name_or_path: gpt2-medium
+  pad_token: eos_token
+  freeze_base_model: true
+
+lora:
+  target_model: gpt2
+  target_modules:
+    attention_c_attn:
+      query: true
+      key: false
+      value: true
+  rank: 4
+  alpha: 32
+  dropout: 0.1
+  merge_for_eval: false
+
+data:
+  dataset_name: e2e_nlg
+  raw_dir: data/raw/e2e
+  processed_dir: data/processed/e2e_gpt2
+  max_length: 512
+  prompt_template: "{mr}"
+  append_bos_to_context: true
+  append_eos_to_target: true
+  mask_prompt_labels: true
+  add_leading_space_to_target: true
+
+training:
+  optimizer: adamw
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  adam_epsilon: 0.000001
+  batch_size: 8
+  validation_batch_size: 4
+  gradient_accumulation_steps: 1
+  epochs: 5
+  warmup_steps: 500
+  lr_schedule: linear
+  label_smoothing: 0.1
+  max_grad_norm: 0.0
+  mixed_precision: fp16
+  eval_every_steps: 1000
+  save_every_steps: 1000
+  save_adapter_only: true
+
+generation:
+  split: test
+  decoder: hf_generate
+  batch_size: 4
+  max_new_tokens: 64
+  num_beams: 10
+  length_penalty: 0.8
+  no_repeat_ngram_size: 4
+  repetition_penalty: 1.0
+  early_stopping: true
+  eos_token_id:
+    - 50256
+    - 628
+
+evaluation:
+  metrics:
+    - bleu
+    - nist
+    - meteor
+    - rouge_l
+    - cider
+  official_e2e_script_dir: external/e2e-metrics
+  predictions_file: outputs/runs/e2e_lora_r4_alpha32/generations_test.txt
+  references_file: data/processed/e2e_gpt2/references_test.txt

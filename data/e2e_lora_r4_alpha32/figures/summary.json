@@ -1,0 +1,40 @@
+{
+  "epoch_loss": {
+    "epoch_1_mean_loss": 2.859274376159659,
+    "epoch_2_mean_loss": 2.6489159269176903,
+    "epoch_3_mean_loss": 2.608970800567009,
+    "epoch_4_mean_loss": 2.587419120156298,
+    "epoch_5_mean_loss": 2.574115697037997
+  },
+  "figures_dir": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/e2e_lora_r4_alpha32/figures",
+  "metrics": {
+    "bleu": 54.784983808944006,
+    "line_bleu": 23.002262572586694,
+    "line_rouge_l": 46.24942281341215,
+    "rouge_l": 63.93138740169847
+  },
+  "parameters": {
+    "full_finetune_trainable_params": 355216384.0,
+    "lora_trainable_params": 393216.0,
+    "trainable_fraction": 0.001106975966513977
+  },
+  "run_dir": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/e2e_lora_r4_alpha32",
+  "training_loss": {
+    "final_loss": 2.5082051753997803,
+    "first_loss": 5.788079261779785,
+    "min_loss": 2.0427377223968506,
+    "num_steps": 26290.0
+  },
+  "validation_loss": {
+    "epoch_1_valid_loss": 2.559605550786404,
+    "epoch_1_valid_ppl": 12.93071579878652,
+    "epoch_2_valid_loss": 2.5076400439624917,
+    "epoch_2_valid_ppl": 12.27592520507646,
+    "epoch_3_valid_loss": 2.48658567279169,
+    "epoch_3_valid_ppl": 12.020165200224463,
+    "epoch_4_valid_loss": 2.4720189389708924,
+    "epoch_4_valid_ppl": 11.84633976137389,
+    "epoch_5_valid_loss": 2.4669800348681945,
+    "epoch_5_valid_ppl": 11.786797331629668
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "bleu": 32.779246867270516,
+  "line_bleu": 22.234221696836133,
+  "line_rouge_l": 49.28974250537978,
+  "num_examples": 12551,
+  "num_unique_mrs": 4159,
+  "official_predictions_file": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/dart_lora_r4_alpha32_via_mole/generations_test.e2e_preds.txt",
+  "official_references_file": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/dart_lora_r4_alpha32_via_mole/generations_test.e2e_refs.txt",
+  "rouge_l": 55.666368918293244
+}

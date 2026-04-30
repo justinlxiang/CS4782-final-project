@@ -1,0 +1,34 @@
+{
+  "epoch_loss": {
+    "epoch_1_mean_loss": 1.3854068532751602,
+    "epoch_2_mean_loss": 1.190309308641459,
+    "epoch_3_mean_loss": 1.1456336002080176,
+    "epoch_4_mean_loss": 1.1206700727923777,
+    "epoch_5_mean_loss": 1.1034996777556034
+  },
+  "figures_dir": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/dart_lora_r4_alpha32/figures",
+  "parameters": {
+    "full_finetune_trainable_params": 355216384.0,
+    "lora_trainable_params": 393216.0,
+    "trainable_fraction": 0.001106975966513977
+  },
+  "run_dir": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/dart_lora_r4_alpha32",
+  "training_loss": {
+    "final_loss": 1.2890682220458984,
+    "first_loss": 4.042086124420166,
+    "min_loss": 0.4700998365879059,
+    "num_steps": 39165.0
+  },
+  "validation_loss": {
+    "epoch_1_valid_loss": 1.083807200210484,
+    "epoch_1_valid_ppl": 2.95591190401287,
+    "epoch_2_valid_loss": 1.0300899978524294,
+    "epoch_2_valid_ppl": 2.801317935952831,
+    "epoch_3_valid_loss": 1.0079161127522203,
+    "epoch_3_valid_ppl": 2.739885449439703,
+    "epoch_4_valid_loss": 0.9981571154599544,
+    "epoch_4_valid_ppl": 2.71327696201386,
+    "epoch_5_valid_loss": 0.991995934962714,
+    "epoch_5_valid_ppl": 2.696611365504986
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "_config_path": "configs/dart_gpt2_medium_lora.yaml",
+  "_project_root": "/content/CS4782-final-project/lora-gpt2-medium-e2e",
+  "data": {
+    "add_leading_space_to_target": true,
+    "append_bos_to_context": true,
+    "append_eos_to_target": true,
+    "dataset_name": "dart",
+    "mask_prompt_labels": true,
+    "max_length": 512,
+    "processed_dir": "data/processed/dart_gpt2",
+    "prompt_template": "{mr}",
+    "raw_dir": "data/raw/dart"
+  },
+  "evaluation": {
+    "metrics": [
+      "bleu",
+      "meteor",
+      "ter"
+    ],
+    "official_e2e_script_dir": "external/dart-metrics",
+    "predictions_file": "outputs/runs/dart_lora_r4_alpha32/generations_test.txt",
+    "references_file": "data/processed/dart_gpt2/references_test.txt"
+  },
+  "generation": {
+    "batch_size": 4,
+    "decoder": "hf_generate",
+    "early_stopping": true,
+    "eos_token_id": [
+      50256,
+      628
+    ],
+    "length_penalty": 0.8,
+    "max_new_tokens": 64,
+    "no_repeat_ngram_size": 4,
+    "num_beams": 10,
+    "repetition_penalty": 1.0,
+    "split": "test"
+  },
+  "lora": {
+    "alpha": 32,
+    "dropout": 0.0,
+    "merge_for_eval": false,
+    "rank": 4,
+    "target_model": "gpt2",
+    "target_modules": {
+      "attention_c_attn": {
+        "key": false,
+        "query": true,
+        "value": true
+      }
+    }
+  },
+  "model": {
+    "freeze_base_model": true,
+    "name_or_path": "gpt2-medium",
+    "pad_token": "eos_token",
+    "tokenizer_name_or_path": "gpt2-medium"
+  },
+  "project": {
+    "name": "lora-gpt2-medium-dart",
+    "output_dir": "outputs/runs/dart_lora_r4_alpha32",
+    "seed": 110
+  },
+  "training": {
+    "adam_epsilon": 1e-06,
+    "batch_size": 8,
+    "epochs": 5,
+    "eval_every_steps": 1000,
+    "gradient_accumulation_steps": 1,
+    "label_smoothing": 0.0,
+    "learning_rate": 0.0002,
+    "lr_schedule": "linear",
+    "max_grad_norm": 0.0,
+    "mixed_precision": "fp16",
+    "optimizer": "adamw",
+    "save_adapter_only": true,
+    "save_every_steps": 1000,
+    "validation_batch_size": 4,
+    "warmup_steps": 500,
+    "weight_decay": 0.0
+  }
+}

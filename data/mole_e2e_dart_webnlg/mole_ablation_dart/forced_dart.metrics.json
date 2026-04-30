@@ -1,0 +1,10 @@
+{
+  "bleu": 13.780354503577712,
+  "line_bleu": 13.780354503577712,
+  "line_rouge_l": 46.033958345909085,
+  "num_examples": 200,
+  "num_unique_mrs": 200,
+  "official_predictions_file": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/mole_ablation_dart/forced_dart.e2e_preds.txt",
+  "official_references_file": "/content/CS4782-final-project/lora-gpt2-medium-e2e/outputs/runs/mole_ablation_dart/forced_dart.e2e_refs.txt",
+  "rouge_l": 46.033958345909085
+}
