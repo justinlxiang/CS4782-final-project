@@ -365,11 +365,14 @@ shape we hand-designed for late-ramp:
   over three frozen LoRAs (MoLE) recovers most of each task specialist's
   BLEU on its own data while remaining usable across all three tasks —
   something no single specialist achieves.
-* **Lessons learned.** (i) Faithful re-implementations are dominated by
-  small numerical / decoding details (EOS handling, length penalty,
-  warm-up). (ii) Looking inside an adaptive method is as informative as
-  the headline metric — the AdaLoRA-Lite gates *interpret* the paper's
-  fixed-rank choice in hindsight.
+* **Lessons learned.** (i) Small implementation choices changed the E2E score
+  substantially: matching the paper-style EOS handling recovered about 1 BLEU,
+  and fp16 / schedule / seed differences likely explain part of the remaining
+  gap. (ii) Rank allocation is a useful diagnostic, not just a metric trick:
+  AdaLoRA-Lite learned the same late-layer-heavy pattern that late-ramp imposed
+  by hand. (iii) Test locally on CPU before launching GPU runs: unit tests and
+  smoke tests catch adapter wiring, masking, checkpointing, and generation bugs
+  much faster than a failed Colab training job.
 
 ### Future work
 * Scale the budget-allocation study beyond GPT-2 Medium (Llama-2/3 7B,
