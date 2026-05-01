@@ -1,7 +1,7 @@
 # Config for GPT-2 Medium + AdaLoRA-Lite + E2E.
 
 project:
-  name: adalora-lite-gpt2-medium-e2e
+  name: e2e-adalora-lite
   output_dir: outputs/runs/adalora_lite_rmax6_target192_tinit10000_tfinal5000
   seed: 110
 
@@ -33,8 +33,8 @@ lora:
 
 data:
   dataset_name: e2e_nlg
-  raw_dir: data/raw/e2e
-  processed_dir: data/processed/e2e_gpt2
+  raw_dir: ../data/raw/e2e
+  processed_dir: ../data/processed/e2e_gpt2
   max_length: 512
   prompt_template: "{mr}"
   append_bos_to_context: true
@@ -83,4 +83,4 @@ evaluation:
     - cider
   official_e2e_script_dir: external/e2e-metrics
   predictions_file: outputs/runs/adalora_lite_rmax6_target192_tinit10000_tfinal5000/generations_test.txt
-  references_file: data/processed/e2e_gpt2/references_test.txt
+  references_file: ../data/processed/e2e_gpt2/references_test.txt

@@ -623,16 +623,16 @@
           <div class="card-title">Why Care?</div>
         </div>
         <ul class="bullets dense">
-          <li>Fine-tuning a 354M-param transformer used to mean storing a fresh 354M-param checkpoint <b>per task</b>. <b>LoRA</b> (Hu '21) trains tiny rank-<i>r</i> add-ons next to frozen weights instead. On E2E, GPT-2 Medium hits paper-LoRA quality at:</li>
+          <li>Fine-tuning a 354M-param transformer used to mean storing a fresh 354M-param checkpoint <b>per task</b>. <b>LoRA</b> (Hu '21) trains tiny rank-<i>r</i> add-ons next to frozen weights instead. In Table 3, GPT-2 Medium LoRA reaches:</li>
         </ul>
         <div class="stat-row" style="grid-template-columns: repeat(3, 1fr);">
           <div class="stat">
-            <div class="num rust">0.39M</div>
+            <div class="num rust">0.35M</div>
             <div class="lbl">trainable params<br>(~1000&times; less)</div>
           </div>
           <div class="stat">
-            <div class="num">68.9</div>
-            <div class="lbl">BLEU on E2E<br>(matches full FT)</div>
+            <div class="num">70.4</div>
+            <div class="lbl">BLEU on E2E<br>(beats full FT)</div>
           </div>
           <div class="stat">
             <div class="num gold">~0</div>
@@ -1009,10 +1009,10 @@
               <text x="676.5" y="228" text-anchor="middle" fill="#1F3A5F" font-weight="700" font-size="12">AdaLoRA-Lite</text>
             </g>
             <text x="395" y="252" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#6B7280">first five: same total r=4 · rightmost: learned gates, 192 active units (E2E)</text>
-            <text x="395" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#6B7280">— uniform = paper repro baseline —</text>
+            <text x="395" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11" fill="#6B7280">— uniform = our r=4 reproduction baseline —</text>
           </svg>
         </div>
-        <div class="figcap"><b>Fig. 5.</b> Depth (late-ramp) beats projection ablations on the same r=4 budget; AdaLoRA-Lite r<sub>max</sub>=6 lands near paper LoRA BLEU at 0.39M.</div>
+        <div class="figcap"><b>Fig. 5.</b> Depth (late-ramp) beats projection ablations on the same r=4 budget; AdaLoRA-Lite r<sub>max</sub>=6 is our strongest matched-budget run.</div>
       </div>
 
     </div><!-- /col 2 -->
@@ -1031,11 +1031,12 @@
             <tr><th>Configuration</th><th>Params</th><th>BLEU</th><th>NIST</th><th>METEOR</th><th>ROUGE-L</th><th>CIDEr</th></tr>
           </thead>
           <tbody>
-            <tr class="paper"><td>★ LoRA paper (Hu '21)</td><td>0.39M</td><td>68.90</td><td>8.69</td><td>46.40</td><td>71.30</td><td>2.51</td></tr>
-            <tr class="paper"><td>★ Full fine-tuning (paper)</td><td>354M</td><td>68.20</td><td>8.62</td><td>46.20</td><td>71.00</td><td>2.47</td></tr>
+            <tr class="paper"><td>★ LoRA r=4 (Hu '21)</td><td>0.35M</td><td>70.40</td><td>8.85</td><td>46.80</td><td>71.80</td><td>2.53</td></tr>
+            <tr class="paper"><td>★ Full fine-tuning (paper)</td><td>354.92M</td><td>68.20</td><td>8.62</td><td>46.20</td><td>71.00</td><td>2.47</td></tr>
+            <tr class="paper"><td>★ AdapterL 11M (paper)</td><td>11.09M</td><td>68.90</td><td>8.71</td><td>46.10</td><td>71.30</td><td>2.47</td></tr>
             <tr><td>Uniform r=1</td><td>0.10M</td><td>66.78</td><td>8.51</td><td>45.02</td><td>68.94</td><td>2.36</td></tr>
             <tr><td>Uniform r=2</td><td>0.20M</td><td>67.11</td><td>8.52</td><td>45.78</td><td>70.30</td><td>2.45</td></tr>
-            <tr class="repro"><td>Uniform r=4 (paper repro)</td><td>0.39M</td><td>67.30</td><td>8.51</td><td>46.05</td><td>70.96</td><td>2.47</td></tr>
+            <tr class="repro"><td>Uniform r=4 (ours)</td><td>0.39M</td><td>67.30</td><td>8.51</td><td>46.05</td><td>70.96</td><td>2.47</td></tr>
             <tr><td>Uniform r=8</td><td>0.79M</td><td>67.97</td><td>8.59</td><td>46.23</td><td>70.94</td><td>2.50</td></tr>
             <tr><td>Uniform r=16</td><td>1.57M</td><td>68.21</td><td>8.62</td><td>46.22</td><td>71.12</td><td>2.49</td></tr>
             <tr class="late"><td>Late-ramp r=4</td><td>0.39M</td><td>68.39</td><td>8.63</td><td>46.51</td><td>71.29</td><td>2.49</td></tr>
@@ -2340,7 +2341,7 @@
           <div class="card-title">Conclusion &amp; Future Work</div>
         </div>
         <ul class="bullets dense">
-          <li><b>LoRA reproduces.</b> AdaLoRA-Lite r<sub>max</sub>=6 within 0.05 BLEU of paper at 0.39M.</li>
+          <li><b>Paper LoRA remains higher.</b> AdaLoRA-Lite r<sub>max</sub>=6 beats paper full FT and roughly matches AdapterL at 0.39M active params.</li>
           <li><b>Allocation &gt; raw rank.</b> Late-ramp <i>r</i>=4 beats uniform <i>r</i>=8 with half the params.</li>
           <li><b>Learned &asymp; hand-designed.</b> AdaLoRA-Lite recovers a late-heavy profile automatically.</li>
           <li><b>MoLE.</b> One served model for E2E, DART, WebNLG via a tiny router.</li>
@@ -2350,7 +2351,8 @@
           <li><b>Scale to larger backbones.</b> Move beyond GPT-2 Medium to GPT-2 Large and Llama-2/3 7B-class models.</li>
           <li><b>MoLE + adaptive rank.</b> Combine mixture-of-LoRA routing with AdaLoRA-Lite&ndash;style learned rank budgets.</li>
           <li><b>Orthogonality regularizer.</b> Add AdaLoRA-style SVD orthogonality penalties on projection factors (<i>P</i>, <i>Q</i>) to AdaLoRA-Lite and measure interference vs. pruning dynamics.</li>
-      </div>
+          <li><b>Key and Output matrices.</b> Experiment with applying LoRA and AdaLoRA-Lite to the Key and Output transformer projection matrices in addition to the Q/V matrices.</li>
+        </ul>
 
       <!-- CARD 14: REFERENCES -->
       <div class="card">

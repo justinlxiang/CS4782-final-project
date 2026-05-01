@@ -4,7 +4,7 @@
 # is the only trainable component here.
 
 project:
-  name: lora-gpt2-medium-mole
+  name: mole-e2e-dart-webnlg
   output_dir: outputs/runs/mole_e2e_dart_webnlg
   seed: 110
 
@@ -56,15 +56,15 @@ data:
   dataset_name: mole_mixed
   task_splits:
     - name: e2e
-      processed_dir: data/processed/e2e_gpt2
+      processed_dir: ../data/processed/e2e_gpt2
       train_file: train.jsonl
       valid_file: valid.jsonl
     - name: dart
-      processed_dir: data/processed/dart_gpt2
+      processed_dir: ../data/processed/dart_gpt2
       train_file: train.jsonl
       valid_file: valid.jsonl
     - name: webnlg
-      processed_dir: data/processed/webnlg_gpt2
+      processed_dir: ../data/processed/webnlg_gpt2
       train_file: train.jsonl
       valid_file: valid.jsonl
   max_length: 512

@@ -3,7 +3,7 @@
 # DART differs from E2E in dropout, weight_decay, and label_smoothing.
 
 project:
-  name: lora-gpt2-medium-dart
+  name: dart-lora-r4-alpha32
   output_dir: outputs/runs/dart_lora_r4_alpha32
   seed: 110
 
@@ -27,8 +27,8 @@ lora:
 
 data:
   dataset_name: dart
-  raw_dir: data/raw/dart
-  processed_dir: data/processed/dart_gpt2
+  raw_dir: ../data/raw/dart
+  processed_dir: ../data/processed/dart_gpt2
   max_length: 512
   prompt_template: "{mr}"
   append_bos_to_context: true
@@ -75,4 +75,4 @@ evaluation:
     - ter
   official_e2e_script_dir: external/dart-metrics
   predictions_file: outputs/runs/dart_lora_r4_alpha32/generations_test.txt
-  references_file: data/processed/dart_gpt2/references_test.txt
+  references_file: ../data/processed/dart_gpt2/references_test.txt
